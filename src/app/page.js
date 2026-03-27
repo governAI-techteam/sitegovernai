@@ -1,66 +1,44 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
 
-export default function Home() {
+import { useRef } from "react";
+import { ScrollProvider } from "@/context/ScrollContext";
+import { useActiveSection } from "@/hooks/useActiveSection";
+
+import { NavBar } from "@/components/organisms/NavBar";
+import { HeroSection } from "@/components/organisms/HeroSection";
+import { PlatformSection } from "@/components/organisms/PlatformSection";
+import { SolutionsSection } from "@/components/organisms/SolutionsSection";
+import { ServicesSection } from "@/components/organisms/ServicesSection";
+import { FrameworkSection } from "@/components/organisms/FrameworkSection";
+import { WorkflowSection } from "@/components/organisms/WorkflowSection";
+import { IndustriesSection } from "@/components/organisms/IndustriesSection";
+import { StandardsSection } from "@/components/organisms/StandardsSection";
+import { ResourcesSection } from "@/components/organisms/ResourcesSection";
+import { InsightsSection } from "@/components/organisms/InsightsSection";
+import { PricingSection } from "@/components/organisms/PricingSection";
+import { Footer } from "@/components/organisms/Footer";
+
+export default function GovernAI() {
+  const sectionRefs = useRef({});
+  const activeSection = useActiveSection(sectionRefs);
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.js file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <ScrollProvider sectionRefs={sectionRefs}>
+      <NavBar activeSection={activeSection} />
+
+      <HeroSection       sectionRefs={sectionRefs} />
+      <PlatformSection   sectionRefs={sectionRefs} />
+      <SolutionsSection  sectionRefs={sectionRefs} />
+      <ServicesSection   sectionRefs={sectionRefs} />
+      <FrameworkSection  sectionRefs={sectionRefs} />
+      <WorkflowSection   sectionRefs={sectionRefs} />
+      <IndustriesSection sectionRefs={sectionRefs} />
+      <StandardsSection  sectionRefs={sectionRefs} />
+      <ResourcesSection  sectionRefs={sectionRefs} />
+      <InsightsSection   sectionRefs={sectionRefs} />
+      <PricingSection    sectionRefs={sectionRefs} />
+      
+      <Footer />
+    </ScrollProvider>
   );
 }
