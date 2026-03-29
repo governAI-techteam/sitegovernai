@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { createContext, useContext, useCallback } from "react";
+import { createContext, useContext, useCallback } from 'react';
 
 const ScrollCtx = createContext(null);
 
@@ -10,9 +10,9 @@ export function ScrollProvider({ sectionRefs, children }) {
   const scrollTo = useCallback(
     (id) => {
       const el = sectionRefs.current[id];
-      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     },
-    [sectionRefs]
+    [sectionRefs],
   );
   return <ScrollCtx.Provider value={scrollTo}>{children}</ScrollCtx.Provider>;
 }

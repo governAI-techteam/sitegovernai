@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useRef } from "react";
-import { ScrollProvider } from "@/context/ScrollContext";
-import { useActiveSection } from "@/hooks/useActiveSection";
+import { useRef } from 'react';
+import { ScrollProvider } from '@/context/ScrollContext';
+import { useActiveSection } from '@/hooks/useActiveSection';
 
-import {LandingSection} from "@/components/organisms/LandingSection";
-import { Footer } from "@/components/organisms/Footer";
-import { Preloader } from "@/components/molecules/Preloader";
+import { LandingSection } from '@/components/organisms/LandingSection';
+import { Footer } from '@/components/organisms/Footer';
+import { Preloader } from '@/components/molecules/Preloader';
 
 export default function GovernAI() {
   const sectionRefs = useRef({});

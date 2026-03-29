@@ -1,10 +1,15 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
-export function Typewriter({ words, typingSpeed = 100, deletingSpeed = 60, pauseDuration = 2500 }) {
-  const [text, setText] = useState("");
+export function Typewriter({
+  words,
+  typingSpeed = 100,
+  deletingSpeed = 60,
+  pauseDuration = 2500,
+}) {
+  const [text, setText] = useState('');
   const [wordIndex, setWordIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
@@ -34,21 +39,29 @@ export function Typewriter({ words, typingSpeed = 100, deletingSpeed = 60, pause
     }
 
     return () => clearTimeout(timeoutId);
-  }, [text, isDeleting, wordIndex, words, typingSpeed, deletingSpeed, pauseDuration]);
+  }, [
+    text,
+    isDeleting,
+    wordIndex,
+    words,
+    typingSpeed,
+    deletingSpeed,
+    pauseDuration,
+  ]);
 
   return (
-    <span style={{ display: "inline-flex", alignItems: "center" }}>
+    <span style={{ display: 'inline-flex', alignItems: 'center' }}>
       <span>{text}</span>
       <motion.span
         animate={{ opacity: [1, 0, 1] }}
-        transition={{ repeat: Infinity, duration: 0.9, ease: "linear" }}
+        transition={{ repeat: Infinity, duration: 0.9, ease: 'linear' }}
         style={{
-          display: "inline-block",
-          width: "0.08em",
-          height: "1em",
-          backgroundColor: "currentColor",
-          marginLeft: "4px",
-          verticalAlign: "middle"
+          display: 'inline-block',
+          width: '0.08em',
+          height: '1em',
+          backgroundColor: 'currentColor',
+          marginLeft: '4px',
+          verticalAlign: 'middle',
         }}
       />
     </span>
