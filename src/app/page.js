@@ -16,7 +16,7 @@ export default function GovernAI() {
      
       <LandingSection sectionRefs={sectionRefs} />
       
-
+     <Footer />
            </>
     
   );

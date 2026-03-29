@@ -30,14 +30,15 @@ export function LandingSection({ sectionRefs }) {
         <h1 style={{ fontFamily: tokens.fonts.display, fontSize: "clamp(38px,6vw,70px)", fontWeight: 800, letterSpacing: "-0.045em", lineHeight: 1.1, marginBottom: 26, color: tokens.onSurface }}>
           Master the <span style={{ color: tokens.primary }}>Sentinels</span> of Modern Intelligence.
         </h1>
-        <p style={{ fontSize: "clamp(16px,2vw,19px)", color: tokens.secondary, maxWidth: 580, margin: "0 auto 44px", lineHeight: 1.7 }}>
-          GovernAI provides the architectural framework to deploy, monitor, and scale AI systems with absolute compliance and zero bias.
+        <p style={{ fontSize: "clamp(16px,2vw,19px)", color: tokens.secondary, maxWidth: 650, margin: "0 auto 44px", lineHeight: 1.7 }}>
+          GovernAI provides the architectural framework to deploy, monitor, and scale AI systems with absolute compliance and zero bias. We specialize in robust capacity building, strategic policy formulation, and empowering organizations to govern AI technologies responsibly.
         </p>
        
       </Container>
-      <ImageCard />
+        <FounderProfile />
       <hr style={{ border: 'none', borderTop: `1px solid rgba(0,0,0,0.05)`, margin: '80px 0 0 0' }} />
-      <FounderProfile />
+        
+        <ImageCard />
     </Section>
   );
 }

@@ -24,26 +24,12 @@ export function Footer() {
       <Container>
         <div className="mobile-col-gap-lg" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(145px,1fr))", gap: 40 }}>
           <div>
-            <div style={{ fontSize: 18, fontWeight: 800, color: "#0f172a", marginBottom: 13, fontFamily: tokens.fonts.display }}>GovernAI</div>
+            <img src="/assets/img/logo.png" alt="GovernAI" style={{ width: "100px", height: "auto", marginBottom: "16px" }} />
             <p style={{ color: "#64748b", lineHeight: 1.65, marginBottom: 20, fontSize: 13 }}>
               The Sentinel Archive. Empowering organizations with robust, ethical, and compliant AI systems.
             </p>
-            <div style={{ display: "flex", gap: 9 }}>
-              {["share", "language"].map((ic) => (
-                <a key={ic} href="#" style={{ width: 33, height: 33, borderRadius: "50%", background: "#e2e8f0", display: "flex", alignItems: "center", justifyContent: "center", color: "#475569", textDecoration: "none" }}>
-                  <Icon name={ic} size={14} />
-                </a>
-              ))}
-            </div>
           </div>
-          {DEFAULT_FOOTER_COLS.map((col) => (
-            <div key={col.heading}>
-              <h6 style={{ fontWeight: 700, color: "#0f172a", marginBottom: 18, textTransform: "uppercase", letterSpacing: ".1em", fontSize: 11, fontFamily: tokens.fonts.display }}>{col.heading}</h6>
-              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 11 }}>
-                {col.links.map((link) => <FooterLink key={link} label={link} />)}
-              </ul>
-            </div>
-          ))}
+          
         </div>
         <div style={{ marginTop: 44, paddingTop: 18, borderTop: "1px solid #e2e8f0", textAlign: "center" }}>
           <p style={{ color: "#94a3b8", fontSize: 12 }}>© {new Date().getFullYear()} GovernAI Sentinel Archive. All rights reserved.</p>
