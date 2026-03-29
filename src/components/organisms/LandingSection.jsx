@@ -78,7 +78,7 @@ export function LandingSection({ sectionRefs }) {
               lineHeight: 1.1,
               marginBottom: 26,
               color: tokens.onSurface,
-              height: '250px',
+              height: '220px',
             }}
           >
             Master the <span style={{ color: tokens.primary }}>Sentinels</span>{' '}
