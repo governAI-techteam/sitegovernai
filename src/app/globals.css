@@ -15,6 +15,19 @@ body {
 
   }
 
+  .image-holder {
+    width: 100%;
+    max-width: 800px;
+    align-items: start;
+    justify-content: center;
+    margin: 50px auto;
+    padding: 20px;
+    display: grid ;
+    grid-template: auto auto / 250px 250px 250px;
+    gap: 30px;
+    text-align: center;
+  }
+
 @media (max-width: 1024px) {
   .responsive-grid {
     grid-template-columns: repeat(2, 1fr) !important;
@@ -79,5 +92,15 @@ body {
   }
   .hide-on-desktop {
     display: block !important;
+  }
+  .image-holder {
+    grid-template: auto auto auto / 1fr;
+    gap: 15px;
+    max-width: 100%;
+    padding: 10px;
+  }
+  .image-holder > div {
+    padding: 12px !important;
+    grid-area: auto !important;
   }
 }

@@ -2,8 +2,58 @@ import { tokens } from "@/theme/tokens";
 import "./globals.css";
 
 export const metadata = {
-  title: "GovernAI | Modern AI Confidence",
-  description: "GovernAI provides the architectural framework to deploy, monitor, and scale AI systems with absolute compliance and zero bias.",
+  metadataBase: new URL('https://govern-ai.com'),
+  title: {
+    default: "GovernAI | Modern AI Confidence & Governance",
+    template: "%s | GovernAI"
+  },
+  description: "GovernAI provides the architectural framework to deploy, monitor, and scale AI systems with absolute compliance, ethical frameworks, and zero bias.",
+  keywords: [
+    "AI Governance", 
+    "Ethical AI", 
+    "AI Compliance", 
+    "Robust AI", 
+    "Trustworthy AI", 
+    "Artificial Intelligence Frameworks", 
+    "AI Policy"
+  ],
+  authors: [{ name: "Parishrut Jassal", url: "https://linkedin.com/in/parishrut-jassal" }],
+  creator: "GovernAI",
+  publisher: "GovernAI",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://govern-ai.com",
+    title: "GovernAI | Modern AI Confidence & Governance",
+    description: "Architectural framework to deploy, monitor, and scale AI systems with absolute compliance and zero bias.",
+    siteName: "GovernAI",
+    images: [
+      {
+        url: "/assets/img/logo.png", // Next.js will resolve relative to standard absolute URL
+        width: 1200,
+        height: 630,
+        alt: "GovernAI - Modern AI Confidence",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "GovernAI | Modern AI Confidence & Governance",
+    description: "Architectural framework to deploy, monitor, and scale AI systems with absolute compliance and zero bias.",
+    images: ["/assets/img/logo.png"],
+    creator: "@GovernAI",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({ children }) {
