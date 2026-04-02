@@ -9,7 +9,7 @@ export const experiences = [
   {
     role: 'Advisor',
     org: 'Future Shift Labs (FSL)',
-    duration: 'Dec 2024 - Present · 1 yr 4 mos',
+    duration: 'Dec 2024 - March 2025 · 1 yr 4 mos',
     desc: 'I offer Research & Advisory in the domain of AI Governance at Future Shift Labs (FSL). I contribute to shaping responsible and effective governance frameworks for artificial intelligence, ensuring alignment with democratic values and societal advancement.',
     skills: '',
   },
@@ -26,13 +26,5 @@ export const experiences = [
     duration: 'Jul 2024 - Nov 2024 · 5 mos | Washington, US · Remote',
     desc: 'As a member of the AI Policy Research Group at the Center for AI and Digital Policy, I delved into the intricate world of AI policy analysis and evaluation. My role involved researching and analyzing various AI policy frameworks, including the OECD AI Principles and the UNESCO Recommendation on the Ethics of AI. (Certification for the AI Policy Clinic Program).',
     skills: 'Communication, Curriculum Development, Policy Analysis',
-  },
-  {
-    role: 'Course Facilitator (AI Governance Fellowship)',
-    org: 'Equiano Institute',
-    duration: 'Mar 2024 - May 2024 · 3 mos | South Africa · Remote',
-    desc: 'I facilitated the cohort of AI Governance, focusing on developing frameworks and policies to ensure the responsible and ethical use of AI technology. The AI Governance Fellowship is a pioneering program dedicated to advancing the fairness and integrity of AI technologies in the Global South.',
-    skills:
-      'Communication, Leadership, AI Governance, AI Policy Development, Responsible AI, Curriculum Development',
   },
 ];

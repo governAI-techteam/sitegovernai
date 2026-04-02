@@ -1,56 +1,62 @@
 'use client';
-
+import ClientsMarqueeSection from '@/components/organisms/ClientsMarqueeSection';
 import { tokens } from '@/theme/tokens';
 import { Container } from '@/components/atoms/Container';
 import { Icon } from '@/components/atoms/Icon';
 import { experiences } from '@/config/founder';
-
+import LinkedInCarouselSection from '@/components/organisms/LinkedInCarouselSection';
+import { DomainsSection } from '@/components/organisms/DomainsSection';
 export function FounderProfile() {
   return (
-    <Container style={{ paddingTop: '80px', paddingBottom: '80px' }}>
-      <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+    <Container style={{ paddingTop: '52px', paddingBottom: '52px' }}>
+      <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+        <br />
+        <br />
+        <DomainsSection />
+        <ClientsMarqueeSection />
+        <LinkedInCarouselSection />
         <h2
           style={{
             fontFamily: tokens?.fonts?.display || 'inherit',
-            fontSize: 'clamp(32px, 5vw, 48px)',
+            fontSize: 'clamp(26px, 4vw, 38px)',
             fontWeight: 800,
             color: tokens.onSurface,
-            marginBottom: '16px',
+            marginBottom: '12px',
             letterSpacing: '-0.03em',
           }}
         >
+          <br />
           Meet the <span style={{ color: tokens.primary }}>Founder</span>
         </h2>
         <p
           style={{
-            fontSize: 'clamp(16px, 2vw, 18px)',
+            fontSize: 'clamp(13px, 1.6vw, 15px)',
             color: tokens.secondary,
-            maxWidth: '600px',
+            maxWidth: '500px',
             margin: '0 auto',
           }}
         >
-          Pioneering AI policy and creating responsible governance frameworks on
-          a global scale.
+          <span style={{ color: '#FF3B30', fontWeight: 600 }}>TEDx</span> Speaker & PhD in Responsible AI Governance
         </p>
       </div>
 
       <div
         className="responsive-flex"
-        style={{ display: 'flex', gap: '60px', alignItems: 'flex-start' }}
+        style={{ display: 'flex', gap: '40px', alignItems: 'flex-start' }}
       >
         {/* Left Column: Image & Highlights */}
         <div
-          style={{ flex: '1', position: 'sticky', top: '100px' }}
+          style={{ flex: '1', position: 'sticky', top: '80px' }}
           className="mobile-w-full mobile-mb-sm"
         >
           <div
             style={{
               position: 'relative',
-              borderRadius: '24px',
+              borderRadius: '18px',
               overflow: 'hidden',
-              boxShadow: '0 24px 48px rgba(0,0,0,0.12)',
+              boxShadow: '0 16px 36px rgba(0,0,0,0.12)',
               background: tokens.surface,
-              marginBottom: '20px',
+              marginBottom: '14px',
             }}
           >
             <img
@@ -79,26 +85,26 @@ export function FounderProfile() {
                 right: 0,
                 background:
                   'linear-gradient(to top, rgba(0,0,0,0.8), transparent)',
-                padding: '30px',
+                padding: '22px',
                 color: '#fff',
               }}
             >
               <h3
                 style={{
-                  fontSize: '28px',
+                  fontSize: '22px',
                   fontWeight: 700,
-                  marginBottom: '4px',
+                  marginBottom: '3px',
                 }}
               >
                 Parishrut Jassal
               </h3>
-              <p style={{ fontSize: '16px', opacity: 0.9, fontWeight: 500 }}>
+              <p style={{ fontSize: '13px', opacity: 0.9, fontWeight: 500 }}>
                 AI Policy & Governance Leader
               </p>
             </div>
           </div>
 
-          <a
+            <a
             href="https://linkedin.com/in/parishrut-jassal"
             target="_blank"
             rel="noopener noreferrer"
@@ -109,10 +115,10 @@ export function FounderProfile() {
               gap: '8px',
               background: '#0077b5',
               color: '#fff',
-              padding: '16px 24px',
-              borderRadius: '12px',
+              padding: '12px 20px',
+              borderRadius: '10px',
               fontWeight: 600,
-              fontSize: '16px',
+              fontSize: '14px',
               textDecoration: 'none',
               transition: 'background 0.2s ease',
               boxShadow: '0 4px 12px rgba(0, 119, 181, 0.2)',
@@ -120,7 +126,7 @@ export function FounderProfile() {
             onMouseEnter={(e) => (e.currentTarget.style.background = '#005e8e')}
             onMouseLeave={(e) => (e.currentTarget.style.background = '#0077b5')}
           >
-            <Icon name="link" size={18} /> Connect on LinkedIn
+            <Icon name="link" size={16} /> Connect on LinkedIn
           </a>
         </div>
 
@@ -134,8 +140,8 @@ export function FounderProfile() {
               key={i}
               style={{
                 display: 'flex',
-                gap: '24px',
-                paddingBottom: i !== experiences.length - 1 ? '40px' : '0',
+                gap: '18px',
+                paddingBottom: i !== experiences.length - 1 ? '28px' : '0',
               }}
             >
               {/* Roadmap Graphic Column */}
@@ -144,22 +150,22 @@ export function FounderProfile() {
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
-                  width: '20px',
+                  width: '16px',
                   flexShrink: 0,
                 }}
               >
                 <div
                   style={{
                     width: '2px',
-                    height: '36px',
+                    height: '28px',
                     background: i === 0 ? 'transparent' : tokens.primary,
                     opacity: 0.3,
                   }}
                 />
                 <div
                   style={{
-                    width: '18px',
-                    height: '18px',
+                    width: '14px',
+                    height: '14px',
                     borderRadius: '50%',
                     background: tokens.surface,
                     border: `3px solid ${tokens.primary}`,
@@ -186,40 +192,40 @@ export function FounderProfile() {
                 style={{
                   flex: '1',
                   background: tokens.surface,
-                  padding: '32px',
-                  borderRadius: '16px',
-                  boxShadow: '0 4px 24px rgba(0,0,0,0.06)',
+                  padding: '22px',
+                  borderRadius: '12px',
+                  boxShadow: '0 4px 18px rgba(0,0,0,0.06)',
                   border: '1px solid rgba(0,0,0,0.03)',
                   transition: 'transform 0.2s ease, box-shadow 0.2s ease',
                   cursor: 'default',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-4px)';
+                  e.currentTarget.style.transform = 'translateY(-3px)';
                   e.currentTarget.style.boxShadow =
-                    '0 12px 32px rgba(0,0,0,0.1)';
+                    '0 10px 26px rgba(0,0,0,0.1)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
                   e.currentTarget.style.boxShadow =
-                    '0 4px 24px rgba(0,0,0,0.06)';
+                    '0 4px 18px rgba(0,0,0,0.06)';
                 }}
               >
                 <h4
                   style={{
-                    fontSize: '20px',
+                    fontSize: '16px',
                     fontWeight: 700,
                     color: tokens.onSurface,
-                    marginBottom: '6px',
+                    marginBottom: '4px',
                   }}
                 >
                   {exp.role}
                 </h4>
                 <div
                   style={{
-                    fontSize: '16px',
+                    fontSize: '13px',
                     color: tokens.primary,
                     fontWeight: 600,
-                    marginBottom: '12px',
+                    marginBottom: '8px',
                   }}
                 >
                   {exp.org}
@@ -229,23 +235,23 @@ export function FounderProfile() {
                   style={{
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '8px',
-                    fontSize: '13px',
+                    gap: '6px',
+                    fontSize: '12px',
                     color: tokens.secondary,
-                    marginBottom: '16px',
+                    marginBottom: '10px',
                     fontWeight: 500,
                   }}
                 >
-                  <Icon name="history" size={14} />
+                  <Icon name="history" size={12} />
                   {exp.duration}
                 </div>
 
                 <p
                   style={{
-                    fontSize: '15px',
+                    fontSize: '13px',
                     color: tokens.secondary,
-                    lineHeight: 1.6,
-                    marginBottom: exp.skills ? '16px' : '0',
+                    lineHeight: 1.55,
+                    marginBottom: exp.skills ? '10px' : '0',
                   }}
                 >
                   {exp.desc}
@@ -256,18 +262,18 @@ export function FounderProfile() {
                     style={{
                       display: 'flex',
                       flexWrap: 'wrap',
-                      gap: '8px',
-                      marginTop: '16px',
+                      gap: '6px',
+                      marginTop: '10px',
                     }}
                   >
                     {exp.skills.split(', ').map((skill, idx) => (
                       <span
                         key={idx}
                         style={{
-                          fontSize: '12px',
+                          fontSize: '11px',
                           background: 'rgba(0,0,0,0.05)',
                           color: tokens.onSurface,
-                          padding: '4px 10px',
+                          padding: '3px 8px',
                           borderRadius: '100px',
                           fontWeight: 600,
                         }}

@@ -8,6 +8,8 @@ import { LandingSection } from '@/components/organisms/LandingSection';
 import { Footer } from '@/components/organisms/Footer';
 import { Preloader } from '@/components/molecules/Preloader';
 
+
+
 export default function GovernAI() {
   const sectionRefs = useRef({});
   const activeSection = useActiveSection(sectionRefs);
@@ -15,7 +17,10 @@ export default function GovernAI() {
   return (
     <>
       <Preloader />
+      
       <LandingSection sectionRefs={sectionRefs} />
+      
+      
       <Footer />
     </>
   );

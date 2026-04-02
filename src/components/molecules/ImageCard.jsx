@@ -1,5 +1,6 @@
-'use client';
 
+'use client';
+import ClientsMarqueeSection from '@/components/organisms/ClientsMarqueeSection';
 import { tokens } from '@/theme/tokens';
 import { FadeIn } from '@/components/atoms/FadeIn';
 import Image from 'next/image';
@@ -23,6 +24,27 @@ const team = [
     description:
       'AI & Frontier Tech Lawyer | AI Governance, ISO 42001, IP & Data Protection | Certified Implementer/Auditor in ISO 42001:2023 and ISO 9001:2015.',
   },
+  {
+    name: 'DevSecOps Lead',
+    role: '',
+    image: '/assets/img/anubhav.jpeg',
+    description:
+      'Anubhav Sharma, Experienced in infrastructure automation, containerized environments, and secure system design. Focused on building scalable, resilient, and security-first platform foundations.',
+  },
+  {
+    name: 'Applied AI Engineer',
+    role: '',
+    image: '/assets/img/aditya.jpeg',
+    description:
+      'Aditya Udiya, AI product builder with 24+ applied AI solutions. Startup founder. Ex Research Intern at IIT BHU in AI and ML. National level winner in Software Systems. 6x hackathon winner.',
+  },
+  {
+    name: 'AI & Healthcare Intern',
+    role: '',
+    image: '/assets/img/rutva.jpeg',
+    description:
+      'Dr. Rutva Tanna, BHMS professional focused on holistic wellness and patient-centered care. Bridging healthcare knowledge with AI-driven solutions for better clinical outcomes.',
+  },
 ];
 
 function ImageCard() {
@@ -31,12 +53,12 @@ function ImageCard() {
       <FadeIn
         delay={0.1}
         yOffset={30}
-        style={{ textAlign: 'center', marginBottom: '20px', marginTop: '60px' }}
+        style={{ textAlign: 'center', marginBottom: '14px', marginTop: '40px' }}
       >
         <h2
           style={{
             fontFamily: tokens?.fonts?.display || 'inherit',
-            fontSize: 'clamp(32px, 5vw, 48px)',
+            fontSize: 'clamp(24px, 3.8vw, 36px)',
             fontWeight: 800,
             color: tokens.onSurface,
             letterSpacing: '-0.03em',
@@ -54,20 +76,20 @@ function ImageCard() {
             style={{
               display: 'flex',
               flexDirection: 'column',
-              padding: '24px',
+              padding: '18px',
               background: tokens.surface,
-              borderRadius: '24px',
-              boxShadow: '0 12px 40px rgba(0,0,0,0.06)',
+              borderRadius: '18px',
+              boxShadow: '0 8px 28px rgba(0,0,0,0.06)',
               transition: 'transform 0.3s ease, box-shadow 0.3s ease',
               cursor: 'default',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-8px)';
-              e.currentTarget.style.boxShadow = '0 20px 50px rgba(0,0,0,0.12)';
+              e.currentTarget.style.transform = 'translateY(-6px)';
+              e.currentTarget.style.boxShadow = '0 16px 38px rgba(0,0,0,0.11)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 12px 40px rgba(0,0,0,0.06)';
+              e.currentTarget.style.boxShadow = '0 8px 28px rgba(0,0,0,0.06)';
             }}
           >
             <Image
@@ -80,27 +102,27 @@ function ImageCard() {
                 height: 'auto',
                 aspectRatio: '4/5',
                 objectFit: 'cover',
-                borderRadius: '16px',
-                marginBottom: '20px',
+                borderRadius: '12px',
+                marginBottom: '14px',
               }}
             />
             <h6
               style={{
-                fontSize: '20px',
+                fontSize: '16px',
                 fontWeight: 800,
                 color: tokens.onSurface,
                 textAlign: 'center',
-                marginBottom: '8px',
+                marginBottom: '6px',
               }}
             >
               {member.name}
             </h6>
             <div
               style={{
-                fontSize: '15px',
+                fontSize: '13px',
                 color: tokens.secondary,
                 textAlign: 'center',
-                lineHeight: 1.6,
+                lineHeight: 1.55,
               }}
             >
               <p>{member.description}</p>
