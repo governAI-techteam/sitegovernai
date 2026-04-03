@@ -22,7 +22,7 @@ const team = [
     name: 'Chief Compliance Officer',
     image: '/assets/img/senior-2.png',
     description:
-      'AI & Frontier Tech Lawyer | AI Governance, ISO 42001, IP & Data Protection | Certified Implementer/Auditor in ISO 42001:2023 and ISO 9001:2015.',
+      'Alvin Antony, AI & Frontier Tech Lawyer | AI Governance, ISO 42001, IP & Data Protection | Certified Implementer/Auditor in ISO 42001:2023 and ISO 9001:2015.',
   },
   {
     name: 'DevSecOps Lead',
