@@ -4,7 +4,7 @@ import './globals.css';
 export const metadata = {
   metadataBase: new URL('https://govern-ai.com'),
   title: {
-    default: 'GovernAI | Modern AI Confidence & Governance',
+    default: 'GovernAI',
     template: '%s | GovernAI',
   },
   description:
@@ -30,13 +30,13 @@ export const metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://govern-ai.com',
-    title: 'GovernAI | Modern AI Confidence & Governance',
+    title: 'GovernAI',
     description:
       'Architectural framework to deploy, monitor, and scale AI systems with absolute compliance and zero bias.',
     siteName: 'GovernAI',
     images: [
       {
-        url: '/assets/img/logo.png', // Next.js will resolve relative to standard absolute URL
+        url: null, // Next.js will resolve relative to standard absolute URL
         width: 1200,
         height: 630,
         alt: 'GovernAI - Modern AI Confidence',
@@ -48,7 +48,7 @@ export const metadata = {
     title: 'GovernAI | Modern AI Confidence & Governance',
     description:
       'Architectural framework to deploy, monitor, and scale AI systems with absolute compliance and zero bias.',
-    images: ['/assets/img/logo.png'],
+    images: [null],
     creator: '@GovernAI',
   },
   robots: {

@@ -9,8 +9,8 @@ export const experiences = [
   {
     role: 'Advisor',
     org: 'Future Shift Labs (FSL)',
-    duration: 'Dec 2024 - March 2025 · 1 yr 4 mos',
-    desc: 'I offer Research & Advisory in the domain of AI Governance at Future Shift Labs (FSL). I contribute to shaping responsible and effective governance frameworks for artificial intelligence, ensuring alignment with democratic values and societal advancement.',
+    duration: 'Dec 2024 - March 2026 · 1 yr 4 mos',
+    desc: 'I offered Research & Advisory in the domain of AI Governance at Future Shift Labs (FSL). I contribute to shaping responsible and effective governance frameworks for artificial intelligence, ensuring alignment with democratic values and societal advancement.',
     skills: '',
   },
   {

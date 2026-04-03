@@ -34,7 +34,7 @@ const team = [
   {
     name: 'Applied AI Engineer',
     role: '',
-    image: '/assets/img/aditya.jpeg',
+    image: '/assets/img/aditya2.jpeg',
     description:
       'Aditya Udiya, AI product builder with 24+ applied AI solutions. Startup founder. Ex Research Intern at IIT BHU in AI and ML. National level winner in Software Systems. 6x hackathon winner.',
   },

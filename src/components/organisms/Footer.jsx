@@ -132,7 +132,7 @@ export function Footer() {
           <div style={styles.bottomBar} className="footer-bottom-bar">
             <div style={styles.bottomLeft}>
               <p style={styles.copyright}>
-                © {new Date().getFullYear()} GovernAI Consulting Pvt. Ltd. · New Delhi, India.
+                © {new Date().getFullYear()} GovernAI OPC Pvt. Ltd. · New Delhi, India.
                 All rights reserved.
               </p>
               <p style={styles.devCredit}>
