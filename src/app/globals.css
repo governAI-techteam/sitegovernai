@@ -100,3 +100,57 @@ body {
     grid-area: auto !important;
   }
 }
+
+@media (max-width: 768px) {
+  .hero-section-mobile {
+    min-height: 80vh !important;
+    padding-top: 80px !important;
+    padding-bottom: 40px !important;
+  }
+  .mobile-static {
+    position: static !important;
+  }
+  .mobile-relative {
+    position: relative !important;
+  }
+  .mobile-h-auto {
+    height: auto !important;
+  }
+  .mobile-min-h-auto {
+    min-height: auto !important;
+  }
+  .mobile-mb-0 {
+    margin-bottom: 0 !important;
+  }
+  .mobile-mt-0 {
+    margin-top: 0 !important;
+  }
+  .mobile-h-scroll {
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-bottom: 20px !important;
+    width: 100vw !important;
+    margin-left: -24px !important; /* Offset parent padding */
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    gap: 20px !important;
+    margin-top: 32px !important;
+  }
+  .mobile-h-scroll > div {
+    flex: 0 0 300px !important;
+    scroll-snap-align: start !important;
+    height: auto !important;
+  }
+  .mobile-pb-0 {
+    padding-bottom: 0 !important;
+  }
+  .mobile-mb-md {
+    margin-bottom: 24px !important;
+  }
+  .mobile-hide {
+    display: none !important;
+  }
+}

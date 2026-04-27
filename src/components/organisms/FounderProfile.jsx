@@ -40,7 +40,7 @@ export function FounderProfile() {
         {/* Left Column: Image & Highlights */}
         <div
           style={{ flex: '1', position: 'sticky', top: '80px' }}
-          className="mobile-w-full mobile-mb-sm"
+          className="mobile-w-full mobile-mb-sm mobile-relative"
         >
           <div
             style={{
@@ -111,6 +111,7 @@ export function FounderProfile() {
               transition: 'background 0.2s ease',
               boxShadow: '0 4px 12px rgba(0, 119, 181, 0.2)',
             }}
+            className="mobile-mb-md"
             onMouseEnter={(e) => (e.currentTarget.style.background = '#005e8e')}
             onMouseLeave={(e) => (e.currentTarget.style.background = '#0077b5')}
           >
@@ -121,11 +122,12 @@ export function FounderProfile() {
         {/* Right Column: Experience Timeline / Roadmap */}
         <div
           style={{ flex: '1.5', display: 'flex', flexDirection: 'column' }}
-          className="mobile-w-full"
+          className="mobile-w-full mobile-h-scroll"
         >
           {experiences.map((exp, i) => (
             <div
               key={i}
+              className="mobile-pb-0"
               style={{
                 display: 'flex',
                 gap: '18px',
@@ -134,6 +136,7 @@ export function FounderProfile() {
             >
               {/* Roadmap Graphic Column */}
               <div
+                className="mobile-hide"
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
@@ -180,12 +183,16 @@ export function FounderProfile() {
                 style={{
                   flex: '1',
                   background: tokens.surface,
-                  padding: '22px',
-                  borderRadius: '12px',
-                  boxShadow: '0 4px 18px rgba(0,0,0,0.06)',
-                  border: '1px solid rgba(0,0,0,0.03)',
+                  padding: '24px',
+                  borderRadius: '16px',
+                  boxShadow: '0 8px 24px rgba(0,0,0,0.06)',
+                  border: '1px solid rgba(0,0,0,0.04)',
+                  borderTop: `4px solid ${tokens.primary}`,
                   transition: 'transform 0.2s ease, box-shadow 0.2s ease',
                   cursor: 'default',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  height: '100%',
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-3px)';

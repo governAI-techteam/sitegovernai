@@ -145,117 +145,126 @@ export function LandingSection({ sectionRefs }) {
       id="hero"
       sectionRefs={sectionRefs}
       bg={tokens.surface}
-      className="mobile-pt-sm mobile-pb-sm mobile-padding"
+      className="mobile-pt-sm mobile-pb-sm mobile-padding hero-section-mobile"
       style={{
         position: 'relative',
         overflow: 'hidden',
-        padding: '52px 24px 40px',
+        padding: '52px 24px 20px',
         textAlign: 'center',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        alignItems: 'center'
       }}
     >
-      <div className="hide-on-mobile">
-        <Blob top="-10%" right="-5%" size={380} />
-      </div>
-      <div className="hide-on-mobile">
-        <Blob bottom="-10%" left="-5%" size={300} color="rgba(0,98,161,.07)" />
-      </div>
+      <div style={{ width: '100%', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+        <div className="hide-on-mobile">
+          <Blob top="-10%" right="-5%" size={380} />
+        </div>
+        <div className="hide-on-mobile">
+          <Blob bottom="-10%" left="-5%" size={300} color="rgba(0,98,161,.07)" />
+        </div>
 
-      <FadeIn delay={0.2} yOffset={20}>
-        <Image
-          src="/assets/img/logo.png"
-          alt="GovernAI - AI Governance Platform"
-          width={380}
-          height={100}
-          priority
-          style={{
-            width: '100%',
-            maxWidth: '380px',
-            height: 'auto',
-            opacity: 1,
-            zIndex: 0,
-            margin: '0 auto 28px auto',
-            display: 'block',
-          }}
-        />
-      </FadeIn>
-
-      <FadeIn delay={0.4} yOffset={20}>
-        <Container style={{ position: 'relative', zIndex: 1 }}>
-          <h1
+        <FadeIn delay={0.2} yOffset={20}>
+          <Image
+            src="/assets/img/logo.png"
+            alt="GovernAI - AI Governance Platform"
+            width={380}
+            height={100}
+            priority
             style={{
-              fontFamily: tokens.fonts.display,
-              fontSize: 'clamp(40px, 6vw, 72px)',
-              fontWeight: 800,
-              letterSpacing: '-0.04em',
-              lineHeight: 1.05,
-              marginBottom: 24,
-              height:"250px",
-              color: tokens.onSurface,
+              width: '100%',
+              maxWidth: '380px',
+              height: 'auto',
+              opacity: 1,
+              zIndex: 0,
+              margin: '0 auto 28px auto',
+              display: 'block',
             }}
-          >
-            Governing{' '}
-            <span style={{ color: tokens.primary }}>Artificial Intelligence</span>{' '}
-            <br />
-            for a{' '}
-            <Typewriter
-              words={['Responsible Future.', 'Smart & Safe World.', 'Trusted Tomorrow.'] || []}
-            />
-          </h1>
+          />
+        </FadeIn>
 
-          <p
-            style={{
-              fontSize: 'clamp(16px, 1.8vw, 20px)',
-              color: tokens.secondary,
-              maxWidth: 680,
-              margin: '0 auto 48px',
-              lineHeight: 1.6,
-            }}
-          >
-            GovernAI provides the architectural framework to deploy, monitor,
-            and scale AI systems with absolute compliance and zero bias. We
-            specialize in robust capacity building, strategic policy
-            formulation, and empowering organizations to govern AI technologies
-            responsibly.
-          </p>
-
-          <div
-            style={{
-              display: 'flex',
-              gap: 16,
-              justifyContent: 'center',
-              alignItems: 'center',
-              flexWrap: 'wrap',
-              marginTop: 48,
-            }}
-          >
-            <motion.button
-              whileHover={{ scale: 1.05, y: -2, background: '#8a3800' }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => {
-                const el = document.getElementById('solutions');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
+        <FadeIn delay={0.4} yOffset={20}>
+          <Container style={{ position: 'relative', zIndex: 1 }}>
+            <h1
               style={{
-                background: tokens.primary,
-                color: '#fff',
-                padding: '16px 36px',
-                borderRadius: 14,
-                fontSize: 16,
-                fontWeight: 700,
-                border: 'none',
-                cursor: 'pointer',
-                boxShadow: `0 10px 30px -10px ${tokens.primary}66`,
                 fontFamily: tokens.fonts.display,
-                transition: 'all 0.2s ease',
+                fontSize: 'clamp(40px, 6vw, 72px)',
+                fontWeight: 800,
+                letterSpacing: '-0.04em',
+                lineHeight: 1.05,
+                marginBottom: 24,
+                color: tokens.onSurface,
+              }}
+              className="mobile-h-auto"
+            >
+              Governing{' '}
+              <span style={{ color: tokens.primary }}>Artificial Intelligence</span>{' '}
+              <br />
+              for a{' '}
+              <Typewriter
+                words={['Responsible Future.', 'Smart & Safe World.', 'Trusted Tomorrow.'] || []}
+              />
+            </h1>
+
+            <p
+              style={{
+                fontSize: 'clamp(16px, 1.8vw, 20px)',
+                color: tokens.secondary,
+                maxWidth: 680,
+                margin: '0 auto 48px',
+                lineHeight: 1.6,
               }}
             >
-              Explore Solutions
-            </motion.button>
-          </div>
-        </Container>
+              GovernAI provides the architectural framework to deploy, monitor,
+              and scale AI systems with absolute compliance and zero bias. We
+              specialize in robust capacity building, strategic policy
+              formulation, and empowering organizations to govern AI technologies
+              responsibly.
+            </p>
+
+            <div
+              style={{
+                display: 'flex',
+                gap: 16,
+                justifyContent: 'center',
+                alignItems: 'center',
+                flexWrap: 'wrap',
+                marginTop: 48,
+              }}
+            >
+              <motion.button
+                whileHover={{ scale: 1.05, y: -2, background: '#8a3800' }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => {
+                  const el = document.getElementById('solutions');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                style={{
+                  background: tokens.primary,
+                  color: '#fff',
+                  padding: '16px 36px',
+                  borderRadius: 14,
+                  fontSize: 16,
+                  fontWeight: 700,
+                  border: 'none',
+                  cursor: 'pointer',
+                  boxShadow: `0 10px 30px -10px ${tokens.primary}66`,
+                  fontFamily: tokens.fonts.display,
+                  transition: 'all 0.2s ease',
+                }}
+              >
+                Explore Solutions
+              </motion.button>
+            </div>
+          </Container>
+        </FadeIn>
+      </div>
         
-      </FadeIn>
-      <TricolorWaves />
+        <div style={{ width: '100%', marginTop: 'auto' }}>
+          <TricolorWaves />
+        </div>
     </Section>
   );
 }
