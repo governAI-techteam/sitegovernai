@@ -194,9 +194,9 @@ export function LandingSection({ sectionRefs }) {
                 fontWeight: 800,
                 letterSpacing: '-0.04em',
                 lineHeight: 1.1,
-                marginBottom: 'clamp(5px, 3vw, 24px)',
+                marginBottom: 'clamp(20px, 4vw, 40px)',
                 color: tokens.onSurface,
-                minHeight: 'clamp(90px, 18vw, 160px)',
+                minHeight: 'clamp(140px, 22vw, 180px)',
                 padding: '0 20px',
               }}
             >
@@ -206,9 +206,8 @@ export function LandingSection({ sectionRefs }) {
               for a{' '}
               <span style={{ 
                 display: 'inline-block', 
-                minHeight: '1em', 
+                minHeight: 'clamp(40px, 5vw, 50px)', 
                 marginTop: 'clamp(4px, 2vw, 30px)', 
-                height: 'clamp(40px, 5vw, 50px)', 
                 color: tokens.primary 
               }}>
                 <Typewriter
