@@ -34,8 +34,10 @@ export function Typewriter({
       }, pauseDuration);
     } else if (isDeleting && text.length === 0) {
       // Switch to next word
-      setIsDeleting(false);
-      setWordIndex((prev) => (prev + 1) % words.length);
+      timeoutId = setTimeout(() => {
+        setIsDeleting(false);
+        setWordIndex((prev) => (prev + 1) % words.length);
+      }, 0);
     }
 
     return () => clearTimeout(timeoutId);

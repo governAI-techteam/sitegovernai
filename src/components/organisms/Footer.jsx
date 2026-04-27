@@ -10,24 +10,7 @@ const TEXT_MUTED = '#64748B';
 const BG        = tokens.background   || '#F8FAFC';
 const BORDER    = 'rgba(0,0,0,0.07)';
 
-const NAV_COLS = [
-  {
-    title: 'Company',
-    links: ['About Us', 'Our Team', 'Careers', 'Contact'],
-  },
-  {
-    title: 'Services',
-    links: ['AI Consulting', 'Ethics Framework', 'AI Auditing', 'Training'],
-  },
-  {
-    title: 'Resources',
-    links: ['Insights Blog', 'Whitepapers', 'Case Studies', 'AI Glossary'],
-  },
-  {
-    title: 'Legal',
-    links: ['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Disclaimer'],
-  },
-];
+
 
 const SOCIAL_LINKS = [
   { label: 'LinkedIn', href: 'https://linkedin.com/company/governaiofficial' },
@@ -112,7 +95,7 @@ export function Footer() {
               </div>
 
               <p style={styles.description}>
-                Empowering you to Govern AI Responsibly.
+                Empowering you to Govern AI Responsibly through advanced architectural frameworks and ethical compliance.
               </p>
 
               <div style={styles.contactBlock}>
@@ -125,6 +108,9 @@ export function Footer() {
                 </p>
               </div>
             </div>
+
+
+
           </div>
 
           <div style={styles.divider} />

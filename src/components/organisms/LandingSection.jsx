@@ -3,14 +3,11 @@
 import { tokens } from '@/theme/tokens';
 import { Section } from '@/components/atoms/Section';
 import { Container } from '@/components/atoms/Container';
-import { Button } from '@/components/atoms/Button';
 import { Blob } from '@/components/atoms/Blob';
-import ImageCard from '@/components/molecules/ImageCard';
-import { Icon } from '@/components/atoms/Icon';
 import { FadeIn } from '@/components/atoms/FadeIn';
 import { Typewriter } from '@/components/atoms/Typewriter';
-
-import { FounderProfile } from './FounderProfile';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const WAVE_PATH =
   'M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 58-18 88-18 58 18 88 18v44h-528z';
@@ -88,12 +85,12 @@ function TricolorWaves() {
 const waveContainerStyle = {
   position: 'relative',
   width: '100%',
-  height: '90px',
-  margin: '52px auto 44px',
+  height: '60px',
+  margin: '40px auto 30px',
   overflow: 'hidden',
   borderRadius: '12px',
   maxWidth: '2000px',
-  background: 'rgba(0,0,0,0.018)',
+  background: 'rgba(0,0,0,0.01)',
 };
 
 const waveWrapperStyle = (translateY) => ({
@@ -164,9 +161,12 @@ export function LandingSection({ sectionRefs }) {
       </div>
 
       <FadeIn delay={0.2} yOffset={20}>
-        <img
+        <Image
           src="/assets/img/logo.png"
-          alt="GovernAI"
+          alt="GovernAI - AI Governance Platform"
+          width={380}
+          height={100}
+          priority
           style={{
             width: '100%',
             maxWidth: '380px',
@@ -184,30 +184,31 @@ export function LandingSection({ sectionRefs }) {
           <h1
             style={{
               fontFamily: tokens.fonts.display,
-              fontSize: 'clamp(30px,4.8vw,56px)',
+              fontSize: 'clamp(40px, 6vw, 72px)',
               fontWeight: 800,
-              letterSpacing: '-0.045em',
-              lineHeight: 1.1,
-              marginBottom: 18,
+              letterSpacing: '-0.04em',
+              lineHeight: 1.05,
+              marginBottom: 24,
+              height:"250px",
               color: tokens.onSurface,
-              height: '170px',
             }}
           >
             Governing{' '}
             <span style={{ color: tokens.primary }}>Artificial Intelligence</span>{' '}
+            <br />
             for a{' '}
             <Typewriter
-              words={['Responsible Future.', 'Smart & Safe World.'] || []}
+              words={['Responsible Future.', 'Smart & Safe World.', 'Trusted Tomorrow.'] || []}
             />
           </h1>
 
           <p
             style={{
-              fontSize: 'clamp(13px,1.6vw,16px)',
+              fontSize: 'clamp(16px, 1.8vw, 20px)',
               color: tokens.secondary,
-              maxWidth: 520,
-              margin: '0 auto 0',
-              lineHeight: 1.65,
+              maxWidth: 680,
+              margin: '0 auto 48px',
+              lineHeight: 1.6,
             }}
           >
             GovernAI provides the architectural framework to deploy, monitor,
@@ -217,28 +218,44 @@ export function LandingSection({ sectionRefs }) {
             responsibly.
           </p>
 
+          <div
+            style={{
+              display: 'flex',
+              gap: 16,
+              justifyContent: 'center',
+              alignItems: 'center',
+              flexWrap: 'wrap',
+              marginTop: 48,
+            }}
+          >
+            <motion.button
+              whileHover={{ scale: 1.05, y: -2, background: '#8a3800' }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => {
+                const el = document.getElementById('solutions');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+              style={{
+                background: tokens.primary,
+                color: '#fff',
+                padding: '16px 36px',
+                borderRadius: 14,
+                fontSize: 16,
+                fontWeight: 700,
+                border: 'none',
+                cursor: 'pointer',
+                boxShadow: `0 10px 30px -10px ${tokens.primary}66`,
+                fontFamily: tokens.fonts.display,
+                transition: 'all 0.2s ease',
+              }}
+            >
+              Explore Solutions
+            </motion.button>
+          </div>
         </Container>
         
       </FadeIn>
       <TricolorWaves />
-
-      <FadeIn delay={0.2} yOffset={30}>
-        <FounderProfile />
-      </FadeIn>
-
-      <FadeIn delay={0.3} yOffset={30}>
-        <hr
-          style={{
-            border: 'none',
-            borderTop: `1px solid rgba(0,0,0,0.05)`,
-            margin: '52px 0 0 0',
-          }}
-        />
-      </FadeIn>
-
-      <FadeIn delay={0.4} yOffset={40}>
-        <ImageCard />
-      </FadeIn>
     </Section>
   );
 }

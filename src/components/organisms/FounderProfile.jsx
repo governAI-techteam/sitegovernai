@@ -1,20 +1,13 @@
 'use client';
-import ClientsMarqueeSection from '@/components/organisms/ClientsMarqueeSection';
 import { tokens } from '@/theme/tokens';
 import { Container } from '@/components/atoms/Container';
 import { Icon } from '@/components/atoms/Icon';
 import { experiences } from '@/config/founder';
-import LinkedInCarouselSection from '@/components/organisms/LinkedInCarouselSection';
-import { DomainsSection } from '@/components/organisms/DomainsSection';
+import Image from 'next/image';
 export function FounderProfile() {
   return (
     <Container style={{ paddingTop: '52px', paddingBottom: '52px' }}>
       <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-        <br />
-        <br />
-        <DomainsSection />
-        <ClientsMarqueeSection />
-        <LinkedInCarouselSection />
         <h2
           style={{
             fontFamily: tokens?.fonts?.display || 'inherit',
@@ -59,23 +52,18 @@ export function FounderProfile() {
               marginBottom: '14px',
             }}
           >
-            <img
+            <Image
               src="/assets/img/founder.png"
-              alt="Founder"
+              alt="Parishrut Jassal - Founder of GovernAI"
+              width={500}
+              height={600}
               style={{
                 width: '100%',
                 height: 'auto',
                 display: 'block',
                 objectFit: 'cover',
                 objectPosition: 'top',
-                transition: 'transform 0.2s ease',
               }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.transform = 'scale(1.05)')
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.transform = 'scale(1)')
-              }
             />
             <div
               style={{

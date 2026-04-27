@@ -221,7 +221,9 @@ export default function LinkedInEmbedCarouselSection() {
 
   // Clamp index when visibleCount changes
   useEffect(() => {
-    setCurrentIndex((prev) => Math.min(prev, maxIndex));
+    setTimeout(() => {
+      setCurrentIndex((prev) => Math.min(prev, maxIndex));
+    }, 0);
   }, [maxIndex]);
 
   // Translate percentage based on card slot width

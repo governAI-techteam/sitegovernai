@@ -122,10 +122,10 @@ const INJECTED_CSS = `
   }
 
   .ds-title {
-    font-size: clamp(1.5rem, 2.9vw, 2.1rem);
+    font-size: clamp(26px, 3.5vw, 42px);
     font-weight: 800;
     line-height: 1.1;
-    letter-spacing: -0.028em;
+    letter-spacing: -0.04em;
     margin: 0 0 0.7rem;
     color: var(--ds-on-background);
   }

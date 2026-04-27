@@ -1,6 +1,5 @@
 
 'use client';
-import ClientsMarqueeSection from '@/components/organisms/ClientsMarqueeSection';
 import { tokens } from '@/theme/tokens';
 import { FadeIn } from '@/components/atoms/FadeIn';
 import Image from 'next/image';

@@ -24,7 +24,9 @@ export function Button({
   };
   const variants = {
     primary: {
-      background: tokens.primaryGrad,
+      background: hov 
+        ? 'linear-gradient(135deg, #8a3800 0%, #e66000 100%)' 
+        : tokens.primaryGrad,
       color: tokens.onPrimary,
       boxShadow: hov
         ? '0 8px 28px rgba(160,65,0,.4)'

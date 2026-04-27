@@ -1,9 +1,4 @@
-export const NAV_ITEMS = [
-  { label: 'Platform', sectionId: 'platform' },
-  { label: 'Solutions', sectionId: 'solutions' },
-  { label: 'Resources', sectionId: 'resources' },
-  { label: 'Pricing', sectionId: 'pricing' },
-];
+export const NAV_ITEMS = [];
 
 export const DEFAULT_PROBLEMS = [
   {

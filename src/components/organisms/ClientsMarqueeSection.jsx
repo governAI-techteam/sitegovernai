@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { tokens } from "@/theme/tokens";
 
 const CLIENT_GROUPS = [
@@ -39,7 +40,7 @@ function LogoItem({ name, logo }) {
   return (
     <div style={styles.logoItem} className="logo-item">
       {logo ? (
-        <img src={logo} alt={name} style={styles.logoImage} />
+        <Image src={logo} alt={name} width={120} height={30} style={styles.logoImage} />
       ) : (
         <span style={styles.logoText}>{name}</span>
       )}

@@ -14,7 +14,9 @@ export function Section({
 }) {
   const ref = useRef(null);
   useEffect(() => {
-    if (sectionRefs && id) sectionRefs.current[id] = ref.current;
+    const refs = sectionRefs;
+    // eslint-disable-next-line react-hooks/immutability
+    if (refs && id) refs.current[id] = ref.current;
   }, [id, sectionRefs]);
   return (
     <section

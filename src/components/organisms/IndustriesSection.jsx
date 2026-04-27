@@ -17,7 +17,7 @@ export function IndustriesSection({ sectionRefs }) {
     >
       <Container>
         <SectionHead title="Vertical" accent="Excellence.">
-          Tailored governance for the world's most sensitive sectors.
+          Tailored governance for the world&apos;s most sensitive sectors.
         </SectionHead>
         <div
           style={{

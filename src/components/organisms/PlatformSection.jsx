@@ -68,7 +68,7 @@ export function PlatformSection({ sectionRefs }) {
               title="From Chaos to"
               accent="Cohesion."
             >
-              Most enterprises struggle with "Black Box" AI deployments. Without
+              Most enterprises struggle with &quot;Black Box&quot; AI deployments. Without
               the LAYER engine, your risk profile grows exponentially with every
               model trained.
             </SectionHead>
