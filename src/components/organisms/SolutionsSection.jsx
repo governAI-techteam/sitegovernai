@@ -232,7 +232,7 @@ export function SolutionsSection({ sectionRefs }) {
     >
       <Container>
         <div
-          className="mobile-col-gap-lg responsive-flex"
+          className="mobile-col-gap-lg responsive-flex-reverse"
           style={{
             display: 'flex',
             gap: 60,
@@ -247,6 +247,7 @@ export function SolutionsSection({ sectionRefs }) {
           {/* Right: Infographics */}
           <div style={{ flex: '1 1 360px' }}>
             <SectionHead
+              className="mobile-text-center"
               title="Clarity in Every Layer of your"
               accent="AI Stack."
             />

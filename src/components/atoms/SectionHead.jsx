@@ -9,9 +9,10 @@ export function SectionHead({
   align = 'left',
   children,
   style = {},
+  className = '',
 }) {
   return (
-    <div style={{ textAlign: align, marginBottom: 56, ...style }}>
+    <div className={className} style={{ textAlign: align, marginBottom: 56, ...style }}>
       {eyebrow && (
         <p
           style={{
