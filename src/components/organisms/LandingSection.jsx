@@ -190,14 +190,13 @@ export function LandingSection({ sectionRefs }) {
             <h1
               style={{
                 fontFamily: tokens.fonts.display,
-                fontSize: 'clamp(40px, 6vw, 72px)',
+                fontSize: 'clamp(32px, 6vw, 72px)',
                 fontWeight: 800,
                 letterSpacing: '-0.04em',
-                lineHeight: 1.0,
-              
-                marginBottom: 'clamp(12px, 3vw, 24px)',
+                lineHeight: 1.1,
+                marginBottom: 'clamp(5px, 3vw, 24px)',
                 color: tokens.onSurface,
-                minHeight: 'clamp(120px, 18vw, 160px)',
+                minHeight: 'clamp(90px, 18vw, 160px)',
                 padding: '0 20px',
               }}
             >
@@ -205,7 +204,13 @@ export function LandingSection({ sectionRefs }) {
               <span style={{ color: tokens.primary }}>Artificial Intelligence</span>{' '}
               <br />
               for a{' '}
-              <span style={{ display: 'inline-block', minHeight: '1em', marginTop: '30px', height: '50px', color:tokens.primary }}>
+              <span style={{ 
+                display: 'inline-block', 
+                minHeight: '1em', 
+                marginTop: 'clamp(4px, 2vw, 30px)', 
+                height: 'clamp(40px, 5vw, 50px)', 
+                color: tokens.primary 
+              }}>
                 <Typewriter
                   words={['Responsible Future.', 'Smart & Safe World.', 'Trusted Tomorrow.'] || []}
                 />
