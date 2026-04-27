@@ -86,7 +86,7 @@ const waveContainerStyle = {
   position: 'relative',
   width: '100%',
   height: '60px',
-  margin: '40px auto 30px',
+  margin: 'clamp(20px, 5vw, 40px) auto clamp(10px, 3vw, 30px)',
   overflow: 'hidden',
   borderRadius: '12px',
   maxWidth: '2000px',
@@ -179,7 +179,7 @@ export function LandingSection({ sectionRefs }) {
               height: 'auto',
               opacity: 1,
               zIndex: 0,
-              margin: '0 auto 28px auto',
+              margin: '0 auto clamp(20px, 4vw, 50px) auto',
               display: 'block',
             }}
           />
@@ -193,28 +193,33 @@ export function LandingSection({ sectionRefs }) {
                 fontSize: 'clamp(40px, 6vw, 72px)',
                 fontWeight: 800,
                 letterSpacing: '-0.04em',
-                lineHeight: 1.05,
-                marginBottom: 24,
+                lineHeight: 1.0,
+              
+                marginBottom: 'clamp(12px, 3vw, 24px)',
                 color: tokens.onSurface,
+                minHeight: 'clamp(120px, 18vw, 160px)',
+                padding: '0 20px',
               }}
-              className="mobile-h-auto"
             >
               Governing{' '}
               <span style={{ color: tokens.primary }}>Artificial Intelligence</span>{' '}
               <br />
               for a{' '}
-              <Typewriter
-                words={['Responsible Future.', 'Smart & Safe World.', 'Trusted Tomorrow.'] || []}
-              />
+              <span style={{ display: 'inline-block', minHeight: '1em', marginTop: '30px', height: '50px', color:tokens.primary }}>
+                <Typewriter
+                  words={['Responsible Future.', 'Smart & Safe World.', 'Trusted Tomorrow.'] || []}
+                />
+              </span>
             </h1>
 
             <p
               style={{
-                fontSize: 'clamp(16px, 1.8vw, 20px)',
+                fontSize: 'clamp(15px, 1.6vw, 19px)',
                 color: tokens.secondary,
                 maxWidth: 680,
-                margin: '0 auto 48px',
+                margin: '0 auto clamp(32px, 5vw, 48px)',
                 lineHeight: 1.6,
+                padding: '0 10px',
               }}
             >
               GovernAI provides the architectural framework to deploy, monitor,
