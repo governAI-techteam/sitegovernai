@@ -131,13 +131,56 @@ function getVisibleCount() {
 }
 
 // ─── Sub-components ──────────────────────────────────────────────────────────
-function LinkedInCard({ embed }) {
+function LinkedInCard({ embed, index, currentIndex, visibleCount }) {
+  const [hasBeenVisible, setHasBeenVisible] = useState(false);
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasBeenVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' } // Load when 200px from viewport
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Add loading="lazy" and fetchpriority="low" to the embed code
+  const optimizedEmbed = embed
+    .replace('<iframe ', '<iframe loading="lazy" fetchpriority="low" ')
+    .replace('width="504"', 'width="100%"');
+
   return (
-    <article className="li-card">
-      <div
-        className="li-card__embed"
-        dangerouslySetInnerHTML={{ __html: embed }}
-      />
+    <article className="li-card" ref={cardRef}>
+      <div className="li-card__embed" style={{ minHeight: '603px', position: 'relative', background: '#f3f6f8' }}>
+        {hasBeenVisible ? (
+          <div dangerouslySetInnerHTML={{ __html: optimizedEmbed }} style={{ width: '100%' }} />
+        ) : (
+          <div className="li-card__skeleton">
+            <div className="li-skeleton-header">
+              <div className="li-skeleton-avatar" />
+              <div className="li-skeleton-info">
+                <div className="li-skeleton-line short" />
+                <div className="li-skeleton-line x-short" />
+              </div>
+            </div>
+            <div className="li-skeleton-content">
+              <div className="li-skeleton-line long" />
+              <div className="li-skeleton-line long" />
+              <div className="li-skeleton-line medium" />
+            </div>
+            <div className="li-skeleton-image" />
+          </div>
+        )}
+      </div>
     </article>
   );
 }
@@ -258,8 +301,14 @@ export default function LinkedInEmbedCarouselSection() {
             className="li-track"
             style={{ transform: `translateX(${translateX})` }}
           >
-            {POSTS.map((post) => (
-              <LinkedInCard key={post.id} embed={post.embed} />
+            {POSTS.map((post, idx) => (
+              <LinkedInCard
+                key={post.id}
+                embed={post.embed}
+                index={idx}
+                currentIndex={currentIndex}
+                visibleCount={visibleCount}
+              />
             ))}
           </div>
         </div>
