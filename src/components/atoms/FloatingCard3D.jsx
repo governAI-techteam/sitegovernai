@@ -32,13 +32,13 @@ function GlassCard() {
 
         {/* Header Bar - saffron accent */}
         <RoundedBox args={[2.8, 0.7, 0.09]} radius={0.08} position={[0, 1.5, 0.02]}>
-          <meshStandardMaterial color="#a04100" emissive="#a04100" emissiveIntensity={0.15} />
+          <meshStandardMaterial color="#ea6926" emissive="#ea6926" emissiveIntensity={0.15} />
         </RoundedBox>
 
         {/* Data rows */}
         {[-0.1, -0.5, -0.9, -1.3].map((y, i) => (
           <RoundedBox key={i} args={[2.4 - i * 0.15, 0.08, 0.01]} radius={0.02} position={[-0.1, y, 0.05]}>
-            <meshStandardMaterial color={i === 0 ? '#a04100' : '#515f74'} opacity={0.4 - i * 0.06} transparent />
+            <meshStandardMaterial color={i === 0 ? '#ea6926' : '#515f74'} opacity={0.4 - i * 0.06} transparent />
           </RoundedBox>
         ))}
 
@@ -52,7 +52,7 @@ function GlassCard() {
           <meshStandardMaterial color="#e0e0e0" />
         </RoundedBox>
         <RoundedBox args={[1.8, 0.12, 0.015]} radius={0.03} position={[-0.3, -1.7, 0.06]}>
-          <meshStandardMaterial color="#a04100" emissive="#a04100" emissiveIntensity={0.1} />
+          <meshStandardMaterial color="#ea6926" emissive="#ea6926" emissiveIntensity={0.1} />
         </RoundedBox>
       </Float>
     </group>
@@ -90,7 +90,7 @@ function Particles({ count = 30 }) {
           itemSize={3}
         />
       </bufferGeometry>
-      <pointsMaterial size={0.04} color="#a04100" transparent opacity={0.3} sizeAttenuation />
+      <pointsMaterial size={0.04} color="#ea6926" transparent opacity={0.3} sizeAttenuation />
     </points>
   );
 }

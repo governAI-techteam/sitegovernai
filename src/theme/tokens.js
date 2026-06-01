@@ -1,7 +1,7 @@
 export const tokens = {
-  primary: '#a04100',
-  primaryGrad: 'linear-gradient(135deg,#a04100 0%,#ff6b00 100%)',
-  primaryFixed: '#ffdbcc',
+  primary: '#ea6926',
+  primaryGrad: 'linear-gradient(135deg,#ea6926 0%,#ff8c42 100%)',
+  primaryFixed: '#ffe5d6',
   onPrimary: '#ffffff',
   surface: '#f7f9fb',
   surfaceLow: '#f2f4f6',
@@ -11,7 +11,7 @@ export const tokens = {
   secondary: '#515f74',
   error: '#ba1a1a',
   errorContainer: '#ffdad6',
-  outlineVariant: '#e2bfb0',
+  outlineVariant: '#f0c8a0',
   fonts: {
     display: "'Plus Jakarta Sans', sans-serif",
     body: 'Inter, sans-serif',

@@ -4,7 +4,7 @@ export function Blob({
   bottom,
   left,
   size = 400,
-  color = 'rgba(160,65,0,.12)',
+  color = 'rgba(234,105,38,.12)',
   blur = 120,
 }) {
   return (

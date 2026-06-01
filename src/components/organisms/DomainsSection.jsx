@@ -7,10 +7,10 @@ import { tokens } from "@/theme/tokens";
 
 const DOMAINS = [
   {
-    id: "capacity-building",
+    id: "academy",
     icon: "school",
-    title: "AI & Responsible AI Governance",
-    subtitle: "Capacity Building",
+    title: "GovernAI Academy",
+    subtitle: "Capacity Building & Training",
     points: [
       "Executive sensitisation sessions",
       "Immersive 3–5 day workshops",
@@ -18,19 +18,27 @@ const DOMAINS = [
       "Academic courses (NSQF-aligned)",
       "Gen-AI/AI Policy & Compliance Sessions",
     ],
-    credentials: null,
+    credentials: {
+      label: "Program Highlights",
+      items: [
+        "Certified AI Governance Professional",
+        "ISO 42001 Awareness Training",
+        "Executive Leadership Briefings",
+        "Custom Enterprise Curriculum",
+      ],
+    },
   },
   {
-    id: "compliance-auditing",
-    icon: "search",
-    title: "AI Compliance & Auditing",
-    subtitle: "Compliance & Assurance",
+    id: "compliance",
+    icon: "verified",
+    title: "AI Compliance",
+    subtitle: "Auditing & Regulatory Assurance",
     points: [
-      "Compliance gap analysis ",
+      "Compliance gap analysis",
       "Pre-assessment & readiness reviews",
-      "Independent AI auditing ",
-      "Conformity Assessments",
-      "AI Procurement Advisory",
+      "Independent AI auditing",
+      "Conformity assessments",
+      "AI procurement advisory",
     ],
     credentials: {
       label: "Auditing Team Credentials",
@@ -41,20 +49,6 @@ const DOMAINS = [
         "Cloud Security Specialist",
       ],
     },
-  },
-  {
-    id: "studio",
-    icon: "build",
-    title: "GovernAI Studio",
-    subtitle: "Implementation & Deployment",
-    points: [
-      "Vetted AI Solution Builder Network",
-      "Governance (Design To Deployment)",
-      "End-to-end Responsible Implementation",
-      "Safety & Risk Assessments For Solutions",
-      "Continuous Compliance Monitoring Setup",
-    ],
-    credentials: null,
   },
 ];
 
@@ -140,9 +134,9 @@ const INJECTED_CSS = `
 
   .ds-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    align-items: start;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    align-items: stretch;
   }
 
   .ds-card {
@@ -158,6 +152,7 @@ const INJECTED_CSS = `
     display: flex;
     flex-direction: column;
     gap: 0.9rem;
+    height: 100%;
     transition: transform 0.22s cubic-bezier(.22,.68,0,1.2),
                 box-shadow 0.22s ease;
     will-change: transform;
@@ -228,7 +223,7 @@ const INJECTED_CSS = `
   }
 
   .ds-card-title {
-    font-size: 0.9375rem;
+    font-size: 1.0625rem;
     font-weight: 700;
     line-height: 1.22;
     letter-spacing: -0.012em;
@@ -420,12 +415,12 @@ export function DomainsSection() {
                   What We Do
                 </span>
                 <h2 id="ds-title" className="ds-title">
-                  Our Three Domains
+                  Our Domains
                 </h2>
                 <p className="ds-lead">
-                  From building AI literacy to auditing compliance and delivering
-                  governed implementations - GovernAI operates across the full
-                  spectrum of responsible AI adoption.
+                  From building AI literacy to ensuring regulatory compliance —
+                  GovernAI delivers enterprise-grade governance across every
+                  layer of your AI operations.
                 </p>
               </div>
             </FadeIn>

@@ -1,49 +1,52 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { tokens } from "@/theme/tokens";
+
+const LOGO_PATH = "/logos/";
 
 const CLIENT_GROUPS = [
   {
     title: "Government & Public Sector",
     items: [
-      { name: "National CPWD Academy", logo: null },
-      { name: "Indian Institute of Public Administration", logo: null },
-      { name: "State Institute of Public Admin - Himachal Pradesh", logo: null },
-      { name: "State Institute of Public Admin - Punjab", logo: null },
-      { name: "State Institute of Rural Development - Himachal", logo: null },
-      { name: "UP Skill Development Mission", logo: null },
-      { name: "NIEPA (Ministry of Education)", logo: null },
+      { name: "National CPWD Academy", logo: "National CPWD Academy.png" },
+      { name: "Indian Institute of Public Administration", logo: "IIPA.png" },
+      { name: "State Institute of Public Admin - Himachal Pradesh", logo: "State Institute of Public Admin - Himachal Pradesh.png" },
+      { name: "State Institute of Public Admin - Punjab", logo: "State Institute of Public Admin - Punjab.png" },
+      { name: "State Institute of Rural Development - Himachal", logo: "State Institute of Rural Development - Himachal.png" },
+      { name: "UP Skill Development Mission", logo: "UP Skill Development Mission.png" },
+      { name: "NIEPA (Ministry of Education)", logo: "NIEPA (Ministry of Education).png" },
     ],
   },
   {
     title: "Education, Healthcare & Technology",
     items: [
-      { name: "Gujarat National Law University", logo: null },
-      { name: "DY Patil University", logo: null },
-      { name: "National Law University, Delhi", logo: null },
-      { name: "NALSAR University", logo: null },
-      { name: "NMIMS Hyderabad", logo: null },
-      { name: "ICFAI Law School", logo: null },
-      { name: "UEM Kolkata", logo: null },
-      { name: "NUSRL Ranchi", logo: null },
-      { name: "AIIMS Patna", logo: null },
-      { name: "C-DAC Mohali", logo: null },
+      { name: "Gujarat National Law University", logo: "Gujarat National Law University.png" },
+      { name: "DY Patil University", logo: "DY Patil University.png", large: true },
+      { name: "National Law University, Delhi", logo: "National Law University, Delhi.png" },
+      { name: "NALSAR University", logo: "NALSAR University.png" },
+      { name: "NMIMS Hyderabad", logo: "NMIMS Hyderabad.png" },
+      { name: "ICFAI Law School", logo: "ICFAI Law School.png" },
+      { name: "UEM Kolkata", logo: "UEM Kolkata.png" },
+      { name: "NUSRL Ranchi", logo: "NUSRL Ranchi.png" },
+      { name: "AIIMS Patna", logo: "AIIMS Patna.png" },
+      { name: "C-DAC Mohali", logo: "C-DAC Mohali.png" },
     ],
   },
 ];
 
 const ORANGE = tokens.primary || "#FF9D52";
 
-function LogoItem({ name, logo }) {
+function LogoItem({ name, logo, large }) {
   return (
     <div style={styles.logoItem} className="logo-item">
-      {logo ? (
-        <Image src={logo} alt={name} width={120} height={30} style={styles.logoImage} />
-      ) : (
-        <span style={styles.logoText}>{name}</span>
-      )}
+      <div style={styles.logoPlaceholder} className="logo-placeholder">
+        <img
+          src={`${LOGO_PATH}${logo}`}
+          alt={name}
+          style={{ ...styles.logoImage, ...(large ? styles.logoImageLarge : {}) }}
+        />
+      </div>
     </div>
   );
 }
@@ -61,7 +64,7 @@ function MarqueeRow({ items, duration = 50, reverse = false }) {
         className="marquee-track"
       >
         {doubled.map((item, i) => (
-          <LogoItem key={`${item.name}-${i}`} name={item.name} logo={item.logo} />
+          <LogoItem key={`${item.name}-${i}`} name={item.name} logo={item.logo} large={item.large} />
         ))}
       </div>
     </div>
@@ -113,8 +116,6 @@ export default function ClientsMarqueeSection() {
             <div style={styles.marqueeOuter} className="marquee-outer">
               <div style={styles.fadeLeft} aria-hidden="true" />
               <div style={styles.fadeRight} aria-hidden="true" />
-              <div style={styles.orangeLeft} aria-hidden="true" />
-              <div style={styles.orangeRight} aria-hidden="true" />
               <MarqueeRow
                 items={group.items}
                 duration={i === 0 ? 44 : 58}
@@ -252,14 +253,14 @@ const styles = {
   marqueeWrapper: {
     display: "flex",
     overflow: "visible",
-    paddingTop: "7px",
-    paddingBottom: "7px",
+    paddingTop: "16px",
+    paddingBottom: "16px",
   },
 
   marqueeTrack: {
     display: "flex",
     width: "max-content",
-    gap: "clamp(12px, 2vw, 20px)",
+    gap: "clamp(56px, 8vw, 98px)",
     willChange: "transform",
     alignItems: "center",
   },
@@ -286,59 +287,45 @@ const styles = {
     pointerEvents: "none",
   },
 
-  orangeLeft: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "clamp(60px, 9vw, 130px)",
-    height: "100%",
-    background: `linear-gradient(to right, ${ORANGE}28 0%, transparent 100%)`,
-    zIndex: 2,
-    pointerEvents: "none",
-    mixBlendMode: "overlay",
-  },
-
-  orangeRight: {
-    position: "absolute",
-    top: 0,
-    right: 0,
-    width: "clamp(60px, 9vw, 130px)",
-    height: "100%",
-    background: `linear-gradient(to left, ${ORANGE}28 0%, transparent 100%)`,
-    zIndex: 2,
-    pointerEvents: "none",
-    mixBlendMode: "overlay",
-  },
-
   logoItem: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    height: "40px",
-    padding: "0 20px",
-    borderRadius: "999px",
-    backgroundColor: tokens.surface,
-    opacity: 0.65,
     flexShrink: 0,
     transition: "opacity 0.28s ease, transform 0.28s ease, box-shadow 0.28s ease",
     cursor: "default",
-    border: `1px solid ${tokens.secondary}14`,
-    boxShadow: "0 3px 12px rgba(0,0,0,0.06)",
+  },
+
+  logoPlaceholder: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "24px 48px",
+    borderRadius: 14,
+    background: "#fff",
+    backdropFilter: "blur(6px)",
+    WebkitBackdropFilter: "blur(6px)",
+    border: "1px solid rgba(0,0,0,0.08)",
+    boxShadow: "0 2px 12px rgba(0,0,0,0.04)",
+    width: 320,
+    minHeight: 160,
+    display: "inline-flex",
+    boxSizing: "border-box",
+    overflow: "hidden",
+    transition: "background 0.28s ease, box-shadow 0.28s ease",
   },
 
   logoImage: {
-    height: "30px",
-    width: "auto",
+    width: 220,
+    height: 112,
     objectFit: "contain",
+    opacity: 0.85,
+    display: "block",
   },
 
-  logoText: {
-    fontSize: "clamp(11px, 1vw, 13px)",
-    fontWeight: 550,
-    color: tokens.secondary,
-    whiteSpace: "nowrap",
-    letterSpacing: "-0.01em",
-    opacity: 0.88,
+  logoImageLarge: {
+    width: 528,
+    height: 269,
   },
 
   statsRow: {
@@ -391,29 +378,12 @@ const css = `
     animation-play-state: paused !important;
   }
 
-  .logo-item:hover {
+  .logo-item:hover .logo-placeholder {
+    background: #fff !important;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.10) !important;
+  }
+
+  .logo-item:hover img {
     opacity: 1 !important;
-    transform: scale(1.05) !important;
-    box-shadow: 0 6px 28px rgba(0,0,0,0.12) !important;
-  }
-
-  @media (max-width: 768px) {
-    .logo-item {
-      height: 36px !important;
-      padding: 0 14px !important;
-    }
-    .logo-item span {
-      font-size: 12px !important;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .logo-item {
-      height: 32px !important;
-      padding: 0 11px !important;
-    }
-    .logo-item span {
-      font-size: 11px !important;
-    }
   }
 `;

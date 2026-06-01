@@ -1,4 +1,11 @@
-export const NAV_ITEMS = [];
+export const NAV_ITEMS = [
+  { label: 'Domains', sectionId: 'domains' },
+  { label: 'Platform', sectionId: 'platform' },
+  { label: 'Solutions', sectionId: 'solutions' },
+  { label: 'Products', sectionId: 'products' },
+  { label: 'Insights', sectionId: 'linkedin' },
+  { label: 'Team', sectionId: 'team' },
+];
 
 export const DEFAULT_PROBLEMS = [
   {
@@ -10,8 +17,8 @@ export const DEFAULT_PROBLEMS = [
   },
   {
     icon: 'analytics',
-    iconColor: '#a04100',
-    iconBg: '#ffdbcc',
+    iconColor: '#ea6926',
+    iconBg: '#ffe5d6',
     title: 'Bias Opaque Blocks',
     desc: 'Invisible patterns that degrade trust and performance.',
   },
@@ -20,8 +27,8 @@ export const DEFAULT_PROBLEMS = [
 export const DEFAULT_FEATURES = [
   {
     icon: 'visibility',
-    iconBg: '#ffdbcc',
-    iconColor: '#351000',
+    iconBg: '#ffe5d6',
+    iconColor: '#ea6926',
     title: 'Total Observability',
     desc: 'Real-time dashboards that translate model performance into business-level governance metrics.',
   },

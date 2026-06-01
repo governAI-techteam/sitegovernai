@@ -8,10 +8,10 @@ import { Icon } from '@/components/atoms/Icon';
 import { motion } from 'framer-motion';
 
 const TRISM_STEPS = [
-  { label: 'Trust', icon: 'verified_user', desc: 'Ensuring model reliability & fairness', color: '#a04100' },
+  { label: 'Trust', icon: 'verified_user', desc: 'Ensuring model reliability & fairness', color: '#ea6926' },
   { label: 'Risk', icon: 'warning', desc: 'Identifying & mitigating potential failures', color: '#c05200' },
   { label: 'Security', icon: 'security', desc: 'Protecting against adversarial attacks', color: '#d46a1a' },
-  { label: 'Management', icon: 'settings', desc: 'Continuous lifecycle oversight', color: '#ff6b00' },
+  { label: 'Management', icon: 'settings', desc: 'Continuous lifecycle oversight', color: '#ff8c42' },
 ];
 
 function TRiSMInfographic() {
@@ -197,7 +197,7 @@ function VisualPanel() {
       {/* Mini risk bars */}
       <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', gap: 10 }}>
         {[
-          { label: 'Fairness Index', pct: 92, color: '#ff6b00' },
+          { label: 'Fairness Index', pct: 92, color: '#ff8c42' },
           { label: 'Transparency Score', pct: 88, color: '#d46a1a' },
           { label: 'Risk Exposure', pct: 15, color: '#c05200' },
         ].map(bar => (

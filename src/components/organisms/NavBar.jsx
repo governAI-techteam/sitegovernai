@@ -1,14 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { tokens } from '@/theme/tokens';
 import { NAV_ITEMS } from '@/config/content';
 import { useScroll } from '@/context/ScrollContext';
 import { Container } from '@/components/atoms/Container';
-import { Button } from '@/components/atoms/Button';
 import { Icon } from '@/components/atoms/Icon';
-
-//Check drop down mobile menu
+import Image from 'next/image';
 
 function NavLink({ label, active, onClick, mobile }) {
   const [hov, setHov] = useState(false);
@@ -26,8 +24,9 @@ function NavLink({ label, active, onClick, mobile }) {
         width: mobile ? '100%' : 'auto',
         textAlign: mobile ? 'left' : 'center',
         fontFamily: tokens.fonts.display,
-        fontWeight: 600,
+        fontWeight: 500,
         fontSize: mobile ? 16 : 14,
+        letterSpacing: '0.01em',
         color: active
           ? tokens.primary
           : hov
@@ -35,8 +34,8 @@ function NavLink({ label, active, onClick, mobile }) {
             : tokens.secondary,
         borderBottom: mobile
           ? `1px solid ${tokens.outlineVariant}`
-          : `2px solid ${active ? tokens.primary : 'transparent'}`,
-        transition: 'color .2s, border-color .2s',
+          : '2px solid transparent',
+        transition: 'color .2s',
       }}
     >
       {label}
@@ -47,6 +46,13 @@ function NavLink({ label, active, onClick, mobile }) {
 export function NavBar({ activeSection }) {
   const scrollTo = useScroll();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const handleNavClick = (sectionId) => {
     scrollTo(sectionId);
@@ -56,13 +62,16 @@ export function NavBar({ activeSection }) {
   return (
     <nav
       style={{
-        position: 'sticky',
+        position: 'fixed',
         top: 0,
+        left: 0,
+        right: 0,
         zIndex: 100,
-        background: 'rgba(255,255,255,.85)',
-        backdropFilter: 'blur(24px)',
-        WebkitBackdropFilter: 'blur(24px)',
-        boxShadow: '0 1px 0 rgba(0,0,0,.06)',
+        background: scrolled ? 'rgba(247,249,251,.92)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(20px)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
+        boxShadow: scrolled ? '0 1px 0 rgba(0,0,0,.06)' : 'none',
+        transition: 'background .3s, box-shadow .3s, backdrop-filter .3s',
       }}
     >
       <Container
@@ -70,7 +79,8 @@ export function NavBar({ activeSection }) {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          padding: '15px 24px',
+          padding: scrolled ? '12px 24px' : '18px 24px',
+          transition: 'padding .3s',
         }}
       >
         <button
@@ -80,20 +90,28 @@ export function NavBar({ activeSection }) {
             border: 'none',
             cursor: 'pointer',
             padding: 0,
-            fontFamily: tokens.fonts.display,
-            fontSize: 21,
-            fontWeight: 800,
-            letterSpacing: '-0.05em',
-            color: '#0f172a',
+            display: 'flex',
+            alignItems: 'center',
           }}
         >
-          GovernAI
+          <Image
+            src="/assets/img/logo.png"
+            alt="GovernAI"
+            width={140}
+            height={37}
+            priority
+            style={{
+              width: 'auto',
+              height: scrolled ? 32 : 36,
+              transition: 'height .3s',
+              display: 'block',
+            }}
+          />
         </button>
 
-        {/* Desktop Links */}
         <div
           className="hide-on-mobile"
-          style={{ display: 'flex', gap: 30, alignItems: 'center' }}
+          style={{ display: 'flex', gap: 32, alignItems: 'center' }}
         >
           {NAV_ITEMS.map(({ label, sectionId }) => (
             <NavLink
@@ -105,23 +123,29 @@ export function NavBar({ activeSection }) {
           ))}
         </div>
 
-        {/* Desktop Buttons */}
         <div className="hide-on-mobile" style={{ display: 'flex', gap: 10 }}>
-          <Button
-            variant="ghost"
-            style={{ padding: '8px 18px', fontSize: 14, borderRadius: 10 }}
+          <button
+            onClick={() => {
+              const el = document.getElementById('founder');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
+            style={{
+              background: '#191c1e',
+              color: '#fff',
+              padding: '8px 20px',
+              fontSize: 13,
+              fontWeight: 600,
+              fontFamily: tokens.fonts.display,
+              border: 'none',
+              borderRadius: 8,
+              cursor: 'pointer',
+              transition: 'background .2s',
+            }}
           >
-            Sign In
-          </Button>
-          <Button
-            variant="primary"
-            style={{ padding: '8px 18px', fontSize: 14, borderRadius: 10 }}
-          >
-            Get Started
-          </Button>
+            Contact Us
+          </button>
         </div>
 
-        {/* Mobile Menu Toggle */}
         <button
           className="show-flex-on-mobile"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -140,7 +164,6 @@ export function NavBar({ activeSection }) {
         </button>
       </Container>
 
-      {/* Mobile Dropdown Menu */}
       {isMobileMenuOpen && (
         <div
           className="hide-on-desktop"
@@ -174,28 +197,27 @@ export function NavBar({ activeSection }) {
                 marginTop: 16,
               }}
             >
-              <Button
-                variant="ghost"
+              <button
+                onClick={() => {
+                  const el = document.getElementById('founder');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  setIsMobileMenuOpen(false);
+                }}
                 style={{
+                  background: '#191c1e',
+                  color: '#fff',
                   padding: '12px',
                   fontSize: 16,
+                  fontWeight: 600,
+                  fontFamily: tokens.fonts.display,
+                  border: 'none',
                   borderRadius: 10,
+                  cursor: 'pointer',
                   width: '100%',
                 }}
               >
-                Sign In
-              </Button>
-              <Button
-                variant="primary"
-                style={{
-                  padding: '12px',
-                  fontSize: 16,
-                  borderRadius: 10,
-                  width: '100%',
-                }}
-              >
-                Get Started
-              </Button>
+                Contact Us
+              </button>
             </div>
           </div>
         </div>

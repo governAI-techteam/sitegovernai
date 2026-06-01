@@ -2,12 +2,12 @@
 
 import { useRef } from 'react';
 import { useActiveSection } from '@/hooks/useActiveSection';
+import { NavBar } from '@/components/organisms/NavBar';
 
 import { LandingSection } from '@/components/organisms/LandingSection';
 import { DomainsSection } from '@/components/organisms/DomainsSection';
 import ClientsMarqueeSection from '@/components/organisms/ClientsMarqueeSection';
-import { SolutionsSection } from '@/components/organisms/SolutionsSection';
-import { ProductSection } from '@/components/organisms/ProductSection';
+
 import LinkedInCarouselSection from '@/components/organisms/LinkedInCarouselSection';
 import { FounderProfile } from '@/components/organisms/FounderProfile';
 import ImageCard from '@/components/molecules/ImageCard';
@@ -23,13 +23,15 @@ export default function GovernAI() {
     <>
       <Preloader />
 
+      <NavBar activeSection={activeSection} />
+
       <main>
         {/* 1. Hero */}
         <section ref={(el) => (sectionRefs.current['hero'] = el)}>
           <LandingSection sectionRefs={sectionRefs} />
         </section>
 
-        {/* 2. Our Three Domains */}
+        {/* 2. Our Domains */}
         <section id="domains" ref={(el) => (sectionRefs.current['domains'] = el)}>
           <DomainsSection />
         </section>
@@ -39,29 +41,19 @@ export default function GovernAI() {
           <ClientsMarqueeSection />
         </section>
 
-        {/* 4. Solutions - AI TRiSM & Model Card */}
-        <section id="solutions" ref={(el) => (sectionRefs.current['solutions'] = el)}>
-          <SolutionsSection sectionRefs={sectionRefs} />
-        </section>
-
-        {/* 5. Products */}
-        <section id="products" ref={(el) => (sectionRefs.current['products'] = el)}>
-          <ProductSection />
-        </section>
-
-        {/* 6. LinkedIn */}
+        {/* 4. LinkedIn */}
         <section id="linkedin" ref={(el) => (sectionRefs.current['linkedin'] = el)}>
           <LinkedInCarouselSection />
         </section>
 
-        {/* 7. Meet the Founder (second-to-last) */}
+        {/* 5. Meet the Founder */}
         <section id="founder" ref={(el) => (sectionRefs.current['founder'] = el)}>
           <FadeIn delay={0.2} yOffset={30}>
             <FounderProfile />
           </FadeIn>
         </section>
 
-        {/* 8. Meet the Team (last) */}
+        {/* 6. Meet the Team */}
         <section id="team" ref={(el) => (sectionRefs.current['team'] = el)}>
           <FadeIn delay={0.2} yOffset={40}>
             <ImageCard />
