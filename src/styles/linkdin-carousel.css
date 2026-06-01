@@ -1,0 +1,343 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   linkedin-embed-carousel.css
+   Token-based design system — LinkedIn Embed Carousel
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* ── Design Tokens ─────────────────────────────────────────────────────────── */
+:root {
+  /* Surface & background */
+  --token-surface:          #f5f7fa;
+  --token-surface-card:     #ffffff;
+  --token-surface-overlay:  rgba(245, 247, 250, 0.92);
+
+  /* Primary brand (LinkedIn-adjacent deep blue) */
+  --token-primary:          #0a66c2;
+  --token-primary-hover:    #004182;
+  --token-primary-fg:       #ffffff;
+
+  /* Typography */
+  --token-text-primary:     #0d1117;
+  --token-text-secondary:   #4b5563;
+  --token-text-muted:       #9ca3af;
+
+  /* Spacing */
+  --token-radius-card:      16px;
+  --token-radius-btn:       50%;
+
+  /* Shadow */
+  --token-shadow-card:      0 2px 12px rgba(0, 0, 0, 0.07),
+                            0 8px 32px rgba(0, 0, 0, 0.05);
+  --token-shadow-card-hover:0 8px 28px rgba(10, 102, 194, 0.14),
+                            0 20px 48px rgba(0, 0, 0, 0.10);
+  --token-shadow-btn:       0 4px 16px rgba(10, 102, 194, 0.35);
+
+  /* Carousel layout */
+  --li-card-width:          360px;
+  --li-card-gap:            24px;
+  --li-nav-size:            48px;
+  --li-fade-width:          80px;
+}
+
+/* ── Google Font Import ─────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500&display=swap');
+
+/* ── Section ────────────────────────────────────────────────────────────────── */
+.li-section {
+  background: var(--token-surface);
+  padding: 80px 0 64px;
+  font-family: 'DM Sans', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Section Header ─────────────────────────────────────────────────────────── */
+.li-section__header {
+  text-align: center;
+  padding: 0 24px 48px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.li-section__eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--token-primary);
+  background: rgba(10, 102, 194, 0.08);
+  padding: 4px 14px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+}
+
+.li-section__title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  color: var(--token-text-primary);
+  margin: 0 0 12px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.li-section__subtitle {
+  font-size: 1rem;
+  color: var(--token-text-secondary);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── Carousel Container ─────────────────────────────────────────────────────── */
+.li-carousel {
+  position: relative;
+  padding: 16px 0 24px;
+}
+
+/* ── Edge Fade Overlays ─────────────────────────────────────────────────────── */
+.li-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: var(--li-fade-width);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.li-fade--left {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    var(--token-surface) 0%,
+    transparent 100%
+  );
+}
+
+.li-fade--right {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    var(--token-surface) 0%,
+    transparent 100%
+  );
+}
+
+/* ── Viewport ───────────────────────────────────────────────────────────────── */
+.li-viewport {
+  overflow: hidden;
+  /* Side padding so cards don't sit flush against edge on mobile */
+  padding: 16px calc(var(--li-nav-size) + 24px);
+  box-sizing: border-box;
+}
+
+/* ── Track ──────────────────────────────────────────────────────────────────── */
+.li-track {
+  display: flex;
+  flex-direction: row;
+  gap: var(--li-card-gap);
+  transition: transform 0.52s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  align-items: flex-start;
+}
+
+/* ── Card ───────────────────────────────────────────────────────────────────── */
+.li-card {
+  flex: 0 0 var(--li-card-width);
+  width: var(--li-card-width);
+  border-radius: var(--token-radius-card);
+  overflow: hidden;
+  background: var(--token-surface-card);
+  box-shadow: var(--token-shadow-card);
+  transition:
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s ease;
+  cursor: default;
+  position: relative;
+
+  /* Subtle top accent line */
+  border-top: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+.li-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--token-radius-card);
+  border-top: 3px solid rgba(10, 102, 194, 0.18);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.li-card:hover {
+  transform: translateY(-6px) scale(1.012);
+  box-shadow: var(--token-shadow-card-hover);
+}
+
+/* ── Embed Container ─────────────────────────────────────────────────────────── */
+.li-card__embed {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  overflow: hidden;
+  /* Prevent iframe from exceeding card width */
+  box-sizing: border-box;
+}
+
+.li-card__embed iframe {
+  display: block;
+  width: 100% !important;
+  min-width: 0;
+  max-width: 100%;
+  border: none;
+  /* Avoid clipping on some browsers */
+  flex-shrink: 0;
+}
+
+/* ── Navigation Buttons ─────────────────────────────────────────────────────── */
+.li-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: var(--li-nav-size);
+  height: var(--li-nav-size);
+  border-radius: var(--token-radius-btn);
+  border: none;
+  cursor: pointer;
+
+  background: var(--token-primary);
+  color: var(--token-primary-fg);
+  box-shadow: var(--token-shadow-btn);
+
+  transition:
+    background 0.2s ease,
+    transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.li-nav-btn svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.li-nav-btn:hover:not(:disabled) {
+  background: var(--token-primary-hover);
+  transform: translateY(-50%) scale(1.10);
+  box-shadow: 0 6px 24px rgba(10, 102, 194, 0.5);
+}
+
+.li-nav-btn:active:not(:disabled) {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.li-nav-btn:disabled {
+  opacity: 0.28;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.li-nav-btn--prev {
+  left: 12px;
+}
+
+.li-nav-btn--next {
+  right: 12px;
+}
+
+/* ── Dot Indicators ─────────────────────────────────────────────────────────── */
+.li-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding-top: 4px;
+}
+
+.li-dot {
+  appearance: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 100px;
+  background: rgba(10, 102, 194, 0.18);
+  transition:
+    background 0.25s ease,
+    width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.2s ease;
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+}
+
+.li-dot:hover {
+  background: rgba(10, 102, 194, 0.45);
+  transform: scale(1.2);
+}
+
+.li-dot--active {
+  background: var(--token-primary);
+  width: 24px;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────────── */
+
+/* Tablet: 2 cards */
+@media (max-width: 1023px) {
+  :root {
+    --li-card-width: 320px;
+    --li-card-gap:   20px;
+  }
+}
+
+/* Mobile: 1 card */
+@media (max-width: 599px) {
+  :root {
+    --li-card-width: 288px;
+    --li-card-gap:   16px;
+    --li-nav-size:   40px;
+    --li-fade-width: 40px;
+  }
+
+  .li-section {
+    padding: 56px 0 48px;
+  }
+
+  .li-section__header {
+    padding-bottom: 32px;
+  }
+
+  .li-viewport {
+    padding-left: calc(var(--li-nav-size) + 16px);
+    padding-right: calc(var(--li-nav-size) + 16px);
+  }
+
+  .li-nav-btn--prev {
+    left: 6px;
+  }
+
+  .li-nav-btn--next {
+    right: 6px;
+  }
+}
+
+/* ── Reduced motion ─────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .li-track {
+    transition: none;
+  }
+
+  .li-card,
+  .li-nav-btn,
+  .li-dot {
+    transition: none;
+  }
+}
