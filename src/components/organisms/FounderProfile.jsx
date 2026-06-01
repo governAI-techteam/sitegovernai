@@ -18,8 +18,7 @@ export function FounderProfile() {
             letterSpacing: '-0.03em',
           }}
         >
-          <br />
-          Meet the <span style={{ color: tokens.primary }}>Founder</span>
+          <span style={{ color: tokens.primary }}>Leadership</span> & Team
         </h2>
         <p
           style={{
@@ -29,7 +28,7 @@ export function FounderProfile() {
             margin: '0 auto',
           }}
         >
-          <span style={{ color: '#FF3B30', fontWeight: 600 }}>TEDx</span> Speaker & PhD in Responsible AI Governance
+          <span style={{ color: tokens.primary, fontWeight: 600 }}>TEDx</span> Speaker & PhD in Responsible AI Governance
         </p>
       </div>
 
@@ -87,7 +86,7 @@ export function FounderProfile() {
                 Parishrut Jassal
               </h3>
               <p style={{ fontSize: '13px', opacity: 0.9, fontWeight: 500 }}>
-                AI Policy & Governance Leader
+                Founder and CEO
               </p>
             </div>
           </div>
