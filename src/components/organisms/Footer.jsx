@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useScroll } from '@/context/ScrollContext';
 import { tokens } from '@/theme/tokens';
@@ -30,7 +31,7 @@ const footerLinks = [
       { label: 'AI Governance Blog', href: '#insights' },
       { label: 'Case Studies', href: '#insights' },
       { label: 'Workshops', href: '#insights' },
-      { label: 'Contact Us', href: '#team' },
+      { label: 'Contact Us', href: '/contact' },
     ],
   },
 ];
@@ -66,7 +67,9 @@ const socialLinks = [
 ];
 
 export function Footer() {
-  const { scrollTo } = useScroll();
+  const scrollCtx = useScroll();
+  const router = useRouter();
+  const pathname = usePathname();
   const [showFab, setShowFab] = useState(false);
 
   useEffect(() => {
@@ -76,8 +79,16 @@ export function Footer() {
   }, []);
 
   const handleLinkClick = (href) => {
-    if (href.startsWith('#')) {
-      scrollTo(href.substring(1));
+    if (!href.startsWith('#')) {
+      router.push(href);
+      return;
+    }
+    const id = href.substring(1);
+    // On the home page we have the scroll context; elsewhere route home with hash.
+    if (pathname === '/' && scrollCtx?.scrollTo) {
+      scrollCtx.scrollTo(id);
+    } else {
+      router.push(`/#${id}`);
     }
   };
 

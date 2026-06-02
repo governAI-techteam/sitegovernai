@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { NAV_ITEMS } from '@/config/content';
 import { useScroll } from '@/context/ScrollContext';
@@ -8,8 +9,14 @@ import { tokens } from '@/theme/tokens';
 
 export function NavBar({ activeSection }) {
   const { scrollTo } = useScroll();
+  const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const goContact = useCallback(() => {
+    router.push('/contact');
+    setMobileOpen(false);
+  }, [router]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -145,7 +152,7 @@ export function NavBar({ activeSection }) {
                 className="mobile-hide"
                 whileHover={{ scale: 1.04, y: -1 }}
                 whileTap={{ scale: 0.97 }}
-                onClick={() => handleNav('team')}
+                onClick={goContact}
                 style={{
                   padding: '10px 24px',
                   border: 'none',
@@ -300,7 +307,7 @@ export function NavBar({ activeSection }) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                onClick={() => handleNav('team')}
+                onClick={goContact}
                 style={{
                   padding: '16px 28px',
                   border: 'none',

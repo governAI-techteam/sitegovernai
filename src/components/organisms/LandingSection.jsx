@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { tokens } from '@/theme/tokens';
 import { Section } from '@/components/atoms/Section';
 import { Container } from '@/components/atoms/Container';
@@ -47,6 +48,7 @@ const fadeUp = (delay = 0) => ({
 });
 
 export function LandingSection({ sectionRefs }) {
+  const router = useRouter();
   return (
     <Section
       id="hero"
@@ -264,10 +266,7 @@ export function LandingSection({ sectionRefs }) {
               <motion.button
                 whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.97 }}
-                onClick={() => {
-                  const el = document.getElementById('team');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }}
+                onClick={() => router.push('/contact')}
                 style={{
                   background: 'rgba(255,255,255,0.7)',
                   backdropFilter: 'blur(8px)',
