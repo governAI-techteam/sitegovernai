@@ -18,7 +18,7 @@ const footerLinks = [
   {
     heading: 'Company',
     links: [
-      { label: 'About Us', href: '#founder' },
+      { label: 'About Us', href: '#team' },
       { label: 'Our Team', href: '#team' },
       { label: 'Insights', href: '#insights' },
       { label: 'Clients', href: '#platform' },
@@ -30,7 +30,7 @@ const footerLinks = [
       { label: 'AI Governance Blog', href: '#insights' },
       { label: 'Case Studies', href: '#insights' },
       { label: 'Workshops', href: '#insights' },
-      { label: 'Contact Us', href: '#founder' },
+      { label: 'Contact Us', href: '#team' },
     ],
   },
 ];

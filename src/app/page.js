@@ -10,7 +10,6 @@ import { DomainsSection } from '@/components/organisms/DomainsSection';
 import ClientsMarqueeSection from '@/components/organisms/ClientsMarqueeSection';
 
 import InsightsCarouselSection from '@/components/organisms/InsightsCarouselSection';
-import { FounderProfile } from '@/components/organisms/FounderProfile';
 import ImageCard from '@/components/molecules/ImageCard';
 import { Footer } from '@/components/organisms/Footer';
 import { Preloader } from '@/components/molecules/Preloader';
@@ -56,17 +55,7 @@ export default function GovernAI() {
         {/* Divider */}
         <div style={{ maxWidth: 720, margin: '0 auto', height: 1, background: 'linear-gradient(90deg, transparent, rgba(234,105,38,0.15), transparent)' }} />
 
-        {/* 5. Meet the Founder */}
-        <section id="founder" ref={(el) => (sectionRefs.current['founder'] = el)}>
-          <FadeIn delay={0.2} yOffset={30}>
-            <FounderProfile />
-          </FadeIn>
-        </section>
-
-        {/* Divider */}
-        <div style={{ maxWidth: 720, margin: '0 auto', height: 1, background: 'linear-gradient(90deg, transparent, rgba(234,105,38,0.15), transparent)' }} />
-
-        {/* 6. Meet the Team */}
+        {/* 5. Meet the Team (Founder + Team + Advisor) */}
         <section id="team" ref={(el) => (sectionRefs.current['team'] = el)}>
           <FadeIn delay={0.2} yOffset={40}>
             <ImageCard />

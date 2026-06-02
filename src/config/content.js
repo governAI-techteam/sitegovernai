@@ -2,7 +2,6 @@ export const NAV_ITEMS = [
   { label: 'Domains', sectionId: 'domains' },
   { label: 'Clients', sectionId: 'platform' },
   { label: 'Insights', sectionId: 'insights' },
-  { label: 'Founder', sectionId: 'founder' },
   { label: 'Team', sectionId: 'team' },
 ];
 

@@ -145,7 +145,7 @@ export function NavBar({ activeSection }) {
                 className="mobile-hide"
                 whileHover={{ scale: 1.04, y: -1 }}
                 whileTap={{ scale: 0.97 }}
-                onClick={() => handleNav('founder')}
+                onClick={() => handleNav('team')}
                 style={{
                   padding: '10px 24px',
                   border: 'none',
@@ -300,7 +300,7 @@ export function NavBar({ activeSection }) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                onClick={() => handleNav('founder')}
+                onClick={() => handleNav('team')}
                 style={{
                   padding: '16px 28px',
                   border: 'none',

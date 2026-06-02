@@ -264,7 +264,7 @@ export function LandingSection({ sectionRefs }) {
                 whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => {
-                  const el = document.getElementById('founder');
+                  const el = document.getElementById('team');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
                 style={{
