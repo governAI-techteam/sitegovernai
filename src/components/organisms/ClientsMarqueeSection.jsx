@@ -22,7 +22,7 @@ const CLIENT_GROUPS = [
     title: "Education, Healthcare & Technology",
     items: [
       { name: "Gujarat National Law University", logo: "Gujarat National Law University.png" },
-      { name: "DY Patil University", logo: "DY Patil University.png", large: true },
+      { name: "DY Patil University", logo: "DY Patil University.png", scale: 1.6 },
       { name: "National Law University, Delhi", logo: "National Law University, Delhi.png" },
       { name: "NALSAR University", logo: "NALSAR University.png" },
       { name: "NMIMS Hyderabad", logo: "NMIMS Hyderabad.png" },
@@ -37,14 +37,14 @@ const CLIENT_GROUPS = [
 
 const ORANGE = tokens.primary || "#FF9D52";
 
-function LogoItem({ name, logo, large }) {
+function LogoItem({ name, logo, scale }) {
   return (
     <div style={styles.logoItem} className="logo-item">
       <div style={styles.logoPlaceholder} className="logo-placeholder">
         <img
           src={`${LOGO_PATH}${logo}`}
           alt={name}
-          style={{ ...styles.logoImage, ...(large ? styles.logoImageLarge : {}) }}
+          style={{ ...styles.logoImage, ...(scale ? { transform: `scale(${scale})` } : {}) }}
         />
       </div>
     </div>
@@ -64,7 +64,7 @@ function MarqueeRow({ items, duration = 50, reverse = false }) {
         className="marquee-track"
       >
         {doubled.map((item, i) => (
-          <LogoItem key={`${item.name}-${i}`} name={item.name} logo={item.logo} large={item.large} />
+          <LogoItem key={`${item.name}-${i}`} name={item.name} logo={item.logo} scale={item.scale} />
         ))}
       </div>
     </div>
@@ -260,7 +260,7 @@ const styles = {
   marqueeTrack: {
     display: "flex",
     width: "max-content",
-    gap: "clamp(56px, 8vw, 98px)",
+    gap: "clamp(20px, 2.5vw, 32px)",
     willChange: "transform",
     alignItems: "center",
   },
@@ -323,10 +323,7 @@ const styles = {
     display: "block",
   },
 
-  logoImageLarge: {
-    width: 528,
-    height: 269,
-  },
+
 
   statsRow: {
     display: "flex",
@@ -379,8 +376,9 @@ const css = `
   }
 
   .logo-item:hover .logo-placeholder {
-    background: #fff !important;
-    box-shadow: 0 6px 24px rgba(0,0,0,0.10) !important;
+    background: #ffffff !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15), 0 4px 12px rgba(0,0,0,0.08) !important;
+    transform: translateY(-4px);
   }
 
   .logo-item:hover img {

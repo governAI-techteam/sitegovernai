@@ -1,9 +1,8 @@
 export const NAV_ITEMS = [
   { label: 'Domains', sectionId: 'domains' },
-  { label: 'Platform', sectionId: 'platform' },
-  { label: 'Solutions', sectionId: 'solutions' },
-  { label: 'Products', sectionId: 'products' },
-  { label: 'Insights', sectionId: 'linkedin' },
+  { label: 'Clients', sectionId: 'platform' },
+  { label: 'Insights', sectionId: 'insights' },
+  { label: 'Founder', sectionId: 'founder' },
   { label: 'Team', sectionId: 'team' },
 ];
 

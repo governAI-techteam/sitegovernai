@@ -2,13 +2,14 @@
 
 import { useRef } from 'react';
 import { useActiveSection } from '@/hooks/useActiveSection';
+import { ScrollProvider } from '@/context/ScrollContext';
 import { NavBar } from '@/components/organisms/NavBar';
 
 import { LandingSection } from '@/components/organisms/LandingSection';
 import { DomainsSection } from '@/components/organisms/DomainsSection';
 import ClientsMarqueeSection from '@/components/organisms/ClientsMarqueeSection';
 
-import LinkedInCarouselSection from '@/components/organisms/LinkedInCarouselSection';
+import InsightsCarouselSection from '@/components/organisms/InsightsCarouselSection';
 import { FounderProfile } from '@/components/organisms/FounderProfile';
 import ImageCard from '@/components/molecules/ImageCard';
 import { Footer } from '@/components/organisms/Footer';
@@ -20,7 +21,7 @@ export default function GovernAI() {
   const activeSection = useActiveSection(sectionRefs);
 
   return (
-    <>
+    <ScrollProvider sectionRefs={sectionRefs}>
       <Preloader />
 
       <NavBar activeSection={activeSection} />
@@ -41,9 +42,9 @@ export default function GovernAI() {
           <ClientsMarqueeSection />
         </section>
 
-        {/* 4. LinkedIn */}
-        <section id="linkedin" ref={(el) => (sectionRefs.current['linkedin'] = el)}>
-          <LinkedInCarouselSection />
+        {/* 4. Insights */}
+        <section id="insights" ref={(el) => (sectionRefs.current['insights'] = el)}>
+          <InsightsCarouselSection />
         </section>
 
         {/* 5. Meet the Founder */}
@@ -62,6 +63,6 @@ export default function GovernAI() {
       </main>
 
       <Footer />
-    </>
+    </ScrollProvider>
   );
 }

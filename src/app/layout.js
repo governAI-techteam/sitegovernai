@@ -36,7 +36,7 @@ export const metadata = {
     siteName: 'GovernAI',
     images: [
       {
-        url: null, // Next.js will resolve relative to standard absolute URL
+        url: '/assets/img/logo.png',
         width: 1200,
         height: 630,
         alt: 'GovernAI - Modern AI Confidence',
@@ -48,7 +48,7 @@ export const metadata = {
     title: 'GovernAI | Modern AI Confidence & Governance',
     description:
       'Architectural framework to deploy, monitor, and scale AI systems with absolute compliance and zero bias.',
-    images: [null],
+    images: ['/assets/img/logo.png'],
     creator: '@GovernAI',
   },
   robots: {

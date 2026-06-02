@@ -1,0 +1,92 @@
+export const insightsData = [
+  {
+    id: 1,
+    image: '/insights/3.jpeg',
+    title: 'Panel on Responsible AI',
+    description: 'Panelist at the Responsible AI conference at Dhirubhai Ambani University – School of Law, alongside leaders from NVIDIA and JSA Advocates.',
+  },
+  {
+    id: 2,
+    image: '/insights/4.jpeg',
+    title: 'AI Competency Framework',
+    description: 'Presenting the AI Competency Framework for Government Officials — categorization across Central & State Ministries.',
+  },
+  {
+    id: 3,
+    image: '/insights/5.jpeg',
+    title: 'Government Training Program',
+    description: 'Conducting hands-on AI Competency training for government officials on responsible administrative integration.',
+  },
+  {
+    id: 4,
+    image: '/insights/8.jpeg',
+    title: 'Training Workshop',
+    description: 'Group photo from a workshop on AI Competency and Responsible AI principles for public sector professionals.',
+  },
+  {
+    id: 5,
+    image: '/insights/9.jpeg',
+    title: 'Lecture at University',
+    description: 'Speaking at a university lecture hall on AI Competency Frameworks and their application in public governance.',
+  },
+  {
+    id: 6,
+    image: '/insights/11.jpeg',
+    title: 'Government Workshop — Uttar Pradesh',
+    description: 'Workshop on Responsible AI for government officials, organized in collaboration with the Samarth initiative in Uttar Pradesh.',
+  },
+  {
+    id: 7,
+    image: '/insights/12.jpeg',
+    title: 'Applied AI for Public Sector',
+    description: 'GovernAI workshop on Applied & Functional AI for Public Sector — covering agentic workflows, prompting, and strategic approaches.',
+  },
+  {
+    id: 8,
+    image: '/insights/15.jpeg',
+    title: 'Google NotebookLM Demo',
+    description: 'Demonstrating AI-powered analysis tools at a Google event — showcasing government schemes and grants explained for MSMEs.',
+  },
+  {
+    id: 9,
+    image: '/insights/17.jpeg',
+    title: 'Corporate Training Session',
+    description: 'Delivering a focused AI governance training session to senior corporate executives and compliance leaders.',
+  },
+  {
+    id: 10,
+    image: '/insights/20.jpeg',
+    title: 'MoU Signing — DY Patil University',
+    description: 'Signing a Memorandum of Understanding with DY Patil University for collaboration on AI governance research and education.',
+  },
+  {
+    id: 11,
+    image: '/insights/27.jpeg',
+    title: 'Policy Advisory Discussion',
+    description: 'Engaging with senior government officials on Digital India infrastructure, purpose, and impact of AI in public services.',
+  },
+  {
+    id: 12,
+    image: '/insights/30.jpeg',
+    title: 'Government Boardroom Session',
+    description: 'Presenting responsible AI strategy to senior administrators and department heads in a high-level government boardroom.',
+  },
+  {
+    id: 13,
+    image: '/insights/40.jpeg',
+    title: 'AI Governance Keynote',
+    description: 'Keynote presentation on AI governance to a cross-departmental audience of senior government officials.',
+  },
+  {
+    id: 14,
+    image: '/insights/43.jpeg',
+    title: 'Introduction to AI — Punjab',
+    description: 'Session at Mahatma Gandhi State Institute of Public Administration, Chandigarh — Introduction to AI for Responsible Administrative Integration.',
+  },
+  {
+    id: 15,
+    image: '/insights/46.jpeg',
+    title: 'Government Capacity Building',
+    description: 'AI capacity building program for government officials — covering practical applications and governance frameworks.',
+  },
+];

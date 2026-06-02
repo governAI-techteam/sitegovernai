@@ -1,52 +1,15 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { tokens } from '@/theme/tokens';
+import { useState, useEffect, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { NAV_ITEMS } from '@/config/content';
 import { useScroll } from '@/context/ScrollContext';
-import { Container } from '@/components/atoms/Container';
-import { Icon } from '@/components/atoms/Icon';
-import Image from 'next/image';
-
-function NavLink({ label, active, onClick, mobile }) {
-  const [hov, setHov] = useState(false);
-
-  return (
-    <button
-      onClick={onClick}
-      onMouseEnter={() => setHov(true)}
-      onMouseLeave={() => setHov(false)}
-      style={{
-        background: 'none',
-        border: 'none',
-        cursor: 'pointer',
-        padding: mobile ? '12px 0' : '4px 0 6px',
-        width: mobile ? '100%' : 'auto',
-        textAlign: mobile ? 'left' : 'center',
-        fontFamily: tokens.fonts.display,
-        fontWeight: 500,
-        fontSize: mobile ? 16 : 14,
-        letterSpacing: '0.01em',
-        color: active
-          ? tokens.primary
-          : hov
-            ? tokens.onSurface
-            : tokens.secondary,
-        borderBottom: mobile
-          ? `1px solid ${tokens.outlineVariant}`
-          : '2px solid transparent',
-        transition: 'color .2s',
-      }}
-    >
-      {label}
-    </button>
-  );
-}
+import { tokens } from '@/theme/tokens';
 
 export function NavBar({ activeSection }) {
-  const scrollTo = useScroll();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { scrollTo } = useScroll();
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -54,174 +17,309 @@ export function NavBar({ activeSection }) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const handleNavClick = (sectionId) => {
-    scrollTo(sectionId);
-    setIsMobileMenuOpen(false);
-  };
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileOpen]);
+
+  const handleNav = useCallback((id) => {
+    scrollTo(id);
+    setMobileOpen(false);
+  }, [scrollTo]);
 
   return (
-    <nav
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 100,
-        background: scrolled ? 'rgba(247,249,251,.92)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(20px)' : 'none',
-        WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
-        boxShadow: scrolled ? '0 1px 0 rgba(0,0,0,.06)' : 'none',
-        transition: 'background .3s, box-shadow .3s, backdrop-filter .3s',
-      }}
-    >
-      <Container
+    <>
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ type: 'spring', stiffness: 260, damping: 30 }}
         style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          padding: scrolled ? '12px 24px' : '18px 24px',
-          transition: 'padding .3s',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 1000,
+          transition: 'all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)',
         }}
       >
-        <button
-          onClick={() => scrollTo('hero')}
-          style={{
-            background: 'none',
-            border: 'none',
-            cursor: 'pointer',
-            padding: 0,
+        <div style={{
+          maxWidth: 1280,
+          margin: '0 auto',
+          padding: scrolled ? '8px 24px' : '16px 24px',
+          transition: 'padding 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)',
+        }}>
+          <nav style={{
             display: 'flex',
             alignItems: 'center',
-          }}
-        >
-          <Image
-            src="/assets/img/logo.png"
-            alt="GovernAI"
-            width={140}
-            height={37}
-            priority
-            style={{
-              width: 'auto',
-              height: scrolled ? 32 : 36,
-              transition: 'height .3s',
-              display: 'block',
-            }}
-          />
-        </button>
-
-        <div
-          className="hide-on-mobile"
-          style={{ display: 'flex', gap: 32, alignItems: 'center' }}
-        >
-          {NAV_ITEMS.map(({ label, sectionId }) => (
-            <NavLink
-              key={sectionId}
-              label={label}
-              active={activeSection === sectionId}
-              onClick={() => scrollTo(sectionId)}
-            />
-          ))}
-        </div>
-
-        <div className="hide-on-mobile" style={{ display: 'flex', gap: 10 }}>
-          <button
-            onClick={() => {
-              const el = document.getElementById('founder');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }}
-            style={{
-              background: '#191c1e',
-              color: '#fff',
-              padding: '8px 20px',
-              fontSize: 13,
-              fontWeight: 600,
-              fontFamily: tokens.fonts.display,
-              border: 'none',
-              borderRadius: 8,
-              cursor: 'pointer',
-              transition: 'background .2s',
-            }}
-          >
-            Contact Us
-          </button>
-        </div>
-
-        <button
-          className="show-flex-on-mobile"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          style={{
-            display: 'none',
-            background: 'none',
-            border: 'none',
-            cursor: 'pointer',
-            color: tokens.onSurface,
-            padding: '8px',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <Icon name={isMobileMenuOpen ? 'close' : 'menu'} size={28} />
-        </button>
-      </Container>
-
-      {isMobileMenuOpen && (
-        <div
-          className="hide-on-desktop"
-          style={{
-            position: 'absolute',
-            top: '100%',
-            left: 0,
-            width: '100%',
-            background: '#fff',
-            boxShadow: '0 10px 25px rgba(0,0,0,0.1)',
-            zIndex: 99,
-            padding: '16px 24px',
-            borderTop: `1px solid ${tokens.outlineVariant}`,
-          }}
-        >
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            {NAV_ITEMS.map(({ label, sectionId }) => (
-              <NavLink
-                key={sectionId}
-                label={label}
-                active={activeSection === sectionId}
-                onClick={() => handleNavClick(sectionId)}
-                mobile
-              />
-            ))}
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 10,
-                marginTop: 16,
-              }}
+            justifyContent: 'space-between',
+            background: scrolled
+              ? 'rgba(255, 255, 255, 0.82)'
+              : 'rgba(255, 255, 255, 0.5)',
+            backdropFilter: 'blur(20px) saturate(180%)',
+            WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+            borderRadius: scrolled ? 16 : 20,
+            padding: scrolled ? '10px 24px' : '14px 28px',
+            border: `1px solid ${scrolled ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.6)'}`,
+            boxShadow: scrolled
+              ? '0 4px 24px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04)'
+              : '0 2px 16px rgba(0,0,0,0.03)',
+            transition: 'all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)',
+          }}>
+            {/* Logo */}
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 10 }}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
-              <button
-                onClick={() => {
-                  const el = document.getElementById('founder');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  setIsMobileMenuOpen(false);
-                }}
+              <img
+                src="/assets/img/logo.png"
+                alt="GovernAI"
                 style={{
-                  background: '#191c1e',
-                  color: '#fff',
-                  padding: '12px',
-                  fontSize: 16,
-                  fontWeight: 600,
-                  fontFamily: tokens.fonts.display,
+                  height: scrolled ? 30 : 34,
+                  transition: 'height 0.3s ease',
+                  objectFit: 'contain',
+                }}
+              />
+            </motion.div>
+
+            {/* Desktop Nav */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 4,
+            }}
+            className="mobile-hide"
+            >
+              {NAV_ITEMS.map((item) => {
+                const isActive = activeSection === item.sectionId;
+                return (
+                  <motion.button
+                    key={item.sectionId}
+                    onClick={() => handleNav(item.sectionId)}
+                    style={{
+                      position: 'relative',
+                      padding: '8px 18px',
+                      border: 'none',
+                      background: 'none',
+                      cursor: 'pointer',
+                      fontFamily: tokens.fonts.body,
+                      fontSize: 14,
+                      fontWeight: isActive ? 600 : 500,
+                      color: isActive ? tokens.primary : tokens.secondary,
+                      letterSpacing: '0.01em',
+                      borderRadius: 12,
+                      transition: 'color 0.25s ease',
+                    }}
+                    whileHover={{ color: tokens.primary }}
+                  >
+                    {isActive && (
+                      <motion.div
+                        layoutId="navPill"
+                        style={{
+                          position: 'absolute',
+                          inset: 0,
+                          background: tokens.peach50,
+                          borderRadius: 12,
+                          border: `1px solid ${tokens.peach200}`,
+                        }}
+                        transition={{ type: 'spring', stiffness: 380, damping: 32 }}
+                      />
+                    )}
+                    <span style={{ position: 'relative', zIndex: 1 }}>{item.label}</span>
+                  </motion.button>
+                );
+              })}
+            </div>
+
+            {/* CTA + Hamburger */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+              {/* Desktop CTA */}
+              <motion.button
+                className="mobile-hide"
+                whileHover={{ scale: 1.04, y: -1 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={() => handleNav('founder')}
+                style={{
+                  padding: '10px 24px',
                   border: 'none',
-                  borderRadius: 10,
+                  borderRadius: 12,
+                  background: tokens.primaryGrad,
+                  color: '#fff',
+                  fontFamily: tokens.fonts.display,
+                  fontSize: 13,
+                  fontWeight: 700,
                   cursor: 'pointer',
-                  width: '100%',
+                  letterSpacing: '0.02em',
+                  boxShadow: '0 4px 16px rgba(234, 105, 38, 0.3)',
+                  position: 'relative',
+                  overflow: 'hidden',
                 }}
               >
-                Contact Us
-              </button>
+                <span style={{ position: 'relative', zIndex: 1 }}>Get in Touch</span>
+              </motion.button>
+
+              {/* Hamburger */}
+              <motion.button
+                className="hide-on-desktop"
+                whileTap={{ scale: 0.9 }}
+                onClick={() => setMobileOpen(!mobileOpen)}
+                style={{
+                  width: 40,
+                  height: 40,
+                  border: 'none',
+                  background: 'none',
+                  cursor: 'pointer',
+                  display: 'none',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: 10,
+                  position: 'relative',
+                }}
+                aria-label="Toggle menu"
+              >
+                <div style={{ width: 20, height: 14, position: 'relative' }}>
+                  <span style={{
+                    position: 'absolute',
+                    width: '100%',
+                    height: 2,
+                    background: tokens.onSurface,
+                    borderRadius: 2,
+                    left: 0,
+                    top: mobileOpen ? 6 : 0,
+                    transform: mobileOpen ? 'rotate(45deg)' : 'none',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  }} />
+                  <span style={{
+                    position: 'absolute',
+                    width: '100%',
+                    height: 2,
+                    background: tokens.onSurface,
+                    borderRadius: 2,
+                    left: 0,
+                    top: 6,
+                    opacity: mobileOpen ? 0 : 1,
+                    transition: 'opacity 0.2s ease',
+                  }} />
+                  <span style={{
+                    position: 'absolute',
+                    width: '100%',
+                    height: 2,
+                    background: tokens.onSurface,
+                    borderRadius: 2,
+                    left: 0,
+                    top: mobileOpen ? 6 : 12,
+                    transform: mobileOpen ? 'rotate(-45deg)' : 'none',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  }} />
+                </div>
+              </motion.button>
             </div>
-          </div>
+          </nav>
         </div>
-      )}
-    </nav>
+      </motion.header>
+
+      {/* Mobile Drawer */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              onClick={() => setMobileOpen(false)}
+              style={{
+                position: 'fixed',
+                inset: 0,
+                background: 'rgba(0,0,0,0.3)',
+                backdropFilter: 'blur(4px)',
+                zIndex: 999,
+              }}
+            />
+            {/* Drawer */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', stiffness: 320, damping: 34 }}
+              style={{
+                position: 'fixed',
+                top: 0,
+                right: 0,
+                bottom: 0,
+                width: '80%',
+                maxWidth: 360,
+                background: 'rgba(255, 255, 255, 0.97)',
+                backdropFilter: 'blur(24px)',
+                zIndex: 1001,
+                padding: '100px 32px 32px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 0,
+                boxShadow: '-16px 0 48px rgba(0,0,0,0.12)',
+              }}
+            >
+              {NAV_ITEMS.map((item, i) => {
+                const isActive = activeSection === item.sectionId;
+                return (
+                  <motion.button
+                    key={item.sectionId}
+                    initial={{ opacity: 0, x: 30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.06, duration: 0.35 }}
+                    onClick={() => handleNav(item.sectionId)}
+                    style={{
+                      padding: '18px 20px',
+                      border: 'none',
+                      background: isActive ? tokens.peach50 : 'transparent',
+                      textAlign: 'left',
+                      fontFamily: tokens.fonts.display,
+                      fontSize: 18,
+                      fontWeight: isActive ? 700 : 500,
+                      color: isActive ? tokens.primary : tokens.onSurface,
+                      cursor: 'pointer',
+                      borderRadius: 14,
+                      transition: 'all 0.2s ease',
+                      borderLeft: isActive ? `3px solid ${tokens.primary}` : '3px solid transparent',
+                    }}
+                  >
+                    {item.label}
+                  </motion.button>
+                );
+              })}
+
+              <div style={{ flex: 1 }} />
+
+              <motion.button
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                onClick={() => handleNav('founder')}
+                style={{
+                  padding: '16px 28px',
+                  border: 'none',
+                  borderRadius: 14,
+                  background: tokens.primaryGrad,
+                  color: '#fff',
+                  fontFamily: tokens.fonts.display,
+                  fontSize: 16,
+                  fontWeight: 700,
+                  cursor: 'pointer',
+                  boxShadow: '0 6px 24px rgba(234, 105, 38, 0.35)',
+                  textAlign: 'center',
+                }}
+              >
+                Get in Touch
+              </motion.button>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
