@@ -1,22 +1,28 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { Container } from "@/components/atoms/Container";
-import { Icon } from "@/components/atoms/Icon";
-import { FadeIn } from "@/components/atoms/FadeIn";
 import { tokens } from "@/theme/tokens";
 
 const DOMAINS = [
   {
     id: "academy",
-    icon: "school",
     title: "GovernAI Academy",
     subtitle: "Capacity Building & Training",
+    blurb:
+      "Build organisation-wide AI fluency — from boardroom literacy to hands-on practitioner skill, delivered through structured, certifiable programs.",
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+        <path d="M6 12v5c3 3 9 3 12 0v-5" />
+      </svg>
+    ),
     points: [
       "Executive sensitisation sessions",
       "Immersive 3–5 day workshops",
       "Hands-on GenAI tools training",
       "Academic courses (NSQF-aligned)",
-      "Gen-AI/AI Policy & Compliance Sessions",
+      "AI policy & compliance sessions",
     ],
     credentials: {
       label: "Program Highlights",
@@ -30,9 +36,16 @@ const DOMAINS = [
   },
   {
     id: "compliance",
-    icon: "verified",
     title: "AI Compliance",
     subtitle: "Auditing & Regulatory Assurance",
+    blurb:
+      "Independent, end-to-end assurance that your AI systems meet global standards — from initial gap analysis through to full conformity assessment.",
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+        <path d="m9 12 2 2 4-4" />
+      </svg>
+    ),
     points: [
       "Compliance gap analysis",
       "Pre-assessment & readiness reviews",
@@ -52,30 +65,161 @@ const DOMAINS = [
   },
 ];
 
+const CheckIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <circle cx="12" cy="12" r="11" fill="#fff" stroke="rgba(234,105,38,0.25)" strokeWidth="1" />
+    <path d="m8 12 2.5 2.5L16 9" stroke="#ea6926" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+const ArrowIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M5 12h14M13 6l6 6-6 6" />
+  </svg>
+);
+
+function DomainCard({ domain, idx }) {
+  return (
+    <motion.article
+      className="ds-card"
+      initial={{ opacity: 0, y: 48 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.7, delay: idx * 0.12, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <div className="ds-card-inner">
+        {/* Top row */}
+        <header className="ds-top">
+          <div className="ds-icon-wrap">
+            {domain.icon}
+          </div>
+        </header>
+
+        <div className="ds-titles">
+          <span className="ds-subtitle">{domain.subtitle}</span>
+          <h3 className="ds-card-title">{domain.title}</h3>
+          <p className="ds-blurb">{domain.blurb}</p>
+        </div>
+
+        <div className="ds-divider" />
+
+        {/* Points */}
+        <ul className="ds-points">
+          {domain.points.map((point, i) => (
+            <li key={i} className="ds-point">
+              <CheckIcon />
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+
+        {/* Credentials */}
+        {domain.credentials && (
+          <div className="ds-credentials">
+            <span className="ds-credentials-label">
+              {domain.credentials.label}
+            </span>
+            <div className="ds-chips">
+              {domain.credentials.items.map((cred, i) => (
+                <span key={i} className="ds-chip">
+                  {cred}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <button className="ds-cta" type="button">
+          <span>Learn more</span>
+          <ArrowIcon />
+        </button>
+      </div>
+    </motion.article>
+  );
+}
+
+export function DomainsSection() {
+  return (
+    <>
+      <style>{INJECTED_CSS}</style>
+
+      <section className="domains-section" aria-labelledby="ds-title">
+        <div className="domains-glow" aria-hidden="true" />
+        <div className="domains-grid-bg" aria-hidden="true" />
+
+        <div className="domains-inner">
+          <Container>
+            <motion.div
+              className="ds-header"
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <span className="ds-eyebrow">
+                <span className="ds-eyebrow-dot" />
+                What We Do
+              </span>
+              <h2 id="ds-title" className="ds-title">
+                Our <span className="ds-title-accent">Domains</span>
+              </h2>
+              <p className="ds-lead">
+                From building AI literacy to ensuring regulatory compliance —
+                GovernAI delivers enterprise-grade governance across every layer
+                of your AI operations.
+              </p>
+            </motion.div>
+
+            <div className="ds-grid">
+              {DOMAINS.map((domain, idx) => (
+                <DomainCard key={domain.id} domain={domain} idx={idx} />
+              ))}
+            </div>
+          </Container>
+        </div>
+      </section>
+    </>
+  );
+}
+
 const INJECTED_CSS = `
   .domains-section {
     position: relative;
     overflow: hidden;
     padding: clamp(72px, 8vw, 120px) 0;
+    background: ${tokens.surface};
+  }
+
+  .domains-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(234,105,38,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(234,105,38,0.035) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 0%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 0%, transparent 75%);
+    pointer-events: none;
+    z-index: 0;
   }
 
   .domains-glow {
     position: absolute;
-    bottom: -200px;
+    bottom: -240px;
     left: 50%;
     transform: translateX(-50%);
-    width: 900px;
-    height: 450px;
+    width: 1000px;
+    height: 500px;
     border-radius: 50%;
     background: radial-gradient(
       ellipse at center,
-      #FF9D52 0%,
-      #FFC8A0 35%,
-      #FFF5ED 60%,
+      rgba(255,157,82,0.55) 0%,
+      rgba(255,200,160,0.35) 35%,
+      rgba(255,245,237,0.2) 60%,
       transparent 75%
     );
-    filter: blur(80px);
-    opacity: 0.6;
+    filter: blur(90px);
+    opacity: 0.4;
     pointer-events: none;
     z-index: 0;
   }
@@ -85,356 +229,260 @@ const INJECTED_CSS = `
     z-index: 1;
   }
 
+  /* ── Header ── */
   .ds-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: clamp(2.5rem, 4vw, 4rem);
   }
 
   .ds-eyebrow {
     display: inline-flex;
     align-items: center;
-    gap: 0.45rem;
-    font-size: 0.6375rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
+    gap: 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    padding: 0.28rem 0.8rem;
+    padding: 0.4rem 0.9rem;
     border-radius: 999px;
-    background: var(--ds-eyebrow-bg);
-    color: var(--ds-primary);
-    margin-bottom: 0.85rem;
-    border: 1px solid var(--ds-eyebrow-border);
+    background: rgba(234,105,38,0.07);
+    color: ${tokens.primary};
+    margin-bottom: 1.1rem;
+    border: 1px solid rgba(234,105,38,0.18);
   }
 
   .ds-eyebrow-dot {
-    width: 5px;
-    height: 5px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
-    background: var(--ds-primary);
-    opacity: 0.8;
+    background: ${tokens.primary};
+    box-shadow: 0 0 0 4px rgba(234,105,38,0.15);
     flex-shrink: 0;
   }
 
   .ds-title {
-    font-size: clamp(26px, 3.5vw, 42px);
-    font-weight: 700;
-    line-height: 1.1;
+    font-family: ${tokens.fonts.display};
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 800;
+    line-height: 1.08;
     letter-spacing: -0.04em;
-    margin: 0 0 0.7rem;
-    color: var(--ds-on-background);
+    margin: 0 0 1rem;
+    color: ${tokens.onSurface};
+  }
+
+  .ds-title-accent {
+    background: linear-gradient(135deg, #ea6926 0%, #ff8c42 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   .ds-lead {
-    font-size: 0.9rem;
-    line-height: 1.68;
-    color: var(--ds-secondary);
-    max-width: 32rem;
+    font-size: clamp(0.95rem, 1.2vw, 1.0625rem);
+    line-height: 1.7;
+    color: ${tokens.secondary};
+    max-width: 34rem;
     margin: 0 auto;
   }
 
+  /* ── Grid ── */
   .ds-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    gap: clamp(1.25rem, 2vw, 2rem);
     align-items: stretch;
   }
 
+  /* ── Card ── */
   .ds-card {
     position: relative;
-    background: var(--ds-surface);
-    border-radius: 1rem;
-    padding: 1.5rem 1.375rem 1.375rem;
-    border: 1px solid var(--ds-border);
+    border-radius: 24px;
+    border: 1px solid rgba(234,105,38,0.08);
+    background: linear-gradient(165deg, #fffdfb 0%, #fffaf6 100%);
     box-shadow:
-      0 1px 2px rgba(0,0,0,0.04),
-      0 4px 16px rgba(0,0,0,0.05),
-      0 10px 40px rgba(0,0,0,0.06);
-    display: flex;
-    flex-direction: column;
-    gap: 0.9rem;
-    height: 100%;
-    transition: transform 0.22s cubic-bezier(.22,.68,0,1.2),
-                box-shadow 0.22s ease;
+      0 1px 2px rgba(234,105,38,0.04),
+      0 10px 28px rgba(234,105,38,0.05),
+      0 24px 56px rgba(16,24,40,0.04);
+    transition: transform 0.5s cubic-bezier(0.22,1,0.36,1),
+                box-shadow 0.5s cubic-bezier(0.22,1,0.36,1),
+                border-color 0.5s ease;
     will-change: transform;
     overflow: hidden;
-  }
-
-  .ds-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      140deg,
-      var(--ds-card-shimmer) 0%,
-      transparent 50%
-    );
-    border-radius: inherit;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .ds-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 12%;
-    right: 12%;
-    height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      var(--ds-top-line) 40%,
-      var(--ds-top-line) 60%,
-      transparent
-    );
-    pointer-events: none;
-    z-index: 1;
+    isolation: isolate;
   }
 
   .ds-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-10px);
+    border-color: rgba(234,105,38,0.22);
     box-shadow:
-      0 4px 8px rgba(0,0,0,0.06),
-      0 12px 32px rgba(0,0,0,0.12),
-      0 24px 64px rgba(0,0,0,0.14);
+      0 4px 8px rgba(234,105,38,0.05),
+      0 22px 50px rgba(234,105,38,0.12),
+      0 40px 80px rgba(234,105,38,0.09);
   }
 
-  .ds-card > * {
+  .ds-card-inner {
     position: relative;
     z-index: 1;
+    height: 100%;
+    border-radius: 23px;
+    padding: clamp(1.6rem, 2.4vw, 2.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  /* top row */
+  .ds-top {
+    display: flex;
+    align-items: flex-start;
   }
 
   .ds-icon-wrap {
-    width: 2.375rem;
-    height: 2.375rem;
-    border-radius: 0.75rem;
-    background: var(--ds-icon-bg);
-    border: 1px solid var(--ds-icon-border);
+    position: relative;
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #ea6926 0%, #ff8c42 100%);
+    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
+    box-shadow: 0 8px 20px rgba(234,105,38,0.32);
+    transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
+  }
+  .ds-card:hover .ds-icon-wrap {
+    transform: scale(1.06) rotate(-3deg);
   }
 
-  .ds-card-titles {
+  .ds-titles {
     display: flex;
     flex-direction: column;
-    gap: 0.175rem;
+    gap: 0.4rem;
+  }
+
+  .ds-subtitle {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: ${tokens.primary};
   }
 
   .ds-card-title {
-    font-size: 1.0625rem;
-    font-weight: 700;
-    line-height: 1.22;
-    letter-spacing: -0.012em;
-    color: var(--ds-on-surface);
+    font-family: ${tokens.fonts.display};
+    font-size: clamp(1.375rem, 2vw, 1.75rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    color: ${tokens.onSurface};
     margin: 0;
-    text-align: left;
   }
 
-  .ds-card-subtitle {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--ds-primary);
-    margin: 0;
-    letter-spacing: 0.01em;
-    text-align: left;
+  .ds-blurb {
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: ${tokens.secondary};
+    margin: 0.15rem 0 0;
   }
 
   .ds-divider {
     height: 1px;
-    background: var(--ds-border);
-    border: none;
-    margin: 0;
+    background: linear-gradient(90deg, rgba(234,105,38,0.22), rgba(234,105,38,0.02));
+    margin: 0.2rem 0;
   }
 
+  /* points */
   .ds-points {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7rem 1rem;
   }
 
   .ds-point {
-    display: grid;
-    grid-template-columns: 5px 1fr;
-    column-gap: 0.65rem;
-    align-items: left;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.55rem;
     font-size: 0.8125rem;
-    line-height: 1.55;
-    color: var(--ds-secondary);
-    text-align: left;
+    line-height: 1.4;
+    color: #4a3f38;
+    font-weight: 500;
   }
+  .ds-point svg { flex-shrink: 0; margin-top: 1px; }
 
-  .ds-bullet {
-    display: block;
-    width: 5px;
-    height: 5px;
-    min-width: 5px;
-    border-radius: 50%;
-    background: var(--ds-primary);
-    opacity: 0.65;
-    margin-top: calc((1.55em - 5px) / 2);
-    align-self: start;
-  }
-
+  /* credentials */
   .ds-credentials {
     margin-top: auto;
-    padding-top: 0.875rem;
-    border-top: 1px solid var(--ds-border);
+    padding-top: 1.1rem;
+    border-top: 1px solid rgba(234,105,38,0.14);
   }
 
   .ds-credentials-label {
+    display: block;
     font-size: 0.625rem;
     font-weight: 700;
-    letter-spacing: 0.13em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--ds-secondary);
-    margin-bottom: 0.5rem;
-    opacity: 0.75;
-    text-align: left;
+    color: ${tokens.secondary};
+    opacity: 0.7;
+    margin-bottom: 0.7rem;
   }
 
-  .ds-credentials-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  .ds-chips {
     display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-    text-align: left;
+    flex-wrap: wrap;
+    gap: 0.45rem;
   }
 
-  .ds-credential-item {
-    display: flex;
-    align-items: center;
-    gap: 0.425rem;
+  .ds-chip {
     font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--ds-on-surface);
+    font-weight: 600;
+    color: #6b4a38;
+    padding: 0.4rem 0.7rem;
+    border-radius: 9px;
+    background: rgba(234,105,38,0.06);
+    border: 1px solid rgba(234,105,38,0.14);
+    transition: all 0.25s ease;
+  }
+  .ds-chip:hover {
+    color: #fff;
+    background: linear-gradient(135deg, #ea6926 0%, #ff8c42 100%);
+    border-color: transparent;
+    box-shadow: 0 4px 12px rgba(234,105,38,0.28);
   }
 
-  .ds-credential-dot {
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: var(--ds-primary);
-    flex-shrink: 0;
+  /* CTA */
+  .ds-cta {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.4rem;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: ${tokens.fonts.display};
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: ${tokens.onSurface};
+    transition: color 0.25s ease, gap 0.25s ease;
   }
+  .ds-cta svg { transition: transform 0.3s cubic-bezier(0.22,1,0.36,1); }
+  .ds-card:hover .ds-cta { color: ${tokens.primary}; gap: 0.75rem; }
+  .ds-card:hover .ds-cta svg { transform: translateX(3px); }
 
-  @media (max-width: 1024px) {
-    .ds-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 640px) {
+  @media (max-width: 860px) {
     .ds-grid { grid-template-columns: 1fr; }
-    .domains-section { padding: clamp(48px, 6vw, 80px) 0; }
+  }
+  @media (max-width: 480px) {
+    .ds-points { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ds-card, .ds-icon-wrap { transition: none; }
   }
 `;
-
-function DomainCard({ domain }) {
-  return (
-    <div className="ds-card">
-      <div className="ds-card-titles">
-        <h3 className="ds-card-title">{domain.title}</h3>
-        {domain.subtitle && (
-          <p className="ds-card-subtitle">{domain.subtitle}</p>
-        )}
-      </div>
-
-      <hr className="ds-divider" />
-
-      <ul className="ds-points">
-        {domain.points.map((point, i) => (
-          <li key={i} className="ds-point">
-            <span className="ds-bullet" aria-hidden="true" />
-            <span>{point}</span>
-          </li>
-        ))}
-      </ul>
-
-      {domain.credentials && (
-        <div className="ds-credentials">
-          <p className="ds-credentials-label">{domain.credentials.label}</p>
-          <ul className="ds-credentials-list">
-            {domain.credentials.items.map((cred, i) => (
-              <li key={i} className="ds-credential-item">
-                <span className="ds-credential-dot" aria-hidden="true" />
-                {cred}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </div>
-  );
-}
-
-export function DomainsSection() {
-  const primary   = tokens.primary      ?? "#6366f1";
-  const surface   = tokens.surface      ?? "#ffffff";
-  const onBg      = tokens.onBackground ?? "#0f0f11";
-  const onSurface = tokens.onSurface    ?? "#0f0f11";
-  const secondary = tokens.secondary    ?? "#6b7280";
-  const border    = tokens.borderSubtle ?? "rgba(0,0,0,0.07)";
-
-  const cssVars = {
-    "--ds-primary":        primary,
-    "--ds-surface":        surface,
-    "--ds-on-background":  onBg,
-    "--ds-on-surface":     onSurface,
-    "--ds-secondary":      secondary,
-    "--ds-border":         border,
-    "--ds-eyebrow-bg":     `color-mix(in srgb, ${primary} 7%, transparent)`,
-    "--ds-eyebrow-border": `color-mix(in srgb, ${primary} 18%, transparent)`,
-    "--ds-icon-bg":        `color-mix(in srgb, ${primary} 10%, transparent)`,
-    "--ds-icon-border":    `color-mix(in srgb, ${primary} 16%, transparent)`,
-    "--ds-card-shimmer":   `color-mix(in srgb, ${primary} 3.5%, transparent)`,
-    "--ds-top-line":       `color-mix(in srgb, ${primary} 22%, transparent)`,
-  };
-
-  return (
-    <>
-      <style>{INJECTED_CSS}</style>
-
-      <section
-        className="domains-section"
-        style={cssVars}
-        aria-labelledby="ds-title"
-      >
-        <div className="domains-glow" aria-hidden="true" />
-
-        <div className="domains-inner">
-          <Container>
-            <FadeIn>
-              <div className="ds-header">
-                <span className="ds-eyebrow">
-                  <span className="ds-eyebrow-dot" />
-                  What We Do
-                </span>
-                <h2 id="ds-title" className="ds-title">
-                  Our Domains
-                </h2>
-                <p className="ds-lead">
-                  From building AI literacy to ensuring regulatory compliance —
-                  GovernAI delivers enterprise-grade governance across every
-                  layer of your AI operations.
-                </p>
-              </div>
-            </FadeIn>
-
-            <FadeIn>
-              <div className="ds-grid">
-                {DOMAINS.map((domain) => (
-                  <DomainCard key={domain.id} domain={domain} />
-                ))}
-              </div>
-            </FadeIn>
-          </Container>
-        </div>
-      </section>
-    </>
-  );
-}

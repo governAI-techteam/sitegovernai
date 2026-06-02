@@ -150,19 +150,19 @@ export function NavBar({ activeSection }) {
                   padding: '10px 24px',
                   border: 'none',
                   borderRadius: 12,
-                  background: tokens.primaryGrad,
+                  background: 'linear-gradient(135deg, #191c1e 0%, #2d3133 100%)',
                   color: '#fff',
                   fontFamily: tokens.fonts.display,
                   fontSize: 13,
                   fontWeight: 700,
                   cursor: 'pointer',
                   letterSpacing: '0.02em',
-                  boxShadow: '0 4px 16px rgba(234, 105, 38, 0.3)',
+                  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.25)',
                   position: 'relative',
                   overflow: 'hidden',
                 }}
               >
-                <span style={{ position: 'relative', zIndex: 1 }}>Get in Touch</span>
+                <span style={{ position: 'relative', zIndex: 1 }}>Contact Us</span>
               </motion.button>
 
               {/* Hamburger */}
@@ -305,17 +305,17 @@ export function NavBar({ activeSection }) {
                   padding: '16px 28px',
                   border: 'none',
                   borderRadius: 14,
-                  background: tokens.primaryGrad,
+                  background: 'linear-gradient(135deg, #191c1e 0%, #2d3133 100%)',
                   color: '#fff',
                   fontFamily: tokens.fonts.display,
                   fontSize: 16,
                   fontWeight: 700,
                   cursor: 'pointer',
-                  boxShadow: '0 6px 24px rgba(234, 105, 38, 0.35)',
+                  boxShadow: '0 6px 24px rgba(0, 0, 0, 0.3)',
                   textAlign: 'center',
                 }}
               >
-                Get in Touch
+                Contact Us
               </motion.button>
             </motion.div>
           </>

@@ -111,7 +111,6 @@ export default function ClientsMarqueeSection() {
         {CLIENT_GROUPS.map((group, i) => (
           <div key={group.title} style={styles.rowGroup}>
             <div style={styles.groupLabelWrap}>
-              <div style={{ width: 6, height: 6, borderRadius: '50%', background: ORANGE, flexShrink: 0, opacity: 0.7 }} />
               <p style={styles.groupLabel}>{group.title}</p>
             </div>
             <div style={styles.marqueeOuter} className="marquee-outer">
@@ -168,21 +167,21 @@ const styles = {
   },
 
   eyebrow: {
-    fontSize: "10px",
-    fontWeight: 600,
-    letterSpacing: "0.18em",
+    fontSize: "11px",
+    fontWeight: 700,
+    letterSpacing: "0.2em",
     textTransform: "uppercase",
     color: ORANGE,
-    opacity: 0.8,
-    margin: "0 0 10px 0",
+    opacity: 1,
+    margin: "0 0 12px 0",
   },
 
   heading: {
-    fontSize: "clamp(22px, 3.2vw, 34px)",
-    fontWeight: 600,
-    letterSpacing: "-0.025em",
-    color: tokens.secondary,
-    lineHeight: 1.15,
+    fontSize: "clamp(26px, 3.6vw, 42px)",
+    fontWeight: 800,
+    letterSpacing: "-0.035em",
+    color: tokens.onSurface,
+    lineHeight: 1.12,
     margin: "0 0 12px 0",
   },
 
@@ -199,12 +198,13 @@ const styles = {
   },
 
   subheading: {
-    fontSize: "clamp(12px, 1.2vw, 13px)",
+    fontSize: "clamp(13px, 1.2vw, 15px)",
     color: tokens.secondary,
-    opacity: 0.5,
-    maxWidth: "420px",
+    opacity: 0.75,
+    maxWidth: "460px",
     margin: "0 auto",
     lineHeight: 1.65,
+    fontWeight: 400,
   },
 
   fullWidthRows: {
@@ -224,23 +224,22 @@ const styles = {
   },
 
   groupLabelWrap: {
-    maxWidth: "900px",
-    margin: "0 auto",
     width: "100%",
-    paddingLeft: "clamp(16px, 4vw, 48px)",
+    paddingLeft: "clamp(20px, 6vw, 80px)",
     paddingRight: "clamp(16px, 4vw, 48px)",
+    boxSizing: "border-box",
     display: "flex",
     alignItems: "center",
-    gap: "10px",
   },
 
   groupLabel: {
-    fontSize: "14px",
-    fontWeight: 600,
-    letterSpacing: "0.04em",
+    fontSize: "clamp(20px, 2.1vw, 28px)",
+    fontWeight: 800,
+    letterSpacing: "-0.025em",
     color: tokens.onSurface,
     margin: 0,
     fontFamily: tokens.fonts.display,
+    lineHeight: 1.2,
   },
 
   marqueeOuter: {
@@ -304,24 +303,24 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
     padding: "24px 48px",
-    borderRadius: 14,
-    background: "#fff",
-    backdropFilter: "blur(6px)",
-    WebkitBackdropFilter: "blur(6px)",
-    border: "1px solid rgba(0,0,0,0.08)",
-    boxShadow: "0 2px 12px rgba(0,0,0,0.04)",
+    borderRadius: 16,
+    background: "linear-gradient(165deg, #fffdfb 0%, #fffaf6 100%)",
+    backdropFilter: "blur(24px) saturate(140%)",
+    WebkitBackdropFilter: "blur(24px) saturate(140%)",
+    border: "1px solid rgba(234,105,38,0.08)",
+    boxShadow: "0 4px 24px rgba(234,105,38,0.05), inset 0 1px 0 rgba(255,255,255,0.7)",
     width: 224,
     minHeight: 160,
     boxSizing: "border-box",
     overflow: "hidden",
-    transition: "background 0.28s ease, box-shadow 0.28s ease",
+    transition: "all 0.32s cubic-bezier(0.25, 0.1, 0.25, 1)",
   },
 
   logoImage: {
     width: 220,
     height: 112,
     objectFit: "contain",
-    opacity: 0.85,
+    opacity: 0.92,
     display: "block",
   },
 
@@ -345,8 +344,8 @@ const styles = {
   },
 
   statValue: {
-    fontSize: "clamp(20px, 2.8vw, 30px)",
-    fontWeight: 600,
+    fontSize: "clamp(24px, 3vw, 36px)",
+    fontWeight: 800,
     color: ORANGE,
     letterSpacing: "-0.03em",
     lineHeight: 1,
@@ -355,10 +354,10 @@ const styles = {
   statLabel: {
     fontSize: "11px",
     color: tokens.secondary,
-    opacity: 0.4,
-    letterSpacing: "0.07em",
+    opacity: 0.7,
+    letterSpacing: "0.08em",
     textTransform: "uppercase",
-    fontWeight: 500,
+    fontWeight: 600,
   },
 };
 
@@ -378,9 +377,10 @@ const css = `
   }
 
   .logo-item:hover .logo-placeholder {
-    background: #ffffff !important;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.15), 0 4px 12px rgba(0,0,0,0.08) !important;
+    background: linear-gradient(165deg, #fffaf6 0%, #fff4ea 100%) !important;
+    box-shadow: 0 14px 40px rgba(234,105,38,0.12), inset 0 1px 0 rgba(255,255,255,0.8) !important;
     transform: translateY(-4px);
+    border-color: rgba(234,105,38,0.22) !important;
   }
 
   .logo-item:hover img {

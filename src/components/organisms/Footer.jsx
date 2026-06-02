@@ -285,7 +285,7 @@ export function Footer() {
             }}>
               Built by{' '}
               <a
-                href="https://www.linkedin.com/in/divyakush-gupta-a92a66319/"
+                href="https://linkedin.com/in/divyakush-punjabi"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -297,7 +297,7 @@ export function Footer() {
                 onMouseEnter={(e) => e.currentTarget.style.color = '#ea6926'}
                 onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(234, 105, 38, 0.6)'}
               >
-                Divyakush Gupta
+                Divyakush Punjabi
               </a>
             </p>
           </div>
@@ -319,7 +319,7 @@ export function Footer() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.6, y: 20 }}
             transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-            whileHover={{ scale: 1.1, boxShadow: '0 8px 32px rgba(234, 105, 38, 0.4)' }}
+            whileHover={{ scale: 1.1, boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)' }}
             whileTap={{ scale: 0.9 }}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             style={{
@@ -330,14 +330,14 @@ export function Footer() {
               height: 48,
               borderRadius: 14,
               border: 'none',
-              background: tokens.primaryGrad,
+              background: 'linear-gradient(135deg, #191c1e 0%, #2d3133 100%)',
               color: '#fff',
               cursor: 'pointer',
               zIndex: 900,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              boxShadow: '0 6px 24px rgba(234, 105, 38, 0.35)',
+              boxShadow: '0 6px 24px rgba(0, 0, 0, 0.3)',
             }}
             aria-label="Scroll to top"
           >

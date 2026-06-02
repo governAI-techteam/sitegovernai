@@ -124,8 +124,8 @@ export default function InsightsCarouselSection() {
           style={{
             display: 'flex',
             gap: 'clamp(12px, 1.5vw, 24px)',
-            transition: 'transform 800ms cubic-bezier(0.65, 0, 0.35, 1)',
-            transform: `translateX(calc(15% - ${current} * (70% + clamp(12px, 1.5vw, 24px))))`,
+            transition: 'transform 850ms cubic-bezier(0.22, 1, 0.36, 1)',
+            transform: `translateX(calc(22% - ${current} * (56% + clamp(12px, 1.5vw, 24px))))`,
             alignItems: 'center',
           }}
         >
@@ -136,15 +136,16 @@ export default function InsightsCarouselSection() {
                 key={item.id}
                 onClick={() => !isActive && goTo(i)}
                 style={{
-                  flex: '0 0 70%',
+                  flex: '0 0 56%',
                   position: 'relative',
                   aspectRatio: '2 / 1',
                   overflow: 'hidden',
-                  borderRadius: tokens.radius['3xl'],
+                  borderRadius: 29,
                   background: '#1a1a1a',
-                  transition: 'all 800ms cubic-bezier(0.65, 0, 0.35, 1)',
-                  opacity: isActive ? 1 : 0.5,
-                  transform: isActive ? 'scale(1)' : 'scale(0.94)',
+                  transition: 'all 850ms cubic-bezier(0.22, 1, 0.36, 1)',
+                  opacity: isActive ? 1 : 0.45,
+                  transform: isActive ? 'scale(1)' : 'scale(0.92)',
+                  filter: isActive ? 'none' : 'saturate(0.85)',
                   cursor: isActive ? 'default' : 'pointer',
                   boxShadow: isActive ? tokens.shadow.xl : tokens.shadow.md,
                 }}
@@ -161,83 +162,91 @@ export default function InsightsCarouselSection() {
                     height: '100%',
                     objectFit: 'cover',
                     objectPosition: 'center',
+                    transform: isActive ? 'scale(1.04)' : 'scale(1)',
+                    transition: 'transform 7000ms cubic-bezier(0.22, 1, 0.36, 1)',
                   }}
                 />
 
-                {/* Gradient Overlay */}
+                {/* Bottom Gradient Band (covers lower portion only) */}
                 <div style={{
                   position: 'absolute',
-                  inset: 0,
-                  background: 'linear-gradient(90deg, rgba(20,20,20,0.92) 0%, rgba(20,20,20,0.78) 35%, rgba(20,20,20,0.35) 65%, rgba(20,20,20,0.05) 100%)',
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  height: '42%',
+                  background: 'linear-gradient(to top, rgba(10,10,12,0.94) 0%, rgba(10,10,12,0.82) 38%, rgba(10,10,12,0.45) 72%, rgba(10,10,12,0) 100%)',
+                  pointerEvents: 'none',
                 }} />
 
-                {/* Content */}
+                {/* Content anchored to bottom band */}
                 <div style={{
-                  position: 'relative',
+                  position: 'absolute',
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
                   zIndex: 2,
-                  height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  padding: 'clamp(24px, 3vw, 56px)',
-                  maxWidth: '58%',
+                  gap: 'clamp(6px, 0.8vw, 10px)',
+                  padding: 'clamp(18px, 2.6vw, 36px)',
                 }}>
-                  <div style={{
+                  {/* Location pill */}
+                  {item.location && (
+                    <div style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 6,
+                      alignSelf: 'flex-start',
+                      padding: '5px 11px 5px 8px',
+                      borderRadius: 100,
+                      background: 'rgba(255,255,255,0.12)',
+                      backdropFilter: 'blur(8px)',
+                      WebkitBackdropFilter: 'blur(8px)',
+                      border: '1px solid rgba(255,255,255,0.18)',
+                    }}>
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ff8c42" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+                        <circle cx="12" cy="10" r="3" />
+                      </svg>
+                      <span style={{
+                        color: '#fff',
+                        fontSize: 'clamp(11px, 0.85vw, 13px)',
+                        fontWeight: 600,
+                        letterSpacing: '0.01em',
+                        fontFamily: tokens.fonts.body,
+                      }}>{item.location}</span>
+                    </div>
+                  )}
+
+                  {/* Title */}
+                  <h3 style={{
                     color: '#fff',
-                    fontSize: 'clamp(16px, 1.5vw, 24px)',
+                    fontSize: 'clamp(17px, 1.6vw, 26px)',
                     fontWeight: 700,
                     fontFamily: tokens.fonts.display,
                     letterSpacing: '-0.02em',
-                    lineHeight: 1.2,
+                    lineHeight: 1.18,
+                    margin: 0,
                   }}>
                     {item.title}
-                  </div>
+                  </h3>
 
+                  {/* Description */}
                   <p style={{
-                    color: 'rgba(255,255,255,0.85)',
-                    fontSize: 'clamp(13px, 1.1vw, 18px)',
-                    lineHeight: 1.55,
+                    color: 'rgba(255,255,255,0.82)',
+                    fontSize: 'clamp(12px, 1vw, 15px)',
+                    lineHeight: 1.5,
                     fontFamily: tokens.fonts.body,
                     fontWeight: 400,
+                    margin: 0,
+                    maxWidth: '92%',
+                    display: '-webkit-box',
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: 'vertical',
+                    overflow: 'hidden',
                   }}>
                     {item.description}
                   </p>
-
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 8,
-                  }}>
-                    <div style={{
-                      width: 32,
-                      height: 32,
-                      borderRadius: '50%',
-                      background: 'linear-gradient(135deg, #ea6926, #ff8c42)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}>
-                      <span style={{
-                        fontFamily: tokens.fonts.display,
-                        fontSize: 14,
-                        fontWeight: 800,
-                        color: '#fff',
-                      }}>G</span>
-                    </div>
-                    <div>
-                      <div style={{
-                        color: '#fff',
-                        fontSize: 'clamp(12px, 0.9vw, 14px)',
-                        fontWeight: 600,
-                        fontFamily: tokens.fonts.display,
-                      }}>GovernAI</div>
-                      <div style={{
-                        color: 'rgba(255,255,255,0.6)',
-                        fontSize: 'clamp(11px, 0.8vw, 13px)',
-                        fontFamily: tokens.fonts.body,
-                      }}>AI Governance & Advisory</div>
-                    </div>
-                  </div>
                 </div>
               </article>
             );
