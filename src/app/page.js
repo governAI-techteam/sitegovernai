@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
+import { motion } from 'framer-motion';
 import { useActiveSection } from '@/hooks/useActiveSection';
 import { ScrollProvider } from '@/context/ScrollContext';
 import { NavBar } from '@/components/organisms/NavBar';
@@ -13,7 +14,28 @@ import InsightsCarouselSection from '@/components/organisms/InsightsCarouselSect
 import ImageCard from '@/components/molecules/ImageCard';
 import { Footer } from '@/components/organisms/Footer';
 import { Preloader } from '@/components/molecules/Preloader';
-import { FadeIn } from '@/components/atoms/FadeIn';
+import { ScrollProgress } from '@/components/atoms/ScrollProgress';
+import { Reveal } from '@/components/atoms/Reveal';
+
+function Divider() {
+  return (
+    <motion.div
+      aria-hidden="true"
+      initial={{ scaleX: 0, opacity: 0 }}
+      whileInView={{ scaleX: 1, opacity: 1 }}
+      viewport={{ once: true, amount: 0.6 }}
+      transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+      style={{
+        maxWidth: 720,
+        margin: '0 auto',
+        height: 1,
+        transformOrigin: 'center',
+        background:
+          'linear-gradient(90deg, transparent, rgba(234,105,38,0.25), transparent)',
+      }}
+    />
+  );
+}
 
 export default function GovernAI() {
   const sectionRefs = useRef({});
@@ -22,6 +44,7 @@ export default function GovernAI() {
   return (
     <ScrollProvider sectionRefs={sectionRefs}>
       <Preloader />
+      <ScrollProgress />
 
       <NavBar activeSection={activeSection} />
 
@@ -36,30 +59,27 @@ export default function GovernAI() {
           <DomainsSection />
         </section>
 
-        {/* Divider */}
-        <div style={{ maxWidth: 720, margin: '0 auto', height: 1, background: 'linear-gradient(90deg, transparent, rgba(234,105,38,0.15), transparent)' }} />
+        <Divider />
 
         {/* 3. Institutional Clients Served */}
         <section id="platform" ref={(el) => (sectionRefs.current['platform'] = el)}>
           <ClientsMarqueeSection />
         </section>
 
-        {/* Divider */}
-        <div style={{ maxWidth: 720, margin: '0 auto', height: 1, background: 'linear-gradient(90deg, transparent, rgba(234,105,38,0.15), transparent)' }} />
+        <Divider />
 
         {/* 4. Insights */}
         <section id="insights" ref={(el) => (sectionRefs.current['insights'] = el)}>
           <InsightsCarouselSection />
         </section>
 
-        {/* Divider */}
-        <div style={{ maxWidth: 720, margin: '0 auto', height: 1, background: 'linear-gradient(90deg, transparent, rgba(234,105,38,0.15), transparent)' }} />
+        <Divider />
 
         {/* 5. Meet the Team (Founder + Team + Advisor) */}
         <section id="team" ref={(el) => (sectionRefs.current['team'] = el)}>
-          <FadeIn delay={0.2} yOffset={40}>
+          <Reveal y={48} delay={0.1}>
             <ImageCard />
-          </FadeIn>
+          </Reveal>
         </section>
       </main>
 

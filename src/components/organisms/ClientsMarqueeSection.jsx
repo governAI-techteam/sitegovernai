@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 import { tokens } from "@/theme/tokens";
 
 const LOGO_PATH = "/logos/";
@@ -86,7 +87,13 @@ export default function ClientsMarqueeSection() {
 
       {/* ── Header ── */}
       <div style={styles.container}>
-        <div style={styles.header} className="cm-reveal">
+        <motion.div
+          style={styles.header}
+          initial={{ opacity: 0, y: 28, filter: 'blur(8px)' }}
+          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        >
           <span style={styles.eyebrow}>
             <span style={styles.eyebrowDot} />
             Trusted By
@@ -99,10 +106,16 @@ export default function ClientsMarqueeSection() {
             A growing network of government bodies, universities, and research
             institutions across India and beyond.
           </p>
-        </div>
+        </motion.div>
 
         {/* ── Stats band ── */}
-        <div style={styles.statsBand} className="cm-stats">
+        <motion.div
+          style={styles.statsBand}
+          initial={{ opacity: 0, y: 28, filter: 'blur(8px)' }}
+          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.8, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+        >
           {STATS.map((stat, i) => (
             <React.Fragment key={stat.label}>
               {i > 0 && <span style={styles.statDivider} aria-hidden="true" />}
@@ -112,13 +125,20 @@ export default function ClientsMarqueeSection() {
               </div>
             </React.Fragment>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       {/* ── Logo rows ── */}
       <div style={styles.fullWidthRows}>
         {CLIENT_GROUPS.map((group, i) => (
-          <div key={group.title} style={styles.rowGroup}>
+          <motion.div
+            key={group.title}
+            style={styles.rowGroup}
+            initial={{ opacity: 0, y: 36 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.7, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+          >
             <div style={styles.groupLabelWrap}>
               <span style={styles.groupIndexDot} aria-hidden="true" />
               <p style={styles.groupLabel}>{group.title}</p>
@@ -136,7 +156,7 @@ export default function ClientsMarqueeSection() {
                 reverse={i % 2 !== 0}
               />
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>
@@ -465,14 +485,6 @@ const css = `
     from { transform: translateX(-50%); }
     to   { transform: translateX(0); }
   }
-
-  @keyframes cmReveal {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .cm-reveal { animation: cmReveal 0.7s cubic-bezier(0.22,1,0.36,1) both; }
-  .cm-stats { animation: cmReveal 0.7s cubic-bezier(0.22,1,0.36,1) 0.12s both; }
 
   .marquee-outer:hover .marquee-track {
     animation-play-state: paused !important;

@@ -1,29 +1,25 @@
 'use client';
 
 import { useState, useCallback, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { insightsData } from '@/config/insightsData';
 import { tokens } from '@/theme/tokens';
 
 export default function InsightsCarouselSection() {
   const [current, setCurrent] = useState(0);
-  const [direction, setDirection] = useState(0);
   const [paused, setPaused] = useState(false);
   const total = insightsData.length;
   const trackRef = useRef(null);
 
   const goTo = useCallback((idx) => {
-    setDirection(idx > current ? 1 : -1);
     setCurrent(idx);
-  }, [current]);
+  }, []);
 
   const next = useCallback(() => {
-    setDirection(1);
     setCurrent((p) => (p + 1) % total);
   }, [total]);
 
   const prev = useCallback(() => {
-    setDirection(-1);
     setCurrent((p) => (p - 1 + total) % total);
   }, [total]);
 
@@ -31,7 +27,6 @@ export default function InsightsCarouselSection() {
   useEffect(() => {
     if (paused) return;
     const timer = setTimeout(() => {
-      setDirection(1);
       setCurrent((p) => (p + 1) % total);
     }, 8000);
     return () => clearTimeout(timer);

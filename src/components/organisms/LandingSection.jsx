@@ -67,7 +67,7 @@ export function LandingSection({ sectionRefs }) {
         <Blob top="-15%" right="5%" size={500} />
       </div>
       <div className="hide-on-mobile">
-        <Blob bottom="10%" left="-5%" size={350} color="rgba(0,98,161,.07)" />
+        <Blob bottom="10%" left="-5%" size={350} color="rgba(234,105,38,.06)" />
       </div>
 
       {/* Subtle dot pattern */}
@@ -103,7 +103,7 @@ export function LandingSection({ sectionRefs }) {
               style={{
                 fontFamily: tokens.fonts.display,
                 fontSize: 'clamp(28px, 3.8vw, 50px)',
-                fontWeight: 700,
+                fontWeight: 800,
                 letterSpacing: '-0.04em',
                 lineHeight: 1.06,
                 marginBottom: 'clamp(14px, 2vw, 22px)',

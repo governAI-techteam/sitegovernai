@@ -190,22 +190,24 @@ export default function IndiaConquestMap() {
           );
         })}
 
-        {/* Completed connection lines — bold */}
-        <g style={{ pointerEvents: 'none' }}>
-        {connections.map((c) => (
-          <g key={c.key}>
-            <line
-              x1={c.from[0]} y1={c.from[1]} x2={c.to[0]} y2={c.to[1]}
-              stroke={ORANGE} strokeWidth={22} strokeLinecap="round"
-              opacity={0.25} filter="url(#lineGlow)"
-            />
-            <line
-              x1={c.from[0]} y1={c.from[1]} x2={c.to[0]} y2={c.to[1]}
-              stroke="url(#capGrad)" strokeWidth={12} strokeLinecap="round"
-            />
+        {/* Completed connection lines — bold (hidden once the map is fully covered) */}
+        {!finished && (
+          <g style={{ pointerEvents: 'none' }}>
+          {connections.map((c) => (
+            <g key={c.key}>
+              <line
+                x1={c.from[0]} y1={c.from[1]} x2={c.to[0]} y2={c.to[1]}
+                stroke={ORANGE} strokeWidth={22} strokeLinecap="round"
+                opacity={0.25} filter="url(#lineGlow)"
+              />
+              <line
+                x1={c.from[0]} y1={c.from[1]} x2={c.to[0]} y2={c.to[1]}
+                stroke="url(#capGrad)" strokeWidth={12} strokeLinecap="round"
+              />
+            </g>
+          ))}
           </g>
-        ))}
-        </g>
+        )}
 
         {/* Currently travelling line (draws slowly) */}
         {travelling && (

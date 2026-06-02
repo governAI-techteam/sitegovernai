@@ -129,7 +129,14 @@ function DomainCard({ domain, idx }) {
           </div>
         )}
 
-        <button className="ds-cta" type="button">
+        <button
+          className="ds-cta"
+          type="button"
+          onClick={() => {
+            const el = document.getElementById('team');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }}
+        >
           <span>Learn more</span>
           <ArrowIcon />
         </button>

@@ -135,6 +135,18 @@ a:focus-visible {
   border-radius: 4px;
 }
 
+/* ── Accessibility: honor reduced-motion preference ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* ── Shimmer Loading ── */
 @keyframes shimmer {
   0% { background-position: -1000px 0; }
