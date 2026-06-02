@@ -68,6 +68,7 @@ export const insightsData = [
     title: 'India AI Impact Summit 2026',
     description: 'Interacting with young innovators from Sainik School Sujanpur Tira at the India AI Impact Summit 2026 — showcasing impactful AI solutions.',
     location: 'New Delhi',
+    focus: 'center 38%',
   },
   {
     id: 11,
@@ -75,6 +76,7 @@ export const insightsData = [
     title: 'Meeting Dr. Rumman Chowdhury',
     description: 'At the India AI Impact Summit 2026 — gaining valuable insights into the evolving challenges of AI governance, policy, and democratic systems.',
     location: 'New Delhi',
+    focus: 'center 30%',
   },
   {
     id: 12,

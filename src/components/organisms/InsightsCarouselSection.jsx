@@ -8,8 +8,8 @@ import { tokens } from '@/theme/tokens';
 export default function InsightsCarouselSection() {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [paused, setPaused] = useState(false);
   const total = insightsData.length;
-  const autoplayRef = useRef(null);
   const trackRef = useRef(null);
 
   const goTo = useCallback((idx) => {
@@ -27,17 +27,18 @@ export default function InsightsCarouselSection() {
     setCurrent((p) => (p - 1 + total) % total);
   }, [total]);
 
-  // Autoplay
+  // Autoplay — restarts whenever `current` changes (manual nav resets the timer)
   useEffect(() => {
-    autoplayRef.current = setInterval(next, 5000);
-    return () => clearInterval(autoplayRef.current);
-  }, [next]);
+    if (paused) return;
+    const timer = setTimeout(() => {
+      setDirection(1);
+      setCurrent((p) => (p + 1) % total);
+    }, 8000);
+    return () => clearTimeout(timer);
+  }, [current, paused, total]);
 
-  const pauseAutoplay = () => clearInterval(autoplayRef.current);
-  const resumeAutoplay = () => {
-    clearInterval(autoplayRef.current);
-    autoplayRef.current = setInterval(next, 5000);
-  };
+  const pauseAutoplay = () => setPaused(true);
+  const resumeAutoplay = () => setPaused(false);
 
   // Touch/swipe support
   const touchStartX = useRef(0);
@@ -56,14 +57,27 @@ export default function InsightsCarouselSection() {
   return (
     <div
       style={{
-        background: tokens.surface,
+        background: 'linear-gradient(180deg, #fafbfc 0%, #f7f9fb 50%, #fff6ef 100%)',
         padding: 'clamp(72px, 8vw, 120px) 0',
         overflow: 'hidden',
         position: 'relative',
       }}
-      onMouseEnter={pauseAutoplay}
-      onMouseLeave={resumeAutoplay}
     >
+      {/* Ambient glow */}
+      <div aria-hidden="true" style={{
+        position: 'absolute',
+        top: '8%',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: '900px',
+        height: '500px',
+        maxWidth: '90%',
+        background: 'radial-gradient(ellipse at center, rgba(234,105,38,0.1) 0%, transparent 70%)',
+        filter: 'blur(60px)',
+        pointerEvents: 'none',
+        zIndex: 0,
+      }} />
+
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -71,41 +85,56 @@ export default function InsightsCarouselSection() {
         viewport={{ once: true }}
         transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
         style={{
+          position: 'relative',
+          zIndex: 1,
           textAlign: 'center',
-          maxWidth: 720,
+          maxWidth: 760,
           margin: '0 auto',
           padding: '0 24px',
           marginBottom: 'clamp(40px, 5vw, 72px)',
         }}
       >
-        <p style={{
-          fontSize: 13,
-          fontWeight: 600,
-          letterSpacing: '0.14em',
+        <span style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '8px',
+          fontSize: 11,
+          fontWeight: 700,
+          letterSpacing: '0.2em',
           textTransform: 'uppercase',
           color: tokens.primary,
-          marginBottom: 16,
+          background: 'rgba(234,105,38,0.07)',
+          border: '1px solid rgba(234,105,38,0.18)',
+          padding: '6px 16px',
+          borderRadius: '999px',
+          marginBottom: 18,
           fontFamily: tokens.fonts.body,
         }}>
+          <span style={{ width: 6, height: 6, borderRadius: '50%', background: tokens.primary }} />
           Insights & Impact
-        </p>
+        </span>
         <h2 style={{
           fontFamily: tokens.fonts.display,
-          fontSize: 'clamp(28px, 4vw, 48px)',
-          fontWeight: 700,
+          fontSize: 'clamp(28px, 4vw, 50px)',
+          fontWeight: 800,
           color: tokens.onSurface,
-          lineHeight: 1.08,
-          letterSpacing: '-0.03em',
+          lineHeight: 1.06,
+          letterSpacing: '-0.04em',
           margin: '0 0 16px',
         }}>
           Recognized for Our Pioneering Work in{' '}
-          <span style={{ color: tokens.primary }}>AI Governance</span>
+          <span style={{
+            background: 'linear-gradient(135deg, #ea6926 0%, #ff8c42 100%)',
+            WebkitBackgroundClip: 'text',
+            backgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+          }}>AI Governance</span>
         </h2>
         <p style={{
           fontSize: 'clamp(15px, 1.2vw, 18px)',
           color: tokens.secondary,
           lineHeight: 1.65,
-          maxWidth: 520,
+          maxWidth: 540,
           margin: '0 auto',
           fontFamily: tokens.fonts.body,
         }}>
@@ -116,7 +145,7 @@ export default function InsightsCarouselSection() {
       {/* Carousel */}
       <div
         ref={trackRef}
-        style={{ position: 'relative', overflow: 'hidden' }}
+        style={{ position: 'relative', overflow: 'hidden', zIndex: 1 }}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
@@ -138,19 +167,39 @@ export default function InsightsCarouselSection() {
                 style={{
                   flex: '0 0 56%',
                   position: 'relative',
-                  aspectRatio: '2 / 1',
+                  aspectRatio: '16 / 11',
                   overflow: 'hidden',
                   borderRadius: 29,
                   background: '#1a1a1a',
                   transition: 'all 850ms cubic-bezier(0.22, 1, 0.36, 1)',
-                  opacity: isActive ? 1 : 0.45,
-                  transform: isActive ? 'scale(1)' : 'scale(0.92)',
-                  filter: isActive ? 'none' : 'saturate(0.85)',
+                  opacity: isActive ? 1 : 0.4,
+                  transform: isActive ? 'scale(1)' : 'scale(0.9)',
+                  filter: isActive ? 'none' : 'saturate(0.8) brightness(0.95)',
                   cursor: isActive ? 'default' : 'pointer',
-                  boxShadow: isActive ? tokens.shadow.xl : tokens.shadow.md,
+                  boxShadow: isActive
+                    ? '0 30px 70px rgba(16,24,40,0.28), 0 12px 28px rgba(234,105,38,0.12)'
+                    : '0 12px 32px rgba(16,24,40,0.12)',
                 }}
               >
-                {/* Image */}
+                {/* Blurred backdrop fill (prevents letterbox bars, no subject ever cut) */}
+                <img
+                  src={item.image}
+                  alt=""
+                  aria-hidden="true"
+                  loading={i < 3 ? 'eager' : 'lazy'}
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                    transform: 'scale(1.15)',
+                    filter: 'blur(28px) saturate(1.1) brightness(0.7)',
+                  }}
+                />
+
+                {/* Foreground image — full subject always visible */}
                 <img
                   src={item.image}
                   alt={item.title}
@@ -160,9 +209,9 @@ export default function InsightsCarouselSection() {
                     inset: 0,
                     width: '100%',
                     height: '100%',
-                    objectFit: 'cover',
-                    objectPosition: 'center',
-                    transform: isActive ? 'scale(1.04)' : 'scale(1)',
+                    objectFit: 'contain',
+                    objectPosition: item.focus || 'center top',
+                    transform: isActive ? 'scale(1.02)' : 'scale(1)',
                     transition: 'transform 7000ms cubic-bezier(0.22, 1, 0.36, 1)',
                   }}
                 />
@@ -173,8 +222,8 @@ export default function InsightsCarouselSection() {
                   left: 0,
                   right: 0,
                   bottom: 0,
-                  height: '42%',
-                  background: 'linear-gradient(to top, rgba(10,10,12,0.94) 0%, rgba(10,10,12,0.82) 38%, rgba(10,10,12,0.45) 72%, rgba(10,10,12,0) 100%)',
+                  height: '55%',
+                  background: 'linear-gradient(to top, rgba(8,8,10,0.95) 0%, rgba(8,8,10,0.85) 30%, rgba(8,8,10,0.5) 65%, rgba(8,8,10,0) 100%)',
                   pointerEvents: 'none',
                 }} />
 
@@ -187,8 +236,11 @@ export default function InsightsCarouselSection() {
                   zIndex: 2,
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: 'clamp(6px, 0.8vw, 10px)',
-                  padding: 'clamp(18px, 2.6vw, 36px)',
+                  gap: 'clamp(8px, 0.9vw, 12px)',
+                  padding: 'clamp(22px, 3vw, 44px)',
+                  opacity: isActive ? 1 : 0,
+                  transform: isActive ? 'translateY(0)' : 'translateY(12px)',
+                  transition: 'opacity 600ms ease 150ms, transform 600ms cubic-bezier(0.22,1,0.36,1) 150ms',
                 }}>
                   {/* Location pill */}
                   {item.location && (
@@ -197,12 +249,12 @@ export default function InsightsCarouselSection() {
                       alignItems: 'center',
                       gap: 6,
                       alignSelf: 'flex-start',
-                      padding: '5px 11px 5px 8px',
+                      padding: '6px 13px 6px 9px',
                       borderRadius: 100,
-                      background: 'rgba(255,255,255,0.12)',
-                      backdropFilter: 'blur(8px)',
-                      WebkitBackdropFilter: 'blur(8px)',
-                      border: '1px solid rgba(255,255,255,0.18)',
+                      background: 'rgba(255,255,255,0.14)',
+                      backdropFilter: 'blur(10px)',
+                      WebkitBackdropFilter: 'blur(10px)',
+                      border: '1px solid rgba(255,255,255,0.22)',
                     }}>
                       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ff8c42" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                         <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
@@ -212,7 +264,7 @@ export default function InsightsCarouselSection() {
                         color: '#fff',
                         fontSize: 'clamp(11px, 0.85vw, 13px)',
                         fontWeight: 600,
-                        letterSpacing: '0.01em',
+                        letterSpacing: '0.02em',
                         fontFamily: tokens.fonts.body,
                       }}>{item.location}</span>
                     </div>
@@ -221,11 +273,11 @@ export default function InsightsCarouselSection() {
                   {/* Title */}
                   <h3 style={{
                     color: '#fff',
-                    fontSize: 'clamp(17px, 1.6vw, 26px)',
-                    fontWeight: 700,
+                    fontSize: 'clamp(19px, 1.9vw, 30px)',
+                    fontWeight: 800,
                     fontFamily: tokens.fonts.display,
-                    letterSpacing: '-0.02em',
-                    lineHeight: 1.18,
+                    letterSpacing: '-0.025em',
+                    lineHeight: 1.14,
                     margin: 0,
                   }}>
                     {item.title}
@@ -233,13 +285,13 @@ export default function InsightsCarouselSection() {
 
                   {/* Description */}
                   <p style={{
-                    color: 'rgba(255,255,255,0.82)',
-                    fontSize: 'clamp(12px, 1vw, 15px)',
-                    lineHeight: 1.5,
+                    color: 'rgba(255,255,255,0.85)',
+                    fontSize: 'clamp(12.5px, 1.05vw, 16px)',
+                    lineHeight: 1.55,
                     fontFamily: tokens.fonts.body,
                     fontWeight: 400,
                     margin: 0,
-                    maxWidth: '92%',
+                    maxWidth: '94%',
                     display: '-webkit-box',
                     WebkitLineClamp: 2,
                     WebkitBoxOrient: 'vertical',
@@ -256,29 +308,32 @@ export default function InsightsCarouselSection() {
 
       {/* Navigation Controls */}
       <div style={{
+        position: 'relative',
+        zIndex: 1,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         gap: 24,
-        marginTop: 'clamp(24px, 3vw, 40px)',
+        marginTop: 'clamp(28px, 3.5vw, 48px)',
       }}>
         {/* Prev */}
         <motion.button
-          whileHover={{ scale: 1.1 }}
+          whileHover={{ scale: 1.08, y: -2 }}
           whileTap={{ scale: 0.92 }}
           onClick={prev}
           aria-label="Previous slide"
           style={{
-            width: 40,
-            height: 40,
+            width: 48,
+            height: 48,
             borderRadius: '50%',
-            border: 'none',
-            background: 'transparent',
+            border: '1px solid rgba(234,105,38,0.18)',
+            background: '#fff',
             color: tokens.onSurface,
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            boxShadow: '0 6px 18px rgba(16,24,40,0.1)',
             transition: tokens.transition.fast,
           }}
         >
@@ -295,13 +350,15 @@ export default function InsightsCarouselSection() {
               onClick={() => goTo(i)}
               aria-label={`Go to slide ${i + 1}`}
               style={{
-                width: i === current ? 24 : 8,
+                width: i === current ? 28 : 8,
                 height: 8,
                 borderRadius: 100,
                 border: 'none',
                 padding: 0,
                 cursor: 'pointer',
-                background: i === current ? tokens.primary : 'rgba(0,0,0,0.15)',
+                background: i === current
+                  ? 'linear-gradient(90deg, #ea6926, #ff8c42)'
+                  : 'rgba(0,0,0,0.15)',
                 transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
               }}
               whileHover={{ scale: 1.3 }}
@@ -311,21 +368,22 @@ export default function InsightsCarouselSection() {
 
         {/* Next */}
         <motion.button
-          whileHover={{ scale: 1.1 }}
+          whileHover={{ scale: 1.08, y: -2 }}
           whileTap={{ scale: 0.92 }}
           onClick={next}
           aria-label="Next slide"
           style={{
-            width: 40,
-            height: 40,
+            width: 48,
+            height: 48,
             borderRadius: '50%',
-            border: 'none',
-            background: 'transparent',
+            border: '1px solid rgba(234,105,38,0.18)',
+            background: '#fff',
             color: tokens.onSurface,
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            boxShadow: '0 6px 18px rgba(16,24,40,0.1)',
             transition: tokens.transition.fast,
           }}
         >
@@ -337,15 +395,18 @@ export default function InsightsCarouselSection() {
 
       {/* Slide counter */}
       <div style={{
+        position: 'relative',
+        zIndex: 1,
         textAlign: 'center',
-        marginTop: 12,
+        marginTop: 14,
         fontSize: 13,
-        color: tokens.textMuted,
+        color: tokens.secondary,
         fontFamily: tokens.fonts.body,
-        fontWeight: 500,
-        letterSpacing: '0.02em',
+        fontWeight: 600,
+        letterSpacing: '0.05em',
       }}>
-        {String(current + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
+        <span style={{ color: tokens.primary }}>{String(current + 1).padStart(2, '0')}</span>
+        <span style={{ opacity: 0.4 }}> / {String(total).padStart(2, '0')}</span>
       </div>
     </div>
   );
