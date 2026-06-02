@@ -57,7 +57,7 @@ export default function InsightsCarouselSection() {
     <div
       style={{
         background: tokens.surface,
-        padding: 'clamp(60px, 8vw, 120px) 0',
+        padding: 'clamp(72px, 8vw, 120px) 0',
         overflow: 'hidden',
         position: 'relative',
       }}
@@ -80,7 +80,7 @@ export default function InsightsCarouselSection() {
       >
         <p style={{
           fontSize: 13,
-          fontWeight: 700,
+          fontWeight: 600,
           letterSpacing: '0.14em',
           textTransform: 'uppercase',
           color: tokens.primary,
@@ -92,7 +92,7 @@ export default function InsightsCarouselSection() {
         <h2 style={{
           fontFamily: tokens.fonts.display,
           fontSize: 'clamp(28px, 4vw, 48px)',
-          fontWeight: 800,
+          fontWeight: 700,
           color: tokens.onSurface,
           lineHeight: 1.08,
           letterSpacing: '-0.03em',

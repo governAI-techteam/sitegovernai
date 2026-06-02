@@ -37,15 +37,24 @@ export default function GovernAI() {
           <DomainsSection />
         </section>
 
+        {/* Divider */}
+        <div style={{ maxWidth: 720, margin: '0 auto', height: 1, background: 'linear-gradient(90deg, transparent, rgba(234,105,38,0.15), transparent)' }} />
+
         {/* 3. Institutional Clients Served */}
         <section id="platform" ref={(el) => (sectionRefs.current['platform'] = el)}>
           <ClientsMarqueeSection />
         </section>
 
+        {/* Divider */}
+        <div style={{ maxWidth: 720, margin: '0 auto', height: 1, background: 'linear-gradient(90deg, transparent, rgba(234,105,38,0.15), transparent)' }} />
+
         {/* 4. Insights */}
         <section id="insights" ref={(el) => (sectionRefs.current['insights'] = el)}>
           <InsightsCarouselSection />
         </section>
+
+        {/* Divider */}
+        <div style={{ maxWidth: 720, margin: '0 auto', height: 1, background: 'linear-gradient(90deg, transparent, rgba(234,105,38,0.15), transparent)' }} />
 
         {/* 5. Meet the Founder */}
         <section id="founder" ref={(el) => (sectionRefs.current['founder'] = el)}>
@@ -53,6 +62,9 @@ export default function GovernAI() {
             <FounderProfile />
           </FadeIn>
         </section>
+
+        {/* Divider */}
+        <div style={{ maxWidth: 720, margin: '0 auto', height: 1, background: 'linear-gradient(90deg, transparent, rgba(234,105,38,0.15), transparent)' }} />
 
         {/* 6. Meet the Team */}
         <section id="team" ref={(el) => (sectionRefs.current['team'] = el)}>

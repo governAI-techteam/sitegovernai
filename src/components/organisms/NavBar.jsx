@@ -56,17 +56,20 @@ export function NavBar({ activeSection }) {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
+            /* KEY: transparent at top, glassmorphism when scrolled */
             background: scrolled
               ? 'rgba(255, 255, 255, 0.82)'
-              : 'rgba(255, 255, 255, 0.5)',
-            backdropFilter: 'blur(20px) saturate(180%)',
-            WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+              : 'transparent',
+            backdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'none',
+            WebkitBackdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'none',
             borderRadius: scrolled ? 16 : 20,
             padding: scrolled ? '10px 24px' : '14px 28px',
-            border: `1px solid ${scrolled ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.6)'}`,
+            border: scrolled
+              ? '1px solid rgba(0,0,0,0.06)'
+              : '1px solid transparent',
             boxShadow: scrolled
               ? '0 4px 24px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04)'
-              : '0 2px 16px rgba(0,0,0,0.03)',
+              : 'none',
             transition: 'all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)',
           }}>
             {/* Logo */}
@@ -122,9 +125,9 @@ export function NavBar({ activeSection }) {
                         style={{
                           position: 'absolute',
                           inset: 0,
-                          background: tokens.peach50,
+                          background: scrolled ? tokens.peach50 : 'rgba(234, 105, 38, 0.08)',
                           borderRadius: 12,
-                          border: `1px solid ${tokens.peach200}`,
+                          border: scrolled ? `1px solid ${tokens.peach200}` : '1px solid rgba(234, 105, 38, 0.12)',
                         }}
                         transition={{ type: 'spring', stiffness: 380, damping: 32 }}
                       />
@@ -226,7 +229,6 @@ export function NavBar({ activeSection }) {
       <AnimatePresence>
         {mobileOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -241,7 +243,6 @@ export function NavBar({ activeSection }) {
                 zIndex: 999,
               }}
             />
-            {/* Drawer */}
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}

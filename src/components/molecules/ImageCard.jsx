@@ -137,7 +137,7 @@ function MemberCard({ member, index }) {
 
 function ImageCard() {
   return (
-    <div style={{ paddingTop: '20px', paddingBottom: '20px' }}>
+    <div style={{ paddingTop: 'clamp(72px, 8vw, 120px)', paddingBottom: 'clamp(72px, 8vw, 120px)', paddingLeft: 24, paddingRight: 24, maxWidth: 1280, margin: '0 auto' }}>
       {/* Team Section */}
       <FadeIn
         delay={0.1}
@@ -148,7 +148,7 @@ function ImageCard() {
           style={{
             fontFamily: tokens?.fonts?.display || 'inherit',
             fontSize: 'clamp(22px, 3.5vw, 32px)',
-            fontWeight: 800,
+            fontWeight: 700,
             color: tokens.onSurface,
             letterSpacing: '-0.03em',
           }}
@@ -180,7 +180,7 @@ function ImageCard() {
           style={{
             fontFamily: tokens?.fonts?.display || 'inherit',
             fontSize: 'clamp(22px, 3.5vw, 32px)',
-            fontWeight: 800,
+            fontWeight: 700,
             color: tokens.onSurface,
             letterSpacing: '-0.03em',
           }}

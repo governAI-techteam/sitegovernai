@@ -56,7 +56,7 @@ const INJECTED_CSS = `
   .domains-section {
     position: relative;
     overflow: hidden;
-    padding: 1.25rem 0 4rem;
+    padding: clamp(72px, 8vw, 120px) 0;
   }
 
   .domains-glow {
@@ -87,7 +87,7 @@ const INJECTED_CSS = `
 
   .ds-header {
     text-align: center;
-    margin-bottom: 2.25rem;
+    margin-bottom: 3rem;
   }
 
   .ds-eyebrow {
@@ -95,7 +95,7 @@ const INJECTED_CSS = `
     align-items: center;
     gap: 0.45rem;
     font-size: 0.6375rem;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     padding: 0.28rem 0.8rem;
@@ -117,7 +117,7 @@ const INJECTED_CSS = `
 
   .ds-title {
     font-size: clamp(26px, 3.5vw, 42px);
-    font-weight: 800;
+    font-weight: 700;
     line-height: 1.1;
     letter-spacing: -0.04em;
     margin: 0 0 0.7rem;
@@ -330,7 +330,7 @@ const INJECTED_CSS = `
   }
   @media (max-width: 640px) {
     .ds-grid { grid-template-columns: 1fr; }
-    .domains-section { padding: 3rem 0 4rem; }
+    .domains-section { padding: clamp(48px, 6vw, 80px) 0; }
   }
 `;
 

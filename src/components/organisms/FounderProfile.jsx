@@ -6,13 +6,13 @@ import { experiences } from '@/config/founder';
 import Image from 'next/image';
 export function FounderProfile() {
   return (
-    <Container style={{ paddingTop: '52px', paddingBottom: '52px' }}>
-      <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+    <Container style={{ paddingTop: 'clamp(72px, 8vw, 120px)', paddingBottom: 'clamp(72px, 8vw, 120px)' }}>
+      <div style={{ textAlign: 'center', marginBottom: 'clamp(36px, 4vw, 52px)' }}>
         <h2
           style={{
             fontFamily: tokens?.fonts?.display || 'inherit',
             fontSize: 'clamp(26px, 4vw, 38px)',
-            fontWeight: 800,
+            fontWeight: 700,
             color: tokens.onSurface,
             marginBottom: '12px',
             letterSpacing: '-0.03em',

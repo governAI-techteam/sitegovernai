@@ -39,6 +39,7 @@ export const tokens = {
   fonts: {
     display: "'Plus Jakarta Sans', sans-serif",
     body: "'Inter', sans-serif",
+    mono: "'JetBrains Mono', monospace",
   },
 
   // ── Spacing Scale ──
@@ -81,5 +82,6 @@ export const tokens = {
     slow: '0.5s cubic-bezier(0.4, 0, 0.2, 1)',
     spring: '0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
     premium: '0.4s cubic-bezier(0.25, 0.1, 0.25, 1)',
+    bounce: '0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)',
   },
 };

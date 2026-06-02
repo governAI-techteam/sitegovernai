@@ -111,6 +111,7 @@ export default function ClientsMarqueeSection() {
         {CLIENT_GROUPS.map((group, i) => (
           <div key={group.title} style={styles.rowGroup}>
             <div style={styles.groupLabelWrap}>
+              <div style={{ width: 6, height: 6, borderRadius: '50%', background: ORANGE, flexShrink: 0, opacity: 0.7 }} />
               <p style={styles.groupLabel}>{group.title}</p>
             </div>
             <div style={styles.marqueeOuter} className="marquee-outer">
@@ -134,8 +135,8 @@ const styles = {
     position: "relative",
     backgroundColor: tokens.background,
     overflow: "hidden",
-    paddingTop: "clamp(40px, 5.5vw, 72px)",
-    paddingBottom: "clamp(40px, 5.5vw, 72px)",
+    paddingTop: "clamp(72px, 8vw, 120px)",
+    paddingBottom: "clamp(72px, 8vw, 120px)",
   },
 
   glowTop: {
@@ -212,14 +213,14 @@ const styles = {
     width: "100%",
     display: "flex",
     flexDirection: "column",
-    gap: "clamp(22px, 3vw, 36px)",
+    gap: "clamp(40px, 5vw, 64px)",
     marginBottom: "clamp(28px, 4vw, 48px)",
   },
 
   rowGroup: {
     display: "flex",
     flexDirection: "column",
-    gap: "8px",
+    gap: "16px",
   },
 
   groupLabelWrap: {
@@ -228,16 +229,18 @@ const styles = {
     width: "100%",
     paddingLeft: "clamp(16px, 4vw, 48px)",
     paddingRight: "clamp(16px, 4vw, 48px)",
+    display: "flex",
+    alignItems: "center",
+    gap: "10px",
   },
 
   groupLabel: {
-    fontSize: "10px",
+    fontSize: "14px",
     fontWeight: 600,
-    letterSpacing: "0.14em",
-    textTransform: "uppercase",
-    color: tokens.secondary,
-    opacity: 0.3,
+    letterSpacing: "0.04em",
+    color: tokens.onSurface,
     margin: 0,
+    fontFamily: tokens.fonts.display,
   },
 
   marqueeOuter: {
@@ -297,7 +300,7 @@ const styles = {
   },
 
   logoPlaceholder: {
-    display: "flex",
+    display: "inline-flex",
     alignItems: "center",
     justifyContent: "center",
     padding: "24px 48px",
@@ -307,9 +310,8 @@ const styles = {
     WebkitBackdropFilter: "blur(6px)",
     border: "1px solid rgba(0,0,0,0.08)",
     boxShadow: "0 2px 12px rgba(0,0,0,0.04)",
-    width: 320,
+    width: 224,
     minHeight: 160,
-    display: "inline-flex",
     boxSizing: "border-box",
     overflow: "hidden",
     transition: "background 0.28s ease, box-shadow 0.28s ease",

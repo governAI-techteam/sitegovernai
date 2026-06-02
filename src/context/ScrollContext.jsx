@@ -15,5 +15,5 @@ export function ScrollProvider({ sectionRefs, children }) {
     },
     [sectionRefs],
   );
-  return <ScrollCtx.Provider value={scrollTo}>{children}</ScrollCtx.Provider>;
+  return <ScrollCtx.Provider value={{ scrollTo }}>{children}</ScrollCtx.Provider>;
 }
