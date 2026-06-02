@@ -34,6 +34,12 @@ const CLIENT_GROUPS = [
   },
 ];
 
+const STATS = [
+  { value: "2000+", label: "Officials Trained" },
+  { value: "20+", label: "Client Engagements" },
+  { value: "5+", label: "States & UTs" },
+];
+
 const ORANGE = tokens.primary || "#FF9D52";
 
 function LogoItem({ name, logo, scale }) {
@@ -76,41 +82,50 @@ export default function ClientsMarqueeSection() {
       <style>{css}</style>
 
       <div style={styles.glowTop} aria-hidden="true" />
+      <div style={styles.gridBg} aria-hidden="true" />
 
+      {/* ── Header ── */}
       <div style={styles.container}>
-        <div style={styles.header}>
-          <h5 style={styles.eyebrow}>Trusted By</h5>
+        <div style={styles.header} className="cm-reveal">
+          <span style={styles.eyebrow}>
+            <span style={styles.eyebrowDot} />
+            Trusted By
+          </span>
           <h2 style={styles.heading}>
             Institutional{" "}
             <span style={styles.headingAccent}>Clients &amp; Engagements</span>
           </h2>
           <p style={styles.subheading}>
-            A growing network of government bodies, universities, and research institutions
-            across India and beyond.
+            A growing network of government bodies, universities, and research
+            institutions across India and beyond.
           </p>
-          <div style={styles.accentBar} />
-          <div style={styles.container}>
-            <div style={styles.statsRow}>
-              {[
-                { value: "2000+", label: "Officials Trained" },
-                { value: "20+", label: "Client Engagements" },
-                { value: "5+", label: "States & UTs" },
-              ].map((stat) => (
-                <div key={stat.label} style={styles.statItem}>
-                  <span style={styles.statValue}>{stat.value}</span>
-                  <span style={styles.statLabel}>{stat.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+        </div>
+
+        {/* ── Stats band ── */}
+        <div style={styles.statsBand} className="cm-stats">
+          {STATS.map((stat, i) => (
+            <React.Fragment key={stat.label}>
+              {i > 0 && <span style={styles.statDivider} aria-hidden="true" />}
+              <div style={styles.statItem}>
+                <span style={styles.statValue}>{stat.value}</span>
+                <span style={styles.statLabel}>{stat.label}</span>
+              </div>
+            </React.Fragment>
+          ))}
         </div>
       </div>
 
+      {/* ── Logo rows ── */}
       <div style={styles.fullWidthRows}>
         {CLIENT_GROUPS.map((group, i) => (
           <div key={group.title} style={styles.rowGroup}>
             <div style={styles.groupLabelWrap}>
+              <span style={styles.groupIndexDot} aria-hidden="true" />
               <p style={styles.groupLabel}>{group.title}</p>
+              <span style={styles.groupCount}>
+                {group.items.length} Institutions
+              </span>
+              <span style={styles.groupRule} aria-hidden="true" />
             </div>
             <div style={styles.marqueeOuter} className="marquee-outer">
               <div style={styles.fadeLeft} aria-hidden="true" />
@@ -139,14 +154,28 @@ const styles = {
 
   glowTop: {
     position: "absolute",
-    top: "-120px",
+    top: "-140px",
     left: "50%",
     transform: "translateX(-50%)",
-    width: "700px",
-    height: "420px",
+    width: "760px",
+    height: "440px",
     borderRadius: "50%",
-    background: `radial-gradient(ellipse at center, ${ORANGE}10 0%, transparent 68%)`,
+    background: `radial-gradient(ellipse at center, ${ORANGE}14 0%, transparent 68%)`,
     filter: "blur(72px)",
+    pointerEvents: "none",
+    zIndex: 0,
+  },
+
+  gridBg: {
+    position: "absolute",
+    inset: 0,
+    backgroundImage:
+      "linear-gradient(rgba(234,105,38,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(234,105,38,0.03) 1px, transparent 1px)",
+    backgroundSize: "64px 64px",
+    maskImage:
+      "radial-gradient(ellipse 70% 50% at 50% 18%, #000 0%, transparent 75%)",
+    WebkitMaskImage:
+      "radial-gradient(ellipse 70% 50% at 50% 18%, #000 0%, transparent 75%)",
     pointerEvents: "none",
     zIndex: 0,
   },
@@ -154,7 +183,7 @@ const styles = {
   container: {
     position: "relative",
     zIndex: 1,
-    maxWidth: "900px",
+    maxWidth: "960px",
     margin: "0 auto",
     paddingLeft: "clamp(16px, 4vw, 48px)",
     paddingRight: "clamp(16px, 4vw, 48px)",
@@ -162,50 +191,117 @@ const styles = {
 
   header: {
     textAlign: "center",
-    marginBottom: "clamp(28px, 4vw, 52px)",
+    marginBottom: "clamp(32px, 4vw, 48px)",
   },
 
   eyebrow: {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "8px",
     fontSize: "11px",
     fontWeight: 700,
     letterSpacing: "0.2em",
     textTransform: "uppercase",
     color: ORANGE,
-    opacity: 1,
-    margin: "0 0 12px 0",
+    background: "rgba(234,105,38,0.07)",
+    border: "1px solid rgba(234,105,38,0.18)",
+    padding: "6px 16px",
+    borderRadius: "999px",
+    margin: "0 0 18px 0",
+  },
+
+  eyebrowDot: {
+    width: 6,
+    height: 6,
+    borderRadius: "50%",
+    background: ORANGE,
+    boxShadow: `0 0 0 4px ${ORANGE}26`,
+    flexShrink: 0,
   },
 
   heading: {
-    fontSize: "clamp(26px, 3.6vw, 42px)",
+    fontFamily: tokens.fonts.display,
+    fontSize: "clamp(28px, 3.8vw, 46px)",
     fontWeight: 800,
-    letterSpacing: "-0.035em",
+    letterSpacing: "-0.04em",
     color: tokens.onSurface,
-    lineHeight: 1.12,
-    margin: "0 0 12px 0",
+    lineHeight: 1.08,
+    margin: "0 0 14px 0",
   },
 
   headingAccent: {
-    color: ORANGE,
-  },
-
-  accentBar: {
-    width: "40px",
-    height: "3px",
-    borderRadius: "999px",
-    background: `linear-gradient(to right, ${ORANGE}, ${ORANGE}44)`,
-    margin: "14px auto 16px",
+    background: "linear-gradient(135deg, #ea6926 0%, #ff8c42 100%)",
+    WebkitBackgroundClip: "text",
+    backgroundClip: "text",
+    WebkitTextFillColor: "transparent",
   },
 
   subheading: {
-    fontSize: "clamp(13px, 1.2vw, 15px)",
+    fontSize: "clamp(14px, 1.2vw, 16px)",
     color: tokens.secondary,
-    opacity: 0.75,
-    maxWidth: "460px",
+    opacity: 0.85,
+    maxWidth: "480px",
     margin: "0 auto",
     lineHeight: 1.65,
     fontWeight: 400,
   },
 
+  /* Stats band */
+  statsBand: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "stretch",
+    gap: "clamp(20px, 4vw, 48px)",
+    flexWrap: "wrap",
+    background: "linear-gradient(165deg, #fffdfb 0%, #fffaf6 100%)",
+    border: "1px solid rgba(234,105,38,0.1)",
+    borderRadius: "20px",
+    padding: "clamp(22px, 3vw, 32px) clamp(24px, 5vw, 56px)",
+    boxShadow:
+      "0 1px 2px rgba(234,105,38,0.04), 0 12px 32px rgba(16,24,40,0.05)",
+    maxWidth: "760px",
+    margin: "0 auto",
+  },
+
+  statDivider: {
+    width: "1px",
+    alignSelf: "stretch",
+    background:
+      "linear-gradient(to bottom, transparent, rgba(234,105,38,0.25), transparent)",
+  },
+
+  statItem: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "6px",
+    flex: "1 1 auto",
+    minWidth: "100px",
+  },
+
+  statValue: {
+    fontFamily: tokens.fonts.display,
+    fontSize: "clamp(28px, 3.4vw, 42px)",
+    fontWeight: 800,
+    background: "linear-gradient(135deg, #ea6926 0%, #ff8c42 100%)",
+    WebkitBackgroundClip: "text",
+    backgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    letterSpacing: "-0.03em",
+    lineHeight: 1,
+  },
+
+  statLabel: {
+    fontSize: "11px",
+    color: tokens.secondary,
+    opacity: 0.8,
+    letterSpacing: "0.08em",
+    textTransform: "uppercase",
+    fontWeight: 600,
+    textAlign: "center",
+  },
+
+  /* Logo rows */
   fullWidthRows: {
     position: "relative",
     zIndex: 1,
@@ -213,32 +309,67 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     gap: "clamp(40px, 5vw, 64px)",
-    marginBottom: "clamp(28px, 4vw, 48px)",
+    marginTop: "clamp(48px, 6vw, 80px)",
   },
 
   rowGroup: {
     display: "flex",
     flexDirection: "column",
-    gap: "16px",
+    gap: "18px",
   },
 
   groupLabelWrap: {
     width: "100%",
+    maxWidth: "1500px",
+    margin: "0 auto",
     paddingLeft: "clamp(20px, 6vw, 80px)",
-    paddingRight: "clamp(16px, 4vw, 48px)",
+    paddingRight: "clamp(20px, 6vw, 80px)",
     boxSizing: "border-box",
     display: "flex",
     alignItems: "center",
+    gap: "14px",
+  },
+
+  groupIndexDot: {
+    width: "10px",
+    height: "10px",
+    borderRadius: "3px",
+    background: "linear-gradient(135deg, #ea6926 0%, #ff8c42 100%)",
+    flexShrink: 0,
+    boxShadow: `0 2px 8px ${ORANGE}40`,
   },
 
   groupLabel: {
-    fontSize: "clamp(20px, 2.1vw, 28px)",
+    fontSize: "clamp(19px, 2vw, 26px)",
     fontWeight: 800,
     letterSpacing: "-0.025em",
     color: tokens.onSurface,
     margin: 0,
     fontFamily: tokens.fonts.display,
     lineHeight: 1.2,
+    whiteSpace: "nowrap",
+  },
+
+  groupCount: {
+    fontSize: "11px",
+    fontWeight: 700,
+    letterSpacing: "0.06em",
+    textTransform: "uppercase",
+    color: ORANGE,
+    background: "rgba(234,105,38,0.08)",
+    border: "1px solid rgba(234,105,38,0.16)",
+    padding: "4px 10px",
+    borderRadius: "999px",
+    flexShrink: 0,
+    whiteSpace: "nowrap",
+  },
+
+  groupRule: {
+    flex: 1,
+    height: "1px",
+    background:
+      "linear-gradient(90deg, rgba(234,105,38,0.28), rgba(234,105,38,0.02))",
+    minWidth: "20px",
   },
 
   marqueeOuter: {
@@ -246,9 +377,9 @@ const styles = {
     overflow: "hidden",
     width: "100%",
     maskImage:
-      "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
+      "linear-gradient(to right, transparent, black 12%, black 88%, transparent)",
     WebkitMaskImage:
-      "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
+      "linear-gradient(to right, transparent, black 12%, black 88%, transparent)",
   },
 
   marqueeWrapper: {
@@ -270,7 +401,7 @@ const styles = {
     position: "absolute",
     top: 0,
     left: 0,
-    width: "clamp(50px, 7vw, 80px)",
+    width: "clamp(50px, 7vw, 90px)",
     height: "100%",
     background: `linear-gradient(to right, ${tokens.background} 0%, transparent 100%)`,
     zIndex: 3,
@@ -281,7 +412,7 @@ const styles = {
     position: "absolute",
     top: 0,
     right: 0,
-    width: "clamp(50px, 7vw, 80px)",
+    width: "clamp(50px, 7vw, 90px)",
     height: "100%",
     background: `linear-gradient(to left, ${tokens.background} 0%, transparent 100%)`,
     zIndex: 3,
@@ -293,7 +424,6 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
     flexShrink: 0,
-    transition: "opacity 0.28s ease, transform 0.28s ease, box-shadow 0.28s ease",
     cursor: "default",
   },
 
@@ -302,61 +432,26 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
     padding: "24px 48px",
-    borderRadius: 16,
-    background: "linear-gradient(165deg, #fffdfb 0%, #fffaf6 100%)",
-    backdropFilter: "blur(24px) saturate(140%)",
-    WebkitBackdropFilter: "blur(24px) saturate(140%)",
-    border: "1px solid rgba(234,105,38,0.08)",
-    boxShadow: "0 4px 24px rgba(234,105,38,0.05), inset 0 1px 0 rgba(255,255,255,0.7)",
+    borderRadius: 18,
+    background: "linear-gradient(165deg, #ffffff 0%, #fffaf6 100%)",
+    border: "1px solid rgba(234,105,38,0.1)",
+    boxShadow:
+      "0 4px 20px rgba(16,24,40,0.05), inset 0 1px 0 rgba(255,255,255,0.8)",
     width: 224,
-    minHeight: 160,
+    minHeight: 150,
     boxSizing: "border-box",
     overflow: "hidden",
-    transition: "all 0.32s cubic-bezier(0.25, 0.1, 0.25, 1)",
+    transition: "all 0.4s cubic-bezier(0.22, 1, 0.36, 1)",
   },
 
   logoImage: {
-    width: 220,
-    height: 112,
+    width: 200,
+    height: 100,
     objectFit: "contain",
-    opacity: 0.92,
+    opacity: 0.78,
+    filter: "grayscale(35%)",
+    transition: "all 0.4s cubic-bezier(0.22, 1, 0.36, 1)",
     display: "block",
-  },
-
-
-
-  statsRow: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "clamp(24px, 5vw, 60px)",
-    paddingTop: "clamp(20px, 3vw, 30px)",
-    borderTop: `1px solid ${tokens.secondary}14`,
-    flexWrap: "wrap",
-  },
-
-  statItem: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    gap: "4px",
-  },
-
-  statValue: {
-    fontSize: "clamp(24px, 3vw, 36px)",
-    fontWeight: 800,
-    color: ORANGE,
-    letterSpacing: "-0.03em",
-    lineHeight: 1,
-  },
-
-  statLabel: {
-    fontSize: "11px",
-    color: tokens.secondary,
-    opacity: 0.7,
-    letterSpacing: "0.08em",
-    textTransform: "uppercase",
-    fontWeight: 600,
   },
 };
 
@@ -371,18 +466,31 @@ const css = `
     to   { transform: translateX(0); }
   }
 
+  @keyframes cmReveal {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .cm-reveal { animation: cmReveal 0.7s cubic-bezier(0.22,1,0.36,1) both; }
+  .cm-stats { animation: cmReveal 0.7s cubic-bezier(0.22,1,0.36,1) 0.12s both; }
+
   .marquee-outer:hover .marquee-track {
     animation-play-state: paused !important;
   }
 
   .logo-item:hover .logo-placeholder {
     background: linear-gradient(165deg, #fffaf6 0%, #fff4ea 100%) !important;
-    box-shadow: 0 14px 40px rgba(234,105,38,0.12), inset 0 1px 0 rgba(255,255,255,0.8) !important;
-    transform: translateY(-4px);
-    border-color: rgba(234,105,38,0.22) !important;
+    box-shadow: 0 16px 44px rgba(234,105,38,0.16), inset 0 1px 0 rgba(255,255,255,0.9) !important;
+    transform: translateY(-6px);
+    border-color: rgba(234,105,38,0.25) !important;
   }
 
   .logo-item:hover img {
     opacity: 1 !important;
+    filter: grayscale(0%) !important;
+  }
+
+  @media (max-width: 600px) {
+    .logo-item .logo-placeholder { width: 180px !important; min-height: 130px !important; padding: 20px 32px !important; }
   }
 `;
