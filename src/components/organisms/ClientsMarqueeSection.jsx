@@ -15,7 +15,7 @@ const CLIENT_GROUPS = [
       { name: "State Institute of Public Admin - Punjab", logo: "State Institute of Public Admin - Punjab.png" },
       { name: "State Institute of Rural Development - Himachal", logo: "State Institute of Rural Development - Himachal.png" },
       { name: "UP Skill Development Mission", logo: "UP Skill Development Mission.png" },
-      { name: "NIEPA (Ministry of Education)", logo: "NIEPA (Ministry of Education).png" },
+      { name: "C-DAC Mohali", logo: "C-DAC Mohali.png" },
     ],
   },
   {
@@ -30,7 +30,6 @@ const CLIENT_GROUPS = [
       { name: "UEM Kolkata", logo: "UEM Kolkata.png" },
       { name: "NUSRL Ranchi", logo: "NUSRL Ranchi.png" },
       { name: "AIIMS Patna", logo: "AIIMS Patna.png" },
-      { name: "C-DAC Mohali", logo: "C-DAC Mohali.png" },
     ],
   },
 ];
