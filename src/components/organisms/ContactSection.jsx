@@ -93,25 +93,53 @@ function useFocusStyle() {
 export function ContactSection() {
   const focus = useFocusStyle();
   const [form, setForm] = useState({
-    name: '', email: '', org: '', type: INQUIRY_TYPES[0], message: '',
+    name: '', email: '', org: '', type: INQUIRY_TYPES[0], message: '', _honey: '',
   });
-  const [status, setStatus] = useState('idle'); // idle | sending | sent
+  const [status, setStatus] = useState('idle'); // idle | sending | sent | error
 
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (status === 'sending') return;
-    setStatus('sending');
-    // No backend wired yet — open the user's mail client with a prefilled draft.
-    setTimeout(() => {
-      const subject = encodeURIComponent(`[${form.type}] Enquiry from ${form.name || 'Website'}`);
-      const body = encodeURIComponent(
-        `Name: ${form.name}\nEmail: ${form.email}\nOrganisation: ${form.org}\nInterest: ${form.type}\n\n${form.message}`
-      );
-      window.location.href = `mailto:contact@governai.info?subject=${subject}&body=${body}`;
+
+    // Honeypot: a real user never fills this hidden field. If it's set,
+    // it's almost certainly a bot — silently accept without sending.
+    if (form._honey) {
       setStatus('sent');
-    }, 900);
+      return;
+    }
+
+    setStatus('sending');
+
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/contact@governai.info', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          organisation: form.org || '—',
+          interest: form.type,
+          message: form.message,
+          _subject: `New enquiry (${form.type}) — ${form.name}`,
+          _template: 'table',
+          _captcha: 'false',
+          _honey: form._honey, // FormSubmit also discards spam server-side
+        }),
+      });
+
+      if (!res.ok) throw new Error('Request failed');
+      const data = await res.json();
+      if (data.success === 'true' || data.success === true) {
+        setStatus('sent');
+        setForm({ name: '', email: '', org: '', type: INQUIRY_TYPES[0], message: '', _honey: '' });
+      } else {
+        throw new Error('Submission not accepted');
+      }
+    } catch (err) {
+      setStatus('error');
+    }
   };
 
   return (
@@ -260,9 +288,9 @@ export function ContactSection() {
                   >
                     <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
                   </motion.div>
-                  <h3 style={{ fontFamily: tokens.fonts.display, fontSize: 22, fontWeight: 800, color: tokens.onSurface, margin: 0 }}>Thank you!</h3>
+                  <h3 style={{ fontFamily: tokens.fonts.display, fontSize: 22, fontWeight: 800, color: tokens.onSurface, margin: 0 }}>Message sent!</h3>
                   <p style={{ fontSize: 15, color: tokens.secondary, maxWidth: 340, lineHeight: 1.6, margin: 0 }}>
-                    Your draft has been prepared in your email client. We&apos;ll respond within one business day.
+                    Thanks for reaching out. Your message has landed in our inbox and we&apos;ll respond within one business day.
                   </p>
                   <button onClick={() => setStatus('idle')} style={{ marginTop: 8, background: 'none', border: 'none', color: tokens.primary, fontWeight: 700, fontFamily: tokens.fonts.display, cursor: 'pointer', fontSize: 14 }}>
                     Send another message
@@ -277,6 +305,30 @@ export function ContactSection() {
                   onSubmit={handleSubmit}
                   style={{ display: 'flex', flexDirection: 'column', gap: 18 }}
                 >
+                  {/* Honeypot — hidden from humans & assistive tech; only bots fill it */}
+                  <input
+                    type="text"
+                    name="_honey"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    value={form._honey}
+                    onChange={set('_honey')}
+                    style={{
+                      position: 'absolute',
+                      width: 1,
+                      height: 1,
+                      padding: 0,
+                      margin: -1,
+                      overflow: 'hidden',
+                      clip: 'rect(0 0 0 0)',
+                      whiteSpace: 'nowrap',
+                      border: 0,
+                      opacity: 0,
+                      pointerEvents: 'none',
+                    }}
+                  />
+
                   <div className="contact-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                     <Field label="Full name" required>
                       <input {...focus} required value={form.name} onChange={set('name')} placeholder="Jane Doe" style={inputBase} />
@@ -299,6 +351,22 @@ export function ContactSection() {
                   <Field label="Message" required>
                     <textarea {...focus} required value={form.message} onChange={set('message')} rows={5} placeholder="Tell us about your goals, timeline, and team size…" style={{ ...inputBase, resize: 'vertical', minHeight: 120, lineHeight: 1.6 }} />
                   </Field>
+
+                  {status === 'error' && (
+                    <div style={{
+                      display: 'flex', alignItems: 'center', gap: 10,
+                      padding: '12px 14px', borderRadius: 12,
+                      background: 'rgba(186,26,26,0.07)', border: '1px solid rgba(186,26,26,0.2)',
+                    }}>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ba1a1a" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                        <circle cx="12" cy="12" r="10" /><path d="M12 8v4M12 16h.01" />
+                      </svg>
+                      <span style={{ fontSize: 13, color: '#ba1a1a', fontWeight: 500, lineHeight: 1.45 }}>
+                        Something went wrong. Please try again, or email us directly at{' '}
+                        <a href="mailto:contact@governai.info" style={{ color: '#ba1a1a', fontWeight: 700 }}>contact@governai.info</a>.
+                      </span>
+                    </div>
+                  )}
 
                   <motion.button
                     type="submit"
