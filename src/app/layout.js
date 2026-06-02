@@ -1,23 +1,31 @@
 import { tokens } from '@/theme/tokens';
+import {
+  SITE,
+  SITE_URL,
+  SITE_KEYWORDS,
+  organizationSchema,
+  websiteSchema,
+  professionalServiceSchema,
+  webPageSchema,
+  founderSchema,
+  teamSchema,
+  advisorSchema,
+  developerSchema,
+  faqSchema,
+} from '@/config/seo';
 import './globals.css';
 
 export const metadata = {
-  metadataBase: new URL('https://govern-ai.com'),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: 'GovernAI',
+    default: 'GovernAI | AI Governance, Compliance & Responsible AI',
     template: '%s | GovernAI',
   },
   description:
-    'GovernAI provides the architectural framework to deploy, monitor, and scale AI systems with absolute compliance, ethical frameworks, and zero bias.',
-  keywords: [
-    'AI Governance',
-    'Ethical AI',
-    'AI Compliance',
-    'Robust AI',
-    'Trustworthy AI',
-    'Artificial Intelligence Frameworks',
-    'AI Policy',
-  ],
+    'GovernAI provides the architectural framework to deploy, monitor, and scale AI systems with absolute compliance, ethical frameworks, and zero bias. AI governance capacity building, ISO/IEC 42001 auditing, and policy advisory for governments, universities, and enterprises.',
+  applicationName: 'GovernAI',
+  keywords: SITE_KEYWORDS,
+  category: 'technology',
   authors: [
     {
       name: 'Parishrut Jassal',
@@ -25,31 +33,40 @@ export const metadata = {
     },
   ],
   creator: 'GovernAI',
-  publisher: 'GovernAI',
+  publisher: 'GovernAI OPC Pvt. Ltd.',
+  alternates: {
+    canonical: '/',
+  },
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
     type: 'website',
-    locale: 'en_US',
-    url: 'https://govern-ai.com',
-    title: 'GovernAI',
+    locale: 'en_IN',
+    url: SITE_URL,
+    title: 'GovernAI | Governing Artificial Intelligence for a Responsible Future',
     description:
-      'Architectural framework to deploy, monitor, and scale AI systems with absolute compliance and zero bias.',
+      'The architectural framework to deploy, monitor, and scale AI systems with absolute compliance and zero bias. Capacity building, ISO/IEC 42001 auditing, and policy advisory.',
     siteName: 'GovernAI',
     images: [
       {
-        url: '/assets/img/logo.png',
+        url: SITE.ogImage,
         width: 1200,
         height: 630,
-        alt: 'GovernAI - Modern AI Confidence',
+        alt: 'GovernAI — Governing Artificial Intelligence',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'GovernAI | Modern AI Confidence & Governance',
+    title: 'GovernAI | AI Governance, Compliance & Responsible AI',
     description:
-      'Architectural framework to deploy, monitor, and scale AI systems with absolute compliance and zero bias.',
-    images: ['/assets/img/logo.png'],
-    creator: '@GovernAI',
+      'The architectural framework to deploy, monitor, and scale AI with absolute compliance and zero bias.',
+    images: [SITE.ogImage],
+    creator: SITE.twitter,
+    site: SITE.twitter,
   },
   robots: {
     index: true,
@@ -64,9 +81,30 @@ export const metadata = {
   },
 };
 
+export const viewport = {
+  themeColor: '#ea6926',
+  colorScheme: 'light',
+  width: 'device-width',
+  initialScale: 1,
+};
+
 export default function RootLayout({ children }) {
+  // Full site-wide knowledge graph. Individual @id nodes interlink
+  // (Organization ↔ founder ↔ employees ↔ website ↔ service).
+  const jsonLd = [
+    organizationSchema(),
+    websiteSchema(),
+    webPageSchema(),
+    professionalServiceSchema(),
+    founderSchema(),
+    ...teamSchema(),
+    advisorSchema(),
+    developerSchema(),
+    faqSchema(),
+  ];
+
   return (
-    <html lang="en">
+    <html lang="en-IN">
       <head>
         <link
           href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
@@ -76,7 +114,11 @@ export default function RootLayout({ children }) {
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
           rel="stylesheet"
         />
-        <meta name="theme-color" content="#ea6926" />
+        {/* Structured data — Organization, WebSite, ProfessionalService */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body
         style={{

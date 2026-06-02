@@ -12,6 +12,7 @@ import ClientsMarqueeSection from '@/components/organisms/ClientsMarqueeSection'
 
 import InsightsCarouselSection from '@/components/organisms/InsightsCarouselSection';
 import ImageCard from '@/components/molecules/ImageCard';
+import { FAQSection } from '@/components/organisms/FAQSection';
 import { Footer } from '@/components/organisms/Footer';
 import { Preloader } from '@/components/molecules/Preloader';
 import { ScrollProgress } from '@/components/atoms/ScrollProgress';
