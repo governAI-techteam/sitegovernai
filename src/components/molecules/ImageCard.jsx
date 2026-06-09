@@ -1,4 +1,5 @@
 'use client';
+import { useState } from 'react';
 import { tokens } from '@/theme/tokens';
 import { motion } from 'framer-motion';
 import { FadeIn } from '@/components/atoms/FadeIn';
@@ -21,58 +22,82 @@ const founder = {
   ],
 };
 
+const FALLBACK_AVATAR =
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='112' height='112' viewBox='0 0 112 112'%3E%3Crect width='112' height='112' fill='%23f5f0eb' rx='56'/%3E%3Cpath d='M56 46c-7.7 0-14-6.3-14-14s6.3-14 14-14 14 6.3 14 14-6.3 14-14 14zm0 4c-12.2 0-22 6.7-22 15v11h44V65c0-8.3-9.8-15-22-15z' fill='%23c4b8ae'/%3E%3C/svg%3E";
+
 const teamMembers = [
   {
-    name: 'Alvin Antony',
+    name: 'Adv. Alvin Antony',
     role: 'Chief Compliance Officer',
     image: '/assets/img/Team/team_alvin.jpeg',
     description:
-      'AI & Frontier Tech Lawyer | AI Governance, ISO 42001, IP & Data Protection | Certified Implementer/Auditor in ISO 42001:2023 and ISO 9001:2015.',
+      'Certified AI Auditor (ISO 42001) with CAIQ, CACP, DCDPO, and DCPLA certifications. Brings extensive expertise in AI governance, compliance frameworks, risk management, and regulatory standards for responsible AI implementation.',
   },
   {
     name: 'Dr. Utso Guha Roy',
     role: 'AI & Healthcare Lead',
     image: '/assets/img/Team/team_utso.png',
     description:
-      'MD in Pathology (2018), Certified in AI Medicine (CCAIM), Post-Doctoral in Digital Pathology.',
+      'Clinical AI specialist leading healthcare verification initiatives, AI-driven healthcare solutions, and curriculum development. Focused on bridging advanced artificial intelligence with real-world healthcare applications and innovation.',
   },
   {
     name: 'Anubhav Sharma',
-    role: 'DevSecOps Lead',
+    role: 'Technical & Security Lead',
     image: '/assets/img/Team/team_anubhav.jpeg',
     description:
-      'Experienced in infrastructure automation, containerized environments, and secure system design. Focused on building scalable, resilient, and security-first platform foundations.',
+      'Information security architect specializing in security methodologies, compliance frameworks, risk assessment, and Tier 2 and Tier 3 audit engagements. Leads the organization\'s technical infrastructure and cybersecurity initiatives.',
   },
   {
-    name: 'Aditya Udiya',
-    role: 'Applied AI Engineer',
-    image: '/assets/img/Team/team_preekshit.png',
-    description:
-      'AI product builder with 24+ applied AI solutions. Startup founder. Ex Research Intern at IIT BHU in AI and ML. National level winner in Software Systems. 6x hackathon winner.',
-  },
-  {
-    name: 'Dr. Rutva Tanna',
-    role: 'AI & Healthcare Intern',
+    name: 'Dr. Himanshu Kalia',
+    role: 'AI & Healthcare Consultant',
     image: '/assets/img/Team/team_himanshu.jpeg',
     description:
-      'BHMS professional focused on holistic wellness and patient-centered care. Bridging healthcare knowledge with AI-driven solutions for better clinical outcomes.',
+      'Scientific Officer at IIT DRISHTI CPS with an MSc from the University of Glasgow. Contributes expertise in healthcare research, scientific innovation, artificial intelligence applications, and interdisciplinary technology development.',
+  },
+  {
+    name: 'Saranshi Gupta',
+    role: 'Growth & Strategy Lead',
+    image: '/assets/img/Team/saranshi.png',
+    description:
+      'MBA from S. P. Jain School of Global Management with expertise in partnerships, business development, strategic growth initiatives, and go-to-market execution. Drives organizational expansion and ecosystem development.',
+  },
+  {
+    name: 'Er. Preekshit Singh',
+    role: 'Operations & Training Lead',
+    image: '/assets/img/Team/team_preekshit.png',
+    description:
+      'Civil engineer overseeing academy operations, training delivery, process optimization, and organizational execution. Responsible for ensuring efficient program management and operational excellence across initiatives.',
   },
 ];
 
-const advisor = {
-  name: 'Dr. Murthy Remilla',
-  role: 'Chief Advisor',
-  image: '/assets/img/team_murthy.png',
-  highlights: [
-    'Former Senior Scientist at ISRO',
-    'Head of Project Management for Gaganyaan',
-    '35+ years in technical & leadership roles',
-  ],
-};
+const advisors = [
+  {
+    name: 'Dr. Murthy Remilla',
+    role: 'President, Telemedicine Society of India',
+    image: '/assets/img/team_murthy.png',
+    description:
+      'Former ISRO Scientist and a recognized leader in healthcare technology and digital transformation. Advises on AI governance, healthcare innovation, telemedicine adoption, and responsible implementation of emerging technologies in healthcare delivery systems.',
+  },
+  {
+    name: 'Maya Sherman',
+    role: 'International AI Policy Advisor',
+    image: '/assets/img/team_maya.jpeg',
+    description:
+      'Former Science, Technology, and Innovation Attaché at the Embassy of Israel. Associated with global policy and research initiatives including GPAI, OECD, and Oxford. Provides strategic guidance on AI governance, international policy frameworks, and responsible AI development.',
+  },
+  {
+    name: 'Arun Pandit',
+    role: 'Industry Advisor',
+    image: '/assets/img/team_arun.png',
+    description:
+      'Co-Founder of Hyphen SCS, Chairman of AIMA Young Leaders Council, and TEDx Speaker. Brings extensive experience in entrepreneurship, leadership development, business strategy, innovation, and industry partnerships.',
+  },
+];
 
 /* ───────────────────────── Team Card (unchanged design) ───────────────────────── */
 
 function MemberCard({ member, index }) {
+  const [imgSrc, setImgSrc] = useState(member.image);
   return (
     <FadeIn
       delay={0.05 + index * 0.1}
@@ -145,15 +170,17 @@ function MemberCard({ member, index }) {
             background: '#fff',
           }}
         >
-          <Image
-            src={member.image}
+          <img
+            src={imgSrc}
             alt={member.name}
             width={112}
             height={112}
+            onError={() => setImgSrc(FALLBACK_AVATAR)}
             style={{
               width: '100%',
               height: '100%',
               objectFit: 'cover',
+              display: 'block',
             }}
           />
         </div>
@@ -346,34 +373,20 @@ function FeatureCard({ person, eyebrow, reverse = false, delay = 0, accent = 'fo
         }}
       >
         {eyebrow && (
-          <span
+          <div
             style={{
-              display: 'inline-flex',
+              display: 'flex',
               alignItems: 'center',
-              gap: '8px',
-              alignSelf: 'flex-start',
-              fontSize: '11px',
-              fontWeight: 700,
-              letterSpacing: '0.18em',
-              textTransform: 'uppercase',
-              color: tokens.primary,
-              background: 'rgba(241,106,36,0.07)',
-              border: '1px solid rgba(241,106,36,0.18)',
-              padding: '6px 14px',
-              borderRadius: '999px',
+              gap: '14px',
               marginBottom: '16px',
             }}
           >
-            <span
-              style={{
-                width: 6,
-                height: 6,
-                borderRadius: '50%',
-                background: tokens.primary,
-              }}
-            />
-            {eyebrow}
-          </span>
+            <span style={{ flex: 1, maxWidth: 44, height: 2, borderRadius: 1, background: tokens.primary, flexShrink: 0 }} />
+            <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: tokens.primary, whiteSpace: 'nowrap' }}>
+              {eyebrow}
+            </span>
+            <span style={{ flex: 1, maxWidth: 44, height: 2, borderRadius: 1, background: tokens.primary, flexShrink: 0 }} />
+          </div>
         )}
 
         <h3
@@ -533,9 +546,6 @@ function ImageCard() {
 
         /* 6-col grid: 3 cards per row (each spans 2 cols) */
         .team-grid > * { grid-column: span 2; }
-        /* Center the orphan row (last 2 of 5) */
-        .team-grid > *:nth-child(4) { grid-column: 2 / span 2; }
-        .team-grid > *:nth-child(5) { grid-column: 4 / span 2; }
 
         @media (max-width: 900px) {
           .team-grid { grid-template-columns: repeat(2, 1fr) !important; }
@@ -563,26 +573,21 @@ function ImageCard() {
       >
         {/* Single Title */}
         <FadeIn delay={0.1} yOffset={30} style={{ textAlign: 'center', marginBottom: 'clamp(36px, 4vw, 56px)' }}>
-          <span
+          <div
             style={{
-              display: 'inline-flex',
+              display: 'flex',
               alignItems: 'center',
-              gap: '8px',
-              fontSize: '11px',
-              fontWeight: 700,
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              color: tokens.primary,
-              background: 'rgba(241,106,36,0.07)',
-              border: '1px solid rgba(241,106,36,0.18)',
-              padding: '6px 16px',
-              borderRadius: '999px',
+              justifyContent: 'center',
+              gap: '14px',
               marginBottom: '16px',
             }}
           >
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: tokens.primary }} />
-            People
-          </span>
+            <span style={{ flex: 1, maxWidth: 44, height: 2, borderRadius: 1, background: tokens.primary, flexShrink: 0 }} />
+            <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: tokens.primary }}>
+              People
+            </span>
+            <span style={{ flex: 1, maxWidth: 44, height: 2, borderRadius: 1, background: tokens.primary, flexShrink: 0 }} />
+          </div>
           <h2
             style={{
               fontFamily: tokens?.fonts?.display || 'inherit',
@@ -634,7 +639,18 @@ function ImageCard() {
 
         {/* ── Advisors ── */}
         <DivisionLabel>Advisors</DivisionLabel>
-        <FeatureCard person={advisor} accent="advisor" reverse delay={0.1} />
+        <div
+          className="team-grid"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(6, 1fr)',
+            gap: 'clamp(20px, 2vw, 28px)',
+          }}
+        >
+          {advisors.map((a, i) => (
+            <MemberCard key={a.name} member={a} index={i} />
+          ))}
+        </div>
       </div>
     </>
   );

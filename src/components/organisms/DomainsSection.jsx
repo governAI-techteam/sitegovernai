@@ -162,10 +162,11 @@ export function DomainsSection() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             >
-              <span className="ds-eyebrow">
-                <span className="ds-eyebrow-dot" />
-                What We Do
-              </span>
+              <div className="ds-eyebrow">
+                <span className="ds-eyebrow-bar" />
+                <span className="ds-eyebrow-text">What We Do</span>
+                <span className="ds-eyebrow-bar" />
+              </div>
               <h2 id="ds-title" className="ds-title">
                 Our <span className="ds-title-accent">Domains</span>
               </h2>
@@ -221,28 +222,28 @@ const INJECTED_CSS = `
   }
 
   .ds-eyebrow {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: center;
+    gap: 0.875rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .ds-eyebrow-bar {
+    flex: 1;
+    max-width: 44px;
+    height: 2px;
+    border-radius: 1px;
+    background: ${tokens.primary};
+    flex-shrink: 0;
+  }
+
+  .ds-eyebrow-text {
     font-size: 0.6875rem;
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    padding: 0.4rem 0.9rem;
-    border-radius: 999px;
-    background: rgba(241,106,36,0.07);
     color: ${tokens.primary};
-    margin-bottom: 1.1rem;
-    border: 1px solid rgba(241,106,36,0.18);
-  }
-
-  .ds-eyebrow-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: ${tokens.primary};
-    box-shadow: 0 0 0 4px rgba(241,106,36,0.15);
-    flex-shrink: 0;
   }
 
   .ds-title {

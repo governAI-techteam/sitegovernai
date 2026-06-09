@@ -127,26 +127,21 @@ export function FAQSection() {
           transition={{ duration: 0.8, ease: EASE }}
           style={{ textAlign: 'center', marginBottom: 'clamp(36px, 4vw, 52px)' }}
         >
-          <span
+          <div
             style={{
-              display: 'inline-flex',
+              display: 'flex',
               alignItems: 'center',
-              gap: 8,
-              fontSize: 11,
-              fontWeight: 700,
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              color: tokens.primary,
-              background: 'rgba(241,106,36,0.07)',
-              border: '1px solid rgba(241,106,36,0.18)',
-              padding: '6px 16px',
-              borderRadius: 999,
+              justifyContent: 'center',
+              gap: 14,
               marginBottom: 16,
             }}
           >
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: tokens.primary }} />
-            FAQ
-          </span>
+            <span style={{ flex: 1, maxWidth: 44, height: 2, borderRadius: 1, background: tokens.primary, flexShrink: 0 }} />
+            <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: tokens.primary }}>
+              FAQ
+            </span>
+            <span style={{ flex: 1, maxWidth: 44, height: 2, borderRadius: 1, background: tokens.primary, flexShrink: 0 }} />
+          </div>
           <h2
             id="faq-heading"
             style={{

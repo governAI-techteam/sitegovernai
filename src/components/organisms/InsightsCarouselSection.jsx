@@ -74,25 +74,19 @@ export default function InsightsCarouselSection() {
           marginBottom: 'clamp(40px, 5vw, 72px)',
         }}
       >
-        <span style={{
-          display: 'inline-flex',
+        <div style={{
+          display: 'flex',
           alignItems: 'center',
-          gap: '8px',
-          fontSize: 11,
-          fontWeight: 700,
-          letterSpacing: '0.2em',
-          textTransform: 'uppercase',
-          color: tokens.primary,
-          background: 'rgba(241,106,36,0.07)',
-          border: '1px solid rgba(241,106,36,0.18)',
-          padding: '6px 16px',
-          borderRadius: '999px',
+          justifyContent: 'center',
+          gap: 14,
           marginBottom: 18,
-          fontFamily: tokens.fonts.body,
         }}>
-          <span style={{ width: 6, height: 6, borderRadius: '50%', background: tokens.primary }} />
-          Insights & Impact
-        </span>
+          <span style={{ flex: 1, maxWidth: 44, height: 2, borderRadius: 1, background: tokens.primary, flexShrink: 0 }} />
+          <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: tokens.primary, fontFamily: tokens.fonts.body }}>
+            Insights & Impact
+          </span>
+          <span style={{ flex: 1, maxWidth: 44, height: 2, borderRadius: 1, background: tokens.primary, flexShrink: 0 }} />
+        </div>
         <h2 style={{
           fontFamily: tokens.fonts.display,
           fontSize: 'clamp(28px, 4vw, 50px)',

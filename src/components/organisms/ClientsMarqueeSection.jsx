@@ -93,10 +93,11 @@ export default function ClientsMarqueeSection() {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span style={styles.eyebrow}>
-            <span style={styles.eyebrowDot} />
-            Trusted By
-          </span>
+          <div style={styles.eyebrow}>
+            <span style={styles.eyebrowBar} />
+            <span style={styles.eyebrowText}>Trusted By</span>
+            <span style={styles.eyebrowBar} />
+          </div>
           <h2 style={styles.heading}>
             Institutional{" "}
             <span style={styles.headingAccent}>Clients &amp; Engagements</span>
@@ -140,9 +141,6 @@ export default function ClientsMarqueeSection() {
             <div style={styles.groupLabelWrap}>
               <span style={styles.groupIndexDot} aria-hidden="true" />
               <p style={styles.groupLabel}>{group.title}</p>
-              <span style={styles.groupCount}>
-                {group.items.length} Institutions
-              </span>
               <span style={styles.groupRule} aria-hidden="true" />
             </div>
             <div style={styles.marqueeOuter} className="marquee-outer">
@@ -199,28 +197,28 @@ const styles = {
   },
 
   eyebrow: {
-    display: "inline-flex",
+    display: "flex",
     alignItems: "center",
-    gap: "8px",
+    justifyContent: "center",
+    gap: "14px",
+    margin: "0 0 18px 0",
+  },
+
+  eyebrowBar: {
+    flex: 1,
+    maxWidth: 44,
+    height: 2,
+    borderRadius: 1,
+    background: ORANGE,
+    flexShrink: 0,
+  },
+
+  eyebrowText: {
     fontSize: "11px",
     fontWeight: 700,
     letterSpacing: "0.2em",
     textTransform: "uppercase",
     color: ORANGE,
-    background: "rgba(241,106,36,0.07)",
-    border: "1px solid rgba(241,106,36,0.18)",
-    padding: "6px 16px",
-    borderRadius: "999px",
-    margin: "0 0 18px 0",
-  },
-
-  eyebrowDot: {
-    width: 6,
-    height: 6,
-    borderRadius: "50%",
-    background: ORANGE,
-    boxShadow: `0 0 0 4px ${ORANGE}26`,
-    flexShrink: 0,
   },
 
   heading: {
@@ -337,26 +335,13 @@ const styles = {
     whiteSpace: "nowrap",
   },
 
-  groupCount: {
-    fontSize: "11px",
-    fontWeight: 700,
-    letterSpacing: "0.06em",
-    textTransform: "uppercase",
-    color: ORANGE,
-    background: "rgba(241,106,36,0.08)",
-    border: "1px solid rgba(241,106,36,0.16)",
-    padding: "4px 10px",
-    borderRadius: "999px",
-    flexShrink: 0,
-    whiteSpace: "nowrap",
-  },
-
   groupRule: {
     flex: 1,
     height: "1px",
     background:
       "linear-gradient(90deg, rgba(241,106,36,0.28), rgba(241,106,36,0.02))",
     minWidth: "20px",
+    marginLeft: "20px",
   },
 
   marqueeOuter: {

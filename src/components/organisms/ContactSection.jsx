@@ -161,15 +161,16 @@ export function ContactSection() {
           transition={{ duration: 0.8, ease: EASE }}
           style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto clamp(40px, 5vw, 64px)' }}
         >
-          <span style={{
-            display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 11, fontWeight: 700,
-            letterSpacing: '0.2em', textTransform: 'uppercase', color: tokens.primary,
-            background: 'rgba(241,106,36,0.07)', border: '1px solid rgba(241,106,36,0.18)',
-            padding: '6px 16px', borderRadius: 999, marginBottom: 18,
+          <div style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 14,
+            marginBottom: 18,
           }}>
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: tokens.primary }} />
-            Get in Touch
-          </span>
+            <span style={{ flex: 1, maxWidth: 44, height: 2, borderRadius: 1, background: tokens.primary, flexShrink: 0 }} />
+            <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: tokens.primary }}>
+              Get in Touch
+            </span>
+            <span style={{ flex: 1, maxWidth: 44, height: 2, borderRadius: 1, background: tokens.primary, flexShrink: 0 }} />
+          </div>
           <h1 style={{
             fontFamily: tokens.fonts.display, fontSize: 'clamp(32px, 5vw, 56px)', fontWeight: 800,
             letterSpacing: '-0.04em', lineHeight: 1.05, color: tokens.onSurface, margin: '0 0 16px',
