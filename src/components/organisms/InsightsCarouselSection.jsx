@@ -58,21 +58,6 @@ export default function InsightsCarouselSection() {
         position: 'relative',
       }}
     >
-      {/* Ambient glow */}
-      <div aria-hidden="true" style={{
-        position: 'absolute',
-        top: '8%',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        width: '900px',
-        height: '500px',
-        maxWidth: '90%',
-        background: 'radial-gradient(ellipse at center, rgba(234,105,38,0.1) 0%, transparent 70%)',
-        filter: 'blur(60px)',
-        pointerEvents: 'none',
-        zIndex: 0,
-      }} />
-
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -98,8 +83,8 @@ export default function InsightsCarouselSection() {
           letterSpacing: '0.2em',
           textTransform: 'uppercase',
           color: tokens.primary,
-          background: 'rgba(234,105,38,0.07)',
-          border: '1px solid rgba(234,105,38,0.18)',
+          background: 'rgba(241,106,36,0.07)',
+          border: '1px solid rgba(241,106,36,0.18)',
           padding: '6px 16px',
           borderRadius: '999px',
           marginBottom: 18,
@@ -119,7 +104,7 @@ export default function InsightsCarouselSection() {
         }}>
           Recognized for Our Pioneering Work in{' '}
           <span style={{
-            background: 'linear-gradient(135deg, #ea6926 0%, #ff8c42 100%)',
+            background: 'linear-gradient(135deg, #f16a24 0%, #f16a24 100%)',
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
@@ -169,10 +154,10 @@ export default function InsightsCarouselSection() {
                   transition: 'all 850ms cubic-bezier(0.22, 1, 0.36, 1)',
                   opacity: isActive ? 1 : 0.4,
                   transform: isActive ? 'scale(1)' : 'scale(0.9)',
-                  filter: isActive ? 'none' : 'saturate(0.8) brightness(0.95)',
+                  filter: isActive ? 'none' : 'brightness(0.95)',
                   cursor: isActive ? 'default' : 'pointer',
                   boxShadow: isActive
-                    ? '0 30px 70px rgba(16,24,40,0.28), 0 12px 28px rgba(234,105,38,0.12)'
+                    ? '0 30px 70px rgba(16,24,40,0.28), 0 12px 28px rgba(241,106,36,0.12)'
                     : '0 12px 32px rgba(16,24,40,0.12)',
                 }}
               >
@@ -190,7 +175,7 @@ export default function InsightsCarouselSection() {
                     objectFit: 'cover',
                     objectPosition: 'center',
                     transform: 'scale(1.15)',
-                    filter: 'blur(28px) saturate(1.1) brightness(0.7)',
+                    filter: 'blur(28px) brightness(0.7)',
                   }}
                 />
 
@@ -251,7 +236,7 @@ export default function InsightsCarouselSection() {
                       WebkitBackdropFilter: 'blur(10px)',
                       border: '1px solid rgba(255,255,255,0.22)',
                     }}>
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ff8c42" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#f16a24" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                         <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
                         <circle cx="12" cy="10" r="3" />
                       </svg>
@@ -321,7 +306,7 @@ export default function InsightsCarouselSection() {
             width: 48,
             height: 48,
             borderRadius: '50%',
-            border: '1px solid rgba(234,105,38,0.18)',
+            border: '1px solid rgba(241,106,36,0.18)',
             background: '#fff',
             color: tokens.onSurface,
             cursor: 'pointer',
@@ -352,7 +337,7 @@ export default function InsightsCarouselSection() {
                 padding: 0,
                 cursor: 'pointer',
                 background: i === current
-                  ? 'linear-gradient(90deg, #ea6926, #ff8c42)'
+                  ? 'linear-gradient(90deg, #f16a24, #f16a24)'
                   : 'rgba(0,0,0,0.15)',
                 transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
               }}
@@ -371,7 +356,7 @@ export default function InsightsCarouselSection() {
             width: 48,
             height: 48,
             borderRadius: '50%',
-            border: '1px solid rgba(234,105,38,0.18)',
+            border: '1px solid rgba(241,106,36,0.18)',
             background: '#fff',
             color: tokens.onSurface,
             cursor: 'pointer',

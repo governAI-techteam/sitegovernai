@@ -8,10 +8,10 @@ import { Icon } from '@/components/atoms/Icon';
 import { motion } from 'framer-motion';
 
 const TRISM_STEPS = [
-  { label: 'Trust', icon: 'verified_user', desc: 'Ensuring model reliability & fairness', color: '#ea6926' },
+  { label: 'Trust', icon: 'verified_user', desc: 'Ensuring model reliability & fairness', color: '#f16a24' },
   { label: 'Risk', icon: 'warning', desc: 'Identifying & mitigating potential failures', color: '#c05200' },
   { label: 'Security', icon: 'security', desc: 'Protecting against adversarial attacks', color: '#d46a1a' },
-  { label: 'Management', icon: 'settings', desc: 'Continuous lifecycle oversight', color: '#ff8c42' },
+  { label: 'Management', icon: 'settings', desc: 'Continuous lifecycle oversight', color: '#f16a24' },
 ];
 
 function TRiSMInfographic() {
@@ -140,20 +140,6 @@ function VisualPanel() {
       gap: 28,
       minHeight: 420,
     }}>
-      {/* Glow effect */}
-      <div style={{
-        position: 'absolute', top: -60, right: -60,
-        width: 200, height: 200, borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(160,65,0,0.25), transparent 70%)',
-        filter: 'blur(40px)', pointerEvents: 'none',
-      }} />
-      <div style={{
-        position: 'absolute', bottom: -40, left: -40,
-        width: 160, height: 160, borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(255,107,0,0.15), transparent 70%)',
-        filter: 'blur(40px)', pointerEvents: 'none',
-      }} />
-
       {/* Header */}
       <div style={{ position: 'relative', zIndex: 1 }}>
         <div style={{
@@ -197,7 +183,7 @@ function VisualPanel() {
       {/* Mini risk bars */}
       <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', gap: 10 }}>
         {[
-          { label: 'Fairness Index', pct: 92, color: '#ff8c42' },
+          { label: 'Fairness Index', pct: 92, color: '#f16a24' },
           { label: 'Transparency Score', pct: 88, color: '#d46a1a' },
           { label: 'Risk Exposure', pct: 15, color: '#c05200' },
         ].map(bar => (

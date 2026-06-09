@@ -16,15 +16,15 @@ import { tokens } from '@/theme/tokens';
 const VB = 9999;
 
 const JOURNEY = [
-  { id: 'HP', label: 'Himachal',      c: [3147, 1727], lp: [1500, 1380], leader: true },
-  { id: 'CH', label: 'Chandigarh',    c: [2942, 2089], lp: [1150, 1880], leader: true },
-  { id: 'PB', label: 'Punjab',        c: [2496, 2038], lp: [1020, 2330], leader: true },
-  { id: 'DL', label: 'Delhi',         c: [3055, 2778], lp: [1250, 2820], leader: true },
-  { id: 'UP', label: 'Uttar Pradesh', c: [4162, 3481], lp: [4162, 3560] },
-  { id: 'BR', label: 'Bihar',         c: [5941, 3742], lp: [5941, 3742] },
-  { id: 'WB', label: 'West Bengal',   c: [6851, 4351], lp: [7400, 4760], leader: true },
-  { id: 'GJ', label: 'Gujarat',       c: [1163, 4770], lp: [1050, 5120] },
-  { id: 'TN', label: 'Tamil Nadu',    c: [3705, 8460], lp: [3705, 8800] },
+  { id: 'HP', label: 'HP', fullName: 'Himachal Pradesh', c: [3147, 1727] },
+  { id: 'CH', label: 'CH', fullName: 'Chandigarh', c: [2942, 2089] },
+  { id: 'PB', label: 'PB', fullName: 'Punjab', c: [2496, 2038] },
+  { id: 'DL', label: 'DL', fullName: 'Delhi', c: [3055, 2778] },
+  { id: 'UP', label: 'UP', fullName: 'Uttar Pradesh', c: [4162, 3481] },
+  { id: 'BR', label: 'BR', fullName: 'Bihar', c: [5941, 3742] },
+  { id: 'WB', label: 'WB', fullName: 'West Bengal', c: [6851, 4351] },
+  { id: 'GJ', label: 'GJ', fullName: 'Gujarat', c: [1163, 4770] },
+  { id: 'TN', label: 'TN', fullName: 'Tamil Nadu', c: [3705, 8460] },
 ];
 
 const INSTITUTIONS = {
@@ -62,8 +62,8 @@ const INSTITUTIONS = {
 };
 
 const CAT_COLORS = {
-  Government: '#ea6926',
-  'Public Sector': '#ff8c42',
+  Government: '#f16a24',
+  'Public Sector': '#f16a24',
   Academia: '#1a2230',
   Healthcare: '#e0892f',
   Technology: '#515f74',
@@ -72,8 +72,8 @@ const CAT_COLORS = {
 const TRAVEL_MS = 2800;   // slow line travel between states
 const DWELL_MS = 3000;    // pause after a state highlights
 const FIRST_MS = 500;     // first state appears quickly
-const ORANGE = '#ea6926';
-const ORANGE_LT = '#ff8c42';
+const ORANGE = '#f16a24';
+const ORANGE_LT = '#f16a24';
 
 const BY_ID = Object.fromEntries(JOURNEY.map((j) => [j.id, j]));
 
@@ -241,7 +241,6 @@ export default function IndiaConquestMap() {
         <g style={{ pointerEvents: 'none' }}>
         {JOURNEY.slice(0, hi).map((j) => {
           const isHovered = hovered === j.id;
-          const anchor = j.leader ? (j.lp[0] < j.c[0] ? 'end' : 'start') : 'middle';
           return (
             <g key={`pin-${j.id}`}>
               <motion.circle
@@ -250,12 +249,6 @@ export default function IndiaConquestMap() {
                 animate={{ r: 150, opacity: 0 }}
                 transition={{ duration: 1.8, ease: 'easeOut', repeat: Infinity, repeatDelay: finished ? 2.6 : 1.2 }}
               />
-              {j.leader && (
-                <line
-                  x1={j.c[0]} y1={j.c[1]} x2={j.lp[0]} y2={j.lp[1]}
-                  stroke={ORANGE} strokeWidth={5} opacity={0.4}
-                />
-              )}
               <motion.circle
                 cx={j.c[0]} cy={j.c[1]} fill="url(#capGrad)" stroke="#fff" strokeWidth={9}
                 initial={{ r: 0 }}
@@ -265,20 +258,20 @@ export default function IndiaConquestMap() {
               <circle cx={j.c[0]} cy={j.c[1]} r={17} fill="#fff" />
 
               <motion.text
-                x={j.lp[0]} y={j.lp[1]} textAnchor={anchor}
+                x={j.c[0]} y={j.c[1]} textAnchor="middle" dominantBaseline="central"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.4 }}
                 style={{
                   fontFamily: tokens.fonts.display,
-                  fontSize: 360,
+                  fontSize: 220,
                   fontWeight: 800,
                   fill: isHovered ? ORANGE : '#1a2230',
                   paintOrder: 'stroke',
                   stroke: '#ffffff',
-                  strokeWidth: 70,
+                  strokeWidth: 50,
                   strokeLinejoin: 'round',
-                  letterSpacing: '-4px',
+                  letterSpacing: '-2px',
                   pointerEvents: 'none',
                   transition: 'fill 0.25s ease',
                 }}
@@ -326,7 +319,7 @@ export default function IndiaConquestMap() {
               borderRadius: 14,
               background: 'rgba(255,255,255,0.96)',
               backdropFilter: 'blur(16px)',
-              border: '1px solid rgba(234,105,38,0.2)',
+              border: '1px solid rgba(241,106,36,0.2)',
               boxShadow: '0 18px 44px rgba(16,24,40,0.2)',
               pointerEvents: 'none',
               zIndex: 5,
@@ -338,7 +331,7 @@ export default function IndiaConquestMap() {
                 <circle cx="12" cy="10" r="3" />
               </svg>
               <h4 style={{ margin: 0, fontSize: 15, fontWeight: 800, fontFamily: tokens.fonts.display, color: tokens.onSurface, letterSpacing: '-0.02em' }}>
-                {hov.label}
+                {hov.fullName}
               </h4>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -368,10 +361,9 @@ function Counter({ value, suffix, label }) {
         gap: 6,
         padding: '5px 11px',
         borderRadius: 10,
-        background: 'rgba(255,255,255,0.85)',
-        backdropFilter: 'blur(10px)',
-        border: '1px solid rgba(234,105,38,0.16)',
-        boxShadow: '0 6px 18px rgba(16,24,40,0.08)',
+        background: '#ffffff',
+        border: '1px solid rgba(241,106,36,0.16)',
+        boxShadow: '0 2px 8px rgba(16,24,40,0.06)',
       }}
     >
       <span
@@ -379,7 +371,7 @@ function Counter({ value, suffix, label }) {
           fontSize: 17,
           fontWeight: 800,
           fontFamily: tokens.fonts.display,
-          background: 'linear-gradient(135deg, #ea6926, #ff8c42)',
+          background: 'linear-gradient(135deg, #f16a24, #f16a24)',
           WebkitBackgroundClip: 'text',
           backgroundClip: 'text',
           WebkitTextFillColor: 'transparent',

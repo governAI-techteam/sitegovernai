@@ -32,7 +32,7 @@ function Divider() {
         height: 1,
         transformOrigin: 'center',
         background:
-          'linear-gradient(90deg, transparent, rgba(234,105,38,0.25), transparent)',
+          'linear-gradient(90deg, transparent, rgba(241,106,36,0.25), transparent)',
       }}
     />
   );

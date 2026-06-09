@@ -28,7 +28,7 @@ export function Button({
   
   const variants = {
     primary: {
-      background: 'linear-gradient(135deg, #ea6926 0%, #ff8c42 100%)',
+      background: 'linear-gradient(135deg, #f16a24 0%, #f16a24 100%)',
       color: tokens.onPrimary,
       boxShadow: hov
         ? '0 12px 32px rgba(234, 105, 38, 0.4), 0 4px 12px rgba(0,0,0,0.1)'

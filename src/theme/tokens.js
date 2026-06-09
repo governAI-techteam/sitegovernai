@@ -1,8 +1,8 @@
 export const tokens = {
   // ── Brand Colors ──
-  primary: '#ea6926',
+  primary: '#f16a24',
   primaryHover: '#d45a1a',
-  primaryGrad: 'linear-gradient(135deg, #ea6926 0%, #ff8c42 100%)',
+  primaryGrad: 'linear-gradient(135deg, #f16a24 0%, #f16a24 100%)',
   primaryFixed: '#ffe5d6',
   onPrimary: '#ffffff',
 

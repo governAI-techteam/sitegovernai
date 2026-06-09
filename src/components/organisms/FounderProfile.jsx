@@ -52,7 +52,7 @@ export function FounderProfile() {
             }}
           >
             <Image
-              src="/assets/img/founder.png"
+              src="/assets/img/founder/founder.png"
               alt="Parishrut Jassal - Founder of GovernAI"
               width={500}
               height={600}

@@ -200,7 +200,7 @@ export function founderSchema() {
     jobTitle: 'Founder & Chief Executive Officer',
     worksFor: { '@id': `${SITE_URL}/#organization` },
     founder: { '@id': `${SITE_URL}/#organization` },
-    image: `${SITE_URL}/assets/img/founder.png`,
+    image: `${SITE_URL}/assets/img/founder/founder.png`,
     url: SITE_URL,
     nationality: { '@type': 'Country', name: 'India' },
     description:
@@ -224,7 +224,7 @@ export function teamSchema() {
       id: 'alvin-antony',
       name: 'Alvin Antony',
       jobTitle: 'Chief Compliance Officer',
-      image: '/assets/img/senior-2.png',
+      image: '/assets/img/Team/team_alvin.jpeg',
       description:
         'AI & Frontier Tech Lawyer specialising in AI Governance, ISO 42001, IP and Data Protection. Certified Implementer/Auditor in ISO 42001:2023 and ISO 9001:2015.',
       knowsAbout: ['AI Compliance', 'ISO/IEC 42001', 'Data Protection', 'AI Law'],
@@ -233,7 +233,7 @@ export function teamSchema() {
       id: 'utso-guha-roy',
       name: 'Dr. Utso Guha Roy',
       jobTitle: 'AI & Healthcare Lead',
-      image: '/assets/img/senior-1.png',
+      image: '/assets/img/Team/team_utso.png',
       description:
         'MD in Pathology (2018), Certified in AI Medicine (CCAIM), with Post-Doctoral work in Digital Pathology.',
       knowsAbout: ['AI in Healthcare', 'Digital Pathology', 'Responsible AI'],
@@ -242,7 +242,7 @@ export function teamSchema() {
       id: 'anubhav-sharma',
       name: 'Anubhav Sharma',
       jobTitle: 'DevSecOps Lead',
-      image: '/assets/img/anubhav.jpeg',
+      image: '/assets/img/Team/team_anubhav.jpeg',
       description:
         'Infrastructure automation, containerized environments, and secure system design — building scalable, resilient, security-first platform foundations.',
       knowsAbout: ['DevSecOps', 'Cloud Security', 'Infrastructure Automation'],
@@ -251,7 +251,7 @@ export function teamSchema() {
       id: 'aditya-udiya',
       name: 'Aditya Udiya',
       jobTitle: 'Applied AI Engineer',
-      image: '/assets/img/aditya2.jpeg',
+      image: '/assets/img/Team/team_preekshit.png',
       description:
         'AI product builder with 24+ applied AI solutions. Former Research Intern at IIT BHU in AI and ML; national-level winner in Software Systems and 6x hackathon winner.',
       knowsAbout: ['Applied AI', 'Machine Learning', 'AI Product Development'],
@@ -260,7 +260,7 @@ export function teamSchema() {
       id: 'rutva-tanna',
       name: 'Dr. Rutva Tanna',
       jobTitle: 'AI & Healthcare Intern',
-      image: '/assets/img/rutva.jpeg',
+      image: '/assets/img/Team/team_himanshu.jpeg',
       description:
         'BHMS professional bridging healthcare knowledge with AI-driven solutions for better clinical outcomes.',
       knowsAbout: ['AI in Healthcare', 'Clinical AI'],
@@ -289,7 +289,7 @@ export function advisorSchema() {
     name: 'Dr. Murthy Remilla',
     jobTitle: 'Chief Advisor',
     worksFor: { '@id': `${SITE_URL}/#organization` },
-    image: `${SITE_URL}/assets/img/advisor.png`,
+    image: `${SITE_URL}/assets/img/team_murthy.png`,
     description:
       'Former Senior Scientist at ISRO and Head of Project Management for Gaganyaan, with 35+ years in technical and leadership roles.',
     alumniOf: { '@type': 'Organization', name: 'ISRO' },

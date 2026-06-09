@@ -64,7 +64,7 @@ function NetworkNodes({ count = 40 }) {
         ]);
         return (
           <line key={i} geometry={geometry}>
-            <lineBasicMaterial color="#ea6926" transparent opacity={0.15} />
+            <lineBasicMaterial color="#f16a24" transparent opacity={0.15} />
           </line>
         );
       })}
@@ -78,7 +78,7 @@ function NetworkNodes({ count = 40 }) {
             itemSize={3}
           />
         </bufferGeometry>
-        <pointsMaterial color="#ea6926" size={0.12} transparent opacity={0.6} sizeAttenuation />
+        <pointsMaterial color="#f16a24" size={0.12} transparent opacity={0.6} sizeAttenuation />
       </points>
 
       {Array.from({ length: Math.min(12, count) }).map((_, i) => (
@@ -87,7 +87,7 @@ function NetworkNodes({ count = 40 }) {
             args={[0.08, 12, 12]}
             position={[points[i * 3], points[i * 3 + 1], points[i * 3 + 2]]}
           >
-            <meshStandardMaterial color="#ea6926" emissive="#ea6926" emissiveIntensity={0.5} />
+            <meshStandardMaterial color="#f16a24" emissive="#f16a24" emissiveIntensity={0.5} />
           </Sphere>
         </Float>
       ))}

@@ -25,9 +25,9 @@ export function ScrollProgress() {
         height: 3,
         transformOrigin: '0%',
         scaleX,
-        background: 'linear-gradient(90deg, #ea6926 0%, #ff8c42 100%)',
+        background: 'linear-gradient(90deg, #f16a24 0%, #f16a24 100%)',
         zIndex: 2000,
-        boxShadow: '0 1px 8px rgba(234,105,38,0.45)',
+        boxShadow: '0 1px 8px rgba(241,106,36,0.45)',
       }}
     />
   );

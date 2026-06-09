@@ -67,8 +67,8 @@ const DOMAINS = [
 
 const CheckIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <circle cx="12" cy="12" r="11" fill="#fff" stroke="rgba(234,105,38,0.25)" strokeWidth="1" />
-    <path d="m8 12 2.5 2.5L16 9" stroke="#ea6926" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <circle cx="12" cy="12" r="11" fill="#fff" stroke="rgba(241,106,36,0.25)" strokeWidth="1" />
+    <path d="m8 12 2.5 2.5L16 9" stroke="#f16a24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
@@ -151,7 +151,6 @@ export function DomainsSection() {
       <style>{INJECTED_CSS}</style>
 
       <section className="domains-section" aria-labelledby="ds-title">
-        <div className="domains-glow" aria-hidden="true" />
         <div className="domains-grid-bg" aria-hidden="true" />
 
         <div className="domains-inner">
@@ -201,32 +200,11 @@ const INJECTED_CSS = `
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba(234,105,38,0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(234,105,38,0.035) 1px, transparent 1px);
+      linear-gradient(rgba(241,106,36,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(241,106,36,0.035) 1px, transparent 1px);
     background-size: 64px 64px;
     mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 0%, transparent 75%);
     -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 0%, transparent 75%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .domains-glow {
-    position: absolute;
-    bottom: -240px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 1000px;
-    height: 500px;
-    border-radius: 50%;
-    background: radial-gradient(
-      ellipse at center,
-      rgba(255,157,82,0.55) 0%,
-      rgba(255,200,160,0.35) 35%,
-      rgba(255,245,237,0.2) 60%,
-      transparent 75%
-    );
-    filter: blur(90px);
-    opacity: 0.4;
     pointer-events: none;
     z-index: 0;
   }
@@ -252,10 +230,10 @@ const INJECTED_CSS = `
     text-transform: uppercase;
     padding: 0.4rem 0.9rem;
     border-radius: 999px;
-    background: rgba(234,105,38,0.07);
+    background: rgba(241,106,36,0.07);
     color: ${tokens.primary};
     margin-bottom: 1.1rem;
-    border: 1px solid rgba(234,105,38,0.18);
+    border: 1px solid rgba(241,106,36,0.18);
   }
 
   .ds-eyebrow-dot {
@@ -263,7 +241,7 @@ const INJECTED_CSS = `
     height: 6px;
     border-radius: 50%;
     background: ${tokens.primary};
-    box-shadow: 0 0 0 4px rgba(234,105,38,0.15);
+    box-shadow: 0 0 0 4px rgba(241,106,36,0.15);
     flex-shrink: 0;
   }
 
@@ -278,7 +256,7 @@ const INJECTED_CSS = `
   }
 
   .ds-title-accent {
-    background: linear-gradient(135deg, #ea6926 0%, #ff8c42 100%);
+    background: linear-gradient(135deg, #f16a24 0%, #f16a24 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -304,11 +282,11 @@ const INJECTED_CSS = `
   .ds-card {
     position: relative;
     border-radius: 24px;
-    border: 1px solid rgba(234,105,38,0.08);
+    border: 1px solid rgba(241,106,36,0.08);
     background: linear-gradient(165deg, #fffdfb 0%, #fffaf6 100%);
     box-shadow:
-      0 1px 2px rgba(234,105,38,0.04),
-      0 10px 28px rgba(234,105,38,0.05),
+      0 1px 2px rgba(241,106,36,0.04),
+      0 10px 28px rgba(241,106,36,0.05),
       0 24px 56px rgba(16,24,40,0.04);
     transition: transform 0.5s cubic-bezier(0.22,1,0.36,1),
                 box-shadow 0.5s cubic-bezier(0.22,1,0.36,1),
@@ -320,11 +298,11 @@ const INJECTED_CSS = `
 
   .ds-card:hover {
     transform: translateY(-10px);
-    border-color: rgba(234,105,38,0.22);
+    border-color: rgba(241,106,36,0.22);
     box-shadow:
-      0 4px 8px rgba(234,105,38,0.05),
-      0 22px 50px rgba(234,105,38,0.12),
-      0 40px 80px rgba(234,105,38,0.09);
+      0 4px 8px rgba(241,106,36,0.05),
+      0 22px 50px rgba(241,106,36,0.12),
+      0 40px 80px rgba(241,106,36,0.09);
   }
 
   .ds-card-inner {
@@ -349,12 +327,12 @@ const INJECTED_CSS = `
     width: 3.25rem;
     height: 3.25rem;
     border-radius: 16px;
-    background: linear-gradient(135deg, #ea6926 0%, #ff8c42 100%);
+    background: linear-gradient(135deg, #f16a24 0%, #f16a24 100%);
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 8px 20px rgba(234,105,38,0.32);
+    box-shadow: 0 8px 20px rgba(241,106,36,0.32);
     transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
   }
   .ds-card:hover .ds-icon-wrap {
@@ -394,7 +372,7 @@ const INJECTED_CSS = `
 
   .ds-divider {
     height: 1px;
-    background: linear-gradient(90deg, rgba(234,105,38,0.22), rgba(234,105,38,0.02));
+    background: linear-gradient(90deg, rgba(241,106,36,0.22), rgba(241,106,36,0.02));
     margin: 0.2rem 0;
   }
 
@@ -423,7 +401,7 @@ const INJECTED_CSS = `
   .ds-credentials {
     margin-top: auto;
     padding-top: 1.1rem;
-    border-top: 1px solid rgba(234,105,38,0.14);
+    border-top: 1px solid rgba(241,106,36,0.14);
   }
 
   .ds-credentials-label {
@@ -449,15 +427,15 @@ const INJECTED_CSS = `
     color: #6b4a38;
     padding: 0.4rem 0.7rem;
     border-radius: 9px;
-    background: rgba(234,105,38,0.06);
-    border: 1px solid rgba(234,105,38,0.14);
+    background: rgba(241,106,36,0.06);
+    border: 1px solid rgba(241,106,36,0.14);
     transition: all 0.25s ease;
   }
   .ds-chip:hover {
     color: #fff;
-    background: linear-gradient(135deg, #ea6926 0%, #ff8c42 100%);
+    background: linear-gradient(135deg, #f16a24 0%, #f16a24 100%);
     border-color: transparent;
-    box-shadow: 0 4px 12px rgba(234,105,38,0.28);
+    box-shadow: 0 4px 12px rgba(241,106,36,0.28);
   }
 
   /* CTA */

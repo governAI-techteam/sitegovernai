@@ -107,7 +107,7 @@ export function Footer() {
           left: 0,
           right: 0,
           height: 2,
-          background: 'linear-gradient(90deg, transparent 0%, #ea6926 25%, #ff8c42 50%, #ea6926 75%, transparent 100%)',
+          background: 'linear-gradient(90deg, transparent 0%, #f16a24 25%, #f16a24 50%, #f16a24 75%, transparent 100%)',
           backgroundSize: '200% 100%',
           animation: 'footerGradient 4s linear infinite',
         }} />
@@ -199,7 +199,7 @@ export function Footer() {
                     onMouseEnter={(e) => {
                       e.currentTarget.style.background = 'rgba(234, 105, 38, 0.15)';
                       e.currentTarget.style.borderColor = 'rgba(234, 105, 38, 0.3)';
-                      e.currentTarget.style.color = '#ea6926';
+                      e.currentTarget.style.color = '#f16a24';
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
@@ -252,7 +252,7 @@ export function Footer() {
                           transition: 'color 0.2s ease',
                           cursor: 'pointer',
                         }}
-                        onMouseEnter={(e) => e.currentTarget.style.color = '#ea6926'}
+                        onMouseEnter={(e) => e.currentTarget.style.color = '#f16a24'}
                         onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.55)'}
                       >
                         {link.label}
@@ -323,7 +323,7 @@ export function Footer() {
                   fontWeight: 500,
                   transition: 'color 0.2s ease',
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.color = '#ea6926'}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#f16a24'}
                 onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(234, 105, 38, 0.6)'}
               >
                 Divyakush Punjabi

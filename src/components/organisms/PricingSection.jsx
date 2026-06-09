@@ -23,7 +23,7 @@ export function PricingSection({ sectionRefs }) {
             background: tokens.primaryGrad,
             padding: '78px 44px',
             textAlign: 'center',
-            boxShadow: '0 0 60px -10px rgba(255,107,0,.25)',
+            boxShadow: '0 0 60px -10px rgba(241,106,36,.25)',
           }}
         >
           <div

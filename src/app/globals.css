@@ -74,7 +74,7 @@ body::after {
   left: 0;
   width: 0;
   height: 1.5px;
-  background: linear-gradient(90deg, #ea6926, #ff8c42);
+  background: linear-gradient(90deg, #f16a24, #f16a24);
   border-radius: 2px;
   transition: width 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
@@ -130,7 +130,7 @@ body::after {
 /* ── Premium Focus States ── */
 button:focus-visible,
 a:focus-visible {
-  outline: 2px solid #ea6926;
+  outline: 2px solid #f16a24;
   outline-offset: 3px;
   border-radius: 4px;
 }

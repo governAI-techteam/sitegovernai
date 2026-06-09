@@ -81,7 +81,7 @@ const inputBase = {
 function useFocusStyle() {
   const onFocus = (e) => {
     e.currentTarget.style.borderColor = tokens.primary;
-    e.currentTarget.style.boxShadow = '0 0 0 4px rgba(234,105,38,0.12)';
+    e.currentTarget.style.boxShadow = '0 0 0 4px rgba(241,106,36,0.12)';
   };
   const onBlur = (e) => {
     e.currentTarget.style.borderColor = 'rgba(16,24,40,0.1)';
@@ -144,16 +144,9 @@ export function ContactSection() {
 
   return (
     <section style={{ position: 'relative', overflow: 'hidden', background: tokens.surface, padding: 'clamp(120px, 14vh, 170px) 24px clamp(60px, 8vw, 100px)' }}>
-      {/* Ambient background */}
-      <div aria-hidden="true" style={{
-        position: 'absolute', top: '-180px', left: '50%', transform: 'translateX(-50%)',
-        width: 1000, height: 520, maxWidth: '95%',
-        background: 'radial-gradient(ellipse at center, rgba(234,105,38,0.14) 0%, transparent 70%)',
-        filter: 'blur(80px)', pointerEvents: 'none',
-      }} />
       <div aria-hidden="true" style={{
         position: 'absolute', inset: 0,
-        backgroundImage: 'linear-gradient(rgba(234,105,38,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(234,105,38,0.03) 1px, transparent 1px)',
+        backgroundImage: 'linear-gradient(rgba(241,106,36,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(241,106,36,0.03) 1px, transparent 1px)',
         backgroundSize: '64px 64px',
         maskImage: 'radial-gradient(ellipse 70% 50% at 50% 12%, #000 0%, transparent 72%)',
         WebkitMaskImage: 'radial-gradient(ellipse 70% 50% at 50% 12%, #000 0%, transparent 72%)',
@@ -171,7 +164,7 @@ export function ContactSection() {
           <span style={{
             display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 11, fontWeight: 700,
             letterSpacing: '0.2em', textTransform: 'uppercase', color: tokens.primary,
-            background: 'rgba(234,105,38,0.07)', border: '1px solid rgba(234,105,38,0.18)',
+            background: 'rgba(241,106,36,0.07)', border: '1px solid rgba(241,106,36,0.18)',
             padding: '6px 16px', borderRadius: 999, marginBottom: 18,
           }}>
             <span style={{ width: 6, height: 6, borderRadius: '50%', background: tokens.primary }} />
@@ -183,7 +176,7 @@ export function ContactSection() {
           }}>
             Let&apos;s build{' '}
             <span style={{
-              background: 'linear-gradient(135deg, #ea6926 0%, #ff8c42 100%)',
+              background: 'linear-gradient(135deg, #f16a24 0%, #f16a24 100%)',
               WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent',
             }}>responsible AI</span>{' '}together
           </h1>
@@ -212,7 +205,7 @@ export function ContactSection() {
             {/* glow */}
             <div aria-hidden="true" style={{
               position: 'absolute', top: -120, right: -100, width: 320, height: 320, borderRadius: '50%',
-              background: 'radial-gradient(circle, rgba(234,105,38,0.35) 0%, transparent 70%)', filter: 'blur(40px)',
+              background: 'radial-gradient(circle, rgba(241,106,36,0.35) 0%, transparent 70%)', filter: 'blur(40px)',
             }} />
             <div style={{ position: 'relative' }}>
               <h2 style={{ fontFamily: tokens.fonts.display, fontSize: 22, fontWeight: 800, letterSpacing: '-0.02em', margin: '0 0 10px' }}>
@@ -231,7 +224,7 @@ export function ContactSection() {
                     <span style={{
                       width: 46, height: 46, borderRadius: 13, flexShrink: 0,
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      background: 'rgba(234,105,38,0.16)', border: '1px solid rgba(234,105,38,0.28)', color: '#ff8c42',
+                      background: 'rgba(241,106,36,0.16)', border: '1px solid rgba(241,106,36,0.28)', color: '#f16a24',
                     }}>{c.icon}</span>
                     <div>
                       <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.45)' }}>{c.label}</div>
@@ -252,7 +245,7 @@ export function ContactSection() {
             <div style={{ position: 'relative', display: 'flex', gap: 8, paddingTop: 'clamp(20px, 3vw, 28px)', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
               {TRUST.map((t, i) => (
                 <div key={t.label} style={{ flex: 1, textAlign: i === 0 ? 'left' : 'center' }}>
-                  <div style={{ fontFamily: tokens.fonts.display, fontSize: 22, fontWeight: 800, color: '#ff8c42', letterSpacing: '-0.02em' }}>{t.value}</div>
+                  <div style={{ fontFamily: tokens.fonts.display, fontSize: 22, fontWeight: 800, color: '#f16a24', letterSpacing: '-0.02em' }}>{t.value}</div>
                   <div style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 600, marginTop: 3 }}>{t.label}</div>
                 </div>
               ))}
@@ -267,7 +260,7 @@ export function ContactSection() {
             style={{
               borderRadius: 26, padding: 'clamp(28px, 3vw, 40px)',
               background: 'linear-gradient(165deg, #fffdfb 0%, #fffaf6 100%)',
-              border: '1px solid rgba(234,105,38,0.1)',
+              border: '1px solid rgba(241,106,36,0.1)',
               boxShadow: '0 24px 60px rgba(16,24,40,0.06)',
             }}
           >
@@ -284,7 +277,7 @@ export function ContactSection() {
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ type: 'spring', stiffness: 260, damping: 16 }}
-                    style={{ width: 72, height: 72, borderRadius: '50%', background: 'linear-gradient(135deg, #ea6926, #ff8c42)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 28px rgba(234,105,38,0.35)' }}
+                    style={{ width: 72, height: 72, borderRadius: '50%', background: 'linear-gradient(135deg, #f16a24, #f16a24)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 28px rgba(241,106,36,0.35)' }}
                   >
                     <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
                   </motion.div>
@@ -375,10 +368,10 @@ export function ContactSection() {
                     disabled={status === 'sending'}
                     style={{
                       marginTop: 4, padding: '16px 32px', borderRadius: 14, border: 'none',
-                      background: 'linear-gradient(135deg, #ea6926 0%, #ff8c42 100%)', color: '#fff',
+                      background: 'linear-gradient(135deg, #f16a24 0%, #f16a24 100%)', color: '#fff',
                       fontFamily: tokens.fonts.display, fontSize: 15.5, fontWeight: 700, letterSpacing: '0.02em',
                       cursor: status === 'sending' ? 'wait' : 'pointer',
-                      boxShadow: '0 10px 28px rgba(234,105,38,0.32)',
+                      boxShadow: '0 10px 28px rgba(241,106,36,0.32)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
                     }}
                   >

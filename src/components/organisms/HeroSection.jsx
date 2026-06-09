@@ -32,7 +32,7 @@ export function HeroSection({ sectionRefs }) {
             alignItems: 'center',
             gap: 8,
             background: tokens.primaryFixed,
-            color: '#ea6926',
+            color: '#f16a24',
             borderRadius: 9999,
             padding: '4px 14px',
             fontSize: 11,

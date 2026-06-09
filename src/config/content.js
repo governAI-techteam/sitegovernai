@@ -15,7 +15,7 @@ export const DEFAULT_PROBLEMS = [
   },
   {
     icon: 'analytics',
-    iconColor: '#ea6926',
+    iconColor: '#f16a24',
     iconBg: '#ffe5d6',
     title: 'Bias Opaque Blocks',
     desc: 'Invisible patterns that degrade trust and performance.',
@@ -26,7 +26,7 @@ export const DEFAULT_FEATURES = [
   {
     icon: 'visibility',
     iconBg: '#ffe5d6',
-    iconColor: '#ea6926',
+    iconColor: '#f16a24',
     title: 'Total Observability',
     desc: 'Real-time dashboards that translate model performance into business-level governance metrics.',
   },

@@ -32,7 +32,7 @@ export function ArticleCard({ date, title, desc }) {
         <Icon
           name="article"
           size={60}
-          style={{ color: 'rgba(255,107,0,.4)' }}
+          style={{ color: 'rgba(241,106,36,.4)' }}
         />
       </div>
       <div style={{ padding: 26 }}>

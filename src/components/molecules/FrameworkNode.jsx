@@ -30,7 +30,7 @@ export function FrameworkNode({ icon, label, accent = false }) {
           justifyContent: 'center',
           marginBottom: 13,
           boxShadow: accent
-            ? '0 8px 32px rgba(255,107,0,.35)'
+            ? '0 8px 32px rgba(241,106,36,.35)'
             : '0 4px 20px rgba(0,0,0,.08)',
           transform: hov ? 'scale(1.1)' : 'scale(1)',
           transition: 'transform .3s ease',

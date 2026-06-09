@@ -82,7 +82,6 @@ export default function ClientsMarqueeSection() {
     <section style={styles.section}>
       <style>{css}</style>
 
-      <div style={styles.glowTop} aria-hidden="true" />
       <div style={styles.gridBg} aria-hidden="true" />
 
       {/* ── Header ── */}
@@ -172,25 +171,11 @@ const styles = {
     paddingBottom: "clamp(72px, 8vw, 120px)",
   },
 
-  glowTop: {
-    position: "absolute",
-    top: "-140px",
-    left: "50%",
-    transform: "translateX(-50%)",
-    width: "760px",
-    height: "440px",
-    borderRadius: "50%",
-    background: `radial-gradient(ellipse at center, ${ORANGE}14 0%, transparent 68%)`,
-    filter: "blur(72px)",
-    pointerEvents: "none",
-    zIndex: 0,
-  },
-
   gridBg: {
     position: "absolute",
     inset: 0,
     backgroundImage:
-      "linear-gradient(rgba(234,105,38,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(234,105,38,0.03) 1px, transparent 1px)",
+      "linear-gradient(rgba(241,106,36,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(241,106,36,0.03) 1px, transparent 1px)",
     backgroundSize: "64px 64px",
     maskImage:
       "radial-gradient(ellipse 70% 50% at 50% 18%, #000 0%, transparent 75%)",
@@ -223,8 +208,8 @@ const styles = {
     letterSpacing: "0.2em",
     textTransform: "uppercase",
     color: ORANGE,
-    background: "rgba(234,105,38,0.07)",
-    border: "1px solid rgba(234,105,38,0.18)",
+    background: "rgba(241,106,36,0.07)",
+    border: "1px solid rgba(241,106,36,0.18)",
     padding: "6px 16px",
     borderRadius: "999px",
     margin: "0 0 18px 0",
@@ -250,7 +235,7 @@ const styles = {
   },
 
   headingAccent: {
-    background: "linear-gradient(135deg, #ea6926 0%, #ff8c42 100%)",
+    background: "linear-gradient(135deg, #f16a24 0%, #f16a24 100%)",
     WebkitBackgroundClip: "text",
     backgroundClip: "text",
     WebkitTextFillColor: "transparent",
@@ -274,11 +259,11 @@ const styles = {
     gap: "clamp(20px, 4vw, 48px)",
     flexWrap: "wrap",
     background: "linear-gradient(165deg, #fffdfb 0%, #fffaf6 100%)",
-    border: "1px solid rgba(234,105,38,0.1)",
+    border: "1px solid rgba(241,106,36,0.1)",
     borderRadius: "20px",
     padding: "clamp(22px, 3vw, 32px) clamp(24px, 5vw, 56px)",
     boxShadow:
-      "0 1px 2px rgba(234,105,38,0.04), 0 12px 32px rgba(16,24,40,0.05)",
+      "0 1px 2px rgba(241,106,36,0.04), 0 12px 32px rgba(16,24,40,0.05)",
     maxWidth: "760px",
     margin: "0 auto",
   },
@@ -287,7 +272,7 @@ const styles = {
     width: "1px",
     alignSelf: "stretch",
     background:
-      "linear-gradient(to bottom, transparent, rgba(234,105,38,0.25), transparent)",
+      "linear-gradient(to bottom, transparent, rgba(241,106,36,0.25), transparent)",
   },
 
   statItem: {
@@ -303,7 +288,7 @@ const styles = {
     fontFamily: tokens.fonts.display,
     fontSize: "clamp(28px, 3.4vw, 42px)",
     fontWeight: 800,
-    background: "linear-gradient(135deg, #ea6926 0%, #ff8c42 100%)",
+    background: "linear-gradient(135deg, #f16a24 0%, #f16a24 100%)",
     WebkitBackgroundClip: "text",
     backgroundClip: "text",
     WebkitTextFillColor: "transparent",
@@ -354,7 +339,7 @@ const styles = {
     width: "10px",
     height: "10px",
     borderRadius: "3px",
-    background: "linear-gradient(135deg, #ea6926 0%, #ff8c42 100%)",
+    background: "linear-gradient(135deg, #f16a24 0%, #f16a24 100%)",
     flexShrink: 0,
     boxShadow: `0 2px 8px ${ORANGE}40`,
   },
@@ -376,8 +361,8 @@ const styles = {
     letterSpacing: "0.06em",
     textTransform: "uppercase",
     color: ORANGE,
-    background: "rgba(234,105,38,0.08)",
-    border: "1px solid rgba(234,105,38,0.16)",
+    background: "rgba(241,106,36,0.08)",
+    border: "1px solid rgba(241,106,36,0.16)",
     padding: "4px 10px",
     borderRadius: "999px",
     flexShrink: 0,
@@ -388,7 +373,7 @@ const styles = {
     flex: 1,
     height: "1px",
     background:
-      "linear-gradient(90deg, rgba(234,105,38,0.28), rgba(234,105,38,0.02))",
+      "linear-gradient(90deg, rgba(241,106,36,0.28), rgba(241,106,36,0.02))",
     minWidth: "20px",
   },
 
@@ -454,7 +439,7 @@ const styles = {
     padding: "24px 48px",
     borderRadius: 18,
     background: "linear-gradient(165deg, #ffffff 0%, #fffaf6 100%)",
-    border: "1px solid rgba(234,105,38,0.1)",
+    border: "1px solid rgba(241,106,36,0.1)",
     boxShadow:
       "0 4px 20px rgba(16,24,40,0.05), inset 0 1px 0 rgba(255,255,255,0.8)",
     width: 224,
@@ -492,9 +477,9 @@ const css = `
 
   .logo-item:hover .logo-placeholder {
     background: linear-gradient(165deg, #fffaf6 0%, #fff4ea 100%) !important;
-    box-shadow: 0 16px 44px rgba(234,105,38,0.16), inset 0 1px 0 rgba(255,255,255,0.9) !important;
+    box-shadow: 0 16px 44px rgba(241,106,36,0.16), inset 0 1px 0 rgba(255,255,255,0.9) !important;
     transform: translateY(-6px);
-    border-color: rgba(234,105,38,0.25) !important;
+    border-color: rgba(241,106,36,0.25) !important;
   }
 
   .logo-item:hover img {

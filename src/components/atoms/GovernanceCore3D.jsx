@@ -19,11 +19,11 @@ function Core() {
       <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
         <Sphere args={[1.2, 64, 64]} ref={meshRef}>
           <MeshDistortMaterial
-            color="#ea6926"
+            color="#f16a24"
             speed={3}
             distort={0.4}
             radius={1}
-            emissive="#ff8c42"
+            emissive="#f16a24"
             emissiveIntensity={0.2}
           />
         </Sphere>
@@ -53,10 +53,10 @@ function GovernanceRings() {
       {[2, 2.8, 3.6].map((radius, i) => (
         <Torus key={i} args={[radius, 0.02, 16, 100]} rotation={[Math.PI / 2, 0, 0]}>
           <meshStandardMaterial
-            color="#ea6926"
+            color="#f16a24"
             transparent
             opacity={0.3 - i * 0.05}
-            emissive="#ea6926"
+            emissive="#f16a24"
             emissiveIntensity={0.5}
           />
         </Torus>
@@ -104,7 +104,7 @@ function DataPoints({ count = 40 }) {
       </bufferGeometry>
       <pointsMaterial
         size={0.08}
-        color="#ea6926"
+        color="#f16a24"
         transparent
         opacity={0.6}
         sizeAttenuation
@@ -132,10 +132,10 @@ function OrbitingNodes() {
       {[0, 1, 2].map((i) => (
         <Sphere key={i} args={[0.15, 16, 16]}>
           <MeshWobbleMaterial
-            color="#ff8c42"
+            color="#f16a24"
             speed={2}
             factor={0.4}
-            emissive="#ff8c42"
+            emissive="#f16a24"
             emissiveIntensity={0.8}
           />
         </Sphere>
@@ -150,7 +150,7 @@ export default function GovernanceCore3D() {
       <Canvas camera={{ position: [0, 0, 8], fov: 45 }}>
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} intensity={1.5} />
-        <pointLight position={[-10, -10, -10]} color="#ea6926" intensity={1} />
+        <pointLight position={[-10, -10, -10]} color="#f16a24" intensity={1} />
         <Core />
         <GovernanceRings />
         <DataPoints count={60} />

@@ -4,7 +4,6 @@ import { useRouter } from 'next/navigation';
 import { tokens } from '@/theme/tokens';
 import { Section } from '@/components/atoms/Section';
 import { Container } from '@/components/atoms/Container';
-import { Blob } from '@/components/atoms/Blob';
 import { Typewriter } from '@/components/atoms/Typewriter';
 import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
@@ -64,14 +63,6 @@ export function LandingSection({ sectionRefs }) {
         alignItems: 'center',
       }}
     >
-      {/* Background Blobs */}
-      <div className="hide-on-mobile">
-        <Blob top="-15%" right="5%" size={500} />
-      </div>
-      <div className="hide-on-mobile">
-        <Blob bottom="10%" left="-5%" size={350} color="rgba(234,105,38,.06)" />
-      </div>
-
       {/* Subtle dot pattern */}
       <div
         className="hide-on-mobile"
@@ -119,7 +110,7 @@ export function LandingSection({ sectionRefs }) {
                 variants={lineVariants}
                 style={{
                   display: 'block',
-                  backgroundImage: 'linear-gradient(135deg, #ea6926, #ff8c42)',
+                  backgroundImage: 'linear-gradient(135deg, #f16a24, #f16a24)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -204,7 +195,7 @@ export function LandingSection({ sectionRefs }) {
                     style={{
                       position: 'absolute',
                       inset: 0,
-                      background: 'linear-gradient(90deg, transparent, rgba(234,105,38,0.08), transparent)',
+                      background: 'linear-gradient(90deg, transparent, rgba(241,106,36,0.08), transparent)',
                       transform: 'translateX(-100%)',
                       pointerEvents: 'none',
                     }}
@@ -299,20 +290,6 @@ export function LandingSection({ sectionRefs }) {
               position: 'relative',
             }}
           >
-            {/* Ambient glow behind map */}
-            <div
-              aria-hidden="true"
-              style={{
-                position: 'absolute',
-                inset: '-10% -6%',
-                background:
-                  'radial-gradient(ellipse at 55% 45%, rgba(234,105,38,0.18) 0%, transparent 65%)',
-                filter: 'blur(50px)',
-                pointerEvents: 'none',
-                zIndex: 0,
-              }}
-            />
-
             {/* Floating headline chip — bottom right */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}

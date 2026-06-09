@@ -10,7 +10,7 @@ import Image from 'next/image';
 const founder = {
   name: 'Parishrut Jassal',
   role: 'Founder & Chief Executive Officer',
-  image: '/assets/img/founder.png',
+  image: '/assets/img/founder/founder.png',
   linkedin: 'https://linkedin.com/in/parishrut-jassal',
   highlights: [
     'TEDx Speaker · UKAS-recognised ISO/IEC 42001 Auditor',
@@ -25,35 +25,35 @@ const teamMembers = [
   {
     name: 'Alvin Antony',
     role: 'Chief Compliance Officer',
-    image: '/assets/img/senior-2.png',
+    image: '/assets/img/Team/team_alvin.jpeg',
     description:
       'AI & Frontier Tech Lawyer | AI Governance, ISO 42001, IP & Data Protection | Certified Implementer/Auditor in ISO 42001:2023 and ISO 9001:2015.',
   },
   {
     name: 'Dr. Utso Guha Roy',
     role: 'AI & Healthcare Lead',
-    image: '/assets/img/senior-1.png',
+    image: '/assets/img/Team/team_utso.png',
     description:
       'MD in Pathology (2018), Certified in AI Medicine (CCAIM), Post-Doctoral in Digital Pathology.',
   },
   {
     name: 'Anubhav Sharma',
     role: 'DevSecOps Lead',
-    image: '/assets/img/anubhav.jpeg',
+    image: '/assets/img/Team/team_anubhav.jpeg',
     description:
       'Experienced in infrastructure automation, containerized environments, and secure system design. Focused on building scalable, resilient, and security-first platform foundations.',
   },
   {
     name: 'Aditya Udiya',
     role: 'Applied AI Engineer',
-    image: '/assets/img/aditya2.jpeg',
+    image: '/assets/img/Team/team_preekshit.png',
     description:
       'AI product builder with 24+ applied AI solutions. Startup founder. Ex Research Intern at IIT BHU in AI and ML. National level winner in Software Systems. 6x hackathon winner.',
   },
   {
     name: 'Dr. Rutva Tanna',
     role: 'AI & Healthcare Intern',
-    image: '/assets/img/rutva.jpeg',
+    image: '/assets/img/Team/team_himanshu.jpeg',
     description:
       'BHMS professional focused on holistic wellness and patient-centered care. Bridging healthcare knowledge with AI-driven solutions for better clinical outcomes.',
   },
@@ -62,7 +62,7 @@ const teamMembers = [
 const advisor = {
   name: 'Dr. Murthy Remilla',
   role: 'Chief Advisor',
-  image: '/assets/img/advisor.png',
+  image: '/assets/img/team_murthy.png',
   highlights: [
     'Former Senior Scientist at ISRO',
     'Head of Project Management for Gaganyaan',
@@ -85,10 +85,10 @@ function MemberCard({ member, index }) {
         alignItems: 'center',
         padding: '32px 22px 26px',
         background: 'linear-gradient(165deg, #fffdfb 0%, #fffaf6 100%)',
-        border: '1px solid rgba(234,105,38,0.1)',
+        border: '1px solid rgba(241,106,36,0.1)',
         borderRadius: '20px',
         boxShadow:
-          '0 1px 2px rgba(234,105,38,0.04), 0 10px 28px rgba(16,24,40,0.05)',
+          '0 1px 2px rgba(241,106,36,0.04), 0 10px 28px rgba(16,24,40,0.05)',
         transition: 'transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s cubic-bezier(0.22,1,0.36,1), border-color 0.4s ease',
         cursor: 'default',
         textAlign: 'center',
@@ -97,14 +97,14 @@ function MemberCard({ member, index }) {
       onMouseEnter={(e) => {
         e.currentTarget.style.transform = 'translateY(-8px)';
         e.currentTarget.style.boxShadow =
-          '0 4px 8px rgba(234,105,38,0.06), 0 22px 48px rgba(234,105,38,0.14)';
-        e.currentTarget.style.borderColor = 'rgba(234,105,38,0.22)';
+          '0 4px 8px rgba(241,106,36,0.06), 0 22px 48px rgba(241,106,36,0.14)';
+        e.currentTarget.style.borderColor = 'rgba(241,106,36,0.22)';
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = 'translateY(0)';
         e.currentTarget.style.boxShadow =
-          '0 1px 2px rgba(234,105,38,0.04), 0 10px 28px rgba(16,24,40,0.05)';
-        e.currentTarget.style.borderColor = 'rgba(234,105,38,0.1)';
+          '0 1px 2px rgba(241,106,36,0.04), 0 10px 28px rgba(16,24,40,0.05)';
+        e.currentTarget.style.borderColor = 'rgba(241,106,36,0.1)';
       }}
     >
       {/* top accent bar */}
@@ -118,7 +118,7 @@ function MemberCard({ member, index }) {
           width: '44px',
           height: '4px',
           borderRadius: '0 0 6px 6px',
-          background: 'linear-gradient(90deg, #ea6926, #ff8c42)',
+          background: 'linear-gradient(90deg, #f16a24, #f16a24)',
         }}
       />
 
@@ -129,10 +129,10 @@ function MemberCard({ member, index }) {
           height: '112px',
           borderRadius: '50%',
           padding: '3px',
-          background: 'linear-gradient(135deg, #ea6926 0%, #ff8c42 100%)',
+          background: 'linear-gradient(135deg, #f16a24 0%, #f16a24 100%)',
           marginBottom: '18px',
           flexShrink: 0,
-          boxShadow: '0 8px 20px rgba(234,105,38,0.22)',
+          boxShadow: '0 8px 20px rgba(241,106,36,0.22)',
         }}
       >
         <div
@@ -191,7 +191,7 @@ function MemberCard({ member, index }) {
         style={{
           width: '36px',
           height: '1px',
-          background: 'rgba(234,105,38,0.25)',
+          background: 'rgba(241,106,36,0.25)',
           marginBottom: '14px',
         }}
       />
@@ -216,12 +216,12 @@ function FeatureCard({ person, eyebrow, reverse = false, delay = 0, accent = 'fo
   const accentStyles = {
     founder: {
       height: '6px',
-      background: 'linear-gradient(90deg, #ea6926 0%, #ff8c42 50%, #ea6926 100%)',
+      background: 'linear-gradient(90deg, #f16a24 0%, #f16a24 50%, #f16a24 100%)',
       opacity: 1,
     },
     advisor: {
       height: '5px',
-      background: 'linear-gradient(90deg, #ea6926 0%, #ffb985 100%)',
+      background: 'linear-gradient(90deg, #f16a24 0%, #f16a24 100%)',
       opacity: 0.92,
     },
   };
@@ -241,11 +241,11 @@ function FeatureCard({ person, eyebrow, reverse = false, delay = 0, accent = 'fo
         gap: 'clamp(24px, 4vw, 56px)',
         alignItems: 'stretch',
         background: 'linear-gradient(165deg, #fffdfb 0%, #fffaf6 100%)',
-        border: '1px solid rgba(234,105,38,0.1)',
+        border: '1px solid rgba(241,106,36,0.1)',
         borderRadius: '28px',
         padding: 'clamp(20px, 3vw, 40px)',
         boxShadow:
-          '0 1px 2px rgba(234,105,38,0.04), 0 12px 32px rgba(234,105,38,0.06), 0 28px 64px rgba(16,24,40,0.05)',
+          '0 1px 2px rgba(241,106,36,0.04), 0 12px 32px rgba(241,106,36,0.06), 0 28px 64px rgba(16,24,40,0.05)',
         overflow: 'hidden',
       }}
     >
@@ -357,8 +357,8 @@ function FeatureCard({ person, eyebrow, reverse = false, delay = 0, accent = 'fo
               letterSpacing: '0.18em',
               textTransform: 'uppercase',
               color: tokens.primary,
-              background: 'rgba(234,105,38,0.07)',
-              border: '1px solid rgba(234,105,38,0.18)',
+              background: 'rgba(241,106,36,0.07)',
+              border: '1px solid rgba(241,106,36,0.18)',
               padding: '6px 14px',
               borderRadius: '999px',
               marginBottom: '16px',
@@ -434,10 +434,10 @@ function FeatureCard({ person, eyebrow, reverse = false, delay = 0, accent = 'fo
                 aria-hidden="true"
                 style={{ flexShrink: 0, marginTop: '1px' }}
               >
-                <circle cx="12" cy="12" r="11" fill="#fff" stroke="rgba(234,105,38,0.25)" strokeWidth="1" />
+                <circle cx="12" cy="12" r="11" fill="#fff" stroke="rgba(241,106,36,0.25)" strokeWidth="1" />
                 <path
                   d="m8 12 2.5 2.5L16 9"
-                  stroke="#ea6926"
+                  stroke="#f16a24"
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -512,7 +512,7 @@ function DivisionLabel({ children }) {
             flex: 1,
             height: 1,
             background:
-              'linear-gradient(90deg, rgba(234,105,38,0.35), rgba(234,105,38,0.04))',
+              'linear-gradient(90deg, rgba(241,106,36,0.35), rgba(241,106,36,0.04))',
           }}
         />
       </div>
@@ -573,8 +573,8 @@ function ImageCard() {
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
               color: tokens.primary,
-              background: 'rgba(234,105,38,0.07)',
-              border: '1px solid rgba(234,105,38,0.18)',
+              background: 'rgba(241,106,36,0.07)',
+              border: '1px solid rgba(241,106,36,0.18)',
               padding: '6px 16px',
               borderRadius: '999px',
               marginBottom: '16px',

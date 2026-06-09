@@ -16,12 +16,12 @@ function FaqItem({ q, a, isOpen, onToggle, index }) {
       transition={{ duration: 0.6, delay: index * 0.06, ease: EASE }}
       style={{
         borderRadius: 18,
-        border: `1px solid ${isOpen ? 'rgba(234,105,38,0.22)' : 'rgba(16,24,40,0.08)'}`,
+        border: `1px solid ${isOpen ? 'rgba(241,106,36,0.22)' : 'rgba(16,24,40,0.08)'}`,
         background: isOpen
           ? 'linear-gradient(165deg, #fffdfb 0%, #fffaf6 100%)'
           : '#fff',
         boxShadow: isOpen
-          ? '0 12px 32px rgba(234,105,38,0.08)'
+          ? '0 12px 32px rgba(241,106,36,0.08)'
           : '0 1px 2px rgba(16,24,40,0.04)',
         overflow: 'hidden',
         transition: 'border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease',
@@ -67,7 +67,7 @@ function FaqItem({ q, a, isOpen, onToggle, index }) {
             alignItems: 'center',
             justifyContent: 'center',
             background: isOpen
-              ? 'linear-gradient(135deg, #ea6926, #ff8c42)'
+              ? 'linear-gradient(135deg, #f16a24, #f16a24)'
               : 'rgba(16,24,40,0.05)',
             color: isOpen ? '#fff' : tokens.secondary,
           }}
@@ -119,22 +119,6 @@ export function FAQSection() {
         overflow: 'hidden',
       }}
     >
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'absolute',
-          bottom: -180,
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: 800,
-          height: 420,
-          background:
-            'radial-gradient(ellipse at center, rgba(234,105,38,0.1) 0%, transparent 70%)',
-          filter: 'blur(70px)',
-          pointerEvents: 'none',
-        }}
-      />
-
       <div style={{ position: 'relative', maxWidth: 820, margin: '0 auto' }}>
         <motion.div
           initial={{ opacity: 0, y: 28, filter: 'blur(8px)' }}
@@ -153,8 +137,8 @@ export function FAQSection() {
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
               color: tokens.primary,
-              background: 'rgba(234,105,38,0.07)',
-              border: '1px solid rgba(234,105,38,0.18)',
+              background: 'rgba(241,106,36,0.07)',
+              border: '1px solid rgba(241,106,36,0.18)',
               padding: '6px 16px',
               borderRadius: 999,
               marginBottom: 16,
@@ -178,7 +162,7 @@ export function FAQSection() {
             Frequently Asked{' '}
             <span
               style={{
-                background: 'linear-gradient(135deg, #ea6926 0%, #ff8c42 100%)',
+                background: 'linear-gradient(135deg, #f16a24 0%, #f16a24 100%)',
                 WebkitBackgroundClip: 'text',
                 backgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
