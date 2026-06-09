@@ -150,8 +150,8 @@ export default function IndiaConquestMap() {
       >
         <defs>
           <linearGradient id="capGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor={ORANGE} />
-            <stop offset="100%" stopColor={ORANGE_LT} />
+            <stop offset="0%" stopColor="#fff6ef" />
+            <stop offset="100%" stopColor="#fff6ef" />
           </linearGradient>
           <filter id="pinGlow" x="-200%" y="-200%" width="500%" height="500%">
             <feGaussianBlur stdDeviation="55" result="b" />
@@ -359,11 +359,6 @@ function Counter({ value, suffix, label }) {
         display: 'flex',
         alignItems: 'baseline',
         gap: 6,
-        padding: '5px 11px',
-        borderRadius: 10,
-        background: '#ffffff',
-        border: '1px solid rgba(241,106,36,0.16)',
-        boxShadow: '0 2px 8px rgba(16,24,40,0.06)',
       }}
     >
       <span
@@ -371,12 +366,8 @@ function Counter({ value, suffix, label }) {
           fontSize: 17,
           fontWeight: 800,
           fontFamily: tokens.fonts.display,
-          background: 'linear-gradient(135deg, #f16a24, #f16a24)',
-          WebkitBackgroundClip: 'text',
-          backgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
+          color: '#f16a24',
           letterSpacing: '-0.02em',
-          minWidth: 34,
         }}
       >
         {value}{suffix}

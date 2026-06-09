@@ -117,7 +117,6 @@ export default function ClientsMarqueeSection() {
         >
           {STATS.map((stat, i) => (
             <React.Fragment key={stat.label}>
-              {i > 0 && <span style={styles.statDivider} aria-hidden="true" />}
               <div style={styles.statItem}>
                 <span style={styles.statValue}>{stat.value}</span>
                 <span style={styles.statLabel}>{stat.label}</span>
@@ -258,21 +257,8 @@ const styles = {
     alignItems: "stretch",
     gap: "clamp(20px, 4vw, 48px)",
     flexWrap: "wrap",
-    background: "linear-gradient(165deg, #fffdfb 0%, #fffaf6 100%)",
-    border: "1px solid rgba(241,106,36,0.1)",
-    borderRadius: "20px",
-    padding: "clamp(22px, 3vw, 32px) clamp(24px, 5vw, 56px)",
-    boxShadow:
-      "0 1px 2px rgba(241,106,36,0.04), 0 12px 32px rgba(16,24,40,0.05)",
     maxWidth: "760px",
     margin: "0 auto",
-  },
-
-  statDivider: {
-    width: "1px",
-    alignSelf: "stretch",
-    background:
-      "linear-gradient(to bottom, transparent, rgba(241,106,36,0.25), transparent)",
   },
 
   statItem: {
@@ -288,10 +274,7 @@ const styles = {
     fontFamily: tokens.fonts.display,
     fontSize: "clamp(28px, 3.4vw, 42px)",
     fontWeight: 800,
-    background: "linear-gradient(135deg, #f16a24 0%, #f16a24 100%)",
-    WebkitBackgroundClip: "text",
-    backgroundClip: "text",
-    WebkitTextFillColor: "transparent",
+    color: "#f16a24",
     letterSpacing: "-0.03em",
     lineHeight: 1,
   },
@@ -299,7 +282,6 @@ const styles = {
   statLabel: {
     fontSize: "11px",
     color: tokens.secondary,
-    opacity: 0.8,
     letterSpacing: "0.08em",
     textTransform: "uppercase",
     fontWeight: 600,
