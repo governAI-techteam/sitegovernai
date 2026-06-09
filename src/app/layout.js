@@ -13,73 +13,85 @@ import {
   developerSchema,
   faqSchema,
 } from '@/config/seo';
+import { getDeveloperData } from '@/config/developer';
 import './globals.css';
 
-export const metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: {
-    default: 'GovernAI | AI Governance, Compliance & Responsible AI',
-    template: '%s | GovernAI',
-  },
-  description:
-    'GovernAI provides the architectural framework to deploy, monitor, and scale AI systems with absolute compliance, ethical frameworks, and zero bias. AI governance capacity building, ISO/IEC 42001 auditing, and policy advisory for governments, universities, and enterprises.',
-  applicationName: 'GovernAI',
-  keywords: SITE_KEYWORDS,
-  category: 'technology',
-  authors: [
-    {
-      name: 'Parishrut Jassal',
-      url: 'https://linkedin.com/in/parishrut-jassal',
+export async function generateMetadata() {
+  const dev = await getDeveloperData();
+
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: {
+      default: 'GovernAI | AI Governance, Compliance & Responsible AI',
+      template: '%s | GovernAI',
     },
-  ],
-  creator: 'GovernAI',
-  publisher: 'GovernAI OPC Pvt. Ltd.',
-  alternates: {
-    canonical: '/',
-  },
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  openGraph: {
-    type: 'website',
-    locale: 'en_IN',
-    url: SITE_URL,
-    title: 'GovernAI | Governing Artificial Intelligence for a Responsible Future',
     description:
-      'The architectural framework to deploy, monitor, and scale AI systems with absolute compliance and zero bias. Capacity building, ISO/IEC 42001 auditing, and policy advisory.',
-    siteName: 'GovernAI',
-    images: [
+      'GovernAI provides the architectural framework to deploy, monitor, and scale AI systems with absolute compliance, ethical frameworks, and zero bias. AI governance capacity building, ISO/IEC 42001 auditing, and policy advisory for governments, universities, and enterprises.',
+    applicationName: 'GovernAI',
+    keywords: SITE_KEYWORDS,
+    category: 'technology',
+    authors: [
       {
-        url: SITE.ogImage,
-        width: 1200,
-        height: 630,
-        alt: 'GovernAI — Governing Artificial Intelligence',
+        name: 'Parishrut Jassal',
+        url: 'https://linkedin.com/in/parishrut-jassal',
+      },
+      {
+        name: dev.name,
+        url: dev.portfolio,
       },
     ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'GovernAI | AI Governance, Compliance & Responsible AI',
-    description:
-      'The architectural framework to deploy, monitor, and scale AI with absolute compliance and zero bias.',
-    images: [SITE.ogImage],
-    creator: SITE.twitter,
-    site: SITE.twitter,
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+    creator: 'GovernAI',
+    publisher: 'GovernAI OPC Pvt. Ltd.',
+    alternates: {
+      canonical: '/',
+    },
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
+    },
+    openGraph: {
+      type: 'website',
+      locale: 'en_IN',
+      url: SITE_URL,
+      title: 'GovernAI | Governing Artificial Intelligence for a Responsible Future',
+      description:
+        'The architectural framework to deploy, monitor, and scale AI systems with absolute compliance and zero bias. Capacity building, ISO/IEC 42001 auditing, and policy advisory.',
+      siteName: 'GovernAI',
+      images: [
+        {
+          url: SITE.ogImage,
+          width: 1200,
+          height: 630,
+          alt: 'GovernAI — Governing Artificial Intelligence',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'GovernAI | AI Governance, Compliance & Responsible AI',
+      description:
+        'The architectural framework to deploy, monitor, and scale AI with absolute compliance and zero bias.',
+      images: [SITE.ogImage],
+      creator: SITE.twitter,
+      site: SITE.twitter,
+    },
+    robots: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
-  },
-};
+    other: {
+      'image_src': `${SITE_URL}${SITE.ogImage}`,
+    },
+  };
+}
 
 export const viewport = {
   themeColor: '#f16a24',
@@ -88,9 +100,11 @@ export const viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
   // Full site-wide knowledge graph. Individual @id nodes interlink
   // (Organization ↔ founder ↔ employees ↔ website ↔ service).
+  const dev = await getDeveloperData();
+
   const jsonLd = [
     organizationSchema(),
     websiteSchema(),
@@ -98,14 +112,18 @@ export default function RootLayout({ children }) {
     professionalServiceSchema(),
     founderSchema(),
     ...teamSchema(),
-    advisorSchema(),
-    developerSchema(),
+    ...advisorSchema(),
+    developerSchema(dev),
     faqSchema(),
   ];
 
   return (
     <html lang="en-IN">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
         <link
           href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
           rel="stylesheet"
@@ -114,7 +132,6 @@ export default function RootLayout({ children }) {
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
           rel="stylesheet"
         />
-        {/* Structured data — Organization, WebSite, ProfessionalService */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

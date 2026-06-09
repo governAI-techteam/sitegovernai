@@ -22,7 +22,7 @@ function TRiSMInfographic() {
       borderRadius: 20,
       border: '1px solid rgba(160, 65, 0, 0.08)',
     }}>
-      <h5 style={{
+      <h4 style={{
         fontFamily: tokens.fonts.display,
         fontSize: 15,
         fontWeight: 700,
@@ -31,7 +31,7 @@ function TRiSMInfographic() {
         letterSpacing: '-0.01em',
       }}>
         AI TRiSM Framework
-      </h5>
+      </h4>
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(2, 1fr)',
@@ -73,7 +73,7 @@ function ModelCardInfographic() {
       border: '1px solid rgba(15, 23, 42, 0.06)',
       marginTop: 16,
     }}>
-      <h5 style={{
+      <h4 style={{
         fontFamily: tokens.fonts.display,
         fontSize: 15,
         fontWeight: 700,
@@ -82,7 +82,7 @@ function ModelCardInfographic() {
         letterSpacing: '-0.01em',
       }}>
         Standardized Model Card
-      </h5>
+      </h4>
       <div style={{
         background: '#fff',
         borderRadius: 14,

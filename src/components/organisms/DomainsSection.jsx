@@ -132,6 +132,7 @@ function DomainCard({ domain, idx }) {
         <button
           className="ds-cta"
           type="button"
+          aria-label={`Learn more about ${domain.title}`}
           onClick={() => {
             const el = document.getElementById('team');
             if (el) el.scrollIntoView({ behavior: 'smooth' });

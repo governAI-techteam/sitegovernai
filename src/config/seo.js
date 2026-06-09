@@ -27,6 +27,7 @@ export const SITE = {
     'https://www.linkedin.com/company/governaiofficial/',
     'https://x.com/governaiofc',
   ],
+  developerUrl: 'https://divyakush2006.github.io/divyakush-resume/',
 };
 
 /*
@@ -97,8 +98,9 @@ export function organizationSchema() {
       { '@id': `${SITE_URL}/#person-alvin-antony` },
       { '@id': `${SITE_URL}/#person-utso-guha-roy` },
       { '@id': `${SITE_URL}/#person-anubhav-sharma` },
-      { '@id': `${SITE_URL}/#person-aditya-udiya` },
-      { '@id': `${SITE_URL}/#person-rutva-tanna` },
+      { '@id': `${SITE_URL}/#person-himanshu-kalia` },
+      { '@id': `${SITE_URL}/#person-saranshi-gupta` },
+      { '@id': `${SITE_URL}/#person-preekshit-singh` },
     ],
     sameAs: SITE.sameAs,
     contactPoint: {
@@ -200,7 +202,7 @@ export function founderSchema() {
     jobTitle: 'Founder & Chief Executive Officer',
     worksFor: { '@id': `${SITE_URL}/#organization` },
     founder: { '@id': `${SITE_URL}/#organization` },
-    image: `${SITE_URL}/assets/img/founder/founder.png`,
+    image: `${SITE_URL}/assets/img/founder/founder.jpg`,
     url: SITE_URL,
     nationality: { '@type': 'Country', name: 'India' },
     description:
@@ -241,29 +243,38 @@ export function teamSchema() {
     {
       id: 'anubhav-sharma',
       name: 'Anubhav Sharma',
-      jobTitle: 'DevSecOps Lead',
+      jobTitle: 'Technical & Security Lead',
       image: '/assets/img/Team/team_anubhav.jpeg',
       description:
-        'Infrastructure automation, containerized environments, and secure system design — building scalable, resilient, security-first platform foundations.',
-      knowsAbout: ['DevSecOps', 'Cloud Security', 'Infrastructure Automation'],
+        'Information security architect specializing in security methodologies, compliance frameworks, risk assessment, and audit engagements. Leads technical infrastructure and cybersecurity initiatives.',
+      knowsAbout: ['DevSecOps', 'Cloud Security', 'Cybersecurity'],
     },
     {
-      id: 'aditya-udiya',
-      name: 'Aditya Udiya',
-      jobTitle: 'Applied AI Engineer',
-      image: '/assets/img/Team/team_preekshit.png',
-      description:
-        'AI product builder with 24+ applied AI solutions. Former Research Intern at IIT BHU in AI and ML; national-level winner in Software Systems and 6x hackathon winner.',
-      knowsAbout: ['Applied AI', 'Machine Learning', 'AI Product Development'],
-    },
-    {
-      id: 'rutva-tanna',
-      name: 'Dr. Rutva Tanna',
-      jobTitle: 'AI & Healthcare Intern',
+      id: 'himanshu-kalia',
+      name: 'Dr. Himanshu Kalia',
+      jobTitle: 'AI & Healthcare Consultant',
       image: '/assets/img/Team/team_himanshu.jpeg',
       description:
-        'BHMS professional bridging healthcare knowledge with AI-driven solutions for better clinical outcomes.',
-      knowsAbout: ['AI in Healthcare', 'Clinical AI'],
+        'Scientific Officer at IIT DRISHTI CPS with an MSc from the University of Glasgow. Contributes expertise in healthcare research, scientific innovation, and AI applications.',
+      knowsAbout: ['AI in Healthcare', 'Healthcare Research', 'Interdisciplinary Technology'],
+    },
+    {
+      id: 'saranshi-gupta',
+      name: 'Saranshi Gupta',
+      jobTitle: 'Growth & Strategy Lead',
+      image: '/assets/img/Team/saranshi.png',
+      description:
+        'MBA from S. P. Jain School of Global Management with expertise in partnerships, business development, strategic growth initiatives, and go-to-market execution.',
+      knowsAbout: ['Business Development', 'Strategic Growth', 'Partnerships'],
+    },
+    {
+      id: 'preekshit-singh',
+      name: 'Er. Preekshit Singh',
+      jobTitle: 'Operations & Training Lead',
+      image: '/assets/img/Team/team_preekshit.png',
+      description:
+        'Civil engineer overseeing academy operations, training delivery, process optimization, and organizational execution across initiatives.',
+      knowsAbout: ['Operations Management', 'Training Delivery', 'Process Optimization'],
     },
   ];
 
@@ -282,36 +293,114 @@ export function teamSchema() {
 
 /* Chief Advisor — Person schema. */
 export function advisorSchema() {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    '@id': `${SITE_URL}/#advisor-murthy-remilla`,
-    name: 'Dr. Murthy Remilla',
-    jobTitle: 'Chief Advisor',
-    worksFor: { '@id': `${SITE_URL}/#organization` },
-    image: `${SITE_URL}/assets/img/team_murthy.png`,
-    description:
-      'Former Senior Scientist at ISRO and Head of Project Management for Gaganyaan, with 35+ years in technical and leadership roles.',
-    alumniOf: { '@type': 'Organization', name: 'ISRO' },
-    knowsAbout: ['Project Management', 'Aerospace Engineering', 'Technical Leadership'],
-  };
+  return [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      '@id': `${SITE_URL}/#advisor-murthy-remilla`,
+      name: 'Dr. Murthy Remilla',
+      jobTitle: 'President, Telemedicine Society of India',
+      worksFor: { '@id': `${SITE_URL}/#organization` },
+      image: `${SITE_URL}/assets/img/team_murthy.png`,
+      description:
+        'Former ISRO Scientist and leader in healthcare technology and digital transformation. Advises on AI governance, healthcare innovation, and telemedicine adoption.',
+      alumniOf: { '@type': 'Organization', name: 'ISRO' },
+      knowsAbout: ['AI Governance', 'Healthcare Technology', 'Telemedicine'],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      '@id': `${SITE_URL}/#advisor-maya-sherman`,
+      name: 'Maya Sherman',
+      jobTitle: 'International AI Policy Advisor',
+      worksFor: { '@id': `${SITE_URL}/#organization` },
+      image: `${SITE_URL}/assets/img/team_maya.jpeg`,
+      description:
+        'Former Science, Technology, and Innovation Attaché at the Embassy of Israel. Provides strategic guidance on AI governance, international policy frameworks, and responsible AI development.',
+      knowsAbout: ['AI Policy', 'International Governance', 'Responsible AI'],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      '@id': `${SITE_URL}/#advisor-arun-pandit`,
+      name: 'Arun Pandit',
+      jobTitle: 'Industry Advisor',
+      worksFor: { '@id': `${SITE_URL}/#organization` },
+      image: `${SITE_URL}/assets/img/team_arun.png`,
+      description:
+        'Co-Founder of Hyphen SCS, Chairman of AIMA Young Leaders Council, and TEDx Speaker. Brings experience in entrepreneurship, leadership development, and business strategy.',
+      knowsAbout: ['Entrepreneurship', 'Leadership Development', 'Business Strategy'],
+    },
+  ];
 }
 
-/* Website developer — Person schema for Divyakush Punjabi. */
-export function developerSchema() {
+/* Website developer — Person schema for Divyakush Punjabi. Accepts
+   dynamic data from getDeveloperData() for build-time freshness. */
+export function developerSchema(data) {
+  const d = data || {};
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
     '@id': `${SITE_URL}/#developer-divyakush-punjabi`,
-    name: 'Divyakush Punjabi',
+    name: d.name || 'Divyakush Punjabi',
     givenName: 'Divyakush',
     familyName: 'Punjabi',
-    jobTitle: 'Web Developer',
+    jobTitle: d.jobTitle || 'Full Stack Developer & AI Engineer',
     description:
-      'Web developer and designer of the GovernAI website.',
-    url: 'https://divyakush2006.github.io/divyakush-resume/',
-    sameAs: ['https://divyakush2006.github.io/divyakush-resume/'],
-    knowsAbout: ['Web Development', 'Next.js', 'UI/UX Design', 'Front-end Engineering'],
+      d.bio ||
+      'Full Stack Developer and AI Engineer specializing in enterprise web applications, AI/ML integration, and UI/UX engineering.',
+    url: SITE.developerUrl,
+    sameAs: [
+      SITE.developerUrl,
+      d.github || 'https://github.com/divyakush2006',
+      d.linkedin || 'https://linkedin.com/in/divyakush-punjabi',
+    ],
+    knowsAbout: [
+      'Web Development',
+      'Next.js',
+      'React',
+      'TypeScript',
+      'UI/UX Design',
+      'Front-end Engineering',
+      'AI/ML Integration',
+      'Full Stack Development',
+      'Responsive Design',
+      'Performance Optimization',
+    ],
+    ...(d.location ? { homeLocation: { '@type': 'Place', name: d.location } } : {}),
+    ...(d.company ? { worksFor: { '@type': 'Organization', name: d.company } } : {}),
+    alumniOf: [
+      { '@type': 'CollegeOrUniversity', name: 'Vellore Institute of Technology' },
+      { '@type': 'CollegeOrUniversity', name: 'Indian Institute of Technology, Ropar' },
+    ],
+    nationality: { '@type': 'Country', name: 'India' },
+    email: 'divyakushpunjabi@gmail.com',
+  };
+}
+
+/* Article schema for insight/blog pages. */
+export function articleSchema({ slug, title, description, image, location, datePublished }) {
+  const wordCount = description ? description.split(/\s+/).length : 0;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    '@id': `${SITE_URL}/insights/${slug}/#article`,
+    headline: title,
+    description: description,
+    image: {
+      '@type': 'ImageObject',
+      url: `${SITE_URL}${image}`,
+      caption: title,
+    },
+    datePublished: datePublished || undefined,
+    author: { '@id': `${SITE_URL}/#organization` },
+    publisher: { '@id': `${SITE_URL}/#organization` },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/insights/${slug}/` },
+    wordCount,
+    inLanguage: 'en-IN',
+    ...(location
+      ? { contentLocation: { '@type': 'Place', name: location } }
+      : {}),
   };
 }
 

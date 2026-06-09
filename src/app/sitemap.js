@@ -1,7 +1,15 @@
 import { SITE_URL } from '@/config/seo';
+import { insightsData, slugify } from '@/config/insightsData';
 
 export default function sitemap() {
   const now = new Date();
+
+  const insightEntries = insightsData.map((item) => ({
+    url: `${SITE_URL}/insights/${slugify(item.title)}/`,
+    lastModified: now,
+    changeFrequency: 'monthly',
+    priority: 0.6,
+  }));
 
   return [
     {
@@ -16,5 +24,6 @@ export default function sitemap() {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+    ...insightEntries,
   ];
 }

@@ -1,3 +1,15 @@
+export function slugify(text) {
+  return text
+    .toLowerCase()
+    .replace(/[–—’'"]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+}
+
+export function getInsightBySlug(slug) {
+  return insightsData.find((item) => slugify(item.title) === slug) || null;
+}
+
 export const insightsData = [
   {
     id: 1,

@@ -62,7 +62,7 @@ export function WorkflowSection({ sectionRefs }) {
                     {s.num}
                   </span>
                 </div>
-                <h4
+                <h3
                   style={{
                     fontSize: 20,
                     fontWeight: 700,
@@ -72,7 +72,7 @@ export function WorkflowSection({ sectionRefs }) {
                   }}
                 >
                   {s.title}
-                </h4>
+                </h3>
                 <p
                   style={{
                     color: tokens.secondary,

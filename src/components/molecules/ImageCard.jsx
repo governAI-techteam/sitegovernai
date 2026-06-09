@@ -197,7 +197,7 @@ function MemberCard({ member, index }) {
         </div>
       </div>
 
-      <h6
+      <h4
         style={{
           fontFamily: tokens.fonts.display,
           fontSize: '17px',
@@ -209,7 +209,7 @@ function MemberCard({ member, index }) {
         }}
       >
         {member.name}
-      </h6>
+      </h4>
       <p
         style={{
           fontSize: '11px',
@@ -395,7 +395,7 @@ function FeatureCard({ person, eyebrow, reverse = false, delay = 0, accent = 'fo
             color: '#fff',
           }}
         >
-          <h3
+          <h4
             style={{
               fontFamily: tokens.fonts.display,
               fontSize: 'clamp(18px, 1.8vw, 22px)',
@@ -406,7 +406,7 @@ function FeatureCard({ person, eyebrow, reverse = false, delay = 0, accent = 'fo
             }}
           >
             {person.name}
-          </h3>
+          </h4>
           <p
             style={{
               fontSize: '12.5px',
@@ -447,7 +447,7 @@ function FeatureCard({ person, eyebrow, reverse = false, delay = 0, accent = 'fo
           </div>
         )}
 
-        <h3
+        <h4
           className="hide-on-mobile"
           style={{
             fontFamily: tokens.fonts.display,
@@ -460,7 +460,7 @@ function FeatureCard({ person, eyebrow, reverse = false, delay = 0, accent = 'fo
           }}
         >
           {person.name}
-        </h3>
+        </h4>
         <p
           className="hide-on-mobile"
           style={{
