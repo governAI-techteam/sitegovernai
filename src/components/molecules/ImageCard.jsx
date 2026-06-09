@@ -11,7 +11,7 @@ import Image from 'next/image';
 const founder = {
   name: 'Parishrut Jassal',
   role: 'Founder & Chief Executive Officer',
-  image: '/assets/img/founder/founder.png',
+  image: '/assets/img/founder/founder.jpg',
   linkedin: 'https://linkedin.com/in/parishrut-jassal',
   highlights: [
     'TEDx Speaker · UKAS-recognised ISO/IEC 42001 Auditor',
@@ -351,7 +351,6 @@ function FeatureCard({ person, eyebrow, reverse = false, delay = 0, accent = 'fo
           flex: '0 0 clamp(180px, 22vw, 300px)',
           borderRadius: '20px',
           overflow: 'hidden',
-          minHeight: '300px',
           background: tokens.surfaceContainer,
           boxShadow: '0 12px 28px rgba(0,0,0,0.12)',
         }}
@@ -359,23 +358,30 @@ function FeatureCard({ person, eyebrow, reverse = false, delay = 0, accent = 'fo
         <Image
           src={person.image}
           alt={person.name}
-          width={400}
-          height={480}
+          fill
           style={{
-            width: '100%',
-            height: '100%',
             objectFit: 'cover',
-            objectPosition: 'top',
-            display: 'block',
+            objectPosition: 'center top',
           }}
         />
         {/* bottom gradient with name */}
         <div
+          aria-hidden="true"
           style={{
             position: 'absolute',
             inset: 0,
             background:
               'linear-gradient(to top, rgba(15,15,17,0.85) 0%, rgba(15,15,17,0.15) 38%, transparent 60%)',
+            pointerEvents: 'none',
+          }}
+        />
+        {/* Vignette overlay */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'radial-gradient(ellipse at 50% 30%, transparent 45%, rgba(0,0,0,0.35) 100%)',
             pointerEvents: 'none',
           }}
         />
@@ -418,7 +424,6 @@ function FeatureCard({ person, eyebrow, reverse = false, delay = 0, accent = 'fo
       {/* Details */}
       <div
         style={{
-          flex: 1,
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
