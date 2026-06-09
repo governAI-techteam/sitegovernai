@@ -30,6 +30,7 @@ const teamMembers = [
     name: 'Adv. Alvin Antony',
     role: 'Chief Compliance Officer',
     image: '/assets/img/Team/team_alvin.jpeg',
+    linkedin: 'https://linkedin.com/in/alvin-antony',
     description:
       'Certified AI Auditor (ISO 42001) with CAIQ, CACP, DCDPO, and DCPLA certifications. Brings extensive expertise in AI governance, compliance frameworks, risk management, and regulatory standards for responsible AI implementation.',
   },
@@ -37,6 +38,7 @@ const teamMembers = [
     name: 'Dr. Utso Guha Roy',
     role: 'AI & Healthcare Lead',
     image: '/assets/img/Team/team_utso.png',
+    linkedin: 'https://linkedin.com/in/utso-guha-roy',
     description:
       'Clinical AI specialist leading healthcare verification initiatives, AI-driven healthcare solutions, and curriculum development. Focused on bridging advanced artificial intelligence with real-world healthcare applications and innovation.',
   },
@@ -44,6 +46,7 @@ const teamMembers = [
     name: 'Anubhav Sharma',
     role: 'Technical & Security Lead',
     image: '/assets/img/Team/team_anubhav.jpeg',
+    linkedin: 'https://linkedin.com/in/anubhav-sharma',
     description:
       'Information security architect specializing in security methodologies, compliance frameworks, risk assessment, and Tier 2 and Tier 3 audit engagements. Leads the organization\'s technical infrastructure and cybersecurity initiatives.',
   },
@@ -51,6 +54,7 @@ const teamMembers = [
     name: 'Dr. Himanshu Kalia',
     role: 'AI & Healthcare Consultant',
     image: '/assets/img/Team/team_himanshu.jpeg',
+    linkedin: 'https://linkedin.com/in/himanshu-kalia',
     description:
       'Scientific Officer at IIT DRISHTI CPS with an MSc from the University of Glasgow. Contributes expertise in healthcare research, scientific innovation, artificial intelligence applications, and interdisciplinary technology development.',
   },
@@ -58,6 +62,7 @@ const teamMembers = [
     name: 'Saranshi Gupta',
     role: 'Growth & Strategy Lead',
     image: '/assets/img/Team/saranshi.png',
+    linkedin: 'https://linkedin.com/in/saranshi-gupta',
     description:
       'MBA from S. P. Jain School of Global Management with expertise in partnerships, business development, strategic growth initiatives, and go-to-market execution. Drives organizational expansion and ecosystem development.',
   },
@@ -65,6 +70,7 @@ const teamMembers = [
     name: 'Er. Preekshit Singh',
     role: 'Operations & Training Lead',
     image: '/assets/img/Team/team_preekshit.png',
+    linkedin: 'https://linkedin.com/in/preekshit-singh',
     description:
       'Civil engineer overseeing academy operations, training delivery, process optimization, and organizational execution. Responsible for ensuring efficient program management and operational excellence across initiatives.',
   },
@@ -75,6 +81,7 @@ const advisors = [
     name: 'Dr. Murthy Remilla',
     role: 'President, Telemedicine Society of India',
     image: '/assets/img/team_murthy.png',
+    linkedin: 'https://linkedin.com/in/murthy-remilla',
     description:
       'Former ISRO Scientist and a recognized leader in healthcare technology and digital transformation. Advises on AI governance, healthcare innovation, telemedicine adoption, and responsible implementation of emerging technologies in healthcare delivery systems.',
   },
@@ -82,6 +89,7 @@ const advisors = [
     name: 'Maya Sherman',
     role: 'International AI Policy Advisor',
     image: '/assets/img/team_maya.jpeg',
+    linkedin: 'https://linkedin.com/in/maya-sherman',
     description:
       'Former Science, Technology, and Innovation Attaché at the Embassy of Israel. Associated with global policy and research initiatives including GPAI, OECD, and Oxford. Provides strategic guidance on AI governance, international policy frameworks, and responsible AI development.',
   },
@@ -89,6 +97,7 @@ const advisors = [
     name: 'Arun Pandit',
     role: 'Industry Advisor',
     image: '/assets/img/team_arun.png',
+    linkedin: 'https://linkedin.com/in/arun-pandit',
     description:
       'Co-Founder of Hyphen SCS, Chairman of AIMA Young Leaders Council, and TEDx Speaker. Brings extensive experience in entrepreneurship, leadership development, business strategy, innovation, and industry partnerships.',
   },
@@ -181,6 +190,8 @@ function MemberCard({ member, index }) {
               height: '100%',
               objectFit: 'cover',
               display: 'block',
+              ...(member.image.includes('arun') ? { transform: 'scale(1.25)' } : {}),
+              ...(member.image.includes('utso') ? { objectPosition: '50% 38%' } : {}),
             }}
           />
         </div>
@@ -228,10 +239,52 @@ function MemberCard({ member, index }) {
           fontSize: '12.5px',
           color: tokens.secondary,
           lineHeight: 1.6,
+          flex: 1,
+          width: '100%',
         }}
       >
         {member.description}
       </div>
+
+      <a
+        href={member.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '10px',
+          marginTop: '20px',
+          width: '100%',
+          padding: '11px 22px',
+          borderRadius: '12px',
+          background: 'linear-gradient(135deg, #191c1e 0%, #2d3133 100%)',
+          color: '#fff',
+          fontSize: '13px',
+          fontWeight: 700,
+          fontFamily: tokens.fonts.display,
+          textDecoration: 'none',
+          letterSpacing: '0.01em',
+          boxShadow: '0 6px 18px rgba(0,0,0,0.22)',
+          transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+          boxSizing: 'border-box',
+          flexShrink: 0,
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = 'translateY(-2px)';
+          e.currentTarget.style.boxShadow = '0 10px 26px rgba(0,0,0,0.28)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = 'translateY(0)';
+          e.currentTarget.style.boxShadow = '0 6px 18px rgba(0,0,0,0.22)';
+        }}
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+        </svg>
+        <span>Connect on LinkedIn</span>
+      </a>
     </FadeIn>
   );
 }
