@@ -58,6 +58,9 @@ export default function InsightsCarouselSection() {
         overflow: 'hidden',
         position: 'relative',
       }}
+      role="region"
+      aria-roledescription="carousel"
+      aria-labelledby="insights-heading"
     >
       {/* Header */}
       <motion.div
@@ -88,7 +91,7 @@ export default function InsightsCarouselSection() {
           </span>
           <span style={{ flex: 1, maxWidth: 44, height: 2, borderRadius: 1, background: tokens.primary, flexShrink: 0 }} />
         </div>
-        <h2 style={{
+        <h2 id="insights-heading" style={{
           fontFamily: tokens.fonts.display,
           fontSize: 'clamp(28px, 4vw, 50px)',
           fontWeight: 800,
@@ -139,6 +142,9 @@ export default function InsightsCarouselSection() {
               <article
                 key={item.id}
                 onClick={() => !isActive && goTo(i)}
+                role="group"
+                aria-roledescription="slide"
+                aria-label={`Slide ${i + 1} of ${total}: ${item.title}`}
                 style={{
                   flex: '0 0 56%',
                   position: 'relative',

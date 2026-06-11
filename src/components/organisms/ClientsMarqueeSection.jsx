@@ -81,7 +81,7 @@ function MarqueeRow({ items, duration = 50, reverse = false }) {
 
 export default function ClientsMarqueeSection() {
   return (
-    <section style={styles.section}>
+    <section aria-labelledby="clients-heading" style={styles.section}>
       <style>{css}</style>
 
       <div style={styles.gridBg} aria-hidden="true" />
@@ -100,7 +100,7 @@ export default function ClientsMarqueeSection() {
             <span style={styles.eyebrowText}>Trusted By</span>
             <span style={styles.eyebrowBar} />
           </div>
-          <h2 style={styles.heading}>
+          <h2 id="clients-heading" style={styles.heading}>
             Institutional{" "}
             <span style={styles.headingAccent}>Clients &amp; Engagements</span>
           </h2>
@@ -145,7 +145,7 @@ export default function ClientsMarqueeSection() {
               <p style={styles.groupLabel}>{group.title}</p>
               <span style={styles.groupRule} aria-hidden="true" />
             </div>
-            <div style={styles.marqueeOuter} className="marquee-outer">
+            <div style={styles.marqueeOuter} className="marquee-outer" role="region" aria-label={`${group.title} client logos`}>
               <div style={styles.fadeLeft} aria-hidden="true" />
               <div style={styles.fadeRight} aria-hidden="true" />
               <MarqueeRow

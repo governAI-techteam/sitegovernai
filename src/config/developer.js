@@ -20,8 +20,42 @@ export async function getDeveloperData() {
     const res = await fetch('https://api.github.com/users/divyakush2006', {
       next: { revalidate: 3600 },
     });
-    if (!res.ok) return FALLBACK;
+    if (!res.ok) return { ...FALLBACK, repos: [] };
     const gh = await res.json();
+
+    /* Fetch top public repos by stars — auto-syndication */
+    let repos = [];
+    try {
+      const reposRes = await fetch(
+        'https://api.github.com/users/divyakush2006/repos?sort=updated&per_page=6&type=owner',
+        { next: { revalidate: 3600 } }
+      );
+      if (reposRes.ok) {
+        const allRepos = await reposRes.json();
+
+        /* Repos to hide from the developer page */
+        const HIDDEN_REPOS = ['gai'];
+
+        repos = allRepos
+          .filter((r) => !r.fork && !r.private)
+          .filter((r) => !HIDDEN_REPOS.some(
+            (h) => r.name.toLowerCase() === h.toLowerCase()
+          ))
+          .slice(3) /* skip first 3 projects */
+          .slice(0, 6)
+          .map((r) => ({
+            name: r.name,
+            description: r.description,
+            language: r.language,
+            stars: r.stargazers_count,
+            url: r.html_url,
+            updatedAt: r.updated_at,
+          }));
+      }
+    } catch {
+      /* repos fetch is best-effort */
+    }
+
     return {
       ...FALLBACK,
       bio: gh.bio || FALLBACK.bio,
@@ -30,9 +64,12 @@ export async function getDeveloperData() {
       github: gh.html_url,
       avatar: gh.avatar_url,
       followers: gh.followers,
+      following: gh.following,
       publicRepos: gh.public_repos,
+      blog: gh.blog || null,
+      repos,
     };
   } catch {
-    return FALLBACK;
+    return { ...FALLBACK, repos: [] };
   }
 }

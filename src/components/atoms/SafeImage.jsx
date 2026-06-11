@@ -9,7 +9,7 @@ function toWebpSrc(src) {
   return src.slice(0, ext) + '.webp';
 }
 
-export function SafeImage({ src, alt, className, style, width, height, loading, fetchPriority, onError, ...rest }) {
+export function SafeImage({ src, alt, className, style, width, height, loading = 'lazy', fetchPriority, onError, ...rest }) {
   const [fallback, setFallback] = useState(false);
   const webpSrc = toWebpSrc(src);
 
@@ -27,6 +27,7 @@ export function SafeImage({ src, alt, className, style, width, height, loading, 
         height={height}
         loading={loading}
         fetchPriority={fetchPriority}
+        decoding="async"
         onError={(e) => {
           if (!fallback) {
             setFallback(true);

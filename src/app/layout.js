@@ -12,7 +12,11 @@ import {
   advisorSchema,
   developerSchema,
   faqSchema,
+  insightsItemListSchema,
+  creativeWorkSchema,
+  eventSchema,
 } from '@/config/seo';
+import { insightsData, slugify } from '@/config/insightsData';
 import { getDeveloperData } from '@/config/developer';
 import './globals.css';
 
@@ -39,7 +43,12 @@ export async function generateMetadata() {
     creator: 'GovernAI',
     publisher: 'GovernAI OPC Pvt. Ltd.',
     alternates: {
-      canonical: '/',
+      canonical: SITE_URL,
+      languages: {
+        'en-IN': SITE_URL,
+        'en': SITE_URL,
+        'x-default': SITE_URL,
+      },
     },
     formatDetection: {
       email: false,
@@ -83,9 +92,16 @@ export async function generateMetadata() {
         'max-snippet': -1,
       },
     },
+    verification: {
+      /* Replace with your actual verification codes */
+      google: 'YOUR_GOOGLE_VERIFICATION_CODE',
+      /* yandex: 'YOUR_YANDEX_CODE', */
+      /* bing: 'YOUR_BING_CODE', */
+    },
     other: {
       'image_src': `${SITE_URL}${SITE.ogImage}`,
     },
+    authors: [{ name: 'Divyakush Punjabi', url: 'https://divyakush2006.github.io/divyakush-resume/' }],
   };
 }
 
@@ -111,6 +127,8 @@ export default async function RootLayout({ children }) {
     ...advisorSchema(),
     developerSchema(dev),
     faqSchema(),
+    insightsItemListSchema(insightsData, slugify),
+    creativeWorkSchema(dev),
   ];
 
   return (
@@ -120,6 +138,14 @@ export default async function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        {/* Preload critical display font for faster LCP */}
+        <link
+          rel="preload"
+          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&display=swap"
+          as="style"
+        />
+        {/* Developer credits — standard web convention */}
+        <link rel="author" href="/humans.txt" />
         <link
           href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
           rel="stylesheet"

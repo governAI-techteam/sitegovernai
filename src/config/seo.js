@@ -31,30 +31,64 @@ export const SITE = {
 };
 
 /*
-  Primary keyword universe. Targeted, intent-rich, and domain-specific so the
-  site competes for high-value AI-governance queries rather than generic terms.
+  Primary keyword universe — expanded with long-tail, question-based,
+  and LSI keywords for maximum niche coverage across all AI governance
+  search intents (informational, transactional, navigational).
 */
 export const SITE_KEYWORDS = [
+  // Core brand + primary
   'AI Governance',
   'AI Governance India',
   'Responsible AI',
   'AI Compliance',
+  'GovernAI',
+
+  // Standards & frameworks
   'ISO 42001',
   'ISO/IEC 42001 implementation',
+  'ISO 42001 certification India',
+  'how to implement ISO 42001',
   'AI auditing',
-  'AI policy advisory',
+  'AI audit services India',
   'EU AI Act compliance',
   'NIST AI Risk Management Framework',
+  'NIST AI RMF implementation',
+  'DPDP Act compliance',
+  'DPDP Act compliance services',
+
+  // Services
+  'AI policy advisory',
+  'AI policy advisory India',
+  'AI governance consulting',
+  'AI compliance consulting firms',
+  'AI governance company India',
   'AI capacity building',
   'AI governance training',
+  'AI ethics training for government officials',
+  'AI governance capacity building India',
+  'responsible AI training programs',
+
+  // Sector-specific
   'public sector AI',
   'government AI training',
+  'AI in public administration',
+  'AI governance for universities',
+  'AI governance for healthcare',
+
+  // Concepts
   'ethical AI frameworks',
   'AI risk management',
-  'DPDP Act compliance',
   'trustworthy AI',
-  'AI governance consulting',
-  'GovernAI',
+  'AI bias mitigation',
+  'AI safety governance',
+  'AI accountability framework',
+
+  // Question-based (People Also Ask targeting)
+  'what is AI governance',
+  'what is responsible AI',
+  'AI governance framework for government',
+  'how to ensure AI compliance',
+  'AI governance best practices',
 ];
 
 /* Reusable Organization JSON-LD (Knowledge Graph eligibility). */
@@ -69,7 +103,10 @@ export function organizationSchema() {
     logo: {
       '@type': 'ImageObject',
       url: `${SITE_URL}${SITE.ogImage}`,
+      width: 512,
+      height: 512,
     },
+    image: `${SITE_URL}${SITE.ogImage}`,
     description:
       'GovernAI provides the architectural framework to deploy, monitor, and scale AI systems with absolute compliance, ethical frameworks, and zero bias — through capacity building, auditing, and policy advisory.',
     email: SITE.email,
@@ -79,6 +116,11 @@ export function organizationSchema() {
       addressLocality: SITE.address.city,
       addressRegion: SITE.address.region,
       addressCountry: SITE.address.countryCode,
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: '28.6139',
+      longitude: '77.2090',
     },
     areaServed: [
       { '@type': 'Country', name: 'India' },
@@ -91,6 +133,11 @@ export function organizationSchema() {
       'ISO/IEC 42001',
       'AI Auditing',
       'AI Policy',
+      'AI Risk Management',
+      'AI Ethics',
+      'NIST AI RMF',
+      'EU AI Act',
+      'DPDP Act',
     ],
     founder: { '@id': `${SITE_URL}/#founder` },
     employee: [
@@ -106,9 +153,15 @@ export function organizationSchema() {
       '@type': 'ContactPoint',
       contactType: 'customer support',
       email: SITE.email,
-      areaServed: 'IN',
+      areaServed: ['IN', 'US', 'GB', 'SG'],
       availableLanguage: ['English', 'Hindi'],
     },
+    numberOfEmployees: {
+      '@type': 'QuantitativeValue',
+      minValue: 5,
+      maxValue: 15,
+    },
+    slogan: 'Governing Artificial Intelligence for a Responsible Future',
   };
 }
 
@@ -120,10 +173,19 @@ export function websiteSchema() {
     '@id': `${SITE_URL}/#website`,
     url: SITE_URL,
     name: SITE.name,
+    alternateName: 'GovernAI India',
     description:
       'Governing Artificial Intelligence for a responsible future — capacity building, compliance, and policy advisory.',
     publisher: { '@id': `${SITE_URL}/#organization` },
     inLanguage: 'en-IN',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${SITE_URL}/?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
   };
 }
 
@@ -144,7 +206,15 @@ export function professionalServiceSchema() {
       addressRegion: SITE.address.region,
       addressCountry: SITE.address.countryCode,
     },
-    areaServed: { '@type': 'Country', name: 'India' },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: '28.6139',
+      longitude: '77.2090',
+    },
+    areaServed: [
+      { '@type': 'Country', name: 'India' },
+      { '@type': 'Country', name: 'Singapore' },
+    ],
     parentOrganization: { '@id': `${SITE_URL}/#organization` },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
@@ -156,7 +226,8 @@ export function professionalServiceSchema() {
             '@type': 'Service',
             name: 'GovernAI Academy — Capacity Building & Training',
             description:
-              'Executive sensitisation, immersive workshops, hands-on GenAI tooling, and NSQF-aligned academic courses.',
+              'Executive sensitisation, immersive workshops, hands-on GenAI tooling, and NSQF-aligned academic courses for government officials, university faculty, and enterprise teams.',
+            serviceType: 'AI Governance Training',
           },
         },
         {
@@ -165,7 +236,18 @@ export function professionalServiceSchema() {
             '@type': 'Service',
             name: 'AI Compliance — Auditing & Regulatory Assurance',
             description:
-              'Compliance gap analysis, ISO/IEC 42001 readiness, independent AI auditing, and conformity assessments.',
+              'Compliance gap analysis, ISO/IEC 42001 readiness, independent AI auditing, and conformity assessments aligned with global standards including EU AI Act and NIST AI RMF.',
+            serviceType: 'AI Compliance Auditing',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'AI Policy Advisory',
+            description:
+              'Strategic AI policy formulation, regulatory readiness assessments, and DPDP Act compliance advisory for public and private sector organizations.',
+            serviceType: 'AI Policy Consulting',
           },
         },
       ],
@@ -183,6 +265,24 @@ export function breadcrumbSchema(items) {
       position: i + 1,
       name: it.name,
       item: `${SITE_URL}${it.path}`,
+    })),
+  };
+}
+
+/* ItemList schema for insights — enables rich carousel in Google results. */
+export function insightsItemListSchema(insights, slugify) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'GovernAI Insights — AI Governance Knowledge',
+    description:
+      'Expert insights, event recaps, and thought leadership on AI governance, responsible AI, and compliance from GovernAI.',
+    numberOfItems: insights.length,
+    itemListElement: insights.slice(0, 10).map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `${SITE_URL}/insights/${slugify(item.title)}/`,
+      name: item.title,
     })),
   };
 }
@@ -325,7 +425,9 @@ export function advisorSchema() {
 }
 
 /* Website developer — Person schema for Divyakush Punjabi. Accepts
-   dynamic data from getDeveloperData() for build-time freshness. */
+   dynamic data from getDeveloperData() for build-time freshness.
+   Enhanced with mainEntityOfPage, makesOffer, hasCredential for
+   Knowledge Panel eligibility. */
 export function developerSchema(data) {
   const d = data || {};
   return {
@@ -340,10 +442,13 @@ export function developerSchema(data) {
       d.bio ||
       'Full Stack Developer and AI Engineer specializing in enterprise web applications, AI/ML integration, and UI/UX engineering.',
     url: SITE.developerUrl,
+    mainEntityOfPage: 'https://divyakush2006.github.io/divyakush-resume/',
+    ...(d.avatar ? { image: d.avatar } : {}),
     sameAs: [
       SITE.developerUrl,
       d.github || 'https://github.com/divyakush2006',
       d.linkedin || 'https://linkedin.com/in/divyakush-punjabi',
+      ...(d.blog ? [d.blog] : []),
     ],
     knowsAbout: [
       'Web Development',
@@ -357,6 +462,32 @@ export function developerSchema(data) {
       'Responsive Design',
       'Performance Optimization',
     ],
+    makesOffer: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Full Stack Web Development',
+          description: 'Enterprise web application development using Next.js, React, and modern frameworks.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'AI/ML Integration',
+          description: 'Integration of artificial intelligence and machine learning capabilities into web applications.',
+        },
+      },
+    ],
+    hasCredential: [
+      {
+        '@type': 'EducationalOccupationalCredential',
+        credentialCategory: 'degree',
+        educationalLevel: 'Bachelor',
+        recognizedBy: { '@type': 'CollegeOrUniversity', name: 'Vellore Institute of Technology' },
+      },
+    ],
     ...(d.location ? { homeLocation: { '@type': 'Place', name: d.location } } : {}),
     ...(d.company ? { worksFor: { '@type': 'Organization', name: d.company } } : {}),
     alumniOf: [
@@ -369,7 +500,7 @@ export function developerSchema(data) {
 }
 
 /* Article schema for insight/blog pages. */
-export function articleSchema({ slug, title, description, image, location, datePublished }) {
+export function articleSchema({ slug, title, description, image, location, datePublished, author }) {
   const wordCount = description ? description.split(/\s+/).length : 0;
   return {
     '@context': 'https://schema.org',
@@ -383,7 +514,10 @@ export function articleSchema({ slug, title, description, image, location, dateP
       caption: title,
     },
     datePublished: datePublished || undefined,
-    author: { '@id': `${SITE_URL}/#organization` },
+    dateModified: datePublished || undefined,
+    author: author
+      ? { '@type': 'Person', name: author }
+      : { '@id': `${SITE_URL}/#organization` },
     publisher: { '@id': `${SITE_URL}/#organization` },
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/insights/${slug}/` },
     wordCount,
@@ -394,9 +528,55 @@ export function articleSchema({ slug, title, description, image, location, dateP
   };
 }
 
+/* Event schema — insights that are conferences, workshops, or summits
+   become eligible for Google Event rich results (date, location cards).
+   Auto-inferred: any insight with a location and datePublished is treated
+   as an event. */
+export function eventSchema({ slug, title, description, image, location, datePublished, author }) {
+  if (!location || !datePublished) return null;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'EducationEvent',
+    '@id': `${SITE_URL}/insights/${slug}/#event`,
+    name: title,
+    description: description,
+    startDate: datePublished,
+    endDate: datePublished,
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    location: {
+      '@type': 'Place',
+      name: location,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: location,
+        addressCountry: 'IN',
+      },
+    },
+    image: image ? `${SITE_URL}${image}` : undefined,
+    organizer: {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
+      name: 'GovernAI',
+      url: SITE_URL,
+    },
+    performer: author
+      ? { '@type': 'Person', name: author }
+      : { '@id': `${SITE_URL}/#organization` },
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'INR',
+      availability: 'https://schema.org/InStock',
+      url: `${SITE_URL}/insights/${slug}/`,
+    },
+    inLanguage: 'en-IN',
+  };
+}
+
 /* ─────────────────────────  CONTENT SCHEMAS  ───────────────────────── */
 
-/* WebPage schema for the home page. */
+/* WebPage schema for the home page — with SpeakableSpecification for voice search. */
 export function webPageSchema() {
   return {
     '@context': 'https://schema.org',
@@ -410,6 +590,22 @@ export function webPageSchema() {
     about: { '@id': `${SITE_URL}/#organization` },
     inLanguage: 'en-IN',
     primaryImageOfPage: { '@type': 'ImageObject', url: `${SITE_URL}${SITE.ogImage}` },
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['h1', '.ds-lead', '.ds-card-desc'],
+    },
+    lastReviewed: new Date().toISOString().split('T')[0],
+    breadcrumb: {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: SITE_URL,
+        },
+      ],
+    },
   };
 }
 
@@ -447,5 +643,41 @@ export function faqSchema() {
       name: f.q,
       acceptedAnswer: { '@type': 'Answer', text: f.a },
     })),
+  };
+}
+
+/* CreativeWork schema — declares GovernAI website as a WebApplication
+   built by Divyakush Punjabi. Google uses this to build entity
+   associations ("Divyakush Punjabi built GovernAI"). */
+export function creativeWorkSchema(dev) {
+  const d = dev || {};
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    '@id': `${SITE_URL}/#web-application`,
+    name: 'GovernAI',
+    url: SITE_URL,
+    description: SITE.description,
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    creator: {
+      '@type': 'Person',
+      '@id': `${SITE_URL}/#developer-divyakush-punjabi`,
+      name: d.name || 'Divyakush Punjabi',
+      url: 'https://divyakush2006.github.io/divyakush-resume/',
+    },
+    sourceOrganization: {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
+      name: 'GovernAI',
+    },
+    dateCreated: '2025-01-01',
+    inLanguage: 'en-IN',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'INR',
+      availability: 'https://schema.org/InStock',
+    },
   };
 }

@@ -60,7 +60,7 @@ export function NavBar({ activeSection }) {
           padding: scrolled ? '8px 24px' : '16px 24px',
           transition: 'padding 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)',
         }}>
-          <nav style={{
+          <nav aria-label="Primary navigation" style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -95,8 +95,11 @@ export function NavBar({ activeSection }) {
               >
                 <SafeImage
                   src="/assets/img/logo.png"
-                  alt="GovernAI"
-                  style={{ height: 30, objectFit: 'contain' }}
+                  alt="GovernAI — AI Governance, Compliance & Responsible AI"
+                  width={130}
+                  height={30}
+                  loading="eager"
+                  style={{ height: 30, width: 'auto', objectFit: 'contain' }}
                 />
               </motion.div>
             </div>

@@ -59,35 +59,35 @@ export default function GovernAI() {
 
       <NavBar activeSection={activeSection} />
 
-      <main>
+      <main id="main-content" role="main">
         {/* 1. Hero */}
-        <section ref={(el) => (sectionRefs.current['hero'] = el)}>
+        <section aria-label="Hero — Governing AI for a Responsible Future" ref={(el) => (sectionRefs.current['hero'] = el)}>
           <LandingSection sectionRefs={sectionRefs} />
         </section>
 
         {/* 2. Our Domains */}
-        <section id="domains" ref={(el) => (sectionRefs.current['domains'] = el)}>
+        <section id="domains" aria-label="Our Domains of AI Governance" ref={(el) => (sectionRefs.current['domains'] = el)}>
           <DomainsSection />
         </section>
 
         <Divider />
 
         {/* 3. Institutional Clients Served */}
-        <section id="platform" ref={(el) => (sectionRefs.current['platform'] = el)}>
+        <section id="platform" aria-label="Institutional Clients and Engagements" ref={(el) => (sectionRefs.current['platform'] = el)}>
           <ClientsMarqueeSection />
         </section>
 
         <Divider />
 
         {/* 4. Insights */}
-        <section id="insights" ref={(el) => (sectionRefs.current['insights'] = el)}>
+        <section id="insights" aria-label="Insights and Impact" ref={(el) => (sectionRefs.current['insights'] = el)}>
           <InsightsCarouselSection />
         </section>
 
         <Divider />
 
         {/* 5. Meet the Team (Founder + Team + Advisor) */}
-        <section id="team" ref={(el) => (sectionRefs.current['team'] = el)}>
+        <section id="team" aria-label="Meet Our Team" ref={(el) => (sectionRefs.current['team'] = el)}>
           <Reveal y={48} delay={0.1}>
             <ImageCard />
           </Reveal>

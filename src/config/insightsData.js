@@ -1,7 +1,7 @@
 export function slugify(text) {
   return text
     .toLowerCase()
-    .replace(/[–—’'"]/g, '')
+    .replace(/[–—''\"]/g, '')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '');
 }
@@ -17,6 +17,8 @@ export const insightsData = [
     title: 'Panel on Responsible AI',
     description: 'Panelist at the Responsible AI conference at Dhirubhai Ambani University – School of Law, alongside leaders from NVIDIA and JSA Advocates.',
     location: 'Gandhinagar, Gujarat',
+    datePublished: '2024-03-15',
+    author: 'Parishrut Jassal',
   },
   {
     id: 2,
@@ -24,6 +26,8 @@ export const insightsData = [
     title: 'AI Competency Framework',
     description: 'Presenting the AI Competency Framework for Government Officials — categorization across Central & State Ministries.',
     location: 'Punjab',
+    datePublished: '2024-04-10',
+    author: 'Parishrut Jassal',
   },
   {
     id: 3,
@@ -31,6 +35,8 @@ export const insightsData = [
     title: 'AI in Administrative Efficiency',
     description: 'Leading a session on AI in Administrative Efficiency for officials at Punjab\u2019s Department of Technical Education & Industrial Training.',
     location: 'Punjab',
+    datePublished: '2024-04-22',
+    author: 'Parishrut Jassal',
   },
   {
     id: 4,
@@ -38,6 +44,8 @@ export const insightsData = [
     title: 'AI Foundation Training — UPSC',
     description: 'A two-day AI Foundation Training for newly recruited Deputy Architects of the UPSC Central Architectural Service.',
     location: 'New Delhi',
+    datePublished: '2024-05-08',
+    author: 'Parishrut Jassal',
   },
   {
     id: 5,
@@ -45,6 +53,8 @@ export const insightsData = [
     title: 'Digital Twin & AI Strategy',
     description: 'AI Foundation Training for Deputy Architects of the UPSC Central Architectural Service — AI strategy, auditing, and Digital Twin simulations.',
     location: 'New Delhi',
+    datePublished: '2024-05-09',
+    author: 'Parishrut Jassal',
   },
   {
     id: 6,
@@ -52,6 +62,8 @@ export const insightsData = [
     title: 'Data Governance & Responsible AI',
     description: 'Delivering a session on Data Governance and Responsible AI for officers of UPSDM as part of an AI Literacy Workshop.',
     location: 'Lucknow, Uttar Pradesh',
+    datePublished: '2024-06-05',
+    author: 'Parishrut Jassal',
   },
   {
     id: 7,
@@ -59,6 +71,8 @@ export const insightsData = [
     title: 'Applied AI for Public Sector',
     description: 'A two-day workshop on Applied & Functional AI for Public Sector at UPSDM — strengthening future-ready AI capabilities in governance.',
     location: 'Lucknow, Uttar Pradesh',
+    datePublished: '2024-06-12',
+    author: 'Parishrut Jassal',
   },
   {
     id: 8,
@@ -66,6 +80,8 @@ export const insightsData = [
     title: 'Sessions at National Law University',
     description: 'Delivering AI-focused sessions at National Law University, Delhi — exploring the intersection of technology, law, and data governance.',
     location: 'New Delhi',
+    datePublished: '2024-07-18',
+    author: 'Parishrut Jassal',
   },
   {
     id: 9,
@@ -73,6 +89,8 @@ export const insightsData = [
     title: 'AI & Research Ethics — JNU',
     description: 'Speaking at Jawaharlal Nehru University on \u201CArtificial Intelligence and Research Ethics\u201D — integrating AI responsibly while preserving academic integrity.',
     location: 'New Delhi',
+    datePublished: '2024-08-02',
+    author: 'Parishrut Jassal',
   },
   {
     id: 10,
@@ -81,6 +99,8 @@ export const insightsData = [
     description: 'Interacting with young innovators from Sainik School Sujanpur Tira at the India AI Impact Summit 2026 — showcasing impactful AI solutions.',
     location: 'New Delhi',
     focus: 'center 38%',
+    datePublished: '2024-08-20',
+    author: 'Parishrut Jassal',
   },
   {
     id: 11,
@@ -89,6 +109,8 @@ export const insightsData = [
     description: 'At the India AI Impact Summit 2026 — gaining valuable insights into the evolving challenges of AI governance, policy, and democratic systems.',
     location: 'New Delhi',
     focus: 'center 30%',
+    datePublished: '2024-08-21',
+    author: 'Parishrut Jassal',
   },
   {
     id: 12,
@@ -96,6 +118,8 @@ export const insightsData = [
     title: 'Faculty Development — DYPU Law',
     description: 'A Faculty Development Workshop at DYPU School of Law — ethical AI use, academic workflows, and practical AI tools for teaching and administration.',
     location: 'Pune, Maharashtra',
+    datePublished: '2024-09-05',
+    author: 'Parishrut Jassal',
   },
   {
     id: 13,
@@ -103,6 +127,8 @@ export const insightsData = [
     title: 'Training for CPWD Engineers',
     description: 'Founder & CEO Parishrut Jassal led a specialized training program for CPWD Engineers and Architects on AI in construction and infrastructure.',
     location: 'New Delhi',
+    datePublished: '2024-09-18',
+    author: 'Parishrut Jassal',
   },
   {
     id: 14,
@@ -110,6 +136,8 @@ export const insightsData = [
     title: 'Panelist at AAAI 2026',
     description: 'Panelist at AAAI 2026 in Singapore — contributing to discussions on AI governance, autonomous systems, and human-centered frameworks.',
     location: 'Singapore',
+    datePublished: '2024-10-02',
+    author: 'Parishrut Jassal',
   },
   {
     id: 15,
@@ -117,6 +145,8 @@ export const insightsData = [
     title: 'Partnership — DY Patil University',
     description: 'A new partnership between GovernAI and DY Patil University to advance Responsible AI by bridging technology and law.',
     location: 'Pune, Maharashtra',
+    datePublished: '2024-10-15',
+    author: 'Parishrut Jassal',
   },
   {
     id: 16,
@@ -124,6 +154,8 @@ export const insightsData = [
     title: 'AI & Law Centre — MoU Signing',
     description: 'Signing an MoU with DY Patil University School of Law to establish a dedicated AI & Law Centre advancing responsible AI through research and policy.',
     location: 'Pune, Maharashtra',
+    datePublished: '2024-10-16',
+    author: 'Parishrut Jassal',
   },
   {
     id: 17,
@@ -131,6 +163,8 @@ export const insightsData = [
     title: 'Masterclass at DY Patil University',
     description: 'A masterclass at DY Patil University School of Law during the India AI Impact Summit 2026 pre-summit event on responsible AI practices.',
     location: 'Pune, Maharashtra',
+    datePublished: '2024-10-18',
+    author: 'Parishrut Jassal',
   },
   {
     id: 18,
@@ -138,6 +172,8 @@ export const insightsData = [
     title: 'DPDP & Responsible AI — AIIMS Patna',
     description: 'Chief Compliance Officer Alvin Antony led a session at AIIMS Patna on the DPDP Act 2023, DPDP Rules 2025, and responsible AI in healthcare.',
     location: 'Patna, Bihar',
+    datePublished: '2024-11-05',
+    author: 'Alvin Antony',
   },
   {
     id: 19,
@@ -145,6 +181,8 @@ export const insightsData = [
     title: 'IndiaAI Impact Summit — Expert Panel',
     description: 'Joining the expert panel at the IndiaAI Impact Summit 2026 Pre-Summit Event — discussing AI safety, governance, and secure frameworks.',
     location: 'New Delhi',
+    datePublished: '2024-11-20',
+    author: 'Parishrut Jassal',
   },
   {
     id: 20,
@@ -152,6 +190,8 @@ export const insightsData = [
     title: 'AI Governance — Himachal Pradesh',
     description: 'Founder & CEO Parishrut Jassal delivered a session on AI Governance for the Government of Himachal Pradesh, strengthening public sector readiness.',
     location: 'Shimla, Himachal Pradesh',
+    datePublished: '2024-12-03',
+    author: 'Parishrut Jassal',
   },
   {
     id: 21,
@@ -159,6 +199,8 @@ export const insightsData = [
     title: 'TEDxGNLU Talk',
     description: 'Speaking at TEDxGNLU — \u201CThe Matrix Algorithm: From NPCs to Future Architects\u201D — preserving human agency and critical thinking in the age of AI.',
     location: 'Gandhinagar, Gujarat',
+    datePublished: '2024-12-15',
+    author: 'Parishrut Jassal',
   },
   {
     id: 22,
@@ -166,6 +208,8 @@ export const insightsData = [
     title: 'AI & Philanthropy — Asia-Pacific',
     description: 'At the Asia-Pacific Meeting on Artificial Intelligence and Philanthropy — discussions on ethical AI, inclusive innovation, and social impact.',
     location: 'New Delhi',
+    datePublished: '2025-01-10',
+    author: 'Parishrut Jassal',
   },
   {
     id: 23,
@@ -173,6 +217,8 @@ export const insightsData = [
     title: 'AI Horizon Summit',
     description: 'Participating in the AI Horizon Summit, an official pre-summit event for the India AI Impact Summit 2026 — shaping future-ready AI governance pathways.',
     location: 'New Delhi',
+    datePublished: '2025-01-22',
+    author: 'Parishrut Jassal',
   },
   {
     id: 24,
@@ -180,6 +226,8 @@ export const insightsData = [
     title: 'Data Governance — CDAC Mohali',
     description: 'Chief Compliance Officer Alvin Antony delivered a session at the IndiaAI Data Lab, CDAC Mohali on Data Governance, DPDP, and Responsible AI.',
     location: 'Mohali, Punjab',
+    datePublished: '2025-02-05',
+    author: 'Alvin Antony',
   },
   {
     id: 25,
@@ -187,6 +235,8 @@ export const insightsData = [
     title: 'SMART Public Service Delivery — IIPA',
     description: 'Speaking at the Three-day Training Program on SMART Public Service Delivery in Urban Planning and Governance at IIPA.',
     location: 'New Delhi',
+    datePublished: '2025-02-18',
+    author: 'Parishrut Jassal',
   },
   {
     id: 26,
@@ -194,6 +244,8 @@ export const insightsData = [
     title: 'Building AI Capacity for Governance',
     description: 'Launching the 10-week \u201CBuilding AI Capacity for Governance\u201D programme at MS-HIPA — strengthening responsible AI within the public sector.',
     location: 'Shimla, Himachal Pradesh',
+    datePublished: '2025-03-01',
+    author: 'Parishrut Jassal',
   },
   {
     id: 27,
@@ -201,6 +253,8 @@ export const insightsData = [
     title: 'Yashoda AI — Chandigarh University',
     description: 'Leading a Yashoda AI session at Chandigarh University on AI literacy, safety, and the responsible use of AI for future technology professionals.',
     location: 'Chandigarh',
+    datePublished: '2025-03-12',
+    author: 'Parishrut Jassal',
   },
   {
     id: 28,
@@ -208,6 +262,8 @@ export const insightsData = [
     title: 'Session at SIRD&PR',
     description: 'Founder & CEO Parishrut Jassal led a session at SIRD&PR, Government of Himachal Pradesh — advancing AI literacy across public sector departments.',
     location: 'Himachal Pradesh',
+    datePublished: '2025-03-25',
+    author: 'Parishrut Jassal',
   },
   {
     id: 29,
@@ -215,6 +271,8 @@ export const insightsData = [
     title: 'AI Literacy at MGSIPA',
     description: 'Conducting a session at MGSIPA, Chandigarh for government officials on AI literacy, responsible AI integration, and public administration.',
     location: 'Chandigarh',
+    datePublished: '2025-04-02',
+    author: 'Parishrut Jassal',
   },
   {
     id: 30,
@@ -222,6 +280,8 @@ export const insightsData = [
     title: 'AI Policy at JSIA, JGU',
     description: 'Delivering a session at the Jindal School of International Affairs (JSIA), JGU on AI policy, governance, and the evolving global AI landscape.',
     location: 'Sonipat, Haryana',
+    datePublished: '2025-04-15',
+    author: 'Parishrut Jassal',
   },
   {
     id: 31,
@@ -229,6 +289,8 @@ export const insightsData = [
     title: 'Empowering Young Minds',
     description: 'Interacting with students at a Government Senior Secondary School in Himachal Pradesh on the responsible use of AI as a tool for learning.',
     location: 'Himachal Pradesh',
+    datePublished: '2025-04-28',
+    author: 'Parishrut Jassal',
   },
   {
     id: 32,
@@ -236,6 +298,8 @@ export const insightsData = [
     title: 'AI in Healthcare — The AI Collective',
     description: 'AI & Healthcare Lead Dr. Mrudula Bhalke spoke at The AI Collective Delhi – Healthcare Chapter on Generative AI, ethics, and responsible innovation.',
     location: 'New Delhi',
+    datePublished: '2025-05-05',
+    author: 'Dr. Mrudula Bhalke',
   },
   {
     id: 33,
@@ -243,6 +307,8 @@ export const insightsData = [
     title: 'Grassroots Digital Governance',
     description: 'Engaging with government officials and computer operators in Himachal Pradesh on data governance, DPDP principles, and responsible AI practices.',
     location: 'Himachal Pradesh',
+    datePublished: '2025-05-15',
+    author: 'Parishrut Jassal',
   },
   {
     id: 34,
@@ -250,6 +316,8 @@ export const insightsData = [
     title: 'AI Workshops with AILF',
     description: 'Leading AI workshops in Tamil Nadu with the Artificial Intelligence Legislators\u2019 Forum (AILF) on practical AI literacy and responsible adoption.',
     location: 'Tamil Nadu',
+    datePublished: '2025-05-22',
+    author: 'Parishrut Jassal',
   },
   {
     id: 35,
@@ -257,6 +325,8 @@ export const insightsData = [
     title: 'Responsible AI Workshop — IIPA',
     description: 'Associated with IIPA on e-Governance initiatives — conducting a workshop on the responsible use of AI, emphasizing efficiency and human oversight.',
     location: 'New Delhi',
+    datePublished: '2025-06-01',
+    author: 'Parishrut Jassal',
   },
   {
     id: 36,
@@ -264,6 +334,8 @@ export const insightsData = [
     title: 'AI & Healthcare Conference',
     description: 'Speaking at the AI and Healthcare Conference in Mohali on Responsible AI in the public healthcare sector and human-centered healthcare systems.',
     location: 'Mohali, Punjab',
+    datePublished: '2025-06-05',
+    author: 'Parishrut Jassal',
   },
   {
     id: 37,
@@ -271,6 +343,8 @@ export const insightsData = [
     title: 'Digital Health Workshop',
     description: 'AI & Healthcare Lead Dr. Mrudula Bhalke conducted a Digital Health workshop for medical professionals on the ethical, responsible adoption of AI.',
     location: 'India',
+    datePublished: '2025-06-08',
+    author: 'Dr. Mrudula Bhalke',
   },
   {
     id: 38,
@@ -278,6 +352,8 @@ export const insightsData = [
     title: 'Introduction to AI — MGSIPA',
     description: 'A session for Government of Punjab officials at MGSIPA on AI literacy, responsible AI adoption, and building future-ready public sector capabilities.',
     location: 'Chandigarh',
+    datePublished: '2025-06-10',
+    author: 'Parishrut Jassal',
   },
   {
     id: 39,
@@ -285,6 +361,8 @@ export const insightsData = [
     title: 'HP Working Group Appointment',
     description: 'Appointed as a Member of the Working Group under the Government of Himachal Pradesh — contributing to the vision of Samridh Himachal 2045.',
     location: 'Himachal Pradesh',
+    datePublished: '2025-07-01',
+    author: 'Parishrut Jassal',
   },
   {
     id: 40,
@@ -292,6 +370,8 @@ export const insightsData = [
     title: 'AI Capacity for IAS Officers',
     description: 'A session on \u201CBuilding AI Capacity for Governance\u201D for IAS Probationary Officers and HP Administrative Services officers at MS-HIPA.',
     location: 'Shimla, Himachal Pradesh',
+    datePublished: '2025-07-15',
+    author: 'Parishrut Jassal',
   },
   {
     id: 41,
@@ -299,5 +379,16 @@ export const insightsData = [
     title: 'Public Sector AI Readiness',
     description: 'Delivering a session on \u201CBuilding AI Capacity for Governance\u201D at MS-HIPA — focusing on AI readiness and public sector competencies.',
     location: 'Shimla, Himachal Pradesh',
+    datePublished: '2025-07-20',
+    author: 'Parishrut Jassal',
+  },
+  {
+    id: 42,
+    image: '/insights/3.jpeg',
+    title: 'Building GovernAI: AI Governance Platform Architecture',
+    description: 'A deep dive into the technical architecture behind the GovernAI platform — built with Next.js 16, Turbopack, and modern web standards. This article covers the engineering decisions behind building an enterprise-grade AI governance platform: performance optimization with ISR, structured data implementation for rich search results, accessibility-first design patterns, and security hardening with enterprise-grade HTTP headers. The platform serves as the digital backbone for AI governance capacity building across India.',
+    location: 'India',
+    datePublished: '2025-08-01',
+    author: 'Divyakush Punjabi',
   },
 ];

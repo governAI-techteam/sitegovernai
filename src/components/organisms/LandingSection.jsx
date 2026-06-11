@@ -46,6 +46,7 @@ export function LandingSection({ sectionRefs }) {
       id="hero"
       sectionRefs={sectionRefs}
       bg={tokens.surface}
+      aria-label="Hero — Governing AI for a Responsible Future"
       className="mobile-pt-sm mobile-pb-sm mobile-padding hero-section-mobile"
       style={{
         position: 'relative',

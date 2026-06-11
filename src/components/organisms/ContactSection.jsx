@@ -93,7 +93,7 @@ function useFocusStyle() {
 export function ContactSection() {
   const focus = useFocusStyle();
   const [form, setForm] = useState({
-    name: '', email: '', org: '', type: INQUIRY_TYPES[0], message: '', _honey: '',
+    name: '', email: '', org: '', type: INQUIRY_TYPES[0], message: '',
   });
   const [status, setStatus] = useState('idle'); // idle | sending | sent | error
 
@@ -102,13 +102,6 @@ export function ContactSection() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (status === 'sending') return;
-
-    // Honeypot: a real user never fills this hidden field. If it's set,
-    // it's almost certainly a bot — silently accept without sending.
-    if (form._honey) {
-      setStatus('sent');
-      return;
-    }
 
     setStatus('sending');
 
@@ -119,13 +112,12 @@ export function ContactSection() {
         body: JSON.stringify({
           name: form.name,
           email: form.email,
-          organisation: form.org || '—',
+          organisation: form.org || '-',
           interest: form.type,
           message: form.message,
-          _subject: `New enquiry (${form.type}) — ${form.name}`,
+          _subject: `New enquiry (${form.type}) - ${form.name}`,
           _template: 'table',
           _captcha: 'false',
-          _honey: form._honey, // FormSubmit also discards spam server-side
         }),
       });
 
@@ -133,7 +125,7 @@ export function ContactSection() {
       const data = await res.json();
       if (data.success === 'true' || data.success === true) {
         setStatus('sent');
-        setForm({ name: '', email: '', org: '', type: INQUIRY_TYPES[0], message: '', _honey: '' });
+        setForm({ name: '', email: '', org: '', type: INQUIRY_TYPES[0], message: '' });
       } else {
         throw new Error('Submission not accepted');
       }
@@ -299,30 +291,6 @@ export function ContactSection() {
                   onSubmit={handleSubmit}
                   style={{ display: 'flex', flexDirection: 'column', gap: 18 }}
                 >
-                  {/* Honeypot — hidden from humans & assistive tech; only bots fill it */}
-                  <input
-                    type="text"
-                    name="_honey"
-                    tabIndex={-1}
-                    autoComplete="off"
-                    aria-hidden="true"
-                    value={form._honey}
-                    onChange={set('_honey')}
-                    style={{
-                      position: 'absolute',
-                      width: 1,
-                      height: 1,
-                      padding: 0,
-                      margin: -1,
-                      overflow: 'hidden',
-                      clip: 'rect(0 0 0 0)',
-                      whiteSpace: 'nowrap',
-                      border: 0,
-                      opacity: 0,
-                      pointerEvents: 'none',
-                    }}
-                  />
-
                   <div className="contact-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                     <Field label="Full name" required>
                       <input {...focus} required value={form.name} onChange={set('name')} placeholder="Enter your Full Name" style={inputBase} />

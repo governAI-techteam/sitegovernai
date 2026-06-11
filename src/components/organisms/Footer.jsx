@@ -96,7 +96,7 @@ export function Footer() {
 
   return (
     <>
-      <footer style={{
+      <footer aria-label="Site footer" style={{
         background: '#0f0f11',
         color: '#fff',
         position: 'relative',
@@ -216,6 +216,7 @@ export function Footer() {
             </motion.div>
 
             {/* Link Columns */}
+            <nav aria-label="Footer navigation" style={{ display: 'contents' }}>
             {footerLinks.map((col) => (
               <motion.div
                 key={col.heading}
@@ -264,6 +265,7 @@ export function Footer() {
                 </ul>
               </motion.div>
             ))}
+            </nav>
           </motion.div>
 
           {/* Separator */}
@@ -316,9 +318,10 @@ export function Footer() {
             }}>
               Built by{' '}
               <a
-                href={SITE.developerUrl}
+                href="https://divyakush2006.github.io/divyakush-resume/"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
+                title="Divyakush Punjabi — Full Stack Developer & AI Engineer"
                 style={{
                   color: 'rgba(234, 105, 38, 0.6)',
                   textDecoration: 'none',

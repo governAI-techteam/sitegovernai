@@ -1,13 +1,32 @@
 import { SafeImage } from '@/components/atoms/SafeImage';
 import { insightsData, getInsightBySlug, slugify } from '@/config/insightsData';
-import { SITE_URL, articleSchema, breadcrumbSchema } from '@/config/seo';
+import { SITE_URL, articleSchema, breadcrumbSchema, eventSchema } from '@/config/seo';
 
 export function generateStaticParams() {
   return insightsData.map((item) => ({ slug: slugify(item.title) }));
 }
 
-export default function InsightPage({ params }) {
-  const insight = getInsightBySlug(params.slug);
+/* Estimated reading time — ~200 words per minute for professional content */
+function getReadingTime(text) {
+  if (!text) return 1;
+  const words = text.split(/\s+/).length;
+  return Math.max(1, Math.ceil(words / 200));
+}
+
+/* Format ISO date to human-readable (cross-browser, no Intl dependency) */
+function formatDate(isoDate) {
+  if (!isoDate) return null;
+  const months = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December',
+  ];
+  const [year, month, day] = isoDate.split('-').map(Number);
+  return `${months[month - 1]} ${day}, ${year}`;
+}
+
+export default async function InsightPage({ params }) {
+  const { slug } = await params;
+  const insight = getInsightBySlug(slug);
   if (!insight) {
     return (
       <div style={{ padding: '80px 24px', textAlign: 'center' }}>
@@ -17,24 +36,42 @@ export default function InsightPage({ params }) {
     );
   }
 
-  const currentIndex = insightsData.findIndex((item) => slugify(item.title) === params.slug);
+  const currentIndex = insightsData.findIndex((item) => slugify(item.title) === slug);
   const prev = currentIndex > 0 ? insightsData[currentIndex - 1] : null;
   const next = currentIndex < insightsData.length - 1 ? insightsData[currentIndex + 1] : null;
+  const readingTime = getReadingTime(insight.description);
+
+  const insightData = {
+    slug: slug,
+    title: insight.title,
+    description: insight.description,
+    image: insight.image,
+    location: insight.location,
+    datePublished: insight.datePublished,
+    author: insight.author,
+  };
+
+  const eventLd = eventSchema(insightData);
 
   const jsonLd = [
     breadcrumbSchema([
       { name: 'Home', path: '/' },
       { name: 'Insights', path: '/#insights' },
-      { name: insight.title, path: `/insights/${params.slug}/` },
+      { name: insight.title, path: `/insights/${slug}/` },
     ]),
-    articleSchema({
-      slug: params.slug,
-      title: insight.title,
-      description: insight.description,
-      image: insight.image,
-      location: insight.location,
-    }),
+    articleSchema(insightData),
+    ...(eventLd ? [eventLd] : []),
   ];
+
+  /* Related insights — pick 3 from the same location or nearby indices.
+     This triples internal link density per page. */
+  const related = insightsData
+    .filter((item, idx) => idx !== currentIndex)
+    .filter((item) =>
+      item.location === insight.location ||
+      Math.abs(insightsData.indexOf(item) - currentIndex) <= 5
+    )
+    .slice(0, 3);
 
   return (
     <>
@@ -64,6 +101,33 @@ export default function InsightPage({ params }) {
           {insight.title}
         </h1>
 
+        {/* Article meta — date, author, reading time */}
+        <div style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          gap: '12px',
+          marginBottom: 24,
+          fontSize: 14,
+          color: '#666',
+        }}>
+          {insight.datePublished && (
+            <time dateTime={insight.datePublished} style={{ fontWeight: 500 }}>
+              {formatDate(insight.datePublished)}
+            </time>
+          )}
+          {insight.author && (
+            <>
+              <span aria-hidden="true" style={{ color: '#ccc' }}>·</span>
+              <address style={{ fontStyle: 'normal', fontWeight: 500 }}>
+                By {insight.author}
+              </address>
+            </>
+          )}
+          <span aria-hidden="true" style={{ color: '#ccc' }}>·</span>
+          <span>{readingTime} min read</span>
+        </div>
+
         {insight.location && (
           <p style={{ color: '#f16a24', fontSize: 14, fontWeight: 600, marginBottom: 24 }}>
             {insight.location}
@@ -74,6 +138,9 @@ export default function InsightPage({ params }) {
           src={insight.image}
           alt={insight.title}
           fetchPriority="high"
+          loading="eager"
+          width={800}
+          height={500}
           style={{
             width: '100%',
             height: 'auto',
@@ -88,9 +155,41 @@ export default function InsightPage({ params }) {
           {insight.description}
         </p>
 
+        {/* Related Insights — internal cross-linking for SEO */}
+        {related.length > 0 && (
+          <section aria-label="Related insights" style={{ marginTop: 48, paddingTop: 32, borderTop: '1px solid #e5e7eb' }}>
+            <h2 style={{ fontSize: 18, fontWeight: 700, color: '#111', marginBottom: 16, letterSpacing: '-0.02em' }}>
+              Related Insights
+            </h2>
+            <div style={{ display: 'grid', gap: 12 }}>
+              {related.map((item) => (
+                <a
+                  key={item.id}
+                  href={`/insights/${slugify(item.title)}/`}
+                  style={{
+                    display: 'block',
+                    padding: '14px 16px',
+                    borderRadius: 10,
+                    border: '1px solid #e5e7eb',
+                    textDecoration: 'none',
+                    transition: 'border-color 0.2s',
+                  }}
+                >
+                  <span style={{ fontSize: 14, fontWeight: 600, color: '#111' }}>{item.title}</span>
+                  {item.location && (
+                    <span style={{ display: 'block', fontSize: 12, color: '#888', marginTop: 4 }}>
+                      {item.location}
+                    </span>
+                  )}
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* Contextual internal links */}
         <div style={{
-          marginTop: 48, paddingTop: 32, borderTop: '1px solid #e5e7eb',
+          marginTop: 32, paddingTop: 24, borderTop: '1px solid #e5e7eb',
           display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: 16,
         }}>
           {prev && (
@@ -99,7 +198,7 @@ export default function InsightPage({ params }) {
               &larr; {prev.title}
             </a>
           )}
-          <a href="/contact"
+          <a href="/contact/"
              style={{ color: '#f16a24', textDecoration: 'none', fontSize: 14, fontWeight: 600 }}>
             Contact Us &rarr;
           </a>
