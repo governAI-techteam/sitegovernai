@@ -230,7 +230,7 @@ const INJECTED_CSS = `
   }
 
   .ds-stack-label {
-    font-size: 0.6875rem;
+    font-size: 0.8125rem;
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;

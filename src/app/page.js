@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useActiveSection } from '@/hooks/useActiveSection';
 import { ScrollProvider } from '@/context/ScrollContext';
@@ -17,6 +17,9 @@ import { Footer } from '@/components/organisms/Footer';
 import { Preloader } from '@/components/molecules/Preloader';
 import { ScrollProgress } from '@/components/atoms/ScrollProgress';
 import { Reveal } from '@/components/atoms/Reveal';
+
+/* Module-level flag — persists across SPA navigations, resets on full reload */
+let _navigatedAway = false;
 
 function Divider() {
   return (
@@ -42,9 +45,16 @@ export default function GovernAI() {
   const sectionRefs = useRef({});
   const activeSection = useActiveSection(sectionRefs);
 
+  // Skip preloader only on SPA navigations back to home (e.g. from /contact)
+  const [skipLoader] = useState(() => _navigatedAway);
+
+  useEffect(() => {
+    return () => { _navigatedAway = true; };
+  }, []);
+
   return (
     <ScrollProvider sectionRefs={sectionRefs}>
-      <Preloader />
+      {!skipLoader && <Preloader />}
       <ScrollProgress />
 
       <NavBar activeSection={activeSection} />

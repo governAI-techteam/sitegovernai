@@ -80,28 +80,34 @@ export function NavBar({ activeSection }) {
               : 'none',
             transition: 'all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)',
           }}>
-            {/* Logo */}
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 10 }}
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            >
-              <SafeImage
-                src="/assets/img/logo.png"
-                alt="GovernAI"
-                style={{
-                  height: scrolled ? 30 : 34,
-                  transition: 'height 0.3s ease',
-                  objectFit: 'contain',
-                }}
-              />
-            </motion.div>
+            {/* Logo — reserved slot, animates in on scroll */}
+            <div style={{ width: 130, height: 34, display: 'flex', alignItems: 'center', flexShrink: 0 }}>
+              <motion.div
+                initial={{ opacity: 0, y: -16, scale: 0.88, filter: 'blur(6px)' }}
+                animate={scrolled
+                  ? { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }
+                  : { opacity: 0, y: -16, scale: 0.88, filter: 'blur(6px)' }
+                }
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ scale: 1.02 }}
+                style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 10 }}
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              >
+                <SafeImage
+                  src="/assets/img/logo.png"
+                  alt="GovernAI"
+                  style={{ height: 30, objectFit: 'contain' }}
+                />
+              </motion.div>
+            </div>
 
             {/* Desktop Nav */}
             <div style={{
+              flex: 1,
               display: 'flex',
               alignItems: 'center',
-              gap: 4,
+              justifyContent: 'center',
+              gap: 10,
             }}
             className="mobile-hide"
             >
@@ -113,7 +119,7 @@ export function NavBar({ activeSection }) {
                     onClick={() => handleNav(item.sectionId)}
                     style={{
                       position: 'relative',
-                      padding: '8px 18px',
+                      padding: '8px 22px',
                       border: 'none',
                       background: 'none',
                       cursor: 'pointer',
@@ -155,7 +161,7 @@ export function NavBar({ activeSection }) {
                 whileTap={{ scale: 0.97 }}
                 onClick={goContact}
                 style={{
-                  padding: '10px 24px',
+                  padding: '10px 28px',
                   border: 'none',
                   borderRadius: 12,
                   background: 'linear-gradient(135deg, #191c1e 0%, #2d3133 100%)',

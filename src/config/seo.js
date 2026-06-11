@@ -205,7 +205,7 @@ export function founderSchema() {
     url: SITE_URL,
     nationality: { '@type': 'Country', name: 'India' },
     description:
-      'TEDx Speaker and UKAS-recognised ISO/IEC 42001 Auditor. Working Group Member on AI & Digital Governance for the Government of Himachal Pradesh, former Deputy Advisor at NIEPA (Ministry of Education), AI Safety Governance Fellow, and member of ForHumanity (USA) on AI Audits & Regulation.',
+      'TEDx Speaker and UKAS-recognised ISO/IEC 42001 Auditor. Working Group Member (Digital & AI Governance) on I.T. Infrastructure, Cyber-Hubs & Future Ready Industries for the Government of Himachal Pradesh, former Deputy Advisor at NIEPA (Ministry of Education), Doctoral Researcher on the Global Governance of AI for Sustainable Peace, and member of ForHumanity (USA) on AI Audits & Regulation.',
     knowsAbout: [
       'AI Governance',
       'Responsible AI',

@@ -18,7 +18,7 @@ const founder = {
     'TEDx Speaker · UKAS-recognised ISO/IEC 42001 Auditor',
     'Working Group Member on AI & Digital Governance, Government of Himachal Pradesh',
     'Former Deputy Advisor, NIEPA, Ministry of Education · Expert Member, India–UNESCO AI Readiness Assessment',
-    'AI Safety Governance Fellow · Doctoral Researcher on the Global Governance of AI for Sustainable Peace',
+    'Working Group Member (Digital & AI Governance) — I.T. Infrastructure, Cyber-Hubs & Future Ready Industries, Government of Himachal Pradesh · Doctoral Researcher on the Global Governance of AI for Sustainable Peace',
     'Member of ForHumanity (USA) on AI Audits & Regulation',
   ],
 };
@@ -31,7 +31,7 @@ const teamMembers = [
     name: 'Adv. Alvin Antony',
     role: 'Chief Compliance Officer',
     image: '/assets/img/Team/team_alvin.jpeg',
-    linkedin: 'https://linkedin.com/in/alvin-antony',
+    linkedin: 'https://www.linkedin.com/in/alvin-antony-448742148/',
     description:
       'Certified AI Auditor (ISO 42001) with CAIQ, CACP, DCDPO, and DCPLA certifications. Brings extensive expertise in AI governance, compliance frameworks, risk management, and regulatory standards for responsible AI implementation.',
   },
@@ -39,7 +39,7 @@ const teamMembers = [
     name: 'Dr. Utso Guha Roy',
     role: 'AI & Healthcare Lead',
     image: '/assets/img/Team/team_utso.png',
-    linkedin: 'https://linkedin.com/in/utso-guha-roy',
+    linkedin: 'https://www.linkedin.com/in/dr-utso-guha-roy-02b25611a/',
     description:
       'Clinical AI specialist leading healthcare verification initiatives, AI-driven healthcare solutions, and curriculum development. Focused on bridging advanced artificial intelligence with real-world healthcare applications and innovation.',
   },
@@ -47,7 +47,7 @@ const teamMembers = [
     name: 'Anubhav Sharma',
     role: 'Technical & Security Lead',
     image: '/assets/img/Team/team_anubhav.jpeg',
-    linkedin: 'https://linkedin.com/in/anubhav-sharma',
+    linkedin: 'https://www.linkedin.com/in/infrabyanubhav/',
     description:
       'Information security architect specializing in security methodologies, compliance frameworks, risk assessment, and Tier 2 and Tier 3 audit engagements. Leads the organization\'s technical infrastructure and cybersecurity initiatives.',
   },
@@ -55,7 +55,7 @@ const teamMembers = [
     name: 'Dr. Himanshu Kalia',
     role: 'AI & Healthcare Consultant',
     image: '/assets/img/Team/team_himanshu.jpeg',
-    linkedin: 'https://linkedin.com/in/himanshu-kalia',
+    linkedin: 'https://www.linkedin.com/in/hkalia1/',
     description:
       'Scientific Officer at IIT DRISHTI CPS with an MSc from the University of Glasgow. Contributes expertise in healthcare research, scientific innovation, artificial intelligence applications, and interdisciplinary technology development.',
   },
@@ -63,7 +63,7 @@ const teamMembers = [
     name: 'Er. Preekshit Singh',
     role: 'Operations & Training Lead',
     image: '/assets/img/Team/team_preekshit.png',
-    linkedin: 'https://linkedin.com/in/preekshit-singh',
+    linkedin: 'https://www.linkedin.com/in/preekshit-singh-ba97a8211/',
     description:
       'Civil engineer overseeing academy operations, training delivery, process optimization, and organizational execution. Responsible for ensuring efficient program management and operational excellence across initiatives.',
   },
@@ -74,7 +74,7 @@ const advisors = [
     name: 'Dr. Murthy Remilla',
     role: 'President, Telemedicine Society of India',
     image: '/assets/img/team_murthy.png',
-    linkedin: 'https://linkedin.com/in/murthy-remilla',
+    linkedin: 'https://www.linkedin.com/in/dr-murthy-remilla-technobusiness-leader-space-sector-telemedicine-5157ab5/',
     description:
       'Former ISRO Scientist and a recognized leader in healthcare technology and digital transformation. Advises on AI governance, healthcare innovation, telemedicine adoption, and responsible implementation of emerging technologies in healthcare delivery systems.',
   },
@@ -82,7 +82,7 @@ const advisors = [
     name: 'Maya Sherman',
     role: 'International AI Policy Advisor',
     image: '/assets/img/team_maya.jpeg',
-    linkedin: 'https://linkedin.com/in/maya-sherman',
+    linkedin: 'https://www.linkedin.com/in/maya-sherman-02b474115/',
     description:
       'Former Science, Technology, and Innovation Attaché at the Embassy of Israel. Associated with global policy and research initiatives including GPAI, OECD, and Oxford. Provides strategic guidance on AI governance, international policy frameworks, and responsible AI development.',
   },
@@ -90,7 +90,7 @@ const advisors = [
     name: 'Arun Pandit',
     role: 'Industry Advisor',
     image: '/assets/img/team_arun.png',
-    linkedin: 'https://linkedin.com/in/arun-pandit',
+    linkedin: 'https://www.linkedin.com/in/arunpandit/',
     description:
       'Co-Founder of Hyphen SCS, Chairman of AIMA Young Leaders Council, and TEDx Speaker. Brings extensive experience in entrepreneurship, leadership development, business strategy, innovation, and industry partnerships.',
   },
@@ -557,7 +557,18 @@ function FeatureCard({ person, eyebrow, reverse = false, delay = 0, accent = 'fo
 function DivisionLabel({ children }) {
   return (
     <FadeIn yOffset={20} style={{ marginBottom: '24px' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+        <span
+          aria-hidden="true"
+          style={{
+            width: 10,
+            height: 10,
+            borderRadius: 3,
+            background: 'linear-gradient(135deg, #f16a24, #f16a24)',
+            flexShrink: 0,
+            boxShadow: '0 2px 8px rgba(241,106,36,0.25)',
+          }}
+        />
         <h3
           style={{
             fontFamily: tokens.fonts.display,
@@ -691,7 +702,7 @@ function ImageCard() {
         </div>
 
         {/* ── Advisors ── */}
-        <DivisionLabel>Advisors</DivisionLabel>
+        <DivisionLabel>Governing Council</DivisionLabel>
         <div
           className="team-grid"
           style={{

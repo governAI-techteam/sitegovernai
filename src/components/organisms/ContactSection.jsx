@@ -325,15 +325,15 @@ export function ContactSection() {
 
                   <div className="contact-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                     <Field label="Full name" required>
-                      <input {...focus} required value={form.name} onChange={set('name')} placeholder="Jane Doe" style={inputBase} />
+                      <input {...focus} required value={form.name} onChange={set('name')} placeholder="Enter your Full Name" style={inputBase} />
                     </Field>
                     <Field label="Work email" required>
-                      <input {...focus} required type="email" value={form.email} onChange={set('email')} placeholder="jane@org.gov.in" style={inputBase} />
+                      <input {...focus} required type="email" value={form.email} onChange={set('email')} placeholder="Enter your Professional Email" style={inputBase} />
                     </Field>
                   </div>
 
                   <Field label="Organisation">
-                    <input {...focus} value={form.org} onChange={set('org')} placeholder="Ministry / University / Company" style={inputBase} />
+                    <input {...focus} value={form.org} onChange={set('org')} placeholder="Enterprise / Company / University / Government Organisation" style={inputBase} />
                   </Field>
 
                   <Field label="How can we help?" required>
