@@ -32,12 +32,8 @@ export async function generateMetadata() {
     category: 'technology',
     authors: [
       {
-        name: 'Parishrut Jassal',
-        url: 'https://linkedin.com/in/parishrut-jassal',
-      },
-      {
         name: dev.name,
-        url: dev.portfolio,
+        url: dev.linkedin || dev.portfolio,
       },
     ],
     creator: 'GovernAI',
