@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { tokens } from '@/theme/tokens';
 import { motion } from 'framer-motion';
+import { SafeImage } from '@/components/atoms/SafeImage';
 import { FadeIn } from '@/components/atoms/FadeIn';
 import { Icon } from '@/components/atoms/Icon';
 import Image from 'next/image';
@@ -57,14 +58,6 @@ const teamMembers = [
     linkedin: 'https://linkedin.com/in/himanshu-kalia',
     description:
       'Scientific Officer at IIT DRISHTI CPS with an MSc from the University of Glasgow. Contributes expertise in healthcare research, scientific innovation, artificial intelligence applications, and interdisciplinary technology development.',
-  },
-  {
-    name: 'Saranshi Gupta',
-    role: 'Growth & Strategy Lead',
-    image: '/assets/img/Team/saranshi.png',
-    linkedin: 'https://linkedin.com/in/saranshi-gupta',
-    description:
-      'MBA from S. P. Jain School of Global Management with expertise in partnerships, business development, strategic growth initiatives, and go-to-market execution. Drives organizational expansion and ecosystem development.',
   },
   {
     name: 'Er. Preekshit Singh',
@@ -179,7 +172,7 @@ function MemberCard({ member, index }) {
             background: '#fff',
           }}
         >
-          <img
+          <SafeImage
             src={imgSrc}
             alt={member.name}
             width={112}
@@ -602,8 +595,10 @@ function ImageCard() {
           .feature-portrait { min-height: 320px !important; }
         }
 
-        /* 6-col grid: 3 cards per row (each spans 2 cols) */
+        .team-grid { grid-template-columns: repeat(6, 1fr); }
         .team-grid > * { grid-column: span 2; }
+        .team-grid > *:nth-child(4) { grid-column: 2 / span 2; }
+        .team-grid > *:nth-child(5) { grid-column: 4 / span 2; }
 
         @media (max-width: 900px) {
           .team-grid { grid-template-columns: repeat(2, 1fr) !important; }

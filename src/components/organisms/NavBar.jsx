@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import { SafeImage } from '@/components/atoms/SafeImage';
 import { NAV_ITEMS } from '@/config/content';
 import { useScroll } from '@/context/ScrollContext';
 import { tokens } from '@/theme/tokens';
@@ -85,7 +86,7 @@ export function NavBar({ activeSection }) {
               style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 10 }}
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
-              <img
+              <SafeImage
                 src="/assets/img/logo.png"
                 alt="GovernAI"
                 style={{

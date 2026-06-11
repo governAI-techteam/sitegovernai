@@ -1,3 +1,4 @@
+import { SafeImage } from '@/components/atoms/SafeImage';
 import { insightsData, getInsightBySlug, slugify } from '@/config/insightsData';
 import { SITE_URL, articleSchema, breadcrumbSchema } from '@/config/seo';
 
@@ -69,10 +70,10 @@ export default function InsightPage({ params }) {
           </p>
         )}
 
-        <img
+        <SafeImage
           src={insight.image}
           alt={insight.title}
-          fetchpriority="high"
+          fetchPriority="high"
           style={{
             width: '100%',
             height: 'auto',

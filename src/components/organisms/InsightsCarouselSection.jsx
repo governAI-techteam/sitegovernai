@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { SafeImage } from '@/components/atoms/SafeImage';
 import { insightsData } from '@/config/insightsData';
 import { tokens } from '@/theme/tokens';
 
@@ -112,7 +113,7 @@ export default function InsightsCarouselSection() {
           margin: '0 auto',
           fontFamily: tokens.fonts.body,
         }}>
-          From government workshops to university partnerships — shaping the future of responsible AI across India and beyond.
+          From government workshops to university partnerships, shaping the future of responsible AI across India and beyond.
         </p>
       </motion.div>
 
@@ -156,7 +157,7 @@ export default function InsightsCarouselSection() {
                 }}
               >
                 {/* Blurred backdrop fill (prevents letterbox bars, no subject ever cut) */}
-                <img
+                <SafeImage
                   src={item.image}
                   alt=""
                   aria-hidden="true"
@@ -174,7 +175,7 @@ export default function InsightsCarouselSection() {
                 />
 
                 {/* Foreground image — full subject always visible */}
-                <img
+                <SafeImage
                   src={item.image}
                   alt={item.title}
                   loading={i < 3 ? 'eager' : 'lazy'}

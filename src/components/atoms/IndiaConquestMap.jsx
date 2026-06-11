@@ -1,15 +1,13 @@
 'use client';
 
-import { useState, useEffect, useMemo, useRef } from 'react';
+import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { indiaMap } from '@/config/indiaMap';
 import { tokens } from '@/theme/tokens';
 
 /*
-  GovernAI's recognition spreads state-by-state across an accurate India map.
-  Phases per state:  line travels slowly  ->  on arrival the state highlights
-  ->  5s dwell  ->  line moves to next.  Runs ONCE, then becomes interactive:
-  hovering a captured state reveals the institutions engaged there (above it).
+  Static India map with all captured states shown at once.
+  Hover a highlighted state to see the institutions engaged there.
 */
 
 // viewBox is square 0..VB. centroid c is in that space. lp = label anchor.
@@ -69,59 +67,24 @@ const CAT_COLORS = {
   Technology: '#515f74',
 };
 
-const TRAVEL_MS = 2800;   // slow line travel between states
-const DWELL_MS = 3000;    // pause after a state highlights
-const FIRST_MS = 500;     // first state appears quickly
 const ORANGE = '#f16a24';
-const ORANGE_LT = '#f16a24';
 
 const BY_ID = Object.fromEntries(JOURNEY.map((j) => [j.id, j]));
 
 export default function IndiaConquestMap() {
-  const [step, setStep] = useState(0);      // index currently being processed
-  const [arrived, setArrived] = useState(false);
   const [hovered, setHovered] = useState(null);
 
-  const finished = step >= JOURNEY.length;
-
-  useEffect(() => {
-    if (finished) return;
-    let t;
-    if (!arrived) {
-      t = setTimeout(() => setArrived(true), step === 0 ? FIRST_MS : TRAVEL_MS);
-    } else {
-      t = setTimeout(() => {
-        setStep((s) => s + 1);
-        setArrived(false);
-      }, DWELL_MS);
-    }
-    return () => clearTimeout(t);
-  }, [step, arrived, finished]);
-
-  // number of fully highlighted states
-  const hi = Math.min(step + (arrived ? 1 : 0), JOURNEY.length);
+  const finished = true;
+  const hi = JOURNEY.length;
 
   const capturedSet = useMemo(
-    () => new Set(JOURNEY.slice(0, hi).map((j) => j.id)),
-    [hi]
+    () => new Set(JOURNEY.map((j) => j.id)),
+    []
   );
 
-  // completed connections between highlighted states
-  const connections = [];
-  for (let i = 1; i < hi; i++) {
-    connections.push({ from: JOURNEY[i - 1].c, to: JOURNEY[i].c, key: `c-${i}` });
-  }
-
-  // line + comet currently travelling toward step
-  const travelling = !finished && !arrived && step > 0;
-  const travelFrom = travelling ? JOURNEY[step - 1].c : null;
-  const travelTo = travelling ? JOURNEY[step].c : null;
-
-  // counters
-  const progress = hi / JOURNEY.length;
-  const officials = Math.round(2000 * progress);
-  const institutions = Math.round(20 * progress);
-  const statesCount = Math.max(1, Math.round(5 * progress));
+  const officials = 2000;
+  const institutions = 20;
+  const statesCount = 5;
 
   // hover panel placement
   const hov = finished && hovered ? BY_ID[hovered] : null;
@@ -160,9 +123,7 @@ export default function IndiaConquestMap() {
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
-          <filter id="lineGlow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="14" />
-          </filter>
+
         </defs>
 
         {/* Base states */}
@@ -190,53 +151,6 @@ export default function IndiaConquestMap() {
           );
         })}
 
-        {/* Completed connection lines — bold (hidden once the map is fully covered) */}
-        {!finished && (
-          <g style={{ pointerEvents: 'none' }}>
-          {connections.map((c) => (
-            <g key={c.key}>
-              <line
-                x1={c.from[0]} y1={c.from[1]} x2={c.to[0]} y2={c.to[1]}
-                stroke={ORANGE} strokeWidth={22} strokeLinecap="round"
-                opacity={0.25} filter="url(#lineGlow)"
-              />
-              <line
-                x1={c.from[0]} y1={c.from[1]} x2={c.to[0]} y2={c.to[1]}
-                stroke="url(#capGrad)" strokeWidth={12} strokeLinecap="round"
-              />
-            </g>
-          ))}
-          </g>
-        )}
-
-        {/* Currently travelling line (draws slowly) */}
-        {travelling && (
-          <g key={`travel-${step}`} style={{ pointerEvents: 'none' }}>
-            <motion.line
-              x1={travelFrom[0]} y1={travelFrom[1]} x2={travelTo[0]} y2={travelTo[1]}
-              stroke={ORANGE} strokeWidth={22} strokeLinecap="round"
-              opacity={0.22} filter="url(#lineGlow)"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: TRAVEL_MS / 1000, ease: [0.45, 0, 0.55, 1] }}
-            />
-            <motion.line
-              x1={travelFrom[0]} y1={travelFrom[1]} x2={travelTo[0]} y2={travelTo[1]}
-              stroke="url(#capGrad)" strokeWidth={13} strokeLinecap="round"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: TRAVEL_MS / 1000, ease: [0.45, 0, 0.55, 1] }}
-            />
-            {/* comet head */}
-            <motion.circle
-              r={46} fill={ORANGE_LT} filter="url(#pinGlow)"
-              initial={{ cx: travelFrom[0], cy: travelFrom[1] }}
-              animate={{ cx: travelTo[0], cy: travelTo[1] }}
-              transition={{ duration: TRAVEL_MS / 1000, ease: [0.45, 0, 0.55, 1] }}
-            />
-          </g>
-        )}
-
         {/* Highlighted pins + labels */}
         <g style={{ pointerEvents: 'none' }}>
         {JOURNEY.slice(0, hi).map((j) => {
@@ -247,7 +161,7 @@ export default function IndiaConquestMap() {
                 cx={j.c[0]} cy={j.c[1]} fill="none" stroke={ORANGE} strokeWidth={6}
                 initial={{ r: 12, opacity: 0.7 }}
                 animate={{ r: 150, opacity: 0 }}
-                transition={{ duration: 1.8, ease: 'easeOut', repeat: Infinity, repeatDelay: finished ? 2.6 : 1.2 }}
+                transition={{ duration: 1.8, ease: 'easeOut', repeat: Infinity, repeatDelay: 2.6 }}
               />
               <motion.circle
                 cx={j.c[0]} cy={j.c[1]} fill="url(#capGrad)" stroke="#fff" strokeWidth={9}

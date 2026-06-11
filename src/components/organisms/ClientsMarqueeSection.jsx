@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { SafeImage } from "@/components/atoms/SafeImage";
 import { tokens } from "@/theme/tokens";
 
 const LOGO_PATH = "/logos/";
@@ -17,6 +18,7 @@ const CLIENT_GROUPS = [
       { name: "State Institute of Rural Development - Himachal", logo: "State Institute of Rural Development - Himachal.png" },
       { name: "UP Skill Development Mission", logo: "UP Skill Development Mission.png" },
       { name: "C-DAC Mohali", logo: "C-DAC Mohali.png" },
+      { name: "Tamil Nadu Government", logo: "Tamil Nadu Government.png" },
     ],
   },
   {
@@ -24,7 +26,7 @@ const CLIENT_GROUPS = [
     items: [
       { name: "Gujarat National Law University", logo: "Gujarat National Law University.png" },
       { name: "DY Patil University", logo: "DY Patil University.png", scale: 1.6 },
-      { name: "National Law University, Delhi", logo: "National Law University, Delhi.png" },
+      { name: "National Law University, Delhi", logo: "National Law University Delhi.png" },
       { name: "NALSAR University", logo: "NALSAR University.png" },
       { name: "NMIMS Hyderabad", logo: "NMIMS Hyderabad.png" },
       { name: "ICFAI Law School", logo: "ICFAI Law School.png" },
@@ -47,7 +49,7 @@ function LogoItem({ name, logo, scale }) {
   return (
     <div style={styles.logoItem} className="logo-item">
       <div style={styles.logoPlaceholder} className="logo-placeholder">
-        <img
+        <SafeImage
           src={`${LOGO_PATH}${logo}`}
           alt={name}
           style={{ ...styles.logoImage, ...(scale ? { transform: `scale(${scale})` } : {}) }}

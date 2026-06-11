@@ -5,6 +5,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useScroll } from '@/context/ScrollContext';
 import { tokens } from '@/theme/tokens';
+import { SafeImage } from '@/components/atoms/SafeImage';
 import { SITE } from '@/config/seo';
 
 const footerLinks = [
@@ -153,7 +154,7 @@ export function Footer() {
                 visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
               }}
             >
-              <img
+              <SafeImage
                 src="/assets/img/logo.png"
                 alt="GovernAI"
                 style={{
@@ -288,7 +289,25 @@ export function Footer() {
               © {new Date().getFullYear()} GovernAI. All rights reserved.
             </p>
 
-
+            <div style={{ display: 'flex', gap: 24 }}>
+              {['Privacy Policy', 'Terms of Service', 'Security'].map((t) => (
+                <a
+                  key={t}
+                  href="#"
+                  style={{
+                    fontSize: 13,
+                    color: 'rgba(255,255,255,0.35)',
+                    textDecoration: 'none',
+                    fontFamily: tokens.fonts.body,
+                    transition: 'color 0.2s ease',
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.7)'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.35)'}
+                >
+                  {t}
+                </a>
+              ))}
+            </div>
 
             <p style={{
               fontSize: 12,

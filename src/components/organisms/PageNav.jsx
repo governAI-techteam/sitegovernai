@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { SafeImage } from '@/components/atoms/SafeImage';
 import { tokens } from '@/theme/tokens';
 
 const LINKS = [
@@ -53,9 +54,10 @@ export function PageNav() {
         >
           <Link href="/" style={{ display: 'flex', alignItems: 'center' }}>
             <motion.img
-              src="/assets/img/logo.png"
+              src="/assets/img/logo.webp"
               alt="GovernAI"
               whileHover={{ scale: 1.02 }}
+              onError={(e) => { if (e.target.src.includes('.webp')) e.target.src = '/assets/img/logo.png'; }}
               style={{ height: 32, objectFit: 'contain', cursor: 'pointer' }}
             />
           </Link>

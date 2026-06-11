@@ -99,7 +99,6 @@ export function organizationSchema() {
       { '@id': `${SITE_URL}/#person-utso-guha-roy` },
       { '@id': `${SITE_URL}/#person-anubhav-sharma` },
       { '@id': `${SITE_URL}/#person-himanshu-kalia` },
-      { '@id': `${SITE_URL}/#person-saranshi-gupta` },
       { '@id': `${SITE_URL}/#person-preekshit-singh` },
     ],
     sameAs: SITE.sameAs,
@@ -257,15 +256,6 @@ export function teamSchema() {
       description:
         'Scientific Officer at IIT DRISHTI CPS with an MSc from the University of Glasgow. Contributes expertise in healthcare research, scientific innovation, and AI applications.',
       knowsAbout: ['AI in Healthcare', 'Healthcare Research', 'Interdisciplinary Technology'],
-    },
-    {
-      id: 'saranshi-gupta',
-      name: 'Saranshi Gupta',
-      jobTitle: 'Growth & Strategy Lead',
-      image: '/assets/img/Team/saranshi.png',
-      description:
-        'MBA from S. P. Jain School of Global Management with expertise in partnerships, business development, strategic growth initiatives, and go-to-market execution.',
-      knowsAbout: ['Business Development', 'Strategic Growth', 'Partnerships'],
     },
     {
       id: 'preekshit-singh',

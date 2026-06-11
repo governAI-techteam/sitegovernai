@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { SafeImage } from '@/components/atoms/SafeImage';
 import { tokens } from '@/theme/tokens';
 
 export function Preloader() {
@@ -42,11 +43,12 @@ export function Preloader() {
           }}
         >
           <motion.img
-            src="/assets/img/logo.png"
+            src="/assets/img/logo.webp"
             alt="GovernAI Loading"
             initial={{ scale: 0.9, opacity: 0, y: 10 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: 'easeOut' }}
+            onError={(e) => { if (e.target.src.includes('.webp')) e.target.src = '/assets/img/logo.png'; }}
             style={{ width: '100%', maxWidth: '300px', height: 'auto' }}
           />
           {/* Subtle loading pulse bar below logo */}
