@@ -139,7 +139,7 @@ export default function IndiaConquestMap() {
               onMouseLeave={hoverable ? () => setHovered(null) : undefined}
               style={{
                 fill: isCaptured ? 'url(#capGrad)' : '#e6ebf0',
-                stroke: isCaptured ? (isHovered ? '#fff' : ORANGE) : '#cdd6df',
+                stroke: ORANGE,
                 strokeWidth: isCaptured ? (isHovered ? 24 : 12) : 7,
                 fillOpacity: isCaptured ? (isHovered ? 1 : 0.92) : 1,
                 cursor: hoverable ? 'pointer' : 'default',
