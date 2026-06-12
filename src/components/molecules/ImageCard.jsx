@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { SafeImage } from '@/components/atoms/SafeImage';
 import { FadeIn } from '@/components/atoms/FadeIn';
 import { Icon } from '@/components/atoms/Icon';
-import Image from 'next/image';
+import { useIsMobile } from '@/hooks/useIsMobile';
 
 /* ───────────────────────── Data ───────────────────────── */
 
@@ -102,8 +102,8 @@ function MemberCard({ member, index }) {
   const [imgSrc, setImgSrc] = useState(member.image);
   return (
     <FadeIn
-      delay={0.05 + index * 0.1}
-      yOffset={30}
+      delay={Math.min(0.05 + index * 0.08, 0.3)}
+      yOffset={20}
       className="team-member-card"
       style={{
         position: 'relative',
@@ -240,6 +240,7 @@ function MemberCard({ member, index }) {
       </div>
 
       <a
+        className="linkedin-btn"
         href={member.linkedin}
         target="_blank"
         rel="noopener noreferrer"
@@ -302,10 +303,10 @@ function FeatureCard({ person, eyebrow, reverse = false, delay = 0, accent = 'fo
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
       className="feature-card"
       style={{
         position: 'relative',
@@ -348,13 +349,17 @@ function FeatureCard({ person, eyebrow, reverse = false, delay = 0, accent = 'fo
           boxShadow: '0 12px 28px rgba(0,0,0,0.12)',
         }}
       >
-        <Image
+        <SafeImage
           src={person.image}
           alt={person.name}
-          fill
           style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
             objectFit: 'cover',
             objectPosition: 'center top',
+            display: 'block',
           }}
         />
         {/* bottom gradient with name */}
@@ -514,6 +519,7 @@ function FeatureCard({ person, eyebrow, reverse = false, delay = 0, accent = 'fo
 
         {person.linkedin && (
           <a
+            className="linkedin-btn"
             href={person.linkedin}
             target="_blank"
             rel="noopener noreferrer"
@@ -577,7 +583,8 @@ function DivisionLabel({ children }) {
             color: tokens.onSurface,
             letterSpacing: '-0.02em',
             margin: 0,
-            whiteSpace: 'nowrap',
+            whiteSpace: 'normal',
+            wordBreak: 'break-word',
           }}
         >
           {children}
@@ -602,8 +609,25 @@ function ImageCard() {
     <>
       <style>{`
         @media (max-width: 768px) {
-          .feature-card { flex-direction: column !important; }
-          .feature-portrait { min-height: 320px !important; }
+          .feature-card {
+            flex-direction: column !important;
+            padding: 16px !important;
+            border-radius: 20px !important;
+            gap: 16px !important;
+          }
+          .feature-portrait {
+            min-height: 260px !important;
+            flex: none !important;
+            width: 100% !important;
+            aspect-ratio: 4 / 3 !important;
+            border-radius: 14px !important;
+          }
+          .feature-card .linkedin-btn {
+            width: auto !important;
+            align-self: flex-end !important;
+            padding: 10px 20px !important;
+            font-size: 12px !important;
+          }
         }
 
         .team-grid { grid-template-columns: repeat(6, 1fr); }
@@ -622,15 +646,18 @@ function ImageCard() {
         @media (max-width: 560px) {
           .team-grid { grid-template-columns: 1fr !important; }
           .team-grid > * { grid-column: auto !important; }
+          .team-member-card {
+            padding: 24px 16px 20px !important;
+          }
         }
       `}</style>
 
       <div
         style={{
-          paddingTop: 'clamp(72px, 8vw, 120px)',
-          paddingBottom: 'clamp(72px, 8vw, 120px)',
-          paddingLeft: 24,
-          paddingRight: 24,
+          paddingTop: 'clamp(48px, 8vw, 120px)',
+          paddingBottom: 'clamp(48px, 8vw, 120px)',
+          paddingLeft: 16,
+          paddingRight: 16,
           maxWidth: 1280,
           margin: '0 auto',
         }}

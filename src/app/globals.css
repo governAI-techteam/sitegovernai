@@ -180,7 +180,6 @@ a:focus-visible {
   .show-on-mobile { display: block !important; }
   .show-flex-on-mobile { display: flex !important; }
   .mobile-padding { padding-left: 20px !important; padding-right: 20px !important; }
-  .hide-on-desktop { display: none !important; }
 }
 
 @media (max-width: 768px) {
@@ -196,7 +195,9 @@ a:focus-visible {
   .mobile-pt-sm { padding-top: 32px !important; }
   .mobile-pb-sm { padding-bottom: 32px !important; }
   .mobile-items-center { align-items: center !important; }
-  .hide-on-desktop { display: block !important; }
+  .hide-on-desktop { display: flex !important; }
+  .hide-on-mobile { display: none !important; }
+  .mobile-hide { display: none !important; }
 
   .image-holder {
     grid-template: auto auto auto / 1fr;
@@ -210,9 +211,11 @@ a:focus-visible {
   }
 
   .hero-section-mobile {
-    min-height: 80vh !important;
-    padding-top: 80px !important;
-    padding-bottom: 40px !important;
+    min-height: 100svh !important;
+    min-height: 100vh;
+    padding-top: calc(env(safe-area-inset-top, 0px) + 92px) !important;
+    padding-bottom: 48px !important;
+    align-items: flex-start !important;
   }
   .mobile-static { position: static !important; }
   .mobile-relative { position: relative !important; }
@@ -222,7 +225,6 @@ a:focus-visible {
   .mobile-mt-0 { margin-top: 0 !important; }
   .mobile-pb-0 { padding-bottom: 0 !important; }
   .mobile-mb-md { margin-bottom: 24px !important; }
-  .mobile-hide { display: none !important; }
 
   .mobile-h-scroll {
     flex-direction: row !important;
@@ -242,5 +244,26 @@ a:focus-visible {
     flex: 0 0 300px !important;
     scroll-snap-align: start !important;
     height: auto !important;
+  }
+}
+
+/* ── Mobile-Specific Premium Utilities ── */
+@media (max-width: 768px) {
+  /* Hide scrollbar for marquee strips on mobile */
+  .mobile-no-scrollbar::-webkit-scrollbar { display: none; }
+  .mobile-no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Compact section padding for mobile */
+  .mobile-section-compact {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+
+  /* Full-bleed mobile container */
+  .mobile-full-bleed {
+    width: 100vw !important;
+    margin-left: calc(-50vw + 50%) !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 }

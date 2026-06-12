@@ -382,13 +382,4 @@ export const insightsData = [
     datePublished: '2025-07-20',
     author: 'Parishrut Jassal',
   },
-  {
-    id: 42,
-    image: '/insights/3.jpeg',
-    title: 'Building GovernAI: AI Governance Platform Architecture',
-    description: 'A deep dive into the technical architecture behind the GovernAI platform — built with Next.js 16, Turbopack, and modern web standards. This article covers the engineering decisions behind building an enterprise-grade AI governance platform: performance optimization with ISR, structured data implementation for rich search results, accessibility-first design patterns, and security hardening with enterprise-grade HTTP headers. The platform serves as the digital backbone for AI governance capacity building across India.',
-    location: 'India',
-    datePublished: '2025-08-01',
-    author: 'Divyakush Punjabi',
-  },
 ];

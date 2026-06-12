@@ -7,10 +7,12 @@ import { SafeImage } from '@/components/atoms/SafeImage';
 import { NAV_ITEMS } from '@/config/content';
 import { useScroll } from '@/context/ScrollContext';
 import { tokens } from '@/theme/tokens';
+import { useIsMobile } from '@/hooks/useIsMobile';
 
 export function NavBar({ activeSection }) {
   const { scrollTo } = useScroll();
   const router = useRouter();
+  const isMobile = useIsMobile();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -81,10 +83,10 @@ export function NavBar({ activeSection }) {
             transition: 'all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)',
           }}>
             {/* Logo — reserved slot, animates in on scroll */}
-            <div style={{ width: 130, height: 34, display: 'flex', alignItems: 'center', flexShrink: 0 }}>
+            <div style={{ width: 130, height: 40, display: 'flex', alignItems: 'center', flexShrink: 0 }}>
               <motion.div
                 initial={{ opacity: 0, y: -16, scale: 0.88, filter: 'blur(6px)' }}
-                animate={scrolled
+                animate={(scrolled || isMobile)
                   ? { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }
                   : { opacity: 0, y: -16, scale: 0.88, filter: 'blur(6px)' }
                 }
@@ -99,7 +101,7 @@ export function NavBar({ activeSection }) {
                   width={130}
                   height={30}
                   loading="eager"
-                  style={{ height: 30, width: 'auto', objectFit: 'contain' }}
+                  style={{ height: 30, width: 'auto', objectFit: 'contain', display: 'block' }}
                 />
               </motion.div>
             </div>
@@ -185,23 +187,29 @@ export function NavBar({ activeSection }) {
               {/* Hamburger */}
               <motion.button
                 className="hide-on-desktop"
-                whileTap={{ scale: 0.9 }}
+                whileTap={{ scale: 0.92 }}
                 onClick={() => setMobileOpen(!mobileOpen)}
                 style={{
-                  width: 40,
-                  height: 40,
-                  border: 'none',
-                  background: 'none',
+                  width: 44,
+                  height: 44,
+                  border: `1px solid ${mobileOpen ? 'transparent' : 'rgba(0,0,0,0.08)'}`,
+                  background: 'rgba(255,255,255,0.72)',
+                  backdropFilter: 'blur(10px)',
+                  WebkitBackdropFilter: 'blur(10px)',
                   cursor: 'pointer',
-                  display: 'none',
+                  display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  borderRadius: 10,
+                  borderRadius: 13,
                   position: 'relative',
+                  padding: 0,
+                  boxShadow: '0 2px 10px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.6)',
+                  transition: 'border-color 0.3s ease',
                 }}
                 aria-label="Toggle menu"
+                aria-expanded={mobileOpen}
               >
-                <div style={{ width: 20, height: 14, position: 'relative' }}>
+                <div style={{ width: 19, height: 12, position: 'relative' }}>
                   <span style={{
                     position: 'absolute',
                     width: '100%',
@@ -209,9 +217,10 @@ export function NavBar({ activeSection }) {
                     background: tokens.onSurface,
                     borderRadius: 2,
                     left: 0,
-                    top: mobileOpen ? 6 : 0,
+                    top: mobileOpen ? 5 : 0,
                     transform: mobileOpen ? 'rotate(45deg)' : 'none',
-                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    transformOrigin: 'center',
+                    transition: 'top 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.05s',
                   }} />
                   <span style={{
                     position: 'absolute',
@@ -220,9 +229,10 @@ export function NavBar({ activeSection }) {
                     background: tokens.onSurface,
                     borderRadius: 2,
                     left: 0,
-                    top: 6,
+                    top: 5,
                     opacity: mobileOpen ? 0 : 1,
-                    transition: 'opacity 0.2s ease',
+                    transform: mobileOpen ? 'translateX(-6px)' : 'none',
+                    transition: 'opacity 0.2s ease, transform 0.2s ease',
                   }} />
                   <span style={{
                     position: 'absolute',
@@ -231,9 +241,10 @@ export function NavBar({ activeSection }) {
                     background: tokens.onSurface,
                     borderRadius: 2,
                     left: 0,
-                    top: mobileOpen ? 6 : 12,
+                    top: mobileOpen ? 5 : 10,
                     transform: mobileOpen ? 'rotate(-45deg)' : 'none',
-                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    transformOrigin: 'center',
+                    transition: 'top 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.05s',
                   }} />
                 </div>
               </motion.button>
@@ -282,6 +293,35 @@ export function NavBar({ activeSection }) {
                 boxShadow: '-16px 0 48px rgba(0,0,0,0.12)',
               }}
             >
+              {/* Close button */}
+              <motion.button
+                initial={{ opacity: 0, rotate: -90 }}
+                animate={{ opacity: 1, rotate: 0 }}
+                transition={{ delay: 0.15, duration: 0.3 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={() => setMobileOpen(false)}
+                aria-label="Close menu"
+                style={{
+                  position: 'absolute',
+                  top: 24,
+                  right: 24,
+                  width: 42,
+                  height: 42,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  border: `1px solid ${tokens.peach200}`,
+                  background: tokens.peach50,
+                  borderRadius: 12,
+                  cursor: 'pointer',
+                  padding: 0,
+                }}
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={tokens.onSurface} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M18 6 6 18" /><path d="m6 6 12 12" />
+                </svg>
+              </motion.button>
+
               {NAV_ITEMS.map((item, i) => {
                 const isActive = activeSection === item.sectionId;
                 return (

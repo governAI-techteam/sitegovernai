@@ -7,6 +7,7 @@ import { useScroll } from '@/context/ScrollContext';
 import { tokens } from '@/theme/tokens';
 import { SafeImage } from '@/components/atoms/SafeImage';
 import { SITE } from '@/config/seo';
+import { useIsMobile } from '@/hooks/useIsMobile';
 
 const footerLinks = [
   {
@@ -73,6 +74,7 @@ export function Footer() {
   const router = useRouter();
   const pathname = usePathname();
   const [showFab, setShowFab] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const onScroll = () => setShowFab(window.scrollY > 600);
@@ -129,14 +131,14 @@ export function Footer() {
         <div style={{
           maxWidth: 1280,
           margin: '0 auto',
-          padding: '80px 24px 40px',
+          padding: isMobile ? '48px 20px 28px' : '80px 24px 40px',
           position: 'relative',
         }}>
           {/* Main Grid */}
           <motion.div style={{
             display: 'grid',
             gridTemplateColumns: '1.5fr 1fr 1fr 1fr',
-            gap: 48,
+            gap: isMobile ? 32 : 48,
           }}
           className="responsive-grid"
           initial="hidden"
@@ -282,6 +284,8 @@ export function Footer() {
             justifyContent: 'space-between',
             flexWrap: 'wrap',
             gap: 16,
+            flexDirection: isMobile ? 'column' : 'row',
+            textAlign: isMobile ? 'center' : undefined,
           }}>
             <p style={{
               fontSize: 13,
@@ -358,8 +362,8 @@ export function Footer() {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             style={{
               position: 'fixed',
-              bottom: 28,
-              right: 28,
+              bottom: isMobile ? 16 : 28,
+              right: isMobile ? 16 : 28,
               width: 48,
               height: 48,
               borderRadius: 14,

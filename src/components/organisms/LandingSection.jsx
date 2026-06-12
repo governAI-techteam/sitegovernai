@@ -7,6 +7,7 @@ import { Container } from '@/components/atoms/Container';
 import { Typewriter } from '@/components/atoms/Typewriter';
 import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
+import { useIsMobile } from '@/hooks/useIsMobile';
 
 const IndiaConquestMap = dynamic(
   () => import('@/components/atoms/IndiaConquestMap'),
@@ -41,6 +42,7 @@ const fadeUp = (delay = 0) => ({
 
 export function LandingSection({ sectionRefs }) {
   const router = useRouter();
+  const isMobile = useIsMobile();
   return (
     <Section
       id="hero"
@@ -51,10 +53,12 @@ export function LandingSection({ sectionRefs }) {
       style={{
         position: 'relative',
         overflow: 'hidden',
-        padding: 'clamp(60px, 8vh, 100px) 24px clamp(40px, 5vh, 70px)',
+        padding: isMobile
+          ? 'calc(env(safe-area-inset-top, 0px) + 92px) 22px 48px'
+          : 'clamp(60px, 8vh, 100px) 24px clamp(40px, 5vh, 70px)',
         minHeight: '100vh',
         display: 'flex',
-        alignItems: 'center',
+        alignItems: isMobile ? 'flex-start' : 'center',
       }}
     >
       {/* Subtle dot pattern */}
@@ -80,37 +84,62 @@ export function LandingSection({ sectionRefs }) {
               paddingLeft: 'clamp(0px, 0.5vw, 12px)',
             }}
           >
-            <div style={{ flex: '1 1 52%', textAlign: 'left', marginTop: '1.5vw' }}>
+            <div style={{ flex: '1 1 52%', textAlign: isMobile ? 'left' : 'left', marginTop: isMobile ? 0 : '1.5vw' }}>
             {/* Headline — Staggered Line Reveal */}
             <motion.h1
               variants={containerVariants}
               initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
+              animate="visible"
               style={{
                 fontFamily: tokens.fonts.display,
-                fontSize: 'clamp(24px, 3.2vw, 44px)',
+                fontSize: isMobile ? 'clamp(29px, 8.5vw, 38px)' : 'clamp(24px, 3.2vw, 44px)',
                 fontWeight: 800,
-                letterSpacing: '-0.06em',
-                lineHeight: 1.06,
-                marginBottom: 'clamp(28px, 3vw, 40px)',
+                letterSpacing: '-0.04em',
+                lineHeight: 1.1,
+                marginBottom: isMobile ? '20px' : 'clamp(28px, 3vw, 40px)',
                 color: tokens.onSurface,
               }}
             >
-              <motion.span variants={lineVariants} style={{ display: 'block', marginBottom: 8 }}>
-                Governing Artificial Intelligence
-              </motion.span>
-              <motion.span variants={lineVariants} style={{ display: 'block' }}>
-                for a{' '}
-                <span style={{
-                  display: 'inline-block',
-                  color: tokens.primary,
-                }}>
-                  <Typewriter
-                    words={['Responsible Future.', 'Smart & Safe World.', 'Trusted Tomorrow.']}
-                  />
-                </span>
-              </motion.span>
+              {isMobile ? (
+                /* MOBILE: Three-line layout */
+                <>
+                  <motion.span variants={lineVariants} style={{ display: 'block', marginBottom: 4 }}>
+                    Governing
+                  </motion.span>
+                  <motion.span variants={lineVariants} style={{ display: 'block', marginBottom: 4 }}>
+                    Artificial Intelligence
+                  </motion.span>
+                  <motion.span variants={lineVariants} style={{ display: 'block' }}>
+                    for a{' '}
+                    <span style={{
+                      display: 'inline-block',
+                      color: tokens.primary,
+                    }}>
+                      <Typewriter
+                        words={['Responsible Future.', 'Smart & Safe World.', 'Trusted Tomorrow.']}
+                      />
+                    </span>
+                  </motion.span>
+                </>
+              ) : (
+                /* DESKTOP: Original two-line layout (unchanged) */
+                <>
+                  <motion.span variants={lineVariants} style={{ display: 'block', marginBottom: 8 }}>
+                    Governing Artificial Intelligence
+                  </motion.span>
+                  <motion.span variants={lineVariants} style={{ display: 'block' }}>
+                    for a{' '}
+                    <span style={{
+                      display: 'inline-block',
+                      color: tokens.primary,
+                    }}>
+                      <Typewriter
+                        words={['Responsible Future.', 'Smart & Safe World.', 'Trusted Tomorrow.']}
+                      />
+                    </span>
+                  </motion.span>
+                </>
+              )}
             </motion.h1>
 
             {/* Subtitle — Clip reveal */}
@@ -120,11 +149,11 @@ export function LandingSection({ sectionRefs }) {
               whileInView="visible"
               viewport={{ once: true }}
               style={{
-fontSize: 'clamp(17px, 1.3vw, 19px)',
-                    color: tokens.secondary,
-                    maxWidth: 440,
-                    lineHeight: 1.65,
-                    marginBottom: 18,
+                fontSize: isMobile ? '15.5px' : 'clamp(17px, 1.3vw, 19px)',
+                color: tokens.secondary,
+                maxWidth: isMobile ? '100%' : 440,
+                lineHeight: isMobile ? 1.68 : 1.65,
+                marginBottom: isMobile ? 30 : 18,
                 fontFamily: tokens.fonts.body,
               }}
             >
@@ -141,7 +170,7 @@ fontSize: 'clamp(17px, 1.3vw, 19px)',
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              style={{ display: 'flex', gap: 14, flexWrap: 'wrap', position: 'relative', top: 16 }}
+              style={{ display: 'flex', gap: isMobile ? 12 : 14, flexWrap: 'wrap', position: 'relative', top: isMobile ? 0 : 16, justifyContent: isMobile ? 'flex-start' : 'flex-start', width: isMobile ? '100%' : undefined, flexDirection: isMobile ? 'column' : 'row' }}
             >
               <motion.button
                 whileHover={{ scale: 1.04, y: -2 }}
@@ -153,9 +182,9 @@ fontSize: 'clamp(17px, 1.3vw, 19px)',
                 style={{
                   background: tokens.primaryGrad,
                   color: '#fff',
-                  padding: '16px 36px',
+                  padding: isMobile ? '15px 28px' : '16px 36px',
                   borderRadius: 14,
-                  fontSize: 15,
+                  fontSize: isMobile ? 15 : 15,
                   fontWeight: 600,
                   border: 'none',
                   cursor: 'pointer',
@@ -164,6 +193,7 @@ fontSize: 'clamp(17px, 1.3vw, 19px)',
                   letterSpacing: '0.02em',
                   position: 'relative',
                   overflow: 'hidden',
+                  width: isMobile ? '100%' : undefined,
                 }}
               >
                 {/* Shimmer sweep effect */}
@@ -184,20 +214,56 @@ fontSize: 'clamp(17px, 1.3vw, 19px)',
                   background: 'rgba(255,255,255,0.7)',
                   backdropFilter: 'blur(8px)',
                   color: tokens.onSurface,
-                  padding: '16px 36px',
+                  padding: isMobile ? '15px 28px' : '16px 36px',
                   borderRadius: 14,
-                  fontSize: 15,
+                  fontSize: isMobile ? 15 : 15,
                   fontWeight: 600,
                   border: '1.5px solid rgba(0,0,0,0.08)',
                   cursor: 'pointer',
                   fontFamily: tokens.fonts.display,
                   letterSpacing: '0.02em',
                   transition: 'all 0.3s ease',
+                  width: isMobile ? '100%' : undefined,
                 }}
               >
                 Contact Us
               </motion.button>
             </motion.div>
+
+            {/* Trust strip — enterprise credibility (mobile) */}
+            {isMobile && (
+              <motion.div
+                variants={fadeUp(0.35)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 12,
+                  marginTop: 32,
+                  paddingTop: 24,
+                  borderTop: '1px solid rgba(0,0,0,0.07)',
+                  width: '100%',
+                }}
+              >
+                <span
+                  style={{
+                    fontSize: 11,
+                    fontWeight: 700,
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
+                    color: tokens.textMuted,
+                    lineHeight: 1.5,
+                    fontFamily: tokens.fonts.body,
+                  }}
+                >
+                  Trusted by leading institutions,
+                  <br />
+                  enterprises &amp; government bodies
+                </span>
+              </motion.div>
+            )}
           </div>
 
           {/* Hero Visual — India Conquest Map */}

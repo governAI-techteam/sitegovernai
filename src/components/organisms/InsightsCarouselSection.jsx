@@ -5,12 +5,29 @@ import { motion } from 'framer-motion';
 import { SafeImage } from '@/components/atoms/SafeImage';
 import { insightsData } from '@/config/insightsData';
 import { tokens } from '@/theme/tokens';
+import { useIsMobile } from '@/hooks/useIsMobile';
+
+/* Returns a windowed slice of dot indices so a long carousel
+   shows a compact, centered set of dots instead of overflowing. */
+function getDotWindow(current, total, maxVisible) {
+  if (total <= maxVisible) {
+    return Array.from({ length: total }, (_, i) => i);
+  }
+  const half = Math.floor(maxVisible / 2);
+  let start = Math.max(0, current - half);
+  const end = Math.min(total - 1, start + maxVisible - 1);
+  start = Math.max(0, end - maxVisible + 1);
+  const arr = [];
+  for (let i = start; i <= end; i += 1) arr.push(i);
+  return arr;
+}
 
 export default function InsightsCarouselSection() {
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
   const total = insightsData.length;
   const trackRef = useRef(null);
+  const isMobile = useIsMobile();
 
   const goTo = useCallback((idx) => {
     setCurrent(idx);
@@ -50,11 +67,18 @@ export default function InsightsCarouselSection() {
     resumeAutoplay();
   };
 
+  /* ── Layout values — mobile vs desktop ── */
+  const slideWidth = isMobile ? '85%' : '56%';
+  const slideOffset = isMobile ? '7.5%' : '22%';
+  const slideGap = isMobile ? '12px' : 'clamp(12px, 1.5vw, 24px)';
+  const slideAspect = isMobile ? '4 / 3' : '16 / 11';
+  const slideRadius = isMobile ? 18 : 29;
+
   return (
     <div
       style={{
         background: 'linear-gradient(180deg, #fafbfc 0%, #f7f9fb 50%, #fff6ef 100%)',
-        padding: 'clamp(72px, 8vw, 120px) 0',
+        padding: isMobile ? '48px 0' : 'clamp(72px, 8vw, 120px) 0',
         overflow: 'hidden',
         position: 'relative',
       }}
@@ -74,8 +98,8 @@ export default function InsightsCarouselSection() {
           textAlign: 'center',
           maxWidth: 760,
           margin: '0 auto',
-          padding: '0 24px',
-          marginBottom: 'clamp(40px, 5vw, 72px)',
+          padding: isMobile ? '0 20px' : '0 24px',
+          marginBottom: isMobile ? '28px' : 'clamp(40px, 5vw, 72px)',
         }}
       >
         <div style={{
@@ -93,7 +117,7 @@ export default function InsightsCarouselSection() {
         </div>
         <h2 id="insights-heading" style={{
           fontFamily: tokens.fonts.display,
-          fontSize: 'clamp(28px, 4vw, 50px)',
+          fontSize: isMobile ? '24px' : 'clamp(28px, 4vw, 50px)',
           fontWeight: 800,
           color: tokens.onSurface,
           lineHeight: 1.06,
@@ -109,7 +133,7 @@ export default function InsightsCarouselSection() {
           }}>AI Governance</span>
         </h2>
         <p style={{
-          fontSize: 'clamp(15px, 1.2vw, 18px)',
+          fontSize: isMobile ? '14px' : 'clamp(15px, 1.2vw, 18px)',
           color: tokens.secondary,
           lineHeight: 1.65,
           maxWidth: 540,
@@ -130,9 +154,9 @@ export default function InsightsCarouselSection() {
         <div
           style={{
             display: 'flex',
-            gap: 'clamp(12px, 1.5vw, 24px)',
+            gap: slideGap,
             transition: 'transform 850ms cubic-bezier(0.22, 1, 0.36, 1)',
-            transform: `translateX(calc(22% - ${current} * (56% + clamp(12px, 1.5vw, 24px))))`,
+            transform: `translateX(calc(${slideOffset} - ${current} * (${slideWidth} + ${slideGap})))`,
             alignItems: 'center',
           }}
         >
@@ -146,11 +170,11 @@ export default function InsightsCarouselSection() {
                 aria-roledescription="slide"
                 aria-label={`Slide ${i + 1} of ${total}: ${item.title}`}
                 style={{
-                  flex: '0 0 56%',
+                  flex: `0 0 ${slideWidth}`,
                   position: 'relative',
-                  aspectRatio: '16 / 11',
+                  aspectRatio: slideAspect,
                   overflow: 'hidden',
-                  borderRadius: 29,
+                  borderRadius: slideRadius,
                   background: '#1a1a1a',
                   transition: 'all 850ms cubic-bezier(0.22, 1, 0.36, 1)',
                   opacity: isActive ? 1 : 0.4,
@@ -158,11 +182,13 @@ export default function InsightsCarouselSection() {
                   filter: isActive ? 'none' : 'brightness(0.95)',
                   cursor: isActive ? 'default' : 'pointer',
                   boxShadow: isActive
-                    ? '0 30px 70px rgba(16,24,40,0.28), 0 12px 28px rgba(241,106,36,0.12)'
+                    ? isMobile
+                      ? '0 20px 50px rgba(16,24,40,0.24), 0 8px 20px rgba(241,106,36,0.1)'
+                      : '0 30px 70px rgba(16,24,40,0.28), 0 12px 28px rgba(241,106,36,0.12)'
                     : '0 12px 32px rgba(16,24,40,0.12)',
                 }}
               >
-                {/* Blurred backdrop fill (prevents letterbox bars, no subject ever cut) */}
+                {/* Blurred backdrop fill */}
                 <SafeImage
                   src={item.image}
                   alt=""
@@ -180,7 +206,7 @@ export default function InsightsCarouselSection() {
                   }}
                 />
 
-                {/* Foreground image — full subject always visible */}
+                {/* Foreground image */}
                 <SafeImage
                   src={item.image}
                   alt={item.title}
@@ -197,18 +223,18 @@ export default function InsightsCarouselSection() {
                   }}
                 />
 
-                {/* Bottom Gradient Band (covers lower portion only) */}
+                {/* Bottom Gradient Band */}
                 <div style={{
                   position: 'absolute',
                   left: 0,
                   right: 0,
                   bottom: 0,
-                  height: '55%',
+                  height: isMobile ? '65%' : '55%',
                   background: 'linear-gradient(to top, rgba(8,8,10,0.95) 0%, rgba(8,8,10,0.85) 30%, rgba(8,8,10,0.5) 65%, rgba(8,8,10,0) 100%)',
                   pointerEvents: 'none',
                 }} />
 
-                {/* Content anchored to bottom band */}
+                {/* Content */}
                 <div style={{
                   position: 'absolute',
                   left: 0,
@@ -217,8 +243,8 @@ export default function InsightsCarouselSection() {
                   zIndex: 2,
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: 'clamp(8px, 0.9vw, 12px)',
-                  padding: 'clamp(22px, 3vw, 44px)',
+                  gap: isMobile ? '6px' : 'clamp(8px, 0.9vw, 12px)',
+                  padding: isMobile ? '16px' : 'clamp(22px, 3vw, 44px)',
                   opacity: isActive ? 1 : 0,
                   transform: isActive ? 'translateY(0)' : 'translateY(12px)',
                   transition: 'opacity 600ms ease 150ms, transform 600ms cubic-bezier(0.22,1,0.36,1) 150ms',
@@ -230,7 +256,7 @@ export default function InsightsCarouselSection() {
                       alignItems: 'center',
                       gap: 6,
                       alignSelf: 'flex-start',
-                      padding: '6px 13px 6px 9px',
+                      padding: isMobile ? '4px 10px 4px 7px' : '6px 13px 6px 9px',
                       borderRadius: 100,
                       background: 'rgba(255,255,255,0.14)',
                       backdropFilter: 'blur(10px)',
@@ -243,7 +269,7 @@ export default function InsightsCarouselSection() {
                       </svg>
                       <span style={{
                         color: '#fff',
-                        fontSize: 'clamp(11px, 0.85vw, 13px)',
+                        fontSize: isMobile ? '11px' : 'clamp(11px, 0.85vw, 13px)',
                         fontWeight: 600,
                         letterSpacing: '0.02em',
                         fontFamily: tokens.fonts.body,
@@ -254,7 +280,7 @@ export default function InsightsCarouselSection() {
                   {/* Title */}
                   <h3 style={{
                     color: '#fff',
-                    fontSize: 'clamp(19px, 1.9vw, 30px)',
+                    fontSize: isMobile ? '16px' : 'clamp(19px, 1.9vw, 30px)',
                     fontWeight: 800,
                     fontFamily: tokens.fonts.display,
                     letterSpacing: '-0.025em',
@@ -267,7 +293,7 @@ export default function InsightsCarouselSection() {
                   {/* Description */}
                   <p style={{
                     color: 'rgba(255,255,255,0.85)',
-                    fontSize: 'clamp(12.5px, 1.05vw, 16px)',
+                    fontSize: isMobile ? '12px' : 'clamp(12.5px, 1.05vw, 16px)',
                     lineHeight: 1.55,
                     fontFamily: tokens.fonts.body,
                     fontWeight: 400,
@@ -293,9 +319,10 @@ export default function InsightsCarouselSection() {
         zIndex: 1,
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
-        gap: 24,
-        marginTop: 'clamp(28px, 3.5vw, 48px)',
+        justifyContent: 'space-between',
+        gap: 0,
+        width: isMobile ? '85%' : '56%',
+        margin: isMobile ? '40px auto 0' : 'clamp(28px, 3.5vw, 48px) auto 0',
       }}>
         {/* Prev */}
         <motion.button
@@ -304,8 +331,8 @@ export default function InsightsCarouselSection() {
           onClick={prev}
           aria-label="Previous slide"
           style={{
-            width: 48,
-            height: 48,
+            width: isMobile ? 44 : 48,
+            height: isMobile ? 44 : 48,
             borderRadius: '50%',
             border: '1px solid rgba(241,106,36,0.18)',
             background: '#fff',
@@ -323,28 +350,58 @@ export default function InsightsCarouselSection() {
           </svg>
         </motion.button>
 
-        {/* Dots */}
-        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-          {insightsData.map((_, i) => (
-            <motion.button
-              key={i}
-              onClick={() => goTo(i)}
-              aria-label={`Go to slide ${i + 1}`}
-              style={{
-                width: i === current ? 28 : 8,
-                height: 8,
-                borderRadius: 100,
-                border: 'none',
-                padding: 0,
-                cursor: 'pointer',
-                background: i === current
-                  ? 'linear-gradient(90deg, #f16a24, #f16a24)'
-                  : 'rgba(0,0,0,0.15)',
-                transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
-              }}
-              whileHover={{ scale: 1.3 }}
-            />
-          ))}
+        {/* Dots — windowed for long carousels */}
+        <div
+          style={{
+            display: 'flex',
+            flex: isMobile ? '0 0 auto' : '1 1 auto',
+            gap: isMobile ? 11 : 0,
+            alignItems: 'center',
+            justifyContent: isMobile ? 'center' : 'space-between',
+            height: 12,
+            padding: isMobile ? 0 : '0 18px',
+          }}
+        >
+          {(() => {
+            const maxVisible = isMobile ? 9 : total;
+            const window = getDotWindow(current, total, maxVisible);
+            const first = window[0];
+            const last = window[window.length - 1];
+            return window.map((idx) => {
+              const isActive = idx === current;
+              const edgeStart = idx === first && first !== 0;
+              const edgeEnd = idx === last && last !== total - 1;
+              const nearStart = idx === window[1] && first !== 0;
+              const nearEnd = idx === window[window.length - 2] && last !== total - 1;
+
+              let dotScale = 1;
+              if (edgeStart || edgeEnd) dotScale = 0.45;
+              else if (nearStart || nearEnd) dotScale = 0.7;
+
+              return (
+                <motion.button
+                  key={idx}
+                  onClick={() => goTo(idx)}
+                  aria-label={`Go to slide ${idx + 1}`}
+                  aria-current={isActive ? 'true' : undefined}
+                  style={{
+                    width: isActive ? (isMobile ? 28 : 30) : 8,
+                    height: 8,
+                    flexShrink: 0,
+                    borderRadius: 100,
+                    border: 'none',
+                    padding: 0,
+                    cursor: 'pointer',
+                    transformOrigin: 'center',
+                    transform: isActive ? 'scale(1)' : `scale(${dotScale})`,
+                    background: isActive ? tokens.primary : 'rgba(0,0,0,0.18)',
+                    transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
+                  }}
+                  whileHover={{ scale: isActive ? 1 : dotScale * 1.25 }}
+                />
+              );
+            });
+          })()}
         </div>
 
         {/* Next */}
@@ -354,8 +411,8 @@ export default function InsightsCarouselSection() {
           onClick={next}
           aria-label="Next slide"
           style={{
-            width: 48,
-            height: 48,
+            width: isMobile ? 44 : 48,
+            height: isMobile ? 44 : 48,
             borderRadius: '50%',
             border: '1px solid rgba(241,106,36,0.18)',
             background: '#fff',
@@ -379,7 +436,7 @@ export default function InsightsCarouselSection() {
         position: 'relative',
         zIndex: 1,
         textAlign: 'center',
-        marginTop: 14,
+        marginTop: isMobile ? 18 : 14,
         fontSize: 13,
         color: tokens.secondary,
         fontFamily: tokens.fonts.body,

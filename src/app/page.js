@@ -88,9 +88,7 @@ export default function GovernAI() {
 
         {/* 5. Meet the Team (Founder + Team + Advisor) */}
         <section id="team" aria-label="Meet Our Team" ref={(el) => (sectionRefs.current['team'] = el)}>
-          <Reveal y={48} delay={0.1}>
-            <ImageCard />
-          </Reveal>
+          <ImageCard />
         </section>
       </main>
 

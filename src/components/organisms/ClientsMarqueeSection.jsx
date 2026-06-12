@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { SafeImage } from "@/components/atoms/SafeImage";
 import { tokens } from "@/theme/tokens";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 const LOGO_PATH = "/logos/";
 
@@ -24,8 +25,8 @@ const CLIENT_GROUPS = [
   {
     title: "Education, Healthcare & Technology",
     items: [
-      { name: "Gujarat National Law University", logo: "Gujarat National Law University.png" },
-      { name: "DY Patil University", logo: "DY Patil University.png", scale: 1.6 },
+      { name: "Gujarat National Law University", logo: "Gujarat National Law University.png", mobileScale: 1.1 },
+      { name: "DY Patil University", logo: "DY Patil University.png", scale: 1.6, mobileScale: 2.72 },
       { name: "National Law University, Delhi", logo: "National Law University Delhi.png" },
       { name: "NALSAR University", logo: "NALSAR University.png" },
       { name: "NMIMS Hyderabad", logo: "NMIMS Hyderabad.png" },
@@ -45,7 +46,8 @@ const STATS = [
 
 const ORANGE = tokens.primary || "#FF9D52";
 
-function LogoItem({ name, logo, scale }) {
+/* ── Desktop Logo Item (original card placeholders) ── */
+function DesktopLogo({ name, logo, scale }) {
   return (
     <div style={styles.logoItem} className="logo-item">
       <div style={styles.logoPlaceholder} className="logo-placeholder">
@@ -59,9 +61,25 @@ function LogoItem({ name, logo, scale }) {
   );
 }
 
+/* ── Mobile Plain Logo (sits inside the peach strip) ── */
+function MobilePlainLogo({ name, logo, scale }) {
+  return (
+    <div style={mobileStyles.logoItem}>
+      <SafeImage
+        src={`${LOGO_PATH}${logo}`}
+        alt={name}
+        style={{
+          ...mobileStyles.logoImage,
+          ...(scale ? { transform: `scale(${scale})` } : {}),
+        }}
+      />
+    </div>
+  );
+}
+
+/* ── Desktop Marquee Row (plain logos) ── */
 function MarqueeRow({ items, duration = 50, reverse = false }) {
   const doubled = [...items, ...items];
-
   return (
     <div style={styles.marqueeWrapper}>
       <div
@@ -72,24 +90,50 @@ function MarqueeRow({ items, duration = 50, reverse = false }) {
         className="marquee-track"
       >
         {doubled.map((item, i) => (
-          <LogoItem key={`${item.name}-${i}`} name={item.name} logo={item.logo} scale={item.scale} />
+          <DesktopLogo key={`${item.name}-${i}`} name={item.name} logo={item.logo} scale={item.scale} />
         ))}
       </div>
     </div>
   );
 }
 
-export default function ClientsMarqueeSection() {
+/* ── Mobile Single Peach Strip (one sliding placeholder per category) ── */
+function MobilePeachStrip({ items, duration = 28, reverse = false }) {
+  const doubled = [...items, ...items];
   return (
-    <section aria-labelledby="clients-heading" style={styles.section}>
+    <div style={mobileStyles.peachOuter}>
+      <div style={mobileStyles.peachFadeLeft} aria-hidden="true" />
+      <div style={mobileStyles.peachFadeRight} aria-hidden="true" />
+      <div style={mobileStyles.marqueeWrapper}>
+        <div
+          style={{
+            ...mobileStyles.marqueeTrack,
+            animation: `marquee${reverse ? "Reverse" : ""} ${duration}s linear infinite`,
+          }}
+          className="marquee-track"
+        >
+          {doubled.map((item, i) => (
+            <MobilePlainLogo key={`${item.name}-${i}`} name={item.name} logo={item.logo} scale={item.mobileScale ?? item.scale} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function ClientsMarqueeSection() {
+  const isMobile = useIsMobile();
+
+  return (
+    <section aria-labelledby="clients-heading" style={isMobile ? mobileStyles.section : styles.section}>
       <style>{css}</style>
 
       <div style={styles.gridBg} aria-hidden="true" />
 
       {/* ── Header ── */}
-      <div style={styles.container}>
+      <div style={isMobile ? mobileStyles.container : styles.container}>
         <motion.div
-          style={styles.header}
+          style={isMobile ? mobileStyles.header : styles.header}
           initial={{ opacity: 0, y: 28, filter: 'blur(8px)' }}
           whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           viewport={{ once: true, amount: 0.4 }}
@@ -100,11 +144,17 @@ export default function ClientsMarqueeSection() {
             <span style={styles.eyebrowText}>Trusted By</span>
             <span style={styles.eyebrowBar} />
           </div>
-          <h2 id="clients-heading" style={styles.heading}>
+          <h2 id="clients-heading" style={{
+            ...styles.heading,
+            ...(isMobile ? { fontSize: '26px' } : {}),
+          }}>
             Institutional{" "}
             <span style={styles.headingAccent}>Clients &amp; Engagements</span>
           </h2>
-          <p style={styles.subheading}>
+          <p style={{
+            ...styles.subheading,
+            ...(isMobile ? { fontSize: '14px', maxWidth: '100%' } : {}),
+          }}>
             A growing network of government bodies, universities, and research
             institutions across India and beyond.
           </p>
@@ -112,48 +162,71 @@ export default function ClientsMarqueeSection() {
 
         {/* ── Stats band ── */}
         <motion.div
-          style={styles.statsBand}
+          style={{
+            ...styles.statsBand,
+            ...(isMobile ? { gap: '16px', maxWidth: '100%' } : {}),
+          }}
           initial={{ opacity: 0, y: 28, filter: 'blur(8px)' }}
           whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.8, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
         >
-          {STATS.map((stat, i) => (
+          {STATS.map((stat) => (
             <React.Fragment key={stat.label}>
               <div style={styles.statItem}>
-                <span style={styles.statValue}>{stat.value}</span>
-                <span style={styles.statLabel}>{stat.label}</span>
+                <span style={{
+                  ...styles.statValue,
+                  ...(isMobile ? { fontSize: '28px' } : {}),
+                }}>{stat.value}</span>
+                <span style={{
+                  ...styles.statLabel,
+                  ...(isMobile ? { fontSize: '10px' } : {}),
+                }}>{stat.label}</span>
               </div>
             </React.Fragment>
           ))}
         </motion.div>
       </div>
 
-      {/* ── Logo rows ── */}
-      <div style={styles.fullWidthRows}>
+      {/* ── Logo rows — 2 categories (desktop: plain, mobile: peach strip) ── */}
+      <div style={isMobile ? mobileStyles.fullWidthRows : styles.fullWidthRows}>
         {CLIENT_GROUPS.map((group, i) => (
           <motion.div
             key={group.title}
-            style={styles.rowGroup}
+            style={isMobile ? mobileStyles.rowGroup : styles.rowGroup}
             initial={{ opacity: 0, y: 36 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.7, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div style={styles.groupLabelWrap}>
+            <div style={isMobile ? mobileStyles.groupLabelWrap : styles.groupLabelWrap}>
               <span style={styles.groupIndexDot} aria-hidden="true" />
-              <p style={styles.groupLabel}>{group.title}</p>
+              <p style={isMobile ? mobileStyles.groupLabel : styles.groupLabel}>{group.title}</p>
               <span style={styles.groupRule} aria-hidden="true" />
             </div>
-            <div style={styles.marqueeOuter} className="marquee-outer" role="region" aria-label={`${group.title} client logos`}>
-              <div style={styles.fadeLeft} aria-hidden="true" />
-              <div style={styles.fadeRight} aria-hidden="true" />
-              <MarqueeRow
+
+            {isMobile ? (
+              <MobilePeachStrip
                 items={group.items}
-                duration={i === 0 ? 44 : 58}
+                duration={i === 0 ? 26 : 32}
                 reverse={i % 2 !== 0}
               />
-            </div>
+            ) : (
+              <div
+                style={styles.marqueeOuter}
+                className="marquee-outer"
+                role="region"
+                aria-label={`${group.title} client logos`}
+              >
+                <div style={styles.fadeLeft} aria-hidden="true" />
+                <div style={styles.fadeRight} aria-hidden="true" />
+                <MarqueeRow
+                  items={group.items}
+                  duration={i === 0 ? 44 : 58}
+                  reverse={i % 2 !== 0}
+                />
+              </div>
+            )}
           </motion.div>
         ))}
       </div>
@@ -161,6 +234,7 @@ export default function ClientsMarqueeSection() {
   );
 }
 
+/* ── Desktop Styles (unchanged) ── */
 const styles = {
   section: {
     position: "relative",
@@ -429,6 +503,135 @@ const styles = {
   },
 };
 
+/* ── Mobile-Only Styles ── */
+const mobileStyles = {
+  section: {
+    position: "relative",
+    backgroundColor: tokens.background,
+    overflow: "hidden",
+    paddingTop: "48px",
+    paddingBottom: "48px",
+  },
+
+  container: {
+    position: "relative",
+    zIndex: 1,
+    maxWidth: "100%",
+    margin: "0 auto",
+    paddingLeft: "20px",
+    paddingRight: "20px",
+  },
+
+  header: {
+    textAlign: "center",
+    marginBottom: "24px",
+  },
+
+  /* Category rows */
+  fullWidthRows: {
+    position: "relative",
+    zIndex: 1,
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    gap: "28px",
+    marginTop: "32px",
+    boxSizing: "border-box",
+  },
+
+  rowGroup: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "12px",
+  },
+
+  groupLabelWrap: {
+    display: "flex",
+    alignItems: "center",
+    gap: "10px",
+    paddingLeft: "20px",
+    paddingRight: "20px",
+  },
+
+  groupLabel: {
+    fontSize: "15px",
+    fontWeight: 800,
+    letterSpacing: "-0.02em",
+    color: tokens.onSurface,
+    margin: 0,
+    fontFamily: tokens.fonts.display,
+    lineHeight: 1.25,
+    whiteSpace: "nowrap",
+  },
+
+  /* Single peach sliding placeholder (full-bleed, never-ending) */
+  peachOuter: {
+    position: "relative",
+    overflow: "hidden",
+    width: "100%",
+    background: tokens.peach50,
+    borderTop: `1px solid ${tokens.peach200}`,
+    borderBottom: `1px solid ${tokens.peach200}`,
+    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.7)",
+    boxSizing: "border-box",
+  },
+
+  peachFadeLeft: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "44px",
+    height: "100%",
+    background: `linear-gradient(to right, ${tokens.peach50} 0%, transparent 100%)`,
+    zIndex: 3,
+    pointerEvents: "none",
+  },
+
+  peachFadeRight: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    width: "44px",
+    height: "100%",
+    background: `linear-gradient(to left, ${tokens.peach50} 0%, transparent 100%)`,
+    zIndex: 3,
+    pointerEvents: "none",
+  },
+
+  marqueeWrapper: {
+    display: "flex",
+    overflow: "visible",
+    paddingTop: "16px",
+    paddingBottom: "16px",
+  },
+
+  marqueeTrack: {
+    display: "flex",
+    width: "max-content",
+    gap: "12px",
+    willChange: "transform",
+    alignItems: "center",
+  },
+
+  logoItem: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexShrink: 0,
+    minWidth: 100,
+  },
+
+  logoImage: {
+    width: "auto",
+    maxWidth: 132,
+    height: 41,
+    objectFit: "contain",
+    opacity: 0.8,
+    filter: "grayscale(100%)",
+    display: "block",
+  },
+};
+
 const css = `
   @keyframes marquee {
     from { transform: translateX(0); }
@@ -454,9 +657,5 @@ const css = `
   .logo-item:hover img {
     opacity: 1 !important;
     filter: grayscale(0%) !important;
-  }
-
-  @media (max-width: 600px) {
-    .logo-item .logo-placeholder { width: 180px !important; min-height: 130px !important; padding: 20px 32px !important; }
   }
 `;
