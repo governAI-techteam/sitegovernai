@@ -21,25 +21,17 @@ import { getDeveloperData } from '@/config/developer';
 import './globals.css';
 
 export async function generateMetadata() {
-  const dev = await getDeveloperData();
-
   return {
     metadataBase: new URL(SITE_URL),
     title: {
-      default: 'GovernAI | AI Governance, Compliance & Responsible AI',
+      default: 'AI Governance, Compliance & Responsible AI | GovernAI',
       template: '%s | GovernAI',
     },
     description:
-      'GovernAI provides the architectural framework to deploy, monitor, and scale AI systems with absolute compliance, ethical frameworks, and zero bias. AI governance capacity building, ISO/IEC 42001 auditing, and policy advisory for governments, universities, and enterprises.',
+      'GovernAI helps governments, universities & enterprises deploy AI responsibly — ISO/IEC 42001 auditing, compliance & policy advisory. 2,000+ officials trained.',
     applicationName: 'GovernAI',
     keywords: SITE_KEYWORDS,
     category: 'technology',
-    authors: [
-      {
-        name: dev.name,
-        url: dev.linkedin || dev.portfolio,
-      },
-    ],
     creator: 'GovernAI',
     publisher: 'GovernAI OPC Pvt. Ltd.',
     alternates: {
@@ -59,25 +51,16 @@ export async function generateMetadata() {
       type: 'website',
       locale: 'en_IN',
       url: SITE_URL,
-      title: 'GovernAI | Governing Artificial Intelligence for a Responsible Future',
+      title: 'GovernAI — Governing Artificial Intelligence for a Responsible Future',
       description:
-        'The architectural framework to deploy, monitor, and scale AI systems with absolute compliance and zero bias. Capacity building, ISO/IEC 42001 auditing, and policy advisory.',
+        'Deploy, monitor & scale AI with absolute compliance and zero bias. ISO/IEC 42001 auditing, capacity building & AI policy advisory for the public and private sector.',
       siteName: 'GovernAI',
-      images: [
-        {
-          url: SITE.ogImage,
-          width: 1200,
-          height: 630,
-          alt: 'GovernAI — Governing Artificial Intelligence',
-        },
-      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: 'GovernAI | AI Governance, Compliance & Responsible AI',
       description:
-        'The architectural framework to deploy, monitor, and scale AI with absolute compliance and zero bias.',
-      images: [SITE.ogImage],
+        'Deploy AI with absolute compliance and zero bias — ISO/IEC 42001 auditing, capacity building & AI policy advisory. 2,000+ officials trained across India.',
       creator: SITE.twitter,
       site: SITE.twitter,
     },
@@ -92,16 +75,19 @@ export async function generateMetadata() {
         'max-snippet': -1,
       },
     },
-    verification: {
-      /* Replace with your actual verification codes */
-      google: 'YOUR_GOOGLE_VERIFICATION_CODE',
-      /* yandex: 'YOUR_YANDEX_CODE', */
-      /* bing: 'YOUR_BING_CODE', */
-    },
+    ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+      ? {
+          verification: {
+            google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+          },
+        }
+      : {}),
     other: {
       'image_src': `${SITE_URL}${SITE.ogImage}`,
     },
-    authors: [{ name: 'Divyakush Punjabi', url: 'https://divyakush2006.github.io/divyakush-resume/' }],
+    authors: [
+      { name: 'Divyakush Punjabi', url: 'https://divyakush2006.github.io/divyakush-resume/' },
+    ],
   };
 }
 

@@ -6,11 +6,17 @@ export default function robots() {
       {
         userAgent: '*',
         allow: '/',
-        // Keep Next.js internals and raw assets out of the index.
-        disallow: ['/api/', '/_next/', '/assets/'],
+        // Keep app internals out of the index; public assets (images, PDFs)
+        // remain crawlable so they can rank in Google Images & social cards.
+        disallow: ['/api/', '/_next/'],
       },
       {
         userAgent: 'Googlebot',
+        allow: '/',
+        disallow: ['/api/', '/_next/'],
+      },
+      {
+        userAgent: 'Googlebot-Image',
         allow: '/',
         disallow: ['/api/', '/_next/'],
       },

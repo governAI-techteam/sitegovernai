@@ -11,6 +11,8 @@ export const SITE = {
   legalName: 'GovernAI OPC Pvt. Ltd.',
   shortName: 'GovernAI',
   url: SITE_URL,
+  description:
+    'GovernAI helps governments, universities, and enterprises deploy AI responsibly — ISO/IEC 42001 auditing, compliance, and AI policy advisory.',
   // Default share image (1200x630 recommended). Falls back to the logo.
   ogImage: '/assets/img/logo.png',
   email: 'contact@governai.info',
@@ -108,7 +110,7 @@ export function organizationSchema() {
     },
     image: `${SITE_URL}${SITE.ogImage}`,
     description:
-      'GovernAI provides the architectural framework to deploy, monitor, and scale AI systems with absolute compliance, ethical frameworks, and zero bias — through capacity building, auditing, and policy advisory.',
+      'GovernAI is an AI governance company helping governments, universities, and enterprises deploy AI responsibly. Services span capacity building, ISO/IEC 42001 compliance auditing, and AI policy advisory, with 2,000+ officials trained across 5+ states and 20+ institutional engagements.',
     email: SITE.email,
     foundingDate: SITE.foundingYear,
     address: {
@@ -583,9 +585,9 @@ export function webPageSchema() {
     '@type': 'WebPage',
     '@id': `${SITE_URL}/#webpage`,
     url: SITE_URL,
-    name: 'GovernAI | AI Governance, Compliance & Responsible AI',
+    name: 'AI Governance, Compliance & Responsible AI | GovernAI',
     description:
-      'GovernAI provides the architectural framework to deploy, monitor, and scale AI systems with absolute compliance and zero bias.',
+      'GovernAI helps governments, universities, and enterprises deploy AI responsibly — ISO/IEC 42001 auditing, compliance, and AI policy advisory. 2,000+ officials trained.',
     isPartOf: { '@id': `${SITE_URL}/#website` },
     about: { '@id': `${SITE_URL}/#organization` },
     inLanguage: 'en-IN',

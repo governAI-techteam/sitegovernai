@@ -295,11 +295,16 @@ export function Footer() {
               © {new Date().getFullYear()} GovernAI. All rights reserved.
             </p>
 
-            <div style={{ display: 'flex', gap: 24 }}>
-              {['Privacy Policy', 'Terms of Service', 'Security'].map((t) => (
+            <div style={{ display: 'flex', gap: 24, alignItems: 'center' }}>
+              {[
+                { label: 'Privacy Policy', pdf: '/assets/pdf/legal/GovernAI-Privacy-Policy.pdf' },
+                { label: 'Terms of Use', pdf: '/assets/pdf/legal/GovernAI-Terms-of-Use.pdf' },
+              ].map((item) => (
                 <a
-                  key={t}
-                  href="#"
+                  key={item.label}
+                  href={item.pdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
                     fontSize: 13,
                     color: 'rgba(255,255,255,0.35)',
@@ -310,7 +315,7 @@ export function Footer() {
                   onMouseEnter={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.7)'}
                   onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.35)'}
                 >
-                  {t}
+                  {item.label}
                 </a>
               ))}
             </div>
