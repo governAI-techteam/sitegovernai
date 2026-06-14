@@ -14,6 +14,17 @@ const nextConfig = {
   /* ── Dev origins ── */
   allowedDevOrigins: ['https://wise-lion.slim.show'],
 
+  /* ── Redirects ── */
+  async redirects() {
+    return [
+      {
+        source: '/developer',
+        destination: 'https://divyakush2006.github.io/divyakush-resume/',
+        permanent: true,
+      },
+    ];
+  },
+
   /* ── Enterprise-grade security headers (cross-browser) ── */
   async headers() {
     return [

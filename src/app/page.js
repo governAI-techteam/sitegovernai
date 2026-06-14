@@ -17,6 +17,8 @@ import { Footer } from '@/components/organisms/Footer';
 import { Preloader } from '@/components/molecules/Preloader';
 import { ScrollProgress } from '@/components/atoms/ScrollProgress';
 import { Reveal } from '@/components/atoms/Reveal';
+import { webPageSchema, faqSchema, insightsItemListSchema } from '@/config/seo';
+import { insightsData, slugify } from '@/config/insightsData';
 
 /* Module-level flag — persists across SPA navigations, resets on full reload */
 let _navigatedAway = false;
@@ -48,12 +50,25 @@ export default function GovernAI() {
   // Skip preloader only on SPA navigations back to home (e.g. from /contact)
   const [skipLoader] = useState(() => _navigatedAway);
 
+  // Home-page-specific structured data (WebPage + FAQ + Insights ItemList).
+  // Kept here rather than in the root layout so it is emitted only on the
+  // homepage, where the matching visible content (FAQ section, insights) lives.
+  const homeJsonLd = [
+    webPageSchema(),
+    faqSchema(),
+    insightsItemListSchema(insightsData, slugify),
+  ];
+
   useEffect(() => {
     return () => { _navigatedAway = true; };
   }, []);
 
   return (
     <ScrollProvider sectionRefs={sectionRefs}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }}
+      />
       {!skipLoader && <Preloader />}
       <ScrollProgress />
 

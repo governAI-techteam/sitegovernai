@@ -329,7 +329,7 @@ export function Footer() {
               <a
                 href="https://divyakush2006.github.io/divyakush-resume/"
                 target="_blank"
-                rel="noopener"
+                rel="me noopener"
                 title="Divyakush Punjabi — Full Stack Developer & AI Engineer"
                 style={{
                   color: 'rgba(234, 105, 38, 0.6)',

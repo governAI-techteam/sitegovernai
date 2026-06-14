@@ -6,17 +6,12 @@ import {
   organizationSchema,
   websiteSchema,
   professionalServiceSchema,
-  webPageSchema,
   founderSchema,
   teamSchema,
   advisorSchema,
   developerSchema,
-  faqSchema,
-  insightsItemListSchema,
   creativeWorkSchema,
-  eventSchema,
 } from '@/config/seo';
-import { insightsData, slugify } from '@/config/insightsData';
 import { getDeveloperData } from '@/config/developer';
 import './globals.css';
 
@@ -99,21 +94,19 @@ export const viewport = {
 };
 
 export default async function RootLayout({ children }) {
-  // Full site-wide knowledge graph. Individual @id nodes interlink
-  // (Organization ↔ founder ↔ employees ↔ website ↔ service).
+  // Site-wide entity knowledge graph. Page-specific schemas (WebPage, FAQPage,
+  // ItemList) live on the home page only, so they aren't emitted on routes
+  // that don't display that content.
   const dev = await getDeveloperData();
 
   const jsonLd = [
     organizationSchema(),
     websiteSchema(),
-    webPageSchema(),
     professionalServiceSchema(),
     founderSchema(),
     ...teamSchema(),
     ...advisorSchema(),
     developerSchema(dev),
-    faqSchema(),
-    insightsItemListSchema(insightsData, slugify),
     creativeWorkSchema(dev),
   ];
 
@@ -132,6 +125,10 @@ export default async function RootLayout({ children }) {
         />
         {/* Developer credits — standard web convention */}
         <link rel="author" href="/humans.txt" />
+        {/* Developer identity backlinks (rel=me) — invisible, standard identity
+            relation that ties the developer's profiles to this site. */}
+        <link rel="me" href="https://divyakush2006.github.io/divyakush-resume/" />
+        <link rel="me" href="https://linkedin.com/in/divyakush-punjabi" />
         <link
           href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
           rel="stylesheet"

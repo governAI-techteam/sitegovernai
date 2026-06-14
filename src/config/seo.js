@@ -113,6 +113,16 @@ export function organizationSchema() {
       'GovernAI is an AI governance company helping governments, universities, and enterprises deploy AI responsibly. Services span capacity building, ISO/IEC 42001 compliance auditing, and AI policy advisory, with 2,000+ officials trained across 5+ states and 20+ institutional engagements.',
     email: SITE.email,
     foundingDate: SITE.foundingYear,
+    foundingLocation: {
+      '@type': 'Place',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: SITE.address.city,
+        addressRegion: SITE.address.region,
+        addressCountry: SITE.address.countryCode,
+      },
+    },
+    knowsLanguage: ['English', 'Hindi'],
     address: {
       '@type': 'PostalAddress',
       addressLocality: SITE.address.city,
@@ -280,7 +290,7 @@ export function insightsItemListSchema(insights, slugify) {
     description:
       'Expert insights, event recaps, and thought leadership on AI governance, responsible AI, and compliance from GovernAI.',
     numberOfItems: insights.length,
-    itemListElement: insights.slice(0, 10).map((item, i) => ({
+    itemListElement: insights.map((item, i) => ({
       '@type': 'ListItem',
       position: i + 1,
       url: `${SITE_URL}/insights/${slugify(item.title)}/`,
@@ -316,6 +326,16 @@ export function founderSchema() {
       'AI Auditing',
       'AI Safety',
     ],
+    knowsLanguage: ['English', 'Hindi'],
+    memberOf: [{ '@type': 'Organization', name: 'ForHumanity' }],
+    hasCredential: [
+      {
+        '@type': 'EducationalOccupationalCredential',
+        credentialCategory: 'certification',
+        name: 'UKAS-recognised ISO/IEC 42001 Lead Auditor',
+      },
+    ],
+    award: 'TEDx Speaker',
     sameAs: ['https://linkedin.com/in/parishrut-jassal'],
   };
 }
