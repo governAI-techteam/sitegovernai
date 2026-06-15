@@ -2,8 +2,9 @@
 
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 import { SafeImage } from '@/components/atoms/SafeImage';
-import { insightsData } from '@/config/insightsData';
+import { insightsData, slugify } from '@/config/insightsData';
 import { tokens } from '@/theme/tokens';
 import { useIsMobile } from '@/hooks/useIsMobile';
 
@@ -23,6 +24,7 @@ function getDotWindow(current, total, maxVisible) {
 }
 
 export default function InsightsCarouselSection() {
+  const router = useRouter();
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
   const total = insightsData.length;
@@ -165,7 +167,13 @@ export default function InsightsCarouselSection() {
             return (
               <article
                 key={item.id}
-                onClick={() => !isActive && goTo(i)}
+                onClick={() => {
+                  if (isActive) {
+                    router.push(`/insights/${slugify(item.title)}/`);
+                  } else {
+                    goTo(i);
+                  }
+                }}
                 role="group"
                 aria-roledescription="slide"
                 aria-label={`Slide ${i + 1} of ${total}: ${item.title}`}

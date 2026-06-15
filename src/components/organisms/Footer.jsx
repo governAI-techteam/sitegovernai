@@ -147,8 +147,8 @@ export function Footer() {
           {/* Main Grid */}
           <motion.div style={{
             display: 'grid',
-            gridTemplateColumns: '1.5fr 1fr 1fr 1fr 1fr',
-            gap: isMobile ? 32 : 48,
+            gridTemplateColumns: '2fr 1.3fr 1fr 1fr 1.3fr',
+            gap: isMobile ? 28 : 40,
           }}
           className="responsive-grid"
           initial="hidden"
