@@ -38,13 +38,6 @@ const footerLinks = [
       { label: 'Terms of Use', href: '/assets/pdf/legal/GovernAI-Terms-of-Use.pdf' },
     ],
   },
-  {
-    heading: 'Insights',
-    links: [
-      { label: 'Panel on Responsible AI', href: '/insights/panel-on-responsible-ai/' },
-      { label: 'View All Insights', href: '/#insights' },
-    ],
-  },
 ];
 
 const socialLinks = [
@@ -145,8 +138,8 @@ export function Footer() {
           {/* Main Grid */}
           <motion.div style={{
             display: 'grid',
-            gridTemplateColumns: '2fr 1.3fr 1fr 1fr 1.3fr',
-            gap: isMobile ? 28 : 40,
+            gridTemplateColumns: '2.2fr 1.5fr 1fr 1.3fr',
+            gap: isMobile ? 28 : 48,
           }}
           className="responsive-grid"
           initial="hidden"
