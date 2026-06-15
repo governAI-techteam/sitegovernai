@@ -1,8 +1,0 @@
-1:"$Sreact.fragment"
-2:I[9283,["/_next/static/chunks/05ymq2upy3_by.js","/_next/static/chunks/0it1snuu1k-gk.js"],"PageNav"]
-3:I[4655,["/_next/static/chunks/05ymq2upy3_by.js","/_next/static/chunks/0it1snuu1k-gk.js"],"ContactSection"]
-4:I[26521,["/_next/static/chunks/05ymq2upy3_by.js","/_next/static/chunks/0it1snuu1k-gk.js"],"Footer"]
-5:I[97367,["/_next/static/chunks/01xlw8hd842-c.js","/_next/static/chunks/0d3shmwh5_nmn.js"],"OutletBoundary"]
-6:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"[{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://www.governai.info/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Contact\",\"item\":\"https://www.governai.info/contact\"}]},{\"@context\":\"https://schema.org\",\"@type\":\"ContactPage\",\"@id\":\"https://www.governai.info/contact#contactpage\",\"url\":\"https://www.governai.info/contact\",\"name\":\"Contact GovernAI\",\"description\":\"Contact GovernAI for AI governance capacity building, compliance auditing, and policy advisory.\",\"isPartOf\":{\"@id\":\"https://www.governai.info/#website\"}}]"}}],["$","$L2",null,{}],["$","main",null,{"children":["$","$L3",null,{}]}],["$","$L4",null,{}]],[["$","script","script-0",{"src":"/_next/static/chunks/05ymq2upy3_by.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/0it1snuu1k-gk.js","async":true}]],["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"FU3aYYFevmtzzIZeVAkFS"}
-7:null
