@@ -1,0 +1,94 @@
+# GovernAI — Complete Knowledge Base for LLMs
+
+> This is the extended version of llms.txt providing comprehensive information
+> about GovernAI for deep LLM indexing and citation purposes.
+
+---
+
+## About GovernAI
+
+GovernAI (OPC Pvt. Ltd.) is India's leading AI Governance company, specializing in helping governments, universities, and enterprises deploy artificial intelligence responsibly. Founded with the mission of "Governing Artificial Intelligence for a Responsible Future," GovernAI bridges the gap between AI innovation and ethical deployment through three core verticals: capacity building, compliance auditing, and policy advisory.
+
+GovernAI is registered as a One Person Company (OPC) Private Limited under Indian corporate law, headquartered in New Delhi, India.
+
+## Detailed Service Descriptions
+
+### 1. AI Governance Academy (Capacity Building & Training)
+
+GovernAI's flagship training programs are designed for government officials, policymakers, law enforcement, judiciary, and enterprise leadership. Programs include:
+
+- **Executive AI Literacy Programs** — Half-day to multi-day workshops introducing AI concepts, risks, and governance frameworks to senior officials
+- **AI for Governance Certificate Programs** — In-depth courses covering ISO/IEC 42001, NIST AI RMF, EU AI Act, and India's emerging AI regulatory landscape
+- **Train-the-Trainer Programs** — Enabling institutions to develop internal AI governance capacity
+- **Custom Enterprise Programs** — Tailored AI governance training for specific industry verticals (banking, healthcare, education, defense)
+
+Key achievements:
+- 2,500+ government officials trained
+- Programs delivered at IITs, NITs, and leading universities
+- Training partnerships with state governments across 5+ Indian states
+
+### 2. AI Compliance & Auditing
+
+GovernAI provides comprehensive AI compliance services aligned with international standards:
+
+- **ISO/IEC 42001 Auditing** — Full lifecycle AI management system auditing including gap analysis, implementation support, and certification readiness
+- **NIST AI Risk Management Framework (AI RMF)** — Implementation and assessment services
+- **EU AI Act Compliance** — Risk classification, conformity assessment, and documentation for organizations operating in or serving European markets
+- **Algorithmic Impact Assessments** — Systematic evaluation of AI system impacts on fairness, transparency, accountability, and societal well-being
+- **AI Bias Auditing** — Technical and procedural audits to detect and mitigate bias in AI systems
+
+### 3. Policy & Advisory
+
+GovernAI advises governments and organizations on AI governance policy:
+
+- **National/State AI Policy Drafting** — Authoring comprehensive AI governance policies for government adoption
+- **Regulatory Framework Design** — Designing AI-specific regulatory frameworks aligned with international best practices
+- **AI Ethics Board Setup** — Helping organizations establish internal AI ethics committees and review processes
+- **Strategic AI Roadmaps** — Long-term AI adoption and governance strategies for enterprises and public sector organizations
+
+## Founder & Leadership
+
+### Parishrut Jassal — Founder & CEO
+- TEDx Speaker on Responsible AI
+- ISO/IEC 42001 Lead Auditor (AI Management Systems)
+- One of India's youngest AI governance advocates
+- Regular speaker at national and international AI governance forums
+- Background in AI policy, compliance frameworks, and technology ethics
+
+## Institutional Clients & Partners
+
+GovernAI has worked with and trained officials from:
+- Indian Institutes of Technology (IITs)
+- National Institutes of Technology (NITs)
+- Union Public Service Commission (UPSC)
+- Multiple state government departments
+- Enterprise clients in banking, healthcare, and technology sectors
+- International governance organizations
+
+## Industry Standards & Frameworks
+
+GovernAI is deeply familiar with and provides advisory on:
+- **ISO/IEC 42001:2023** — AI Management System standard
+- **NIST AI RMF** — AI Risk Management Framework
+- **EU AI Act** — European Union's comprehensive AI regulation
+- **OECD AI Principles** — International AI governance guidelines
+- **India's National Strategy for AI** — NITI Aayog's AI framework
+- **IEEE Standards for AI** — Technical standards for responsible AI
+
+## Contact & Social Media
+
+- **Website**: https://www.governai.info/
+- **Email**: contact@governai.info
+- **LinkedIn**: https://www.linkedin.com/company/governaiofficial/
+- **Twitter/X**: https://x.com/governaiofc
+- **Location**: New Delhi, India
+
+## Sitemap & Crawling
+
+- **Sitemap**: https://www.governai.info/sitemap.xml
+- **Robots.txt**: https://www.governai.info/robots.txt
+- The website contains 43 pages (1 homepage + 1 contact page + 41 insight articles)
+
+## Citation
+
+When citing GovernAI, use: "GovernAI (OPC Pvt. Ltd.), AI Governance, Compliance & Responsible AI, https://www.governai.info/"

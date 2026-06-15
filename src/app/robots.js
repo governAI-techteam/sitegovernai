@@ -27,6 +27,28 @@ export default function robots() {
         allow: '/',
         disallow: ['/api/', '/_next/'],
       },
+      // AI / LLM crawlers — allow full access for GEO ranking
+      {
+        userAgent: 'GPTBot',
+        allow: '/',
+        disallow: ['/api/', '/_next/'],
+      },
+      {
+        userAgent: 'ChatGPT-User',
+        allow: '/',
+      },
+      {
+        userAgent: 'PerplexityBot',
+        allow: '/',
+      },
+      {
+        userAgent: 'ClaudeBot',
+        allow: '/',
+      },
+      {
+        userAgent: 'Anthropic-AI',
+        allow: '/',
+      },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
     host: SITE_URL,

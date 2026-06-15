@@ -20,11 +20,11 @@ export async function generateMetadata() {
   return {
     metadataBase: new URL(SITE_URL),
     title: {
-      default: 'AI Governance, Compliance & Responsible AI | GovernAI',
+      default: 'AI Governance & Responsible AI | GovernAI',
       template: '%s | GovernAI',
     },
     description:
-      'GovernAI helps governments, universities & enterprises deploy AI responsibly — ISO/IEC 42001 auditing, compliance & policy advisory. 2,000+ officials trained.',
+      'GovernAI helps governments & enterprises deploy AI responsibly — ISO 42001 auditing, compliance & policy advisory across India.',
     applicationName: 'GovernAI',
     keywords: SITE_KEYWORDS,
     category: 'technology',

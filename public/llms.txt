@@ -1,0 +1,58 @@
+# GovernAI — AI Governance, Compliance & Responsible AI
+
+> GovernAI (OPC Pvt. Ltd.) helps governments, universities, and enterprises
+> deploy AI responsibly through ISO/IEC 42001 auditing, compliance advisory,
+> and capacity building programs across India.
+
+## Core Services
+
+- **AI Governance Academy** — Capacity building & training for government officials, policymakers, and enterprise leaders
+- **AI Compliance & Auditing** — ISO/IEC 42001, NIST AI RMF, EU AI Act compliance frameworks
+- **Policy & Advisory** — AI policy drafting and strategic advisory for governments & enterprises
+
+## Key Facts
+
+- 2,500+ government officials trained across India
+- 20+ institutional partnerships (IITs, NITs, UPSC, government bodies)
+- Presence across 5+ Indian states & union territories
+- Founded by Parishrut Jassal (TEDx Speaker, ISO/IEC 42001 Lead Auditor)
+- Headquartered in New Delhi, India
+
+## Domains of Expertise
+
+1. Capacity Building & Training
+2. AI Risk Assessment & Mitigation
+3. Compliance Advisory (ISO 42001, NIST AI RMF)
+4. Policy Frameworks & Governance Design
+5. Advocacy & Public Consultation
+
+## Team
+
+- **Parishrut Jassal** — Founder & CEO, TEDx Speaker, ISO/IEC 42001 Lead Auditor
+- **Alvin Varghese** — AI Policy Lead
+- **Utso Shome Choudhury** — Research Lead
+- **Anubhav Tyagi** — Operations Head
+- **Himanshu Pandey** — Technical Lead
+- **Preekshit Gupta** — Strategy Lead
+
+## Advisory Board
+
+- **Murthy Remilla** — Ex-CIO, Government of Telangana
+- **Maya Sherman** — International AI Ethics Advisor
+- **Arun Pandit** — Entrepreneurship & Strategy Advisor
+
+## Website Structure
+
+- Homepage: https://www.governai.info/
+- Contact: https://www.governai.info/contact/
+- Insights (41 articles on AI governance): https://www.governai.info/insights/
+
+## Contact
+
+- Email: contact@governai.info
+- LinkedIn: https://www.linkedin.com/company/governaiofficial/
+- Twitter/X: https://x.com/governaiofc
+
+## Sitemap
+
+- https://www.governai.info/sitemap.xml

@@ -34,6 +34,17 @@ const footerLinks = [
     heading: 'Resources',
     links: [
       { label: 'Contact Us', href: '/contact' },
+      { label: 'Privacy Policy', href: '/assets/pdf/legal/GovernAI-Privacy-Policy.pdf' },
+      { label: 'Terms of Use', href: '/assets/pdf/legal/GovernAI-Terms-of-Use.pdf' },
+    ],
+  },
+  {
+    heading: 'Insights',
+    links: [
+      { label: 'Panel on Responsible AI', href: '/insights/panel-on-responsible-ai/' },
+      { label: 'AI Risk Assessment', href: '/insights/ai-risk-assessment-identifying-and-mitigating-potential-threats/' },
+      { label: 'ISO 42001 & AI Governance', href: '/insights/iso-42001-the-new-standard-for-ai-governance/' },
+      { label: 'View All Insights', href: '/#insights' },
     ],
   },
 ];
@@ -136,7 +147,7 @@ export function Footer() {
           {/* Main Grid */}
           <motion.div style={{
             display: 'grid',
-            gridTemplateColumns: '1.5fr 1fr 1fr 1fr',
+            gridTemplateColumns: '1.5fr 1fr 1fr 1fr 1fr',
             gap: isMobile ? 32 : 48,
           }}
           className="responsive-grid"
