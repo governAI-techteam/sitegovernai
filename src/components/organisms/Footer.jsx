@@ -324,22 +324,44 @@ export function Footer() {
               color: 'rgba(255,255,255,0.25)',
               fontFamily: tokens.fonts.body,
             }}>
-              Built by{' '}
+                Built by{' '}
               <a
                 href="https://divyakush2006.github.io/divyakush-resume/"
                 target="_blank"
                 rel="me noopener"
-                title="Divyakush Punjabi — Full Stack Developer & AI Engineer"
                 style={{
                   color: 'rgba(234, 105, 38, 0.6)',
                   textDecoration: 'none',
                   fontWeight: 500,
-                  transition: 'color 0.2s ease',
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.color = '#f16a24'}
-                onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(234, 105, 38, 0.6)'}
               >
                 Divyakush Punjabi
+              </a>
+              {' • '}
+              <a
+                href="https://www.linkedin.com/in/adityaudiya337315/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: 'rgba(234, 105, 38, 0.6)',
+                  textDecoration: 'none',
+                  fontWeight: 500,
+                }}
+              >
+                Aditya Udiya
+              </a>
+              {' • '}
+              <a
+                href="https://www.linkedin.com/in/infrabyanubhav/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: 'rgba(234, 105, 38, 0.6)',
+                  textDecoration: 'none',
+                  fontWeight: 500,
+                }}
+              >
+                Anubhav Sharma
               </a>
             </p>
           </div>
