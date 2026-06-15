@@ -19,10 +19,3 @@
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
     X-DNS-Prefetch-Control = "on"
-
-# ── Canonical www redirect ──
-[[redirects]]
-  from = "https://governai.info/*"
-  to = "https://www.governai.info/:splat"
-  status = 301
-  force = true
