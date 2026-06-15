@@ -42,6 +42,8 @@ const footerLinks = [
     heading: 'Insights',
     links: [
       { label: 'Panel on Responsible AI', href: '/insights/panel-on-responsible-ai/' },
+      { label: 'AI Risk Assessment', href: '/insights/ai-risk-assessment-identifying-and-mitigating-potential-threats/' },
+      { label: 'ISO 42001 & AI Governance', href: '/insights/iso-42001-the-new-standard-for-ai-governance/' },
       { label: 'View All Insights', href: '/#insights' },
     ],
   },
