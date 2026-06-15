@@ -13,10 +13,12 @@ const footerLinks = [
   {
     heading: 'Services',
     links: [
+      { label: 'Capacity Building & Training', href: '#domains' },
+      { label: 'Advocacy & Consultation', href: '#domains' },
       { label: 'AI Risk Assessment', href: '#domains' },
       { label: 'Compliance Advisory', href: '#domains' },
-      { label: 'Bias Mitigation', href: '#domains' },
       { label: 'Policy Frameworks', href: '#domains' },
+      { label: 'AI Readiness Assessments', href: '#domains' },
     ],
   },
   {
@@ -31,9 +33,6 @@ const footerLinks = [
   {
     heading: 'Resources',
     links: [
-      { label: 'AI Governance Blog', href: '#insights' },
-      { label: 'Case Studies', href: '#insights' },
-      { label: 'Workshops', href: '#insights' },
       { label: 'Contact Us', href: '/contact' },
     ],
   },
@@ -173,7 +172,7 @@ export function Footer() {
                 marginBottom: 24,
                 fontFamily: tokens.fonts.body,
               }}>
-                Building the architectural framework to deploy, monitor, and scale AI systems with absolute compliance and zero bias.
+                GovernAI provides the support to deploy, monitor, and scale AI systems with confidence. We specialize in robust capacity building, strategic policy formulation, and empowering organizations to develop AI technologies responsibly.
               </p>
 
               {/* Social Links */}
@@ -297,8 +296,8 @@ export function Footer() {
 
             <div style={{ display: 'flex', gap: 24, alignItems: 'center' }}>
               {[
-                { label: 'Privacy Policy', pdf: '/assets/pdf/legal/GovernAI-Privacy-Policy.pdf' },
-                { label: 'Terms of Use', pdf: '/assets/pdf/legal/GovernAI-Terms-of-Use.pdf' },
+                { label: 'Privacy Policy', pdf: '/content.pdf' },
+                { label: 'Terms of Use', pdf: '/content.pdf' },
               ].map((item) => (
                 <a
                   key={item.label}

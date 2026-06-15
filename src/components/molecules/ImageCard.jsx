@@ -16,9 +16,9 @@ const founder = {
   linkedin: 'https://linkedin.com/in/parishrut-jassal',
   highlights: [
     'TEDx Speaker · UKAS-recognised ISO/IEC 42001 Auditor',
-    'Working Group Member on AI & Digital Governance, Government of Himachal Pradesh',
+    'Working Group Member (Digital & AI Governance) — I.T. Infrastructure, Cyber-Hubs & Future Ready Industries, Government of Himachal Pradesh',
     'Former Deputy Advisor, NIEPA, Ministry of Education · Expert Member, India–UNESCO AI Readiness Assessment',
-    'Working Group Member (Digital & AI Governance) — I.T. Infrastructure, Cyber-Hubs & Future Ready Industries, Government of Himachal Pradesh · Doctoral Researcher on the Global Governance of AI for Sustainable Peace',
+    'Doctoral Researcher on the Global Governance of AI for Sustainable Peace',
     'Member of ForHumanity (USA) on AI Audits & Regulation',
   ],
 };

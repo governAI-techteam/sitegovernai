@@ -80,16 +80,16 @@ export default function GovernAI() {
           <LandingSection sectionRefs={sectionRefs} />
         </section>
 
-        {/* 2. Our Domains */}
-        <section id="domains" aria-label="Our Domains of AI Governance" ref={(el) => (sectionRefs.current['domains'] = el)}>
-          <DomainsSection />
+        {/* 2. Institutional Clients Served */}
+        <section id="platform" aria-label="Institutional Clients and Engagements" ref={(el) => (sectionRefs.current['platform'] = el)}>
+          <ClientsMarqueeSection />
         </section>
 
         <Divider />
 
-        {/* 3. Institutional Clients Served */}
-        <section id="platform" aria-label="Institutional Clients and Engagements" ref={(el) => (sectionRefs.current['platform'] = el)}>
-          <ClientsMarqueeSection />
+        {/* 3. Our Domains */}
+        <section id="domains" aria-label="Our Domains of AI Governance" ref={(el) => (sectionRefs.current['domains'] = el)}>
+          <DomainsSection />
         </section>
 
         <Divider />

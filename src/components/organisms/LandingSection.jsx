@@ -157,7 +157,7 @@ export function LandingSection({ sectionRefs }) {
                 fontFamily: tokens.fonts.body,
               }}
             >
-              GovernAI provides the architectural framework to deploy, monitor,
+              GovernAI provides the support to deploy, monitor,
               and scale AI systems with confidence. We
               specialize in robust capacity building, strategic policy
               formulation, and empowering organizations to develop AI technologies

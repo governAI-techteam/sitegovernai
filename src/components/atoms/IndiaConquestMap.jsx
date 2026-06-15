@@ -17,11 +17,15 @@ const JOURNEY = [
   { id: 'HP', label: 'HP', fullName: 'Himachal Pradesh', c: [3147, 1727] },
   { id: 'CH', label: 'CH', fullName: 'Chandigarh', c: [2942, 2089] },
   { id: 'PB', label: 'PB', fullName: 'Punjab', c: [2496, 2038] },
+  { id: 'HR', label: 'HR', fullName: 'Haryana', c: [2791, 2578] },
   { id: 'DL', label: 'DL', fullName: 'Delhi', c: [3055, 2778] },
   { id: 'UP', label: 'UP', fullName: 'Uttar Pradesh', c: [4162, 3481] },
   { id: 'BR', label: 'BR', fullName: 'Bihar', c: [5941, 3742] },
   { id: 'WB', label: 'WB', fullName: 'West Bengal', c: [6851, 4351] },
   { id: 'GJ', label: 'GJ', fullName: 'Gujarat', c: [1163, 4770] },
+  { id: 'MH', label: 'MH', fullName: 'Maharashtra', c: [2841, 5804] },
+  { id: 'KA', label: 'KA', fullName: 'Karnataka', c: [2858, 7314] },
+  { id: 'TS', label: 'TG', fullName: 'Telangana', c: [3757, 6394] },
   { id: 'TN', label: 'TN', fullName: 'Tamil Nadu', c: [3705, 8460] },
 ];
 
@@ -39,16 +43,30 @@ const INSTITUTIONS = {
     { name: 'Dept. of Technical Education & Training', cat: 'Government' },
     { name: 'C-DAC Mohali', cat: 'Technology' },
     { name: 'AI & Healthcare Conference, Mohali', cat: 'Healthcare' },
+    { name: 'MGSIPA', cat: 'Government' },
+  ],
+  HR: [
+    { name: 'OP Jindal University (Session)', cat: 'Academia' },
   ],
   DL: [
     { name: 'Indian Institute of Public Administration', cat: 'Government' },
     { name: 'NIEPA, Ministry of Education', cat: 'Government' },
     { name: 'National Law University, Delhi', cat: 'Academia' },
     { name: 'Jawaharlal Nehru University', cat: 'Academia' },
+    { name: 'National CPWD Academy', cat: 'Government' },
   ],
   UP: [
     { name: 'UP Skill Development Mission', cat: 'Government' },
-    { name: 'Samarth Initiative', cat: 'Public Sector' },
+  ],
+  MH: [
+    { name: 'DY Patil University (School of Law)', cat: 'Academia' },
+  ],
+  KA: [
+    { name: 'IISC Bengaluru', cat: 'Academia' },
+    { name: 'Swissnex in India, Consulate General of Switzerland, Bengaluru', cat: 'Government' },
+  ],
+  TS: [
+    { name: 'ISB Hyderabad (Agristack Consultation)', cat: 'Academia' },
   ],
   BR: [{ name: 'AIIMS Patna', cat: 'Healthcare' }],
   WB: [{ name: 'UEM Kolkata', cat: 'Academia' }],
@@ -82,9 +100,9 @@ export default function IndiaConquestMap() {
     []
   );
 
-  const officials = 2000;
+  const officials = 2500;
   const institutions = 20;
-  const statesCount = 5;
+  const statesCount = 10;
 
   // hover panel placement
   const hov = finished && hovered ? BY_ID[hovered] : null;

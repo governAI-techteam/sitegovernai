@@ -48,7 +48,7 @@ const CONTACT_CARDS = [
 ];
 
 const TRUST = [
-  { value: '2000+', label: 'Officials Trained' },
+  { value: '2500+', label: 'Officials Trained' },
   { value: '20+', label: 'Institutions' },
   { value: '5+', label: 'States & UTs' },
 ];

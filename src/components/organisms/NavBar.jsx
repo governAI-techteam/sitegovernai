@@ -82,18 +82,11 @@ export function NavBar({ activeSection }) {
               : 'none',
             transition: 'all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)',
           }}>
-            {/* Logo — reserved slot, animates in on scroll */}
+            {/* Logo — always visible */}
             <div style={{ width: 130, height: 40, display: 'flex', alignItems: 'center', flexShrink: 0 }}>
-              <motion.div
-                initial={{ opacity: 0, y: -16, scale: 0.88, filter: 'blur(6px)' }}
-                animate={(scrolled || isMobile)
-                  ? { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }
-                  : { opacity: 0, y: -16, scale: 0.88, filter: 'blur(6px)' }
-                }
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ scale: 1.02 }}
-                style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 10 }}
+              <div
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 10 }}
               >
                 <SafeImage
                   src="/assets/img/logo.png"
@@ -103,7 +96,7 @@ export function NavBar({ activeSection }) {
                   loading="eager"
                   style={{ height: 30, width: 'auto', objectFit: 'contain', display: 'block' }}
                 />
-              </motion.div>
+              </div>
             </div>
 
             {/* Desktop Nav */}

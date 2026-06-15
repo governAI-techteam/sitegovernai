@@ -1,6 +1,6 @@
 export const NAV_ITEMS = [
   { label: 'Domains', sectionId: 'domains' },
-  { label: 'Clients', sectionId: 'platform' },
+  { label: 'Footprints', sectionId: 'platform' },
   { label: 'Insights', sectionId: 'insights' },
   { label: 'Team', sectionId: 'team' },
 ];
@@ -46,9 +46,19 @@ export const DEFAULT_SERVICES = [
     desc: 'End-to-end alignment with global standards including EU AI Act, NIST, and ISO 42001.',
   },
   {
-    icon: 'psychology',
-    title: 'Bias Mitigation',
-    desc: 'Sophisticated detection engines that identify and neutralize algorithmic prejudice at the source.',
+    icon: 'school',
+    title: 'Capacity Building & Training',
+    desc: 'Structured programs to upskill teams in AI governance, compliance, and ethical deployment practices.',
+  },
+  {
+    icon: 'forum',
+    title: 'Advocacy & Consultation',
+    desc: 'Strategic advisory on AI policy, stakeholder engagement, and regulatory positioning.',
+  },
+  {
+    icon: 'assessment',
+    title: 'AI Readiness Assessments',
+    desc: 'Comprehensive evaluation of organizational AI maturity, risk posture, and compliance gaps.',
   },
   {
     icon: 'security',
