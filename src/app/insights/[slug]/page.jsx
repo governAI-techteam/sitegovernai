@@ -39,7 +39,8 @@ export default async function InsightPage({ params }) {
   const currentIndex = insightsData.findIndex((item) => slugify(item.title) === slug);
   const prev = currentIndex > 0 ? insightsData[currentIndex - 1] : null;
   const next = currentIndex < insightsData.length - 1 ? insightsData[currentIndex + 1] : null;
-  const readingTime = getReadingTime(insight.description);
+  const bodyText = insight.content || insight.description;
+  const readingTime = getReadingTime(bodyText);
 
   const insightData = {
     slug: slug,
@@ -151,9 +152,11 @@ export default async function InsightPage({ params }) {
           }}
         />
 
-        <p style={{ fontSize: 18, lineHeight: 1.7, color: '#333' }}>
-          {insight.description}
-        </p>
+        {(insight.content || insight.description).split('\n').filter(Boolean).map((para, i) => (
+          <p key={i} style={{ fontSize: 18, lineHeight: 1.7, color: '#333', marginBottom: 16 }}>
+            {para}
+          </p>
+        ))}
 
         {/* Related Insights — internal cross-linking for SEO */}
         {related.length > 0 && (
