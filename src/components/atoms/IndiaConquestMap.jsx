@@ -109,7 +109,7 @@ export default function IndiaConquestMap() {
 
   const officials = 2500;
   const institutions = 20;
-  const statesCount = 12;
+  const statesCount = 10;
 
   // hover panel placement
   const hov = finished && hovered ? BY_ID[hovered] : null;
