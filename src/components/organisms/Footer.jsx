@@ -34,8 +34,8 @@ const footerLinks = [
     heading: 'Resources',
     links: [
       { label: 'Contact Us', href: '/contact' },
-      { label: 'Privacy Policy', href: '/assets/pdf/legal/GovernAI-Privacy-Policy.pdf' },
-      { label: 'Terms of Use', href: '/assets/pdf/legal/GovernAI-Terms-of-Use.pdf' },
+      { label: 'Privacy Policy', href: '/assets/pdf/legal/GovernAI-Privacy-Policy.pdf', external: true },
+      { label: 'Terms of Use', href: '/assets/pdf/legal/GovernAI-Terms-of-Use.pdf', external: true },
     ],
   },
 ];
@@ -83,13 +83,19 @@ export function Footer() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const handleLinkClick = (href) => {
-    if (!href.startsWith('#')) {
+  const handleLinkClick = (href, external) => {
+    // PDFs and external links — open in new tab
+    if (external || href.endsWith('.pdf')) {
+      window.open(href, '_blank', 'noopener,noreferrer');
+      return;
+    }
+    // Internal page routes (e.g. /contact, /insights/...)
+    if (!href.startsWith('#') && !href.startsWith('/#')) {
       router.push(href);
       return;
     }
-    const id = href.substring(1);
-    // On the home page we have the scroll context; elsewhere route home with hash.
+    // Hash links — scroll on homepage or navigate with hash
+    const id = href.replace('/#', '').replace('#', '');
     if (pathname === '/' && scrollCtx?.scrollTo) {
       scrollCtx.scrollTo(id);
     } else {
@@ -246,7 +252,7 @@ export function Footer() {
                         href={link.href}
                         onClick={(e) => {
                           e.preventDefault();
-                          handleLinkClick(link.href);
+                          handleLinkClick(link.href, link.external);
                         }}
                         whileHover={{ x: 3 }}
                         style={{
@@ -298,8 +304,8 @@ export function Footer() {
 
             <div style={{ display: 'flex', gap: 24, alignItems: 'center' }}>
               {[
-                { label: 'Privacy Policy', pdf: '/content.pdf' },
-                { label: 'Terms of Use', pdf: '/content.pdf' },
+                { label: 'Privacy Policy', pdf: '/assets/pdf/legal/GovernAI-Privacy-Policy.pdf' },
+                { label: 'Terms of Use', pdf: '/assets/pdf/legal/GovernAI-Terms-of-Use.pdf' },
               ].map((item) => (
                 <a
                   key={item.label}
