@@ -21,7 +21,7 @@ export const insightsData = [
 The panel on Legal and Regulatory Frameworks for Responsible AI featured distinguished experts including the Executive Director of Legal at NVIDIA, the Founder of Ikigai Law, and a Partner at JSA, providing complementary perspectives on the technical and legal dimensions of AI governance. The discussion examined how organisations can bridge the gap between high-level AI ethics principles and ground-level implementation.
 
 Key takeaways included the importance of embedding governance by design into AI systems from the outset, rather than treating compliance as an afterthought. The panel underscored that responsible AI is not merely a regulatory requirement but a strategic imperative for organisations seeking to build trust and scalability into their AI operations.`,
-    location: 'Gandhinagar, Gujarat',
+    location: 'Chennai, Tamil Nadu',
     datePublished: '2024-03-15',
     author: 'Parishrut Jassal',
   },
@@ -177,20 +177,20 @@ This engagement reflects GovernAI's commitment to learning from global thought l
 The session covered practical AI applications for legal research, case analysis, curriculum development, and administrative efficiency. Faculty members explored AI tools that can enhance teaching methodologies, streamline assessment processes, and prepare students for a legal landscape increasingly shaped by technology. Ethical considerations around AI use in academic settings were a central theme throughout the workshop.
 
 Faculty development in AI literacy is essential for ensuring that legal education remains relevant in an era of rapid technological change. By empowering educators with AI competencies, institutions can better prepare the next generation of legal professionals to navigate the intersection of law and technology.`,
-    location: 'Pune, Maharashtra',
+    location: 'Navi Mumbai, Maharashtra',
     datePublished: '2024-09-05',
     author: 'Parishrut Jassal',
   },
   {
     id: 13,
     image: '/insights/18.jpeg',
-    title: 'Training for CPWD Engineers',
-    description: 'Founder & CEO Parishrut Jassal led a specialized training program for CPWD Engineers and Architects on AI in construction and infrastructure.',
-    content: `Parishrut Jassal led a specialized training program for engineers and architects of the Central Public Works Department (CPWD), focusing on the application of artificial intelligence in construction and infrastructure management. The program was designed to introduce AI concepts and tools relevant to the department's extensive portfolio of public infrastructure projects.
+    title: 'AI Session for MCD Engineers',
+    description: 'Founder & CEO Parishrut Jassal led an AI integration session for over 100 senior officials of the Municipal Corporation of Delhi at MCD Civic Center, in collaboration with the National CPWD Academy.',
+    content: `It was a distinct privilege to lead the session on Artificial Intelligence for the Municipal Corporation of Delhi (MCD) at the MCD Civic Center, New Delhi. The MCD's Planning Department, in collaboration with the National CPWD Academy, organised a comprehensive two-day refresher training programme for their engineering leadership, inaugurated by MCD Commissioner Shri Sanjeev Khirwar (IAS).
 
-The training covered AI applications in project planning, quality assurance, site monitoring through computer vision, predictive maintenance of infrastructure assets, and optimization of resource allocation. Case studies demonstrated how AI can reduce project delays, improve safety compliance, and enhance the longevity of public infrastructure through data-driven maintenance schedules.
+The AI integration session was conducted for a distinguished group of over 100 senior officials, including Chief Engineers, Superintending Engineers, and Executive Engineers from all zones. The session focused on moving beyond theoretical concepts to explore the practical applications of AI and tech-driven solutions specifically tailored for civil engineering and urban governance.
 
-CPWD's adoption of AI tools represents a significant step toward modernizing India's public infrastructure management. Equipping engineering professionals with AI competencies ensures that government infrastructure projects benefit from the efficiency, accuracy, and foresight that AI technologies offer, ultimately delivering better value to citizens.`,
+The training also emphasised the imperatives of AI governance, safety, and responsible deployment within municipal operations. Equipping MCD's engineering leadership with AI competencies ensures that the city's infrastructure projects benefit from data-driven decision-making while maintaining accountability and human oversight.`,
     location: 'New Delhi',
     datePublished: '2024-09-18',
     author: 'Parishrut Jassal',
@@ -219,7 +219,7 @@ As the industry moves from generative AI to agentic AI systems making consequent
 The partnership encompasses joint curriculum development, research initiatives, faculty training programs, and student engagement activities focused on AI governance, data protection, and ethical AI deployment. By integrating industry perspectives into academic programs, the partnership aims to produce graduates who are equipped to navigate the complex regulatory and technical landscape of AI governance.
 
 This collaboration reflects GovernAI's commitment to building institutional capacity for AI governance beyond government training programs. Academic partnerships are a key pillar of GovernAI's strategy to create a sustainable ecosystem for responsible AI development, combining practical implementation experience with rigorous academic foundations.`,
-    location: 'Pune, Maharashtra',
+    location: 'Navi Mumbai, Maharashtra',
     datePublished: '2024-10-15',
     author: 'Parishrut Jassal',
   },
@@ -233,7 +233,7 @@ This collaboration reflects GovernAI's commitment to building institutional capa
 The AI and Law Centre will serve as a hub for research on algorithmic accountability, data protection jurisprudence, AI regulatory frameworks, and the ethical implications of autonomous systems. It will also organize conferences, workshops, and policy dialogues bringing together legal scholars, technologists, policymakers, and industry practitioners to shape the future of AI governance.
 
 The establishment of this centre marks a milestone in institutionalizing AI governance education and research in India. By creating a dedicated academic platform for exploring AI-law intersections, GovernAI and DYPU are contributing to the development of a skilled workforce capable of addressing the complex governance challenges posed by advancing AI technologies.`,
-    location: 'Pune, Maharashtra',
+    location: 'Navi Mumbai, Maharashtra',
     datePublished: '2024-10-16',
     author: 'Parishrut Jassal',
   },
@@ -247,7 +247,7 @@ The establishment of this centre marks a milestone in institutionalizing AI gove
 The session covered the practical dimensions of AI governance, including compliance frameworks, risk assessment methodologies, and the role of legal professionals in ensuring algorithmic accountability. Participants engaged with real-world case studies examining AI-related disputes, regulatory investigations, and the development of organizational AI policies.
 
 The masterclass underscored the critical role that legal professionals play in shaping responsible AI adoption. As AI systems become more pervasive, lawyers with expertise in AI governance will be essential to helping organizations navigate regulatory requirements, manage liability risks, and ensure that AI deployment aligns with ethical and legal standards.`,
-    location: 'Pune, Maharashtra',
+    location: 'Navi Mumbai, Maharashtra',
     datePublished: '2024-10-18',
     author: 'Parishrut Jassal',
   },
