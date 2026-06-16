@@ -19,8 +19,10 @@ const JOURNEY = [
   { id: 'PB', label: 'PB', fullName: 'Punjab', c: [2496, 2038] },
   { id: 'HR', label: 'HR', fullName: 'Haryana', c: [2791, 2578] },
   { id: 'DL', label: 'DL', fullName: 'Delhi', c: [3055, 2778] },
+  { id: 'RJ', label: 'RJ', fullName: 'Rajasthan', c: [1900, 3700] },
   { id: 'UP', label: 'UP', fullName: 'Uttar Pradesh', c: [4162, 3481] },
   { id: 'BR', label: 'BR', fullName: 'Bihar', c: [5941, 3742] },
+  { id: 'JH', label: 'JH', fullName: 'Jharkhand', c: [5900, 4400] },
   { id: 'WB', label: 'WB', fullName: 'West Bengal', c: [6851, 4351] },
   { id: 'GJ', label: 'GJ', fullName: 'Gujarat', c: [1163, 4770] },
   { id: 'MH', label: 'MH', fullName: 'Maharashtra', c: [2841, 5804] },
@@ -69,10 +71,15 @@ const INSTITUTIONS = {
     { name: 'ISB Hyderabad (Agristack Consultation)', cat: 'Academia' },
   ],
   BR: [{ name: 'AIIMS Patna', cat: 'Healthcare' }],
+  JH: [{ name: 'NUSRL Ranchi', cat: 'Academia' }],
   WB: [{ name: 'UEM Kolkata', cat: 'Academia' }],
   GJ: [
     { name: 'Gujarat National Law University', cat: 'Academia' },
     { name: 'Dhirubhai Ambani University', cat: 'Academia' },
+  ],
+  RJ: [
+    { name: 'ICFAI Jaipur (Panel Discussion)', cat: 'Academia' },
+    { name: 'NLU Jodhpur (Session)', cat: 'Academia' },
   ],
   TN: [{ name: "AI Legislators' Forum (AILF)", cat: 'Government' }],
 };
@@ -102,7 +109,7 @@ export default function IndiaConquestMap() {
 
   const officials = 2500;
   const institutions = 20;
-  const statesCount = 10;
+  const statesCount = 12;
 
   // hover panel placement
   const hov = finished && hovered ? BY_ID[hovered] : null;
