@@ -43,4 +43,5 @@ next-env.d.ts
 temp-logos/
 *.zip
 *.pdf
+!public/assets/pdf/legal/*.pdf
 LinkedIn Posts-*/
