@@ -13,8 +13,8 @@ export const SITE = {
   url: SITE_URL,
   description:
     'GovernAI delivers AI governance capacity building, ISO/IEC 42001 compliance auditing & responsible AI policy advisory. 2,000+ officials trained across India.',
-  // Default share image (1200x630 recommended). Falls back to the logo.
-  ogImage: '/assets/img/logo.png',
+  // Default share image (1200x630 recommended).
+  ogImage: '/assets/img/og-image.png',
   email: 'contact@governai.info',
   locale: 'en_IN',
   twitter: '@governaiofc',
