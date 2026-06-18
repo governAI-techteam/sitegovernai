@@ -4,18 +4,18 @@ import { Footer } from '@/components/organisms/Footer';
 import { SITE_URL, breadcrumbSchema } from '@/config/seo';
 
 export const metadata = {
-  title: 'Contact Us — AI Governance Enquiries',
+  title: 'Contact Us — AI Governance & Compliance Enquiries',
   description:
-    'Get in touch with GovernAI for AI governance capacity building, ISO/IEC 42001 compliance auditing, and policy advisory. We respond within one business day.',
+    'Reach GovernAI for AI governance capacity building, ISO/IEC 42001 compliance auditing & responsible AI policy advisory. We respond within one business day.',
   alternates: {
     canonical: '/contact',
   },
   openGraph: {
     type: 'website',
     url: `${SITE_URL}/contact`,
-    title: 'Contact GovernAI — AI Governance Enquiries',
+    title: 'Contact GovernAI — AI Governance & Compliance Enquiries',
     description:
-      'Partner with GovernAI to deploy AI with absolute compliance and zero bias. Reach our team today.',
+      'Partner with GovernAI for AI governance training, ISO/IEC 42001 auditing & responsible AI advisory. 2,000+ officials trained. Reach our team today.',
   },
 };
 

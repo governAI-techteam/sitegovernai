@@ -20,11 +20,11 @@ export async function generateMetadata() {
   return {
     metadataBase: new URL(SITE_URL),
     title: {
-      default: 'AI Governance & Responsible AI | GovernAI',
+      default: 'GovernAI — AI Governance, Compliance & ISO 42001',
       template: '%s | GovernAI',
     },
     description:
-      'GovernAI helps governments & enterprises deploy AI responsibly — ISO 42001 auditing, compliance & policy advisory across India.',
+      'GovernAI delivers AI governance capacity building, ISO/IEC 42001 compliance auditing & responsible AI policy advisory. 2,000+ officials trained across India.',
     applicationName: 'GovernAI',
     keywords: SITE_KEYWORDS,
     category: 'technology',
@@ -47,16 +47,16 @@ export async function generateMetadata() {
       type: 'website',
       locale: 'en_IN',
       url: SITE_URL,
-      title: 'GovernAI — Governing Artificial Intelligence for a Responsible Future',
+      title: 'GovernAI — AI Governance, Compliance & Capacity Building for India',
       description:
-        'Deploy, monitor & scale AI with absolute compliance and zero bias. ISO/IEC 42001 auditing, capacity building & AI policy advisory for the public and private sector.',
+        'AI governance capacity building, ISO/IEC 42001 auditing & responsible AI policy advisory for governments, universities & enterprises. 2,000+ officials trained across 10+ states.',
       siteName: 'GovernAI',
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'GovernAI | AI Governance, Compliance & Responsible AI',
+      title: 'GovernAI — AI Governance & ISO 42001 Compliance Advisory',
       description:
-        'Deploy AI with absolute compliance and zero bias — ISO/IEC 42001 auditing, capacity building & AI policy advisory. 2,000+ officials trained across India.',
+        'AI governance capacity building, ISO/IEC 42001 compliance auditing & responsible AI advisory. 2,000+ officials trained. 20+ institutional engagements across India.',
       creator: SITE.twitter,
       site: SITE.twitter,
     },

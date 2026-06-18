@@ -12,7 +12,7 @@ export const SITE = {
   shortName: 'GovernAI',
   url: SITE_URL,
   description:
-    'GovernAI helps governments, universities, and enterprises deploy AI responsibly — ISO/IEC 42001 auditing, compliance, and AI policy advisory.',
+    'GovernAI delivers AI governance capacity building, ISO/IEC 42001 compliance auditing & responsible AI policy advisory. 2,000+ officials trained across India.',
   // Default share image (1200x630 recommended). Falls back to the logo.
   ogImage: '/assets/img/logo.png',
   email: 'contact@governai.info',
@@ -91,6 +91,27 @@ export const SITE_KEYWORDS = [
   'AI governance framework for government',
   'how to ensure AI compliance',
   'AI governance best practices',
+
+  // High-value additions — outrank competitors
+  'AI governance platform India',
+  'AI governance for public sector',
+  'AI compliance India',
+  'algorithmic auditing',
+  'sovereign AI governance',
+  'AI procurement standards',
+  'AI literacy government',
+  'AI governance consulting India',
+  'digital governance AI',
+  'AI governance workshop',
+  'AI capacity building for government',
+  'responsible AI India',
+  'DPDP Act 2023',
+  'AI governance training for IAS officers',
+  'AI governance training for government',
+  'AI risk assessment services',
+  'AI policy framework India',
+  'UKAS ISO 42001',
+  'AI governance company',
 ];
 
 /* Reusable Organization JSON-LD (Knowledge Graph eligibility). */
@@ -605,9 +626,9 @@ export function webPageSchema() {
     '@type': 'WebPage',
     '@id': `${SITE_URL}/#webpage`,
     url: SITE_URL,
-    name: 'AI Governance, Compliance & Responsible AI | GovernAI',
+    name: 'GovernAI — AI Governance, Compliance & ISO 42001',
     description:
-      'GovernAI helps governments, universities, and enterprises deploy AI responsibly — ISO/IEC 42001 auditing, compliance, and AI policy advisory. 2,000+ officials trained.',
+      'GovernAI delivers AI governance capacity building, ISO/IEC 42001 compliance auditing & responsible AI policy advisory. 2,000+ officials trained across 10+ states in India.',
     isPartOf: { '@id': `${SITE_URL}/#website` },
     about: { '@id': `${SITE_URL}/#organization` },
     inLanguage: 'en-IN',
