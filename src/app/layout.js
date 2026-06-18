@@ -51,14 +51,12 @@ export async function generateMetadata() {
       description:
         'AI governance capacity building, ISO/IEC 42001 auditing & responsible AI policy advisory for governments, universities & enterprises. 2,000+ officials trained across 10+ states.',
       siteName: 'GovernAI',
-      images: [{ url: `${SITE_URL}${SITE.ogImage}`, width: 1200, height: 630, alt: 'GovernAI — AI Governance, Compliance & Capacity Building' }],
     },
     twitter: {
       card: 'summary_large_image',
       title: 'GovernAI — AI Governance & ISO 42001 Compliance Advisory',
       description:
         'AI governance capacity building, ISO/IEC 42001 compliance auditing & responsible AI advisory. 2,000+ officials trained. 20+ institutional engagements across India.',
-      images: [`${SITE_URL}${SITE.ogImage}`],
       creator: SITE.twitter,
       site: SITE.twitter,
     },
