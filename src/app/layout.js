@@ -12,6 +12,7 @@ import {
   advisorSchema,
   developerSchema,
   creativeWorkSchema,
+  trustBackboneSchema,
 } from '@/config/seo';
 import { getDeveloperData } from '@/config/developer';
 import './globals.css';
@@ -109,6 +110,7 @@ export default async function RootLayout({ children }) {
     ...advisorSchema(),
     developerSchema(dev),
     creativeWorkSchema(dev),
+    ...trustBackboneSchema(),
   ];
 
   return (

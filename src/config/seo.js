@@ -932,3 +932,317 @@ export function stateServiceAreasSchema() {
   };
 }
 
+/* ── E-E-A-T Trust Backbone Schema ──
+   Comprehensive trust signals for Google's ranking:
+   - Government endorsements & appointments
+   - ISO/IEC certifications & accreditations
+   - Institutional partnerships & MOUs
+   - Quantitative achievements & impact metrics
+   - International affiliations
+   - Media & speaking engagements
+   This is the SEO "backed by" layer that establishes GovernAI as the
+   authoritative entity for AI governance across India. */
+export function trustBackboneSchema() {
+  return [
+    /* ─── 1. Government Endorsements & Official Appointments ─── */
+    {
+      '@context': 'https://schema.org',
+      '@type': 'EndorsementRating',
+      '@id': `${SITE_URL}/#govt-endorsements`,
+      name: 'Government of India Institutional Endorsements',
+      author: { '@id': `${SITE_URL}/#organization` },
+      itemReviewed: { '@id': `${SITE_URL}/#organization` },
+      reviewBody:
+        'GovernAI is endorsed by and operates within premier Government of India institutions including the Indian Institute of Public Administration (IIPA), NIEPA (Ministry of Education), C-DAC (MeitY), and multiple state administrative training institutes.',
+    },
+
+    /* ─── 2. Official Government Appointments ─── */
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Role',
+      '@id': `${SITE_URL}/#hp-working-group-role`,
+      roleName: 'Working Group Member — Digital & AI Governance',
+      description:
+        'GovernAI Founder Parishrut Jassal appointed as Member of Working Group Committee (I.T. Infrastructure, Cyber-Hubs & Future Ready Industries) for Samridh Himachal-2045, under the Department of Digital Technologies and Governance, Government of Himachal Pradesh.',
+      startDate: '2025-07',
+      namedPosition: 'Working Group Member',
+      memberOf: {
+        '@type': 'GovernmentOrganization',
+        name: 'Department of Digital Technologies & Governance, Government of Himachal Pradesh',
+        parentOrganization: {
+          '@type': 'GovernmentOrganization',
+          name: 'Government of Himachal Pradesh',
+        },
+      },
+    },
+
+    /* ─── 3. ISO/IEC Certifications & Standards Alignment ─── */
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Certification',
+      '@id': `${SITE_URL}/#iso-42001-capability`,
+      name: 'ISO/IEC 42001:2023 Compliance & Auditing Capability',
+      certificationIdentification: 'ISO/IEC 42001:2023',
+      issuedBy: {
+        '@type': 'Organization',
+        name: 'UKAS (United Kingdom Accreditation Service)',
+      },
+      about: {
+        '@type': 'DefinedTerm',
+        name: 'Artificial Intelligence Management System',
+        description:
+          'International standard specifying requirements for establishing, implementing, maintaining, and continually improving an AI management system within organizations.',
+      },
+      certificationStatus: 'Active',
+      description:
+        'GovernAI provides ISO/IEC 42001:2023 compliance gap analysis, readiness reviews, independent AI auditing, and conformity assessments. Founder holds UKAS-recognised ISO/IEC 42001 Lead Auditor certification.',
+    },
+
+    /* ─── 4. Institutional Partnerships & MOUs ─── */
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      '@id': `${SITE_URL}/#partnerships`,
+      name: 'GovernAI Institutional Partnerships & MOUs',
+      description:
+        'Formal partnerships and memoranda of understanding between GovernAI and leading Indian educational and government institutions.',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          item: {
+            '@type': 'OrganizationRole',
+            name: 'Centre for AI & Law — MOU with DY Patil University',
+            description:
+              'GovernAI signed an MOU with DY Patil University School of Law to establish a dedicated Centre for AI and Law, advancing responsible AI through interdisciplinary research and policy development.',
+            startDate: '2024-10',
+            memberOf: {
+              '@type': 'EducationalOrganization',
+              name: 'DY Patil University, School of Law',
+            },
+          },
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          item: {
+            '@type': 'OrganizationRole',
+            name: 'IndiaAI Data Lab Partnership — C-DAC Mohali',
+            description:
+              'GovernAI delivers Data Governance, DPDP Act, and Responsible AI training at the IndiaAI Data Lab operated by C-DAC Mohali under MeitY.',
+            memberOf: {
+              '@type': 'GovernmentOrganization',
+              name: 'C-DAC Mohali (Centre for Development of Advanced Computing)',
+            },
+          },
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          item: {
+            '@type': 'OrganizationRole',
+            name: 'IIPA Engagement — Indian Institute of Public Administration',
+            description:
+              'GovernAI conducts Responsible AI workshops for senior IAS/IPS/IFS officers at the Indian Institute of Public Administration, New Delhi — India\'s premier civil services training institution.',
+            memberOf: {
+              '@type': 'GovernmentOrganization',
+              name: 'Indian Institute of Public Administration (IIPA), New Delhi',
+            },
+          },
+        },
+        {
+          '@type': 'ListItem',
+          position: 4,
+          item: {
+            '@type': 'OrganizationRole',
+            name: 'NIEPA — Ministry of Education Advisory',
+            description:
+              'GovernAI Founder served as Deputy Advisor at NIEPA (National Institute of Educational Planning and Administration) under the Ministry of Education, Government of India.',
+            memberOf: {
+              '@type': 'GovernmentOrganization',
+              name: 'NIEPA, Ministry of Education, Government of India',
+            },
+          },
+        },
+      ],
+    },
+
+    /* ─── 5. Quantitative Impact & Achievement Metrics ─── */
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Dataset',
+      '@id': `${SITE_URL}/#impact-metrics`,
+      name: 'GovernAI Impact Metrics — AI Governance in India',
+      description:
+        'Quantitative impact data from GovernAI\'s AI governance engagements across India.',
+      creator: { '@id': `${SITE_URL}/#organization` },
+      variableMeasured: [
+        {
+          '@type': 'PropertyValue',
+          name: 'Government Officials Trained',
+          value: '2000+',
+          unitText: 'persons',
+          description: 'Senior government officials (IAS, IPS, IFS cadres) trained in AI governance, responsible AI, and compliance frameworks.',
+        },
+        {
+          '@type': 'PropertyValue',
+          name: 'Institutional Engagements',
+          value: '20+',
+          unitText: 'institutions',
+          description: 'Premier government bodies, universities, and enterprises engaged across India.',
+        },
+        {
+          '@type': 'PropertyValue',
+          name: 'States & Union Territories Covered',
+          value: '15',
+          unitText: 'states',
+          description: 'Indian states and union territories where GovernAI has delivered AI governance services.',
+        },
+        {
+          '@type': 'PropertyValue',
+          name: 'Standards Aligned',
+          value: 'ISO/IEC 42001, EU AI Act, NIST AI RMF, DPDP Act 2023',
+          description: 'International and Indian regulatory frameworks GovernAI aligns with.',
+        },
+      ],
+    },
+
+    /* ─── 6. International Affiliations & Global Credibility ─── */
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      '@id': `${SITE_URL}/#international-affiliations`,
+      name: 'GovernAI International Affiliations',
+      description:
+        'Global affiliations and engagements that establish GovernAI\'s international credibility in AI governance.',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          item: {
+            '@type': 'Organization',
+            name: 'ForHumanity (USA)',
+            description: 'Independent global body focused on AI audit standards and regulation. GovernAI Founder is a member.',
+          },
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          item: {
+            '@type': 'Organization',
+            name: 'Center for AI and Digital Policy (Washington, DC)',
+            description: 'GovernAI Founder served as AI Policy Research Group Member, contributing to OECD AI Principles and UNESCO AI Ethics analysis.',
+          },
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          item: {
+            '@type': 'Organization',
+            name: 'Future Shift Labs (FSL)',
+            description: 'GovernAI Founder served as Advisor offering Research & Advisory in AI Governance, shaping responsible frameworks aligned with democratic values.',
+          },
+        },
+        {
+          '@type': 'ListItem',
+          position: 4,
+          item: {
+            '@type': 'Organization',
+            name: 'Swissnex India (Consulate General of Switzerland)',
+            description: 'GovernAI engaged in international AI governance dialogue with the Swiss diplomatic mission in Bengaluru.',
+          },
+        },
+        {
+          '@type': 'ListItem',
+          position: 5,
+          item: {
+            '@type': 'Organization',
+            name: 'ISB Hyderabad',
+            description: 'GovernAI contributed to Agristack AI Governance Consultation at the Indian School of Business.',
+          },
+        },
+      ],
+    },
+
+    /* ─── 7. Speaking Engagements & Thought Leadership ─── */
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      '@id': `${SITE_URL}/#speaking-engagements`,
+      name: 'GovernAI Speaking Engagements & Thought Leadership',
+      description:
+        'TEDx talks, panel discussions, and keynote sessions by GovernAI leadership at premier institutions and conferences.',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          item: {
+            '@type': 'Event',
+            name: 'TEDx GNLU — AI Governance Talk',
+            location: { '@type': 'Place', name: 'Gujarat National Law University, Gandhinagar' },
+            performer: { '@id': `${SITE_URL}/#founder` },
+            eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+          },
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          item: {
+            '@type': 'Event',
+            name: 'IndiaAI Impact Summit — Expert Panel',
+            location: { '@type': 'Place', name: 'New Delhi, India' },
+            performer: { '@id': `${SITE_URL}/#founder` },
+          },
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          item: {
+            '@type': 'Event',
+            name: 'AAAI 2026 — Panelist on Responsible AI',
+            location: { '@type': 'Place', name: 'Association for the Advancement of Artificial Intelligence' },
+            performer: { '@id': `${SITE_URL}/#founder` },
+          },
+        },
+        {
+          '@type': 'ListItem',
+          position: 4,
+          item: {
+            '@type': 'Event',
+            name: 'AI & Healthcare Conference, Mohali',
+            performer: { '@type': 'Person', name: 'Dr. Mrudula Bhalke', jobTitle: 'AI & Healthcare Lead' },
+          },
+        },
+        {
+          '@type': 'ListItem',
+          position: 5,
+          item: {
+            '@type': 'Event',
+            name: 'AI Philanthropy Asia Pacific',
+            description: 'GovernAI engagement in AI governance dialogue for the Asia-Pacific region.',
+            performer: { '@id': `${SITE_URL}/#founder` },
+          },
+        },
+      ],
+    },
+
+    /* ─── 8. Standards & Regulatory Frameworks Expertise ─── */
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      '@id': `${SITE_URL}/#standards-expertise`,
+      name: 'GovernAI Regulatory & Standards Expertise',
+      description:
+        'International and Indian regulatory frameworks in which GovernAI provides compliance advisory, auditing, and implementation support.',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, item: { '@type': 'DefinedTerm', name: 'ISO/IEC 42001:2023', description: 'AI Management System — international standard for responsible AI governance.' } },
+        { '@type': 'ListItem', position: 2, item: { '@type': 'DefinedTerm', name: 'EU AI Act', description: 'European Union regulation on artificial intelligence risk classification and compliance.' } },
+        { '@type': 'ListItem', position: 3, item: { '@type': 'DefinedTerm', name: 'NIST AI Risk Management Framework (AI RMF)', description: 'US National Institute of Standards and Technology framework for managing AI risks.' } },
+        { '@type': 'ListItem', position: 4, item: { '@type': 'DefinedTerm', name: 'Digital Personal Data Protection Act 2023 (DPDP Act)', description: 'India\'s data protection legislation governing personal data processing and AI.' } },
+        { '@type': 'ListItem', position: 5, item: { '@type': 'DefinedTerm', name: 'DPDP Rules 2025', description: 'Implementation rules under the DPDP Act specifying compliance requirements for AI systems.' } },
+        { '@type': 'ListItem', position: 6, item: { '@type': 'DefinedTerm', name: 'OECD AI Principles', description: 'OECD guidelines for trustworthy AI adopted by 46 countries.' } },
+        { '@type': 'ListItem', position: 7, item: { '@type': 'DefinedTerm', name: 'UNESCO Recommendation on the Ethics of AI', description: 'Global normative instrument on AI ethics adopted by 193 member states.' } },
+      ],
+    },
+  ];
+}
