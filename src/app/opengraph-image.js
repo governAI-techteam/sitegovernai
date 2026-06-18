@@ -111,18 +111,22 @@ export default function Image() {
           style={{
             display: 'flex',
             alignItems: 'center',
+            justifyContent: 'space-between',
             fontSize: 25,
             fontWeight: 600,
             color: 'rgba(255,255,255,0.85)',
           }}
         >
-          <span style={{ color: ORANGE }}>2,000+</span>
-          <span style={{ marginLeft: 10, color: 'rgba(255,255,255,0.85)' }}>Officials Trained</span>
-          <span style={{ margin: '0 18px', color: 'rgba(255,255,255,0.3)' }}>•</span>
-          <span style={{ color: ORANGE }}>20+</span>
-          <span style={{ marginLeft: 10 }}>Institutions</span>
-          <span style={{ margin: '0 18px', color: 'rgba(255,255,255,0.3)' }}>•</span>
-          <span>India &amp; Global</span>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <span style={{ color: ORANGE }}>2,000+</span>
+            <span style={{ marginLeft: 10, color: 'rgba(255,255,255,0.85)' }}>Officials Trained</span>
+            <span style={{ margin: '0 18px', color: 'rgba(255,255,255,0.3)' }}>•</span>
+            <span style={{ color: ORANGE }}>20+</span>
+            <span style={{ marginLeft: 10 }}>Institutions</span>
+            <span style={{ margin: '0 18px', color: 'rgba(255,255,255,0.3)' }}>•</span>
+            <span>India &amp; Global</span>
+          </div>
+          <span style={{ fontSize: 16, fontWeight: 400, color: 'rgba(255,255,255,0.35)' }}>Built by Divyakush Punjabi</span>
         </div>
       </div>
     ),
