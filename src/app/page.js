@@ -17,7 +17,7 @@ import { Footer } from '@/components/organisms/Footer';
 import { Preloader } from '@/components/molecules/Preloader';
 import { ScrollProgress } from '@/components/atoms/ScrollProgress';
 import { Reveal } from '@/components/atoms/Reveal';
-import { webPageSchema, faqSchema, insightsItemListSchema } from '@/config/seo';
+import { webPageSchema, faqSchema, insightsItemListSchema, stateServiceAreasSchema } from '@/config/seo';
 import { insightsData, slugify } from '@/config/insightsData';
 
 /* Module-level flag — persists across SPA navigations, resets on full reload */
@@ -57,6 +57,7 @@ export default function GovernAI() {
     webPageSchema(),
     faqSchema(),
     insightsItemListSchema(insightsData, slugify),
+    stateServiceAreasSchema(),
   ];
 
   useEffect(() => {

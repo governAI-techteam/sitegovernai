@@ -112,6 +112,35 @@ export const SITE_KEYWORDS = [
   'AI policy framework India',
   'UKAS ISO 42001',
   'AI governance company',
+  // State-specific long-tail keywords
+  'AI governance Himachal Pradesh',
+  'AI governance Delhi',
+  'AI governance Punjab',
+  'AI governance Chandigarh',
+  'AI governance Bihar',
+  'AI governance Gujarat',
+  'AI governance Maharashtra',
+  'AI governance Karnataka',
+  'AI governance Telangana',
+  'AI governance Tamil Nadu',
+  'AI governance Rajasthan',
+  'AI governance Haryana',
+  'AI governance Uttar Pradesh',
+  'AI governance West Bengal',
+  'AI governance Jharkhand',
+  'AI training for government officials Delhi',
+  'AI training for IAS officers Shimla',
+  'AI compliance consulting Bengaluru',
+  'AI policy advisory Hyderabad',
+  'responsible AI training IIPA Delhi',
+  'AI governance MGSIPA Chandigarh',
+  'DPDP Act training AIIMS Patna',
+  'AI governance workshop Gujarat',
+  'ISO 42001 compliance India',
+  'AI governance consulting Delhi NCR',
+  'AI capacity building Himachal Pradesh',
+  'AI governance training Maharashtra',
+  'responsible AI workshop Kolkata',
 ];
 
 /* Reusable Organization JSON-LD (Knowledge Graph eligibility). */
@@ -157,7 +186,22 @@ export function organizationSchema() {
     },
     areaServed: [
       { '@type': 'Country', name: 'India' },
-      { '@type': 'Place', name: 'Global' },
+      { '@type': 'AdministrativeArea', name: 'Himachal Pradesh, India' },
+      { '@type': 'AdministrativeArea', name: 'Chandigarh, India' },
+      { '@type': 'AdministrativeArea', name: 'Punjab, India' },
+      { '@type': 'AdministrativeArea', name: 'Haryana, India' },
+      { '@type': 'AdministrativeArea', name: 'Delhi, India' },
+      { '@type': 'AdministrativeArea', name: 'Rajasthan, India' },
+      { '@type': 'AdministrativeArea', name: 'Uttar Pradesh, India' },
+      { '@type': 'AdministrativeArea', name: 'Bihar, India' },
+      { '@type': 'AdministrativeArea', name: 'Jharkhand, India' },
+      { '@type': 'AdministrativeArea', name: 'West Bengal, India' },
+      { '@type': 'AdministrativeArea', name: 'Gujarat, India' },
+      { '@type': 'AdministrativeArea', name: 'Maharashtra, India' },
+      { '@type': 'AdministrativeArea', name: 'Karnataka, India' },
+      { '@type': 'AdministrativeArea', name: 'Telangana, India' },
+      { '@type': 'AdministrativeArea', name: 'Tamil Nadu, India' },
+      { '@type': 'Country', name: 'Singapore' },
     ],
     knowsAbout: [
       'AI Governance',
@@ -246,6 +290,21 @@ export function professionalServiceSchema() {
     },
     areaServed: [
       { '@type': 'Country', name: 'India' },
+      { '@type': 'AdministrativeArea', name: 'Himachal Pradesh, India' },
+      { '@type': 'AdministrativeArea', name: 'Chandigarh, India' },
+      { '@type': 'AdministrativeArea', name: 'Punjab, India' },
+      { '@type': 'AdministrativeArea', name: 'Haryana, India' },
+      { '@type': 'AdministrativeArea', name: 'Delhi, India' },
+      { '@type': 'AdministrativeArea', name: 'Rajasthan, India' },
+      { '@type': 'AdministrativeArea', name: 'Uttar Pradesh, India' },
+      { '@type': 'AdministrativeArea', name: 'Bihar, India' },
+      { '@type': 'AdministrativeArea', name: 'Jharkhand, India' },
+      { '@type': 'AdministrativeArea', name: 'West Bengal, India' },
+      { '@type': 'AdministrativeArea', name: 'Gujarat, India' },
+      { '@type': 'AdministrativeArea', name: 'Maharashtra, India' },
+      { '@type': 'AdministrativeArea', name: 'Karnataka, India' },
+      { '@type': 'AdministrativeArea', name: 'Telangana, India' },
+      { '@type': 'AdministrativeArea', name: 'Tamil Nadu, India' },
       { '@type': 'Country', name: 'Singapore' },
     ],
     parentOrganization: { '@id': `${SITE_URL}/#organization` },
@@ -724,3 +783,152 @@ export function creativeWorkSchema(dev) {
     },
   };
 }
+
+/* ── State-specific service area schemas ──
+   Generates an ItemList of GovernAI's engagements across Indian states.
+   Each entry links to the state, institutions, and service types delivered.
+   This signals verified geographic presence to Google for local ranking. */
+export function stateServiceAreasSchema() {
+  const STATE_ENGAGEMENTS = [
+    {
+      state: 'Himachal Pradesh', stateCode: 'HP',
+      institutions: [
+        { name: 'MS-HIPA, Shimla', type: 'GovernmentOrganization', service: 'AI Governance Capacity Building' },
+        { name: 'SIRD&PR, Himachal Pradesh', type: 'GovernmentOrganization', service: 'AI Governance Training' },
+        { name: 'Government of Himachal Pradesh — AI Working Group', type: 'GovernmentOrganization', service: 'AI Policy Advisory' },
+      ],
+    },
+    {
+      state: 'Chandigarh', stateCode: 'CH',
+      institutions: [
+        { name: 'MGSIPA, Chandigarh', type: 'GovernmentOrganization', service: 'AI Literacy & Governance Training' },
+        { name: 'Chandigarh University', type: 'EducationalOrganization', service: 'AI Governance Academic Program' },
+      ],
+    },
+    {
+      state: 'Punjab', stateCode: 'PB',
+      institutions: [
+        { name: 'Dept. of Technical Education & Training, Punjab', type: 'GovernmentOrganization', service: 'AI Governance Training' },
+        { name: 'C-DAC Mohali', type: 'GovernmentOrganization', service: 'Data Governance & Responsible AI' },
+        { name: 'MGSIPA', type: 'GovernmentOrganization', service: 'AI Introduction for Government Officers' },
+      ],
+    },
+    {
+      state: 'Haryana', stateCode: 'HR',
+      institutions: [
+        { name: 'OP Jindal Global University', type: 'EducationalOrganization', service: 'AI Policy & Governance Session' },
+      ],
+    },
+    {
+      state: 'Delhi', stateCode: 'DL',
+      institutions: [
+        { name: 'Indian Institute of Public Administration (IIPA)', type: 'GovernmentOrganization', service: 'Responsible AI Workshop for Senior Officials' },
+        { name: 'NIEPA, Ministry of Education', type: 'GovernmentOrganization', service: 'AI in Administrative Efficiency' },
+        { name: 'National Law University, Delhi', type: 'EducationalOrganization', service: 'AI Governance & Law Sessions' },
+        { name: 'Jawaharlal Nehru University (JNU)', type: 'EducationalOrganization', service: 'AI Research Ethics' },
+        { name: 'National CPWD Academy', type: 'GovernmentOrganization', service: 'AI for Public Service Delivery' },
+      ],
+    },
+    {
+      state: 'Rajasthan', stateCode: 'RJ',
+      institutions: [
+        { name: 'ICFAI Jaipur', type: 'EducationalOrganization', service: 'AI Governance Panel Discussion' },
+        { name: 'National Law University, Jodhpur', type: 'EducationalOrganization', service: 'AI & Law Session' },
+      ],
+    },
+    {
+      state: 'Uttar Pradesh', stateCode: 'UP',
+      institutions: [
+        { name: 'UP Skill Development Mission', type: 'GovernmentOrganization', service: 'AI Capacity Building' },
+      ],
+    },
+    {
+      state: 'Bihar', stateCode: 'BR',
+      institutions: [
+        { name: 'AIIMS Patna', type: 'MedicalOrganization', service: 'DPDP Act & Responsible AI in Healthcare' },
+      ],
+    },
+    {
+      state: 'Jharkhand', stateCode: 'JH',
+      institutions: [
+        { name: 'NUSRL Ranchi', type: 'EducationalOrganization', service: 'AI Governance & Law' },
+      ],
+    },
+    {
+      state: 'West Bengal', stateCode: 'WB',
+      institutions: [
+        { name: 'UEM Kolkata', type: 'EducationalOrganization', service: 'AI Governance Workshop' },
+      ],
+    },
+    {
+      state: 'Gujarat', stateCode: 'GJ',
+      institutions: [
+        { name: 'Gujarat National Law University', type: 'EducationalOrganization', service: 'TEDx Talk on AI Governance' },
+        { name: 'Dhirubhai Ambani University', type: 'EducationalOrganization', service: 'AI Governance Session' },
+      ],
+    },
+    {
+      state: 'Maharashtra', stateCode: 'MH',
+      institutions: [
+        { name: 'DY Patil University, School of Law', type: 'EducationalOrganization', service: 'Centre for AI & Law Partnership' },
+      ],
+    },
+    {
+      state: 'Karnataka', stateCode: 'KA',
+      institutions: [
+        { name: 'IISc Bengaluru', type: 'EducationalOrganization', service: 'AI Governance Research Engagement' },
+        { name: 'Swissnex India, Consulate General of Switzerland, Bengaluru', type: 'GovernmentOrganization', service: 'International AI Governance Dialogue' },
+      ],
+    },
+    {
+      state: 'Telangana', stateCode: 'TS',
+      institutions: [
+        { name: 'ISB Hyderabad', type: 'EducationalOrganization', service: 'Agristack AI Governance Consultation' },
+      ],
+    },
+    {
+      state: 'Tamil Nadu', stateCode: 'TN',
+      institutions: [
+        { name: "AI Legislators' Forum (AILF)", type: 'GovernmentOrganization', service: 'AI Governance Workshop for Legislators' },
+      ],
+    },
+  ];
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    '@id': `${SITE_URL}/#state-service-areas`,
+    name: 'GovernAI — State-wise AI Governance Engagements Across India',
+    description:
+      'GovernAI delivers AI governance capacity building, ISO/IEC 42001 compliance auditing, and responsible AI policy advisory across 15 Indian states and union territories, engaging 20+ premier institutions.',
+    numberOfItems: STATE_ENGAGEMENTS.length,
+    itemListElement: STATE_ENGAGEMENTS.map((s, idx) => ({
+      '@type': 'ListItem',
+      position: idx + 1,
+      item: {
+        '@type': 'Service',
+        '@id': `${SITE_URL}/#service-area-${s.stateCode}`,
+        name: `AI Governance Services — ${s.state}`,
+        description: `GovernAI's AI governance capacity building, compliance auditing, and policy advisory engagements in ${s.state}, India.`,
+        provider: { '@id': `${SITE_URL}/#organization` },
+        areaServed: { '@type': 'AdministrativeArea', name: `${s.state}, India` },
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name: `AI Governance Engagements in ${s.state}`,
+          itemListElement: s.institutions.map((inst) => ({
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: inst.service,
+              provider: { '@id': `${SITE_URL}/#organization` },
+              serviceOutput: { '@type': 'CreativeWork', name: `${inst.service} at ${inst.name}` },
+              areaServed: { '@type': 'AdministrativeArea', name: `${s.state}, India` },
+            },
+            offeredBy: { '@type': inst.type, name: inst.name },
+          })),
+        },
+      },
+    })),
+  };
+}
+
