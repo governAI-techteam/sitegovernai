@@ -334,7 +334,7 @@ export function Footer() {
             }}>
                 Built by{' '}
               <a
-                href="https://divyakush2006.github.io/divyakush-resume/"
+                href="https://www.divyakush.com/"
                 target="_blank"
                 rel="me noopener"
                 style={{
