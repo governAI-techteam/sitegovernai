@@ -25,6 +25,7 @@ const JOURNEY = [
   { id: 'JH', label: 'JH', fullName: 'Jharkhand', c: [5900, 4400] },
   { id: 'WB', label: 'WB', fullName: 'West Bengal', c: [6851, 4351] },
   { id: 'GJ', label: 'GJ', fullName: 'Gujarat', c: [1163, 4770] },
+  { id: 'MP', label: 'MP', fullName: 'Madhya Pradesh', c: [3415, 4329] },
   { id: 'MH', label: 'MH', fullName: 'Maharashtra', c: [2841, 5804] },
   { id: 'KA', label: 'KA', fullName: 'Karnataka', c: [2858, 7314] },
   { id: 'TS', label: 'TG', fullName: 'Telangana', c: [3757, 6394] },
@@ -59,6 +60,9 @@ const INSTITUTIONS = {
   ],
   UP: [
     { name: 'UP Skill Development Mission', cat: 'Government' },
+  ],
+  MP: [
+    { name: 'Oriental Institute of Science and Technology, Bhopal', cat: 'Academia' },
   ],
   MH: [
     { name: 'DY Patil University (School of Law)', cat: 'Academia' },
@@ -107,9 +111,9 @@ export default function IndiaConquestMap() {
     []
   );
 
-  const officials = 2500;
-  const institutions = 20;
-  const statesCount = 10;
+  const officials = 3500;
+  const institutions = 21;
+  const statesCount = 16;
 
   // hover panel placement
   const hov = finished && hovered ? BY_ID[hovered] : null;
