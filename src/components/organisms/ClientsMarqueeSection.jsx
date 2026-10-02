@@ -39,9 +39,9 @@ const CLIENT_GROUPS = [
 ];
 
 const STATS = [
-  { value: "2500+", label: "Officials Trained" },
+  { value: "3500+", label: "Officials Trained" },
   { value: "20+", label: "Institutions" },
-  { value: "10+", label: "States & UTs" },
+  { value: "16+", label: "States & UTs" },
 ];
 
 const ORANGE = tokens.primary || "#FF9D52";

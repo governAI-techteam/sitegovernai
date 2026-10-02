@@ -48,9 +48,9 @@ const CONTACT_CARDS = [
 ];
 
 const TRUST = [
-  { value: '2500+', label: 'Officials Trained' },
+  { value: '3500+', label: 'Officials Trained' },
   { value: '20+', label: 'Institutions' },
-  { value: '10+', label: 'States & UTs' },
+  { value: '16+', label: 'States & UTs' },
 ];
 
 function Field({ label, children, required }) {

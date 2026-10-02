@@ -727,7 +727,7 @@ export const FAQS = [
   },
   {
     q: 'Who does GovernAI work with?',
-    a: 'GovernAI partners with government bodies, universities, research institutions, and enterprises. We have trained 2000+ officials across 5+ states and engaged 20+ institutions across India.',
+    a: 'GovernAI partners with government bodies, universities, research institutions, and enterprises. We have trained 3500+ officials across 16+ states and engaged 20+ institutions across India.',
   },
   {
     q: 'How can I contact GovernAI?',
@@ -1080,7 +1080,7 @@ export function trustBackboneSchema() {
         {
           '@type': 'PropertyValue',
           name: 'Government Officials Trained',
-          value: '2000+',
+          value: '3500+',
           unitText: 'persons',
           description: 'Senior government officials (IAS, IPS, IFS cadres) trained in AI governance, responsible AI, and compliance frameworks.',
         },
