@@ -3,15 +3,15 @@
 import { useState } from 'react';
 
 function toWebpSrc(src) {
-  if (!src) return null;
+  if (!src || src.startsWith('data:') || src.endsWith('.svg')) return null;
   const ext = src.lastIndexOf('.');
   if (ext === -1) return null;
   return src.slice(0, ext) + '.webp';
 }
 
-export function SafeImage({ src, alt, className, style, width, height, loading = 'lazy', fetchPriority, onError, ...rest }) {
+export function SafeImage({ src, alt, className, style, width, height, loading = 'lazy', fetchPriority, disableWebp = false, onError, ...rest }) {
   const [fallback, setFallback] = useState(false);
-  const webpSrc = toWebpSrc(src);
+  const webpSrc = !disableWebp ? toWebpSrc(src) : null;
 
   return (
     <picture>
@@ -29,8 +29,9 @@ export function SafeImage({ src, alt, className, style, width, height, loading =
         fetchPriority={fetchPriority}
         decoding="async"
         onError={(e) => {
-          if (!fallback) {
+          if (webpSrc && !fallback) {
             setFallback(true);
+            return;
           }
           if (onError) onError(e);
         }}

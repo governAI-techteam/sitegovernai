@@ -15,6 +15,7 @@ import ImageCard from '@/components/molecules/ImageCard';
 import { FAQSection } from '@/components/organisms/FAQSection';
 import { Footer } from '@/components/organisms/Footer';
 import { Preloader } from '@/components/molecules/Preloader';
+import { EventModal } from '@/components/organisms/EventModal';
 import { ScrollProgress } from '@/components/atoms/ScrollProgress';
 import { Reveal } from '@/components/atoms/Reveal';
 import { webPageSchema, faqSchema, insightsItemListSchema, stateServiceAreasSchema } from '@/config/seo';
@@ -74,6 +75,7 @@ export default function GovernAI() {
       <ScrollProgress />
 
       <NavBar activeSection={activeSection} />
+      <EventModal />
 
       <main id="main-content" role="main">
         {/* 1. Hero */}

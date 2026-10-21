@@ -367,10 +367,14 @@ const styles = {
     position: "relative",
     zIndex: 1,
     width: "100%",
+    maxWidth: "1280px",
+    margin: "clamp(48px, 6vw, 80px) auto 0",
+    paddingLeft: "24px",
+    paddingRight: "24px",
+    boxSizing: "border-box",
     display: "flex",
     flexDirection: "column",
     gap: "clamp(40px, 5vw, 64px)",
-    marginTop: "clamp(48px, 6vw, 80px)",
   },
 
   rowGroup: {
@@ -381,10 +385,7 @@ const styles = {
 
   groupLabelWrap: {
     width: "100%",
-    maxWidth: "1500px",
     margin: "0 auto",
-    paddingLeft: "clamp(20px, 6vw, 80px)",
-    paddingRight: "clamp(20px, 6vw, 80px)",
     boxSizing: "border-box",
     display: "flex",
     alignItems: "center",
@@ -424,10 +425,11 @@ const styles = {
     position: "relative",
     overflow: "hidden",
     width: "100%",
+    maxWidth: "100%",
     maskImage:
-      "linear-gradient(to right, transparent, black 12%, black 88%, transparent)",
+      "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
     WebkitMaskImage:
-      "linear-gradient(to right, transparent, black 12%, black 88%, transparent)",
+      "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
   },
 
   marqueeWrapper: {

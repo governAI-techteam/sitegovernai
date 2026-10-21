@@ -69,12 +69,12 @@ export default function InsightsCarouselSection() {
     resumeAutoplay();
   };
 
-  /* ── Layout values — mobile vs desktop ── */
-  const slideWidth = isMobile ? '85%' : '56%';
-  const slideOffset = isMobile ? '7.5%' : '22%';
-  const slideGap = isMobile ? '12px' : 'clamp(12px, 1.5vw, 24px)';
-  const slideAspect = isMobile ? '4 / 3' : '16 / 11';
-  const slideRadius = isMobile ? 18 : 29;
+  /* ── Layout values — mobile vs desktop (harmonized within 1280px container) ── */
+  const slideWidth = isMobile ? '85%' : '68%';
+  const slideOffset = isMobile ? '7.5%' : '16%';
+  const slideGap = isMobile ? '12px' : '20px';
+  const slideAspect = isMobile ? '4 / 3' : '16 / 9';
+  const slideRadius = isMobile ? 18 : 24;
 
   return (
     <div
@@ -101,7 +101,7 @@ export default function InsightsCarouselSection() {
           maxWidth: 760,
           margin: '0 auto',
           padding: isMobile ? '0 20px' : '0 24px',
-          marginBottom: isMobile ? '28px' : 'clamp(40px, 5vw, 72px)',
+          marginBottom: isMobile ? '28px' : 'clamp(36px, 4vw, 56px)',
         }}
       >
         <div style={{
@@ -119,12 +119,12 @@ export default function InsightsCarouselSection() {
         </div>
         <h2 id="insights-heading" style={{
           fontFamily: tokens.fonts.display,
-          fontSize: isMobile ? '24px' : 'clamp(28px, 4vw, 50px)',
+          fontSize: isMobile ? '24px' : 'clamp(28px, 4vw, 48px)',
           fontWeight: 800,
           color: tokens.onSurface,
-          lineHeight: 1.06,
+          lineHeight: 1.08,
           letterSpacing: '-0.04em',
-          margin: '0 0 16px',
+          margin: '0 0 14px',
         }}>
           Recognized for Our Pioneering Work in{' '}
           <span style={{
@@ -135,7 +135,7 @@ export default function InsightsCarouselSection() {
           }}>AI Governance</span>
         </h2>
         <p style={{
-          fontSize: isMobile ? '14px' : 'clamp(15px, 1.2vw, 18px)',
+          fontSize: isMobile ? '14px' : 'clamp(14px, 1.2vw, 17px)',
           color: tokens.secondary,
           lineHeight: 1.65,
           maxWidth: 540,
@@ -146,10 +146,16 @@ export default function InsightsCarouselSection() {
         </p>
       </motion.div>
 
-      {/* Carousel */}
+      {/* Carousel — constrained to 1280px container for full-page visual harmony */}
       <div
         ref={trackRef}
-        style={{ position: 'relative', overflow: 'hidden', zIndex: 1 }}
+        style={{
+          position: 'relative',
+          overflow: 'hidden',
+          zIndex: 1,
+          maxWidth: 1280,
+          margin: '0 auto',
+        }}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
@@ -181,6 +187,7 @@ export default function InsightsCarouselSection() {
                   flex: `0 0 ${slideWidth}`,
                   position: 'relative',
                   aspectRatio: slideAspect,
+                  maxHeight: isMobile ? undefined : 480,
                   overflow: 'hidden',
                   borderRadius: slideRadius,
                   background: '#1a1a1a',
@@ -192,7 +199,7 @@ export default function InsightsCarouselSection() {
                   boxShadow: isActive
                     ? isMobile
                       ? '0 20px 50px rgba(16,24,40,0.24), 0 8px 20px rgba(241,106,36,0.1)'
-                      : '0 30px 70px rgba(16,24,40,0.28), 0 12px 28px rgba(241,106,36,0.12)'
+                      : '0 24px 56px rgba(16,24,40,0.24), 0 10px 24px rgba(241,106,36,0.1)'
                     : '0 12px 32px rgba(16,24,40,0.12)',
                 }}
               >
@@ -201,6 +208,7 @@ export default function InsightsCarouselSection() {
                   src={item.image}
                   alt=""
                   aria-hidden="true"
+                  disableWebp={item.image?.startsWith('/assets/img/')}
                   loading={i < 3 ? 'eager' : 'lazy'}
                   style={{
                     position: 'absolute',
@@ -218,6 +226,7 @@ export default function InsightsCarouselSection() {
                 <SafeImage
                   src={item.image}
                   alt={item.title}
+                  disableWebp={item.image?.startsWith('/assets/img/')}
                   loading={i < 3 ? 'eager' : 'lazy'}
                   style={{
                     position: 'absolute',
@@ -329,7 +338,8 @@ export default function InsightsCarouselSection() {
         alignItems: 'center',
         justifyContent: 'space-between',
         gap: 0,
-        width: isMobile ? '85%' : '56%',
+        width: isMobile ? '85%' : '68%',
+        maxWidth: isMobile ? undefined : 870,
         margin: isMobile ? '40px auto 0' : 'clamp(28px, 3.5vw, 48px) auto 0',
       }}>
         {/* Prev */}
@@ -371,7 +381,7 @@ export default function InsightsCarouselSection() {
           }}
         >
           {(() => {
-            const maxVisible = isMobile ? 9 : total;
+            const maxVisible = isMobile ? 9 : 19;
             const window = getDotWindow(current, total, maxVisible);
             const first = window[0];
             const last = window[window.length - 1];

@@ -55,8 +55,8 @@ export function LandingSection({ sectionRefs }) {
         overflow: 'hidden',
         padding: isMobile
           ? 'calc(env(safe-area-inset-top, 0px) + 92px) 22px 48px'
-          : 'clamp(60px, 8vh, 100px) 24px clamp(40px, 5vh, 70px)',
-        minHeight: '100vh',
+          : '128px 24px 72px',
+        minHeight: isMobile ? '100svh' : 'auto',
         display: 'flex',
         alignItems: isMobile ? 'flex-start' : 'center',
       }}
@@ -278,7 +278,7 @@ export function LandingSection({ sectionRefs }) {
               position: 'relative',
             }}
           >
-            <div style={{ position: 'relative', zIndex: 4, maxWidth: 'min(100%, 70vh)', margin: '0 0 0 auto' }}>
+            <div style={{ position: 'relative', zIndex: 4, maxWidth: 560, margin: '0 0 0 auto' }}>
               <IndiaConquestMap />
             </div>
           </motion.div>
