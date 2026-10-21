@@ -221,7 +221,7 @@ export function organizationSchema() {
       { '@id': `${SITE_URL}/#founder` },
       { '@id': `${SITE_URL}/#person-alvin-antony` },
       { '@id': `${SITE_URL}/#person-utso-guha-roy` },
-      { '@id': `${SITE_URL}/#person-anubhav-sharma` },
+      { '@id': `${SITE_URL}/#person-prabhakar-deep-tirkey` },
       { '@id': `${SITE_URL}/#person-himanshu-kalia` },
       { '@id': `${SITE_URL}/#person-preekshit-singh` },
     ],
@@ -442,13 +442,13 @@ export function teamSchema() {
       knowsAbout: ['AI in Healthcare', 'Digital Pathology', 'Responsible AI'],
     },
     {
-      id: 'anubhav-sharma',
-      name: 'Anubhav Sharma',
-      jobTitle: 'Technical & Security Lead',
-      image: '/assets/img/Team/team_anubhav.jpeg',
+      id: 'prabhakar-deep-tirkey',
+      name: 'Prabhakar Deep Tirkey',
+      jobTitle: 'AI Safety Engineer',
+      image: '/assets/img/Team/team_prabhakar.png',
       description:
-        'Information security architect specializing in security methodologies, compliance frameworks, risk assessment, and audit engagements. Leads technical infrastructure and cybersecurity initiatives.',
-      knowsAbout: ['DevSecOps', 'Cloud Security', 'Cybersecurity'],
+        'Interdisciplinary AI practitioner with an MSc in Cognitive Science from IIT Delhi and a foundation in Mathematics and Computer Science. Specializes in human-centered AI safety, cognitive model evaluation, computer vision, and immersive AI training systems.',
+      knowsAbout: ['AI Safety', 'Cognitive Science', 'Human-Centered AI', 'Computer Vision', 'Immersive Training Systems'],
     },
     {
       id: 'himanshu-kalia',

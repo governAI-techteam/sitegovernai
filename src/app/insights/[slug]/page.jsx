@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { SafeImage } from '@/components/atoms/SafeImage';
 import { insightsData, getInsightBySlug, slugify } from '@/config/insightsData';
 import { SITE_URL, articleSchema, breadcrumbSchema, eventSchema } from '@/config/seo';
@@ -85,11 +86,11 @@ export default async function InsightPage({ params }) {
         <nav aria-label="Breadcrumb" style={{ marginBottom: 32, fontSize: 13, color: '#888' }}>
           <ol style={{ listStyle: 'none', display: 'flex', gap: 8, padding: 0, margin: 0 }}>
             <li>
-              <a href="/" style={{ color: '#f16a24', textDecoration: 'none' }}>Home</a>
+              <Link href="/" style={{ color: '#f16a24', textDecoration: 'none' }}>Home</Link>
               <span style={{ marginLeft: 8 }}>/</span>
             </li>
             <li>
-              <a href="/#insights" style={{ color: '#f16a24', textDecoration: 'none' }}>Insights</a>
+              <Link href="/#insights" style={{ color: '#f16a24', textDecoration: 'none' }}>Insights</Link>
               <span style={{ marginLeft: 8 }}>/</span>
             </li>
             <li style={{ color: '#555', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: 300 }}>
@@ -138,6 +139,7 @@ export default async function InsightPage({ params }) {
         <SafeImage
           src={insight.image}
           alt={insight.title}
+          disableWebp={insight.image?.startsWith('/assets/img/')}
           fetchPriority="high"
           loading="eager"
           width={800}

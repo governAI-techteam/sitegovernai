@@ -44,12 +44,12 @@ const teamMembers = [
       'Clinical AI specialist leading healthcare verification initiatives, AI-driven healthcare solutions, and curriculum development. Focused on bridging advanced artificial intelligence with real-world healthcare applications and innovation.',
   },
   {
-    name: 'Anubhav Sharma',
-    role: 'Technical & Security Lead',
-    image: '/assets/img/Team/team_anubhav.jpeg',
-    linkedin: 'https://www.linkedin.com/in/infrabyanubhav/',
+    name: 'Prabhakar Deep Tirkey',
+    role: 'AI Safety Engineer',
+    image: '/assets/img/Team/team_prabhakar.png',
+    linkedin: 'https://www.linkedin.com/in/prabhakar-deep/',
     description:
-      'Information security architect specializing in security methodologies, compliance frameworks, risk assessment, and Tier 2 and Tier 3 audit engagements. Leads the organization\'s technical infrastructure and cybersecurity initiatives.',
+      'Interdisciplinary AI practitioner with an MSc in Cognitive Science from IIT Delhi and a foundation in Mathematics and Computer Science. Specializes in human-centered AI safety, cognitive model evaluation, computer vision, and immersive AI training systems.',
   },
   {
     name: 'Dr. Himanshu Kalia',

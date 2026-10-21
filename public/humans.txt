@@ -19,9 +19,9 @@ AI & Healthcare Lead: Dr. Utso Guha Roy
 Role: AI & Healthcare Lead
 Expertise: Digital Pathology, AI in Healthcare
 
-Technical & Security Lead: Anubhav Sharma
-Role: Technical & Security Lead
-Expertise: DevSecOps, Cloud Security, Cybersecurity
+AI Safety Engineer: Prabhakar Deep Tirkey
+Role: AI Safety Engineer
+Expertise: AI Safety, Cognitive Science, Computer Vision
 
 AI & Healthcare Consultant: Dr. Himanshu Kalia
 Role: Scientific Officer, IIT DRISHTI CPS

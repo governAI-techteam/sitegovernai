@@ -12,6 +12,36 @@ export function getInsightBySlug(slug) {
 
 export const insightsData = [
   {
+    id: 'digital-unga-india-affiliate-session',
+    image: '/assets/img/unga/unga_1.jpg',
+    title: 'ITU & UNDP Digital@UNGA India Affiliate Session',
+    description: 'GovernAI collaborated as Supporting Partner alongside Wasabi AI, the Royal Norwegian Embassy in New Delhi, Mosaika Impact, and Manus AI to convene the official ITU & UNDP Digital@UNGA India Affiliate Session: AI for Inclusion: From Access to Opportunity.',
+    content: `GovernAI collaborated as a Supporting Partner alongside Wasabi AI, the Royal Norwegian Embassy in New Delhi, Mosaika Impact, and Manus AI to convene the official International Telecommunication Union (ITU) & UNDP Digital@UNGA India Affiliate Session: "AI for Inclusion: From Access to Opportunity" (🇮🇳🇳🇴).
+
+Hosted at the Royal Norwegian Embassy in New Delhi, the high-level dialogue brought together diplomats, policymakers, technologists, and builders to explore how we move from basic AI access to true human and institutional agency.
+
+The convening addressed actionable AI governance architectures, sovereign safety standards, and practical frameworks for bridging technological divides. Discussions emphasized transitioning from passive technology consumption to active capacity building, independent algorithmic verification, and institutional empowerment across global and emerging ecosystems.
+
+GovernAI shared practical insights on operationalizing AI governance, contextual risk audits, and designing compliance benchmarks that safeguard public trust without hindering rapid technological progress.`,
+    location: 'Royal Norwegian Embassy, New Delhi',
+    datePublished: '2024-09-24',
+    author: 'Parishrut Jassal',
+  },
+  {
+    id: 'mou-telemedicine-society-of-india',
+    image: '/assets/img/tsi/tsi_mou_1.jpg',
+    title: 'MoU Signing with Telemedicine Society of India',
+    description: 'GovernAI signed a landmark strategic MoU with the Telemedicine Society of India (TSI) to advance AI safety, clinical validation benchmarks, and responsible healthcare governance protocols.',
+    content: `GovernAI entered into a landmark strategic Memorandum of Understanding (MoU) with the Telemedicine Society of India (TSI). The strategic partnership establishes a robust collaborative framework to accelerate responsible AI adoption, clinical safety validation, and systematic algorithmic governance across India's digital healthcare ecosystem.
+
+Through this alliance, GovernAI and the Telemedicine Society of India (led by distinguished pioneers including TSI President Dr. Murthy Remilla) are spearheading the creation of rigorous validation benchmarks for medical AI models, ethical data governance protocols under India's Digital Personal Data Protection (DPDP) Act, and specialized clinical AI safety training programs for practitioners and hospital administrations.
+
+The collaboration represents a major milestone in anchoring safety, accountability, and clinical reliability at the core of AI-driven healthcare delivery, ensuring advanced medical intelligence serves clinicians and patients with verifiable integrity.`,
+    location: 'New Delhi',
+    datePublished: '2024-08-23',
+    author: 'Parishrut Jassal',
+  },
+  {
     id: 1,
     image: '/insights/3.jpeg',
     title: 'Panel on Responsible AI',
