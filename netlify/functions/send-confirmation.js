@@ -1,5 +1,5 @@
-const nodemailer = require('nodemailer');
-const crypto = require('crypto');
+import nodemailer from 'nodemailer';
+import crypto from 'node:crypto';
 
 function escapeHtml(str) {
   if (typeof str !== 'string') return '';
@@ -11,7 +11,7 @@ function escapeHtml(str) {
     .replace(/'/g, '&#39;');
 }
 
-exports.handler = async (event) => {
+export const handler = async (event) => {
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
