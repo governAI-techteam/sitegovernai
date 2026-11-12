@@ -21,7 +21,7 @@ export function ResearchPreviewSection() {
       aria-labelledby="research-heading"
       style={{
         background: 'linear-gradient(180deg, #ffffff 0%, #f7f9fb 50%, #ffffff 100%)',
-        padding: isMobile ? '56px 0' : 'clamp(80px, 7vw, 110px) 0',
+        padding: isMobile ? '48px 0' : '48px 0 52px',
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -42,7 +42,7 @@ export function ResearchPreviewSection() {
           style={{
             textAlign: 'center',
             maxWidth: 820,
-            margin: '0 auto 48px auto',
+            margin: '0 auto 24px auto',
           }}
         >
           {/* Eyebrow badge */}
@@ -51,7 +51,7 @@ export function ResearchPreviewSection() {
               display: 'inline-flex',
               alignItems: 'center',
               gap: 12,
-              marginBottom: 16,
+              marginBottom: 10,
             }}
           >
             <span
@@ -90,12 +90,12 @@ export function ResearchPreviewSection() {
             id="research-heading"
             style={{
               fontFamily: tokens.fonts.display,
-              fontSize: isMobile ? '28px' : 'clamp(32px, 3.8vw, 46px)',
+              fontSize: isMobile ? '26px' : 'clamp(28px, 3vw, 38px)',
               fontWeight: 800,
               color: tokens.onSurface,
               lineHeight: 1.15,
               letterSpacing: '-0.035em',
-              margin: '0 0 16px 0',
+              margin: '0 0 8px 0',
             }}
           >
             National AI Frameworks,{' '}
@@ -113,9 +113,9 @@ export function ResearchPreviewSection() {
 
           <p
             style={{
-              fontSize: isMobile ? '15px' : '17px',
+              fontSize: isMobile ? '14px' : '15px',
               color: tokens.secondary,
-              lineHeight: 1.65,
+              lineHeight: 1.55,
               fontFamily: tokens.fonts.body,
               margin: 0,
             }}
@@ -129,8 +129,8 @@ export function ResearchPreviewSection() {
           style={{
             display: 'grid',
             gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
-            gap: isMobile ? '20px' : '26px',
-            marginBottom: 44,
+            gap: isMobile ? '16px' : '22px',
+            marginBottom: 24,
           }}
         >
           {featuredPublications.map((pub, idx) => {
@@ -180,7 +180,7 @@ export function ResearchPreviewSection() {
                     style={{
                       position: 'relative',
                       width: '100%',
-                      height: 165,
+                      height: isMobile ? 140 : 118,
                       background: '#f8fafc',
                       overflow: 'hidden',
                       borderBottom: '1px solid rgba(0, 0, 0, 0.05)',
@@ -232,7 +232,7 @@ export function ResearchPreviewSection() {
 
                 <div
                   style={{
-                    padding: isMobile ? '22px 18px' : '26px 24px',
+                    padding: isMobile ? '18px 16px' : '18px 20px',
                     display: 'flex',
                     flexDirection: 'column',
                     flex: 1,
@@ -244,7 +244,7 @@ export function ResearchPreviewSection() {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
-                      marginBottom: 16,
+                      marginBottom: 10,
                     }}
                   >
                     <span
@@ -298,12 +298,16 @@ export function ResearchPreviewSection() {
                   <h3
                     style={{
                       fontFamily: tokens.fonts.display,
-                      fontSize: isMobile ? '20px' : '22px',
+                      fontSize: isMobile ? '17px' : '18px',
                       fontWeight: 700,
                       color: tokens.onSurface,
                       lineHeight: 1.25,
                       letterSpacing: '-0.025em',
-                      margin: '0 0 8px 0',
+                      margin: '0 0 6px 0',
+                      display: '-webkit-box',
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: 'vertical',
+                      overflow: 'hidden',
                     }}
                   >
                     {isExternal ? (
@@ -335,12 +339,15 @@ export function ResearchPreviewSection() {
                   {pub.subtitle && (
                     <div
                       style={{
-                        fontSize: '13px',
+                        fontSize: '12px',
                         fontWeight: 600,
                         color: tokens.primary,
-                        marginBottom: 12,
+                        marginBottom: 8,
                         lineHeight: 1.4,
                         fontFamily: tokens.fonts.body,
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
                       }}
                     >
                       {pub.subtitle}
@@ -350,12 +357,15 @@ export function ResearchPreviewSection() {
                   {/* Description / Snippet */}
                   <p
                     style={{
-                      fontSize: '14px',
+                      fontSize: '13px',
                       color: tokens.secondary,
-                      lineHeight: 1.6,
+                      lineHeight: 1.5,
                       fontFamily: tokens.fonts.body,
-                      margin: '0 0 20px 0',
-                      flex: 1,
+                      margin: '0 0 12px 0',
+                      display: '-webkit-box',
+                      WebkitLineClamp: 3,
+                      WebkitBoxOrient: 'vertical',
+                      overflow: 'hidden',
                     }}
                   >
                     {pub.description}
@@ -368,7 +378,7 @@ export function ResearchPreviewSection() {
                         display: 'flex',
                         flexWrap: 'wrap',
                         gap: 6,
-                        marginBottom: 24,
+                        marginBottom: 14,
                       }}
                     >
                       {pub.tags.slice(0, 3).map((tag) => (
