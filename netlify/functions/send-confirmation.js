@@ -200,7 +200,7 @@ contact@governai.info
 https://www.governai.info
 `;
 
-    const smtpHost = process.env.SMTP_HOST || 'smtp.gmail.com';
+    const smtpHost = process.env.SMTP_HOST;
     const smtpPort = Number(process.env.SMTP_PORT) || 465;
     const smtpUser = process.env.SMTP_USER || 'contact@governai.info';
     const smtpPass = process.env.SMTP_PASS;

@@ -79,6 +79,7 @@ export const handler = async (event) => {
         currency: order.currency,
         id: order.id,
         receipt: order.receipt,
+        key_id: keyId,
       }),
     };
   } catch (error) {

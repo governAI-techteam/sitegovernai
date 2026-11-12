@@ -141,7 +141,7 @@ export function OfficeHoursView() {
 
       // Step 2: Open Razorpay modal with order_id
       const razorpayKey =
-        process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || 'rzp_test_Tz6dxJo25RNmdk';
+        orderData.key_id || process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID;
 
       const options = {
         key: razorpayKey,
