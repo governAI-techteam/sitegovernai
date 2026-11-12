@@ -226,7 +226,7 @@ export function InsightsArchiveView({ initialItems = [] }) {
                 onClick={() => setSelectedCategory(cat.id)}
                 style={{
                   padding: isMobile ? '8px 14px' : '9px 18px',
-                  borderRadius: 100,
+                  borderRadius: 6,
                   border: isSelected
                     ? '1.5px solid #f16a24'
                     : '1px solid rgba(0,0,0,0.08)',
@@ -447,7 +447,7 @@ export function InsightsArchiveView({ initialItems = [] }) {
                           alignItems: 'center',
                           gap: 6,
                           padding: '3px 9px',
-                          borderRadius: 100,
+                          borderRadius: 4,
                           fontSize: 11,
                           fontWeight: 700,
                           letterSpacing: '0.04em',

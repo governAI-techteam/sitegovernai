@@ -8,10 +8,9 @@ import { tokens } from '@/theme/tokens';
 import { AnnouncementBanner } from '@/components/organisms/AnnouncementBanner';
 
 const LINKS = [
-  { label: 'Domains', href: '/#domains' },
   { label: 'Footprints', href: '/#platform' },
-  { label: 'Research', href: '/insights/' },
-  { label: 'Moments', href: '/#insights' },
+  { label: 'Domains', href: '/#domains' },
+  { label: 'Insights', href: '/insights/' },
   { label: 'Team', href: '/#team' },
 ];
 

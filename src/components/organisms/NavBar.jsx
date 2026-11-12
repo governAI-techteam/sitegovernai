@@ -35,10 +35,14 @@ export function NavBar({ activeSection }) {
     return () => { document.body.style.overflow = prevOverflow; };
   }, [mobileOpen]);
 
-  const handleNav = useCallback((id) => {
-    scrollTo(id);
+  const handleNav = useCallback((item) => {
+    if (item.href) {
+      router.push(item.href);
+    } else {
+      scrollTo(item.sectionId);
+    }
     setMobileOpen(false);
-  }, [scrollTo]);
+  }, [router, scrollTo]);
 
   return (
     <>
@@ -114,7 +118,7 @@ export function NavBar({ activeSection }) {
                 return (
                   <motion.button
                     key={item.sectionId}
-                    onClick={() => handleNav(item.sectionId)}
+                    onClick={() => handleNav(item)}
                     style={{
                       position: 'relative',
                       padding: '8px 22px',
@@ -323,7 +327,7 @@ export function NavBar({ activeSection }) {
                     initial={{ opacity: 0, x: 30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.06, duration: 0.35 }}
-                    onClick={() => handleNav(item.sectionId)}
+                    onClick={() => handleNav(item)}
                     style={{
                       padding: '18px 20px',
                       border: 'none',

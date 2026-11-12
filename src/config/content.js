@@ -1,7 +1,7 @@
 export const NAV_ITEMS = [
   { label: 'Footprints', sectionId: 'platform' },
   { label: 'Domains', sectionId: 'domains' },
-  { label: 'Insights', sectionId: 'insights' },
+  { label: 'Insights', sectionId: 'insights', href: '/insights/' },
   { label: 'Team', sectionId: 'team' },
 ];
 

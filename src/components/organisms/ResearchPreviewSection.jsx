@@ -517,7 +517,7 @@ export function ResearchPreviewSection() {
               alignItems: 'center',
               gap: 10,
               padding: '12px 28px',
-              borderRadius: 100,
+              borderRadius: 8,
               background: '#ffffff',
               border: '1.5px solid rgba(241, 106, 36, 0.35)',
               color: tokens.primary,
@@ -539,7 +539,7 @@ export function ResearchPreviewSection() {
               e.currentTarget.style.transform = 'translateY(0)';
             }}
           >
-            <span>Explore All Research, Whitepapers &amp; Briefs</span>
+            <span>View More</span>
             <span aria-hidden="true">→</span>
           </Link>
         </div>
