@@ -37,8 +37,9 @@ export function PageNav() {
       style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000 }}
     >
       <AnnouncementBanner />
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '14px 24px' }}>
+      <div className="page-nav-wrap" style={{ maxWidth: 1280, margin: '0 auto' }}>
         <nav
+          className="page-nav-bar"
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -47,7 +48,6 @@ export function PageNav() {
             backdropFilter: 'blur(20px) saturate(180%)',
             WebkitBackdropFilter: 'blur(20px) saturate(180%)',
             borderRadius: 16,
-            padding: '10px 24px',
             border: '1px solid rgba(0,0,0,0.06)',
             boxShadow: scrolled
               ? '0 4px 24px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04)'
@@ -61,11 +61,11 @@ export function PageNav() {
               alt="GovernAI"
               whileHover={{ scale: 1.02 }}
               onError={(e) => { if (e.target.src.includes('.webp')) e.target.src = '/assets/img/logo.png'; }}
-              style={{ height: 32, objectFit: 'contain', cursor: 'pointer' }}
+              style={{ height: 30, objectFit: 'contain', cursor: 'pointer' }}
             />
           </Link>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: 4 }} className="mobile-hide">
+          <div className="page-nav-links">
             {LINKS.map((l) => (
               <Link
                 key={l.label}
@@ -90,25 +90,25 @@ export function PageNav() {
 
           <Link href="/" style={{ textDecoration: 'none' }}>
             <motion.span
+              className="page-nav-cta"
               whileHover={{ scale: 1.04, y: -1 }}
               whileTap={{ scale: 0.97 }}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: 8,
-                padding: '10px 22px',
+                gap: 6,
                 borderRadius: 12,
                 background: 'linear-gradient(135deg, #191c1e 0%, #2d3133 100%)',
                 color: '#fff',
                 fontFamily: tokens.fonts.display,
-                fontSize: 13,
                 fontWeight: 700,
                 letterSpacing: '0.02em',
                 boxShadow: '0 4px 16px rgba(0,0,0,0.22)',
                 cursor: 'pointer',
+                whiteSpace: 'nowrap',
               }}
             >
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M19 12H5M12 19l-7-7 7-7" />
               </svg>
               Back to Home

@@ -260,7 +260,7 @@ export function OfficeHoursView() {
   };
 
   return (
-    <div style={{ background: '#fafbfc', minHeight: '100vh', paddingTop: isMobile ? 80 : 100 }}>
+    <div className="oh-page-root" style={{ background: '#fafbfc', minHeight: '100vh' }}>
       {/* Header Section */}
       <header
         style={{
@@ -387,15 +387,7 @@ export function OfficeHoursView() {
             </p>
           </div>
 
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
-              gap: isMobile ? '20px' : '28px',
-              maxWidth: 900,
-              margin: '0 auto',
-            }}
-          >
+          <div className="oh-passes-grid">
             {OFFICE_HOURS_CONFIG.passes.map((pass) => {
               const isSelected = selectedPass.id === pass.id;
               const isHovered = hoveredPass === pass.id;
@@ -636,13 +628,7 @@ export function OfficeHoursView() {
             </p>
           </div>
 
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: isMobile ? '1fr' : 'repeat(4, 1fr)',
-              gap: isMobile ? '14px' : '16px',
-            }}
-          >
+          <div className="oh-steps-grid">
             {[
               {
                 step: '01',
@@ -861,11 +847,12 @@ export function OfficeHoursView() {
                 borderRadius: 20,
                 width: '100%',
                 maxWidth: modalStep === 'confirmed' ? (isMobile ? '100%' : 780) : (modalStep === 'payment' ? 520 : 480),
-                padding: isMobile ? '24px 20px' : '30px 28px',
+                padding: isMobile ? '22px 16px' : '30px 28px',
                 boxShadow: '0 20px 50px rgba(0,0,0,0.25)',
                 position: 'relative',
-                maxHeight: '90vh',
+                maxHeight: '92dvh',
                 overflowY: 'auto',
+                WebkitOverflowScrolling: 'touch',
               }}
             >
               {/* Close Button */}
@@ -874,13 +861,13 @@ export function OfficeHoursView() {
                 aria-label="Close dialog"
                 style={{
                   position: 'absolute',
-                  top: 16,
-                  right: 16,
+                  top: 14,
+                  right: 14,
                   background: '#f1f5f9',
                   border: 'none',
                   borderRadius: '50%',
-                  width: 30,
-                  height: 30,
+                  width: 36,
+                  height: 36,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -933,6 +920,7 @@ export function OfficeHoursView() {
                         Full Name *
                       </label>
                       <input
+                        className="oh-modal-input"
                         type="text"
                         required
                         value={formData.name}
@@ -957,6 +945,7 @@ export function OfficeHoursView() {
                           Official Email *
                         </label>
                         <input
+                          className="oh-modal-input"
                           type="email"
                           required
                           value={formData.email}
@@ -979,6 +968,7 @@ export function OfficeHoursView() {
                           Mobile / WhatsApp *
                         </label>
                         <input
+                          className="oh-modal-input"
                           type="tel"
                           required
                           value={formData.phone}
@@ -1003,6 +993,7 @@ export function OfficeHoursView() {
                         Department / Designation (Optional)
                       </label>
                       <input
+                        className="oh-modal-input"
                         type="text"
                         value={formData.department}
                         onChange={(e) => setFormData({ ...formData, department: e.target.value })}
@@ -1025,6 +1016,7 @@ export function OfficeHoursView() {
                         Pre-Submit Task or Operational Query (Optional)
                       </label>
                       <textarea
+                        className="oh-modal-input"
                         rows={3}
                         value={formData.query}
                         onChange={(e) => setFormData({ ...formData, query: e.target.value })}
@@ -1337,7 +1329,7 @@ export function OfficeHoursView() {
                   <div
                     style={{
                       width: '100%',
-                      height: isMobile ? 500 : 580,
+                      height: isMobile ? 'min(480px, 58dvh)' : 560,
                       borderRadius: 12,
                       border: '1px solid #e2e8f0',
                       overflow: 'hidden',

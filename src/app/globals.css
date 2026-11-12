@@ -7,6 +7,7 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
 }
 
 body {
@@ -265,5 +266,81 @@ a:focus-visible {
     margin-left: calc(-50vw + 50%) !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
+  }
+}
+
+/* ── Cross-Device Responsive Rules: PageNav & Workflow Clinic (/office-hours) ── */
+.page-nav-wrap {
+  padding: 14px 24px;
+}
+.page-nav-bar {
+  padding: 10px 24px;
+}
+.page-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.page-nav-cta {
+  padding: 10px 22px;
+  font-size: 13px;
+}
+
+.oh-page-root {
+  padding-top: 128px;
+}
+.oh-passes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.oh-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* Tablet (portrait & small landscape) */
+@media (max-width: 1024px) {
+  .page-nav-links {
+    display: none !important;
+  }
+  .oh-steps-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* Narrow tablet / large phone */
+@media (max-width: 820px) {
+  .oh-passes-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 640px) {
+  .page-nav-wrap {
+    padding: 10px 14px !important;
+  }
+  .page-nav-bar {
+    padding: 8px 14px !important;
+    border-radius: 14px !important;
+  }
+  .page-nav-cta {
+    padding: 8px 14px !important;
+    font-size: 12px !important;
+  }
+  .oh-page-root {
+    padding-top: 122px !important;
+  }
+  .oh-steps-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+  .oh-modal-input {
+    font-size: 16px !important;
   }
 }
