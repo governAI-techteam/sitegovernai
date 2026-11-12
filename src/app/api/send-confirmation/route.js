@@ -71,99 +71,131 @@ export async function POST(request) {
 
     const htmlContent = `
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GovernAI Workflow Clinic Registration Confirmation</title>
-  <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f8fafc; margin: 0; padding: 24px; color: #1e293b; }
-    .card { max-width: 580px; margin: 0 auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.04); }
-    .header { background: #191c1e; padding: 28px 32px; text-align: left; }
-    .header-logo { color: #ffffff; font-size: 20px; font-weight: 800; letter-spacing: -0.02em; }
-    .header-logo span { color: #f16a24; }
-    .content { padding: 32px; }
-    h1 { font-size: 20px; font-weight: 800; color: #0f172a; margin: 0 0 16px; }
-    p { font-size: 14.5px; line-height: 1.6; color: #334155; margin: 0 0 16px; }
-    .details-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px 20px; margin: 20px 0; }
-    .details-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13.5px; }
-    .details-row:last-child { margin-bottom: 0; }
-    .details-label { color: #64748b; font-weight: 500; }
-    .details-value { color: #0f172a; font-weight: 700; }
-    .cta-container { text-align: center; margin: 28px 0; }
-    .cta-button { display: inline-block; background: #f16a24; color: #ffffff !important; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: 700; font-size: 15px; box-shadow: 0 4px 14px rgba(241,106,36,0.3); }
-    .footer { padding: 24px 32px; background: #f8fafc; border-top: 1px solid #e2e8f0; font-size: 12px; color: #64748b; line-height: 1.5; }
-  </style>
 </head>
-<body>
-  <div class="card">
-    <div class="header">
-      <div class="header-logo">Govern<span>AI</span></div>
-    </div>
-    <div class="content">
-      <h1>Session Registration Confirmed</h1>
-      <p>Dear ${officerName},</p>
-      <p>Thank you for registering for the <strong>GovernAI Workflow Clinic</strong>. It is a privilege to collaborate with you to resolve your operational tasks and demonstrate practical Gen-AI workflows tailored for public administration.</p>
-      
-      <div class="details-box">
-        <div class="details-row">
-          <span class="details-label">Selected Pass:</span>
-          <span class="details-value">${safePassTitle}</span>
-        </div>
-        ${formattedPrice ? `
-        <div class="details-row">
-          <span class="details-label">Amount Paid:</span>
-          <span class="details-value">${formattedPrice}</span>
-        </div>` : ''}
-        ${safePaymentId ? `
-        <div class="details-row">
-          <span class="details-label">Transaction ID:</span>
-          <span class="details-value">${safePaymentId}</span>
-        </div>` : ''}
-        ${safeDepartment ? `
-        <div class="details-row">
-          <span class="details-label">Department:</span>
-          <span class="details-value">${safeDepartment}</span>
-        </div>` : ''}
-      </div>
+<body style="margin: 0; padding: 0; background-color: #f1f5f9; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1e293b; -webkit-font-smoothing: antialiased;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #f1f5f9; padding: 32px 16px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width: 600px; background-color: #ffffff; border: 1px solid #e2e8f0; border-top: 4px solid #f16a24; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);">
+          
+          <!-- White Header with Official GovernAI Logo -->
+          <tr>
+            <td style="background-color: #ffffff; padding: 24px 32px; border-bottom: 1px solid #f1f5f9;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td align="left" valign="middle">
+                    <a href="https://www.governai.info" target="_blank" style="text-decoration: none;">
+                      <img src="https://www.governai.info/assets/img/logo.png" alt="GovernAI" height="34" style="display: block; height: 34px; width: auto; border: 0;" />
+                    </a>
+                  </td>
+                  <td align="right" valign="middle">
+                    <span style="display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #64748b; background-color: #f8fafc; border: 1px solid #e2e8f0; padding: 5px 10px; border-radius: 6px;">Workflow Clinic</span>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
 
-      ${Array.isArray(slots) && slots.length > 0 ? `
-      <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 18px 20px; margin: 20px 0;">
-        <div style="font-size: 13.5px; font-weight: 700; color: #166534; margin-bottom: 8px;">
-          Confirmed Session Slots (Google Calendar):
-        </div>
-        <ul style="margin: 0; padding-left: 20px; color: #15803d; font-size: 13.5px; line-height: 1.7;">
-          ${slots.map((s) => `<li><strong>${s}</strong></li>`).join('')}
-        </ul>
-        <div style="margin-top: 10px; font-size: 12.5px; color: #166534;">
-          Google Meet video link and calendar invites have been reserved for these timings.
-        </div>
-      </div>
-      ` : ''}
+          <!-- Main Body -->
+          <tr>
+            <td style="padding: 32px;">
+              <div style="margin-bottom: 14px;">
+                <span style="display: inline-block; background-color: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px;">Payment Verified</span>
+              </div>
 
-      <div class="cta-container">
-        <a href="${bookingUrl}" class="cta-button" target="_blank">View Schedule on Google Calendar &rarr;</a>
-      </div>
+              <h1 style="margin: 0 0 14px; font-size: 22px; font-weight: 800; color: #0f172a; letter-spacing: -0.02em; line-height: 1.3;">Session Registration Confirmed</h1>
 
-      <p style="font-size: 13px; color: #64748b;">
-        If you wish to access or sync this to your calendar directly, use:<br>
-        <a href="${bookingUrl}" style="color: #f16a24; word-break: break-all;">${bookingUrl}</a>
-      </p>
+              <p style="margin: 0 0 14px; font-size: 15px; line-height: 1.65; color: #334155;">Dear ${officerName},</p>
+              <p style="margin: 0 0 22px; font-size: 15px; line-height: 1.65; color: #334155;">Thank you for registering for the <strong style="color: #0f172a;">GovernAI Workflow Clinic</strong>. Your pass is now active, and we look forward to collaborating with you on practical Gen-AI workflows and operational task resolution.</p>
 
-      ${safeQuery ? `
-      <div style="margin-top: 20px; padding: 12px 16px; background: #fffaf0; border-left: 3px solid #f16a24; font-size: 13px; color: #451a03;">
-        <strong>Recorded Query:</strong><br>${safeQuery}
-      </div>` : ''}
+              <!-- Receipt Summary Card -->
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; margin-bottom: 24px;">
+                <tr>
+                  <td style="padding: 18px 20px;">
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                      <tr>
+                        <td style="padding: 6px 0; font-size: 13.5px; color: #64748b; font-weight: 500; border-bottom: 1px solid #e2e8f0;">Selected Pass</td>
+                        <td align="right" style="padding: 6px 0; font-size: 13.5px; color: #0f172a; font-weight: 700; border-bottom: 1px solid #e2e8f0;">${safePassTitle}</td>
+                      </tr>
+                      ${formattedPrice ? `
+                      <tr>
+                        <td style="padding: 8px 0; font-size: 13.5px; color: #64748b; font-weight: 500; border-bottom: 1px solid #e2e8f0;">Amount Paid</td>
+                        <td align="right" style="padding: 8px 0; font-size: 14px; color: #0f172a; font-weight: 800; border-bottom: 1px solid #e2e8f0;">${formattedPrice}</td>
+                      </tr>` : ''}
+                      ${safePaymentId ? `
+                      <tr>
+                        <td style="padding: 8px 0; font-size: 13.5px; color: #64748b; font-weight: 500;${safeDepartment ? ' border-bottom: 1px solid #e2e8f0;' : ''}">Transaction ID</td>
+                        <td align="right" style="padding: 8px 0; font-size: 13px; color: #0f172a; font-weight: 600; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;${safeDepartment ? ' border-bottom: 1px solid #e2e8f0;' : ''}">${safePaymentId}</td>
+                      </tr>` : ''}
+                      ${safeDepartment ? `
+                      <tr>
+                        <td style="padding: 8px 0 2px; font-size: 13.5px; color: #64748b; font-weight: 500;">Department</td>
+                        <td align="right" style="padding: 8px 0 2px; font-size: 13.5px; color: #0f172a; font-weight: 700;">${safeDepartment}</td>
+                      </tr>` : ''}
+                    </table>
+                  </td>
+                </tr>
+              </table>
 
-      <p style="margin-top: 24px;">If you have any questions ahead of your session, simply reply directly to this email.</p>
+              ${Array.isArray(slots) && slots.length > 0 ? `
+              <div style="background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 16px 20px; margin-bottom: 24px;">
+                <div style="font-size: 13.5px; font-weight: 700; color: #166534; margin-bottom: 8px;">Confirmed Session Slots (Google Calendar)</div>
+                <ul style="margin: 0; padding-left: 18px; color: #15803d; font-size: 13.5px; line-height: 1.7;">
+                  ${slots.map((s) => `<li><strong>${s}</strong></li>`).join('')}
+                </ul>
+                <div style="margin-top: 8px; font-size: 12.5px; color: #166534;">Google Meet conference details are included in your calendar reservation.</div>
+              </div>` : ''}
 
-      <p style="margin-bottom: 0;">Warm regards,<br>
-      <strong>GovernAI Advisory Team</strong><br>
-      <a href="mailto:contact@governai.info" style="color: #f16a24; text-decoration: none;">contact@governai.info</a> | <a href="https://www.governai.info" style="color: #64748b; text-decoration: none;">governai.info</a></p>
-    </div>
-    <div class="footer">
-      This is an official transaction and session confirmation issued by GovernAI OPC Private Limited.
-    </div>
-  </div>
+              <!-- Primary CTA -->
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin: 26px 0 18px;">
+                <tr>
+                  <td align="center">
+                    <a href="${bookingUrl}" target="_blank" style="display: inline-block; background-color: #f16a24; color: #ffffff !important; text-decoration: none; padding: 14px 30px; border-radius: 8px; font-weight: 700; font-size: 14.5px; letter-spacing: 0.01em;">Schedule Your Session on Google Calendar &rarr;</a>
+                  </td>
+                </tr>
+              </table>
+
+              <p style="margin: 0 0 22px; text-align: center; font-size: 12.5px; color: #64748b;">
+                Having trouble with the button? <a href="${bookingUrl}" target="_blank" style="color: #f16a24; font-weight: 600; text-decoration: underline;">Open Google Calendar Scheduler directly</a>
+              </p>
+
+              ${safeQuery ? `
+              <div style="margin-bottom: 22px; padding: 14px 16px; background-color: #fff7ed; border-left: 3px solid #f16a24; border-radius: 0 8px 8px 0; font-size: 13.5px; line-height: 1.55; color: #7c2d12;">
+                <strong style="display: block; margin-bottom: 4px; color: #9a3412;">Recorded Query</strong>
+                ${safeQuery}
+              </div>` : ''}
+
+              <p style="margin: 0 0 20px; font-size: 14px; line-height: 1.6; color: #475569;">If you have any questions ahead of your session, simply reply directly to this email.</p>
+
+              <!-- Sign-off -->
+              <div style="padding-top: 18px; border-top: 1px solid #f1f5f9;">
+                <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #334155;">
+                  Warm regards,<br>
+                  <strong style="color: #0f172a; font-size: 15px;">GovernAI IT</strong><br>
+                  <a href="mailto:contact@governai.info" style="color: #f16a24; text-decoration: none; font-size: 13.5px; font-weight: 600;">contact@governai.info</a>
+                  <span style="color: #cbd5e1; margin: 0 6px;">|</span>
+                  <a href="https://www.governai.info" style="color: #64748b; text-decoration: none; font-size: 13.5px;">www.governai.info</a>
+                </p>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="padding: 18px 32px; background-color: #f8fafc; border-top: 1px solid #e2e8f0; font-size: 11.5px; color: #64748b; line-height: 1.5; text-align: center;">
+              Official registration and payment receipt issued by GovernAI OPC Private Limited.
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
 </body>
 </html>
 `;
@@ -183,7 +215,7 @@ ${bookingUrl}
 If you have any questions or additional requirements ahead of the session, please reply directly to contact@governai.info.
 
 Warm regards,
-GovernAI Advisory Team
+GovernAI IT
 contact@governai.info
 https://www.governai.info
 `;
@@ -206,7 +238,7 @@ https://www.governai.info
       });
 
       await transporter.sendMail({
-        from: `"GovernAI" <${smtpUser}>`,
+        from: `"GovernAI IT" <${smtpUser}>`,
         to: email,
         bcc: ['parishrutjassal2780@gmail.com', 'contact@governai.info'],
         replyTo: 'contact@governai.info',
