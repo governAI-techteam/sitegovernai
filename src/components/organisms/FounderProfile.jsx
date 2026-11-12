@@ -268,7 +268,7 @@ export function FounderProfile() {
                           background: 'rgba(0,0,0,0.05)',
                           color: tokens.onSurface,
                           padding: '3px 8px',
-                          borderRadius: '100px',
+                          borderRadius: 4,
                           fontWeight: 600,
                         }}
                       >

@@ -78,19 +78,15 @@ export function AnnouncementBanner() {
                 justifyContent: isMobile ? 'flex-start' : 'center',
               }}
             >
-              {/* Pulsing Live Badge */}
+              {/* Live Clinic Label */}
               <span
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: 5,
-                  padding: '2px 8px',
-                  borderRadius: 100,
-                  background: 'rgba(241, 106, 36, 0.18)',
-                  border: '1px solid rgba(241, 106, 36, 0.45)',
+                  gap: 6,
                   fontSize: '10.5px',
                   fontWeight: 700,
-                  letterSpacing: '0.06em',
+                  letterSpacing: '0.08em',
                   textTransform: 'uppercase',
                   color: '#ff8c42',
                   flexShrink: 0,

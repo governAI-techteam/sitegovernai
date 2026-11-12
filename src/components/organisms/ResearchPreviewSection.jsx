@@ -253,7 +253,7 @@ export function ResearchPreviewSection() {
                         alignItems: 'center',
                         gap: 6,
                         padding: '4px 10px',
-                        borderRadius: 100,
+                        borderRadius: 4,
                         fontSize: 11,
                         fontWeight: 700,
                         letterSpacing: '0.04em',

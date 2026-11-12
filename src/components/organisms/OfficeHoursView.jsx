@@ -420,11 +420,11 @@ export function OfficeHoursView() {
                     <span
                       style={{
                         display: 'inline-block',
-                        padding: '4px 10px',
-                        borderRadius: 100,
+                        padding: '3px 8px',
+                        borderRadius: 4,
                         fontSize: '11px',
                         fontWeight: 700,
-                        letterSpacing: '0.04em',
+                        letterSpacing: '0.06em',
                         textTransform: 'uppercase',
                         background: isActive ? 'rgba(241, 106, 36, 0.12)' : '#f1f5f9',
                         color: isActive ? '#c2410c' : '#475569',

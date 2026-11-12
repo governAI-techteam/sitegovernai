@@ -222,8 +222,8 @@ export function EventModal() {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: 8,
-                  padding: '5px 13px',
-                  borderRadius: 100,
+                  padding: '4px 10px',
+                  borderRadius: 4,
                   background: 'rgba(241, 106, 36, 0.08)',
                   border: '1px solid rgba(241, 106, 36, 0.24)',
                   marginBottom: 12,
@@ -648,53 +648,6 @@ export function EventModal() {
       )}
     </AnimatePresence>
 
-    {/* Floating Reopen Pill when modal is closed */}
-    {!isOpen && (
-      <motion.button
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 0.4 }}
-        onClick={() => setIsOpen(true)}
-        aria-label="View latest event: ITU & UNDP Digital@UNGA India Affiliate Session"
-        style={{
-          position: 'fixed',
-          bottom: isMobile ? 18 : 28,
-          left: isMobile ? 16 : 28,
-          zIndex: 990,
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: 9,
-          padding: isMobile ? '8px 14px' : '9px 18px',
-          borderRadius: 100,
-          background: 'rgba(255, 255, 255, 0.94)',
-          backdropFilter: 'blur(12px)',
-          WebkitBackdropFilter: 'blur(12px)',
-          border: '1.5px solid rgba(241, 106, 36, 0.3)',
-          boxShadow: '0 8px 26px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(241, 106, 36, 0.12)',
-          cursor: 'pointer',
-          color: '#1a202c',
-          fontFamily: tokens.fonts.display,
-          fontSize: isMobile ? 11.5 : 12.5,
-          fontWeight: 700,
-          letterSpacing: '0.01em',
-        }}
-        whileHover={{ scale: 1.05, y: -2 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <span
-          style={{
-            display: 'inline-block',
-            width: 8,
-            height: 8,
-            borderRadius: '50%',
-            background: '#f16a24',
-            boxShadow: '0 0 8px #f16a24',
-          }}
-        />
-        <span>Latest Event: ITU &amp; UNDP Digital@UNGA</span>
-        <span style={{ color: '#f16a24', fontSize: 13, marginLeft: 2 }}>→</span>
-      </motion.button>
-    )}
   </>
   );
 }

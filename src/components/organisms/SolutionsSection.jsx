@@ -104,8 +104,8 @@ function ModelCardInfographic() {
             <span key={tag} style={{
               fontSize: 10,
               background: tokens.surfaceLow,
-              padding: '3px 10px',
-              borderRadius: 100,
+              padding: '3px 8px',
+              borderRadius: 4,
               fontWeight: 600,
               color: tokens.secondary,
             }}>{tag}</span>
@@ -144,8 +144,8 @@ function VisualPanel() {
       <div style={{ position: 'relative', zIndex: 1 }}>
         <div style={{
           display: 'inline-flex', alignItems: 'center', gap: 8,
-          background: 'rgba(255, 255, 255, 0.08)', borderRadius: 100,
-          padding: '6px 14px', marginBottom: 16,
+          background: 'rgba(255, 255, 255, 0.08)', borderRadius: 4,
+          padding: '5px 12px', marginBottom: 16,
           border: '1px solid rgba(255, 255, 255, 0.12)',
         }}>
           <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#fff' }} />
