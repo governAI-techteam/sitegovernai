@@ -12,7 +12,7 @@ import { useIsMobile } from '@/hooks/useIsMobile';
 const founder = {
   name: 'Parishrut Jassal',
   role: 'Founder & Chief Executive Officer',
-  image: '/assets/img/founder/founder.jpg',
+  image: '/assets/img/founder/founder.webp',
   linkedin: 'https://linkedin.com/in/parishrut-jassal',
   highlights: [
     'TEDx Speaker · UKAS-recognised ISO/IEC 42001 Auditor',
@@ -30,7 +30,7 @@ const teamMembers = [
   {
     name: 'Adv. Alvin Antony',
     role: 'Chief Compliance Officer',
-    image: '/assets/img/Team/team_alvin.jpeg',
+    image: '/assets/img/Team/team_alvin.webp',
     linkedin: 'https://www.linkedin.com/in/alvin-antony-448742148/',
     description:
       'Certified AI Auditor (ISO 42001) with CAIQ, CACP, DCDPO, and DCPLA certifications. Brings extensive expertise in AI governance, compliance frameworks, risk management, and regulatory standards for responsible AI implementation.',
@@ -54,7 +54,7 @@ const teamMembers = [
   {
     name: 'Dr. Himanshu Kalia',
     role: 'AI & Healthcare Consultant',
-    image: '/assets/img/Team/team_himanshu.jpeg',
+    image: '/assets/img/Team/team_himanshu.webp',
     linkedin: 'https://www.linkedin.com/in/hkalia1/',
     description:
       'Scientific Officer at IIT DRISHTI CPS with an MSc from the University of Glasgow. Contributes expertise in healthcare research, scientific innovation, artificial intelligence applications, and interdisciplinary technology development.',
@@ -81,7 +81,7 @@ const advisors = [
   {
     name: 'Maya Sherman',
     role: 'International AI Policy Advisor',
-    image: '/assets/img/team_maya.jpeg',
+    image: '/assets/img/team_maya.webp',
     linkedin: 'https://www.linkedin.com/in/maya-sherman-02b474115/',
     description:
       'Former Science, Technology, and Innovation Attaché at the Embassy of Israel. Associated with global policy and research initiatives including GPAI, OECD, and Oxford. Provides strategic guidance on AI governance, international policy frameworks, and responsible AI development.',

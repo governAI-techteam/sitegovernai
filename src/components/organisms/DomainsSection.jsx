@@ -62,7 +62,7 @@ function DomainCard({ card, idx }) {
           ))}
         </div>
         <button className="ds-learn-more" onClick={() => router.push('/contact')}>
-          Learn More <span className="ds-arrow">&rarr;</span>
+          Learn More <span className="ds-arrow">→</span>
         </button>
       </div>
     </motion.article>

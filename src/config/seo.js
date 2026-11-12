@@ -393,7 +393,7 @@ export function founderSchema() {
     jobTitle: 'Founder & Chief Executive Officer',
     worksFor: { '@id': `${SITE_URL}/#organization` },
     founder: { '@id': `${SITE_URL}/#organization` },
-    image: `${SITE_URL}/assets/img/founder/founder.jpg`,
+    image: `${SITE_URL}/assets/img/founder/founder.webp`,
     url: SITE_URL,
     nationality: { '@type': 'Country', name: 'India' },
     description:
@@ -427,7 +427,7 @@ export function teamSchema() {
       id: 'alvin-antony',
       name: 'Alvin Antony',
       jobTitle: 'Chief Compliance Officer',
-      image: '/assets/img/Team/team_alvin.jpeg',
+      image: '/assets/img/Team/team_alvin.webp',
       description:
         'AI & Frontier Tech Lawyer specialising in AI Governance, ISO 42001, IP and Data Protection. Certified Implementer/Auditor in ISO 42001:2023 and ISO 9001:2015.',
       knowsAbout: ['AI Compliance', 'ISO/IEC 42001', 'Data Protection', 'AI Law'],
@@ -454,7 +454,7 @@ export function teamSchema() {
       id: 'himanshu-kalia',
       name: 'Dr. Himanshu Kalia',
       jobTitle: 'AI & Healthcare Consultant',
-      image: '/assets/img/Team/team_himanshu.jpeg',
+      image: '/assets/img/Team/team_himanshu.webp',
       description:
         'Scientific Officer at IIT DRISHTI CPS with an MSc from the University of Glasgow. Contributes expertise in healthcare research, scientific innovation, and AI applications.',
       knowsAbout: ['AI in Healthcare', 'Healthcare Research', 'Interdisciplinary Technology'],
@@ -506,7 +506,7 @@ export function advisorSchema() {
       name: 'Maya Sherman',
       jobTitle: 'International AI Policy Advisor',
       worksFor: { '@id': `${SITE_URL}/#organization` },
-      image: `${SITE_URL}/assets/img/team_maya.jpeg`,
+      image: `${SITE_URL}/assets/img/team_maya.webp`,
       description:
         'Former Science, Technology, and Innovation Attaché at the Embassy of Israel. Provides strategic guidance on AI governance, international policy frameworks, and responsible AI development.',
       knowsAbout: ['AI Policy', 'International Governance', 'Responsible AI'],

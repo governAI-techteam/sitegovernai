@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none">
+  <defs>
+    <linearGradient id="bgSummits" x1="0" y1="0" x2="800" y2="450" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#edf2f7"/>
+    </linearGradient>
+    <linearGradient id="globeGrad" x1="260" y1="90" x2="540" y2="360" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#f16a24" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#334155" stop-opacity="0.04"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bgSummits)"/>
+
+  <!-- Minimalist Global Meridian Sphere -->
+  <circle cx="400" cy="225" r="140" fill="url(#globeGrad)" stroke="#cbd5e1" stroke-width="1.5"/>
+  <ellipse cx="400" cy="225" rx="140" ry="55" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="3 4"/>
+  <ellipse cx="400" cy="225" rx="55" ry="140" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="3 4"/>
+  <line x1="260" y1="225" x2="540" y2="225" stroke="#94a3b8" stroke-width="1.2"/>
+  <line x1="400" y1="85" x2="400" y2="365" stroke="#94a3b8" stroke-width="1.2"/>
+
+  <!-- Diplomatic Convergence Orbital Arcs -->
+  <path d="M220 260 C280 140, 520 140, 580 260" stroke="#f16a24" stroke-width="2" stroke-linecap="round"/>
+  <path d="M250 180 C320 300, 480 300, 550 180" stroke="#334155" stroke-width="1.5" stroke-dasharray="4 4" stroke-opacity="0.6"/>
+
+  <!-- Five Summit Nodes (Bletchley, Seoul, Paris, Delhi, Geneva) -->
+  <!-- Node 1: Bletchley Park -->
+  <circle cx="340" cy="155" r="8" fill="#ffffff" stroke="#f16a24" stroke-width="2"/>
+  <circle cx="340" cy="155" r="3.5" fill="#f16a24"/>
+
+  <!-- Node 2: Seoul -->
+  <circle cx="490" cy="175" r="7" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <circle cx="490" cy="175" r="3" fill="#334155"/>
+
+  <!-- Node 3: Paris -->
+  <circle cx="370" cy="195" r="6.5" fill="#ffffff" stroke="#f16a24" stroke-width="2"/>
+  <circle cx="370" cy="195" r="2.5" fill="#f16a24"/>
+
+  <!-- Node 4: New Delhi -->
+  <circle cx="440" cy="235" r="9" fill="#ffffff" stroke="#f16a24" stroke-width="2.5"/>
+  <circle cx="440" cy="235" r="4.5" fill="#f16a24"/>
+
+  <!-- Node 5: Geneva -->
+  <circle cx="360" cy="225" r="6" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+  <circle cx="360" cy="225" r="2.5" fill="#334155"/>
+
+  <!-- Inter-summit Treaty Connection Vectors -->
+  <line x1="340" y1="155" x2="370" y2="195" stroke="#f16a24" stroke-width="1.2" stroke-opacity="0.8"/>
+  <line x1="370" y1="195" x2="360" y2="225" stroke="#f16a24" stroke-width="1.2" stroke-opacity="0.8"/>
+  <line x1="360" y1="225" x2="440" y2="235" stroke="#f16a24" stroke-width="1.5" stroke-opacity="0.9"/>
+  <line x1="440" y1="235" x2="490" y2="175" stroke="#f16a24" stroke-width="1.2" stroke-opacity="0.8"/>
+
+  <!-- Latitude Scale Marker at Base -->
+  <line x1="360" y1="395" x2="440" y2="395" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+</svg>

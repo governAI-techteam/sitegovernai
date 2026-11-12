@@ -8,27 +8,27 @@ import { useIsMobile } from '@/hooks/useIsMobile';
 
 const UNGA_PHOTOS = [
   {
-    src: '/assets/img/unga/unga_1.jpg',
+    src: '/assets/img/unga/unga_1.webp',
     title: 'Official India Affiliate Session',
     caption: 'Diplomats, policymakers, technologists, and builders convened at the Royal Norwegian Embassy in New Delhi for the ITU & UNDP Digital@UNGA session.',
   },
   {
-    src: '/assets/img/unga/unga_2.jpg',
+    src: '/assets/img/unga/unga_2.webp',
     title: 'AI for Inclusion: Access to Opportunity',
     caption: 'High-level dialogue exploring transitions from baseline AI connectivity to true human and institutional agency.',
   },
   {
-    src: '/assets/img/unga/unga_3.jpg',
+    src: '/assets/img/unga/unga_3.webp',
     title: 'Multilateral Dialogue & Safety Standards',
     caption: 'Cross-border discussion on actionable AI governance, sovereign safety benchmarks, and verifiable compliance.',
   },
   {
-    src: '/assets/img/unga/unga_4.jpg',
+    src: '/assets/img/unga/unga_4.webp',
     title: 'Cross-Border Ecosystem Exchange (🇮🇳🇳🇴)',
     caption: 'Strengthening collaborative technological partnerships between India, Norway, and global multilateral institutions.',
   },
   {
-    src: '/assets/img/unga/unga_5.jpg',
+    src: '/assets/img/unga/unga_5.webp',
     title: 'Collaborative Leadership & Public Readiness',
     caption: 'GovernAI collaborating with Wasabi AI, the Royal Norwegian Embassy, Mosaika Impact, and Manus AI to advance institutional AI safety.',
   },
@@ -392,7 +392,6 @@ export function EventModal() {
                       <SafeImage
                         src={UNGA_PHOTOS[currentSlide].src}
                         alt={UNGA_PHOTOS[currentSlide].title}
-                        disableWebp
                         style={{
                           width: '100%',
                           height: '100%',
@@ -693,7 +692,7 @@ export function EventModal() {
           }}
         />
         <span>Latest Event: ITU &amp; UNDP Digital@UNGA</span>
-        <span style={{ color: '#f16a24', fontSize: 13, marginLeft: 2 }}>&rarr;</span>
+        <span style={{ color: '#f16a24', fontSize: 13, marginLeft: 2 }}>→</span>
       </motion.button>
     )}
   </>

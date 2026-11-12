@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none">
+  <defs>
+    <linearGradient id="bgFoundations" x1="0" y1="0" x2="800" y2="450" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fafbfc"/>
+      <stop offset="100%" stop-color="#f1f5f9"/>
+    </linearGradient>
+    <linearGradient id="peachPillar" x1="440" y1="120" x2="580" y2="330" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#f16a24" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#ff9d5c" stop-opacity="0.25"/>
+    </linearGradient>
+    <linearGradient id="blueSlatePillar" x1="220" y1="120" x2="360" y2="330" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#334155" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#64748b" stop-opacity="0.04"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bgFoundations)"/>
+
+  <!-- Subtle Minimalist Coordinate Grid -->
+  <g opacity="0.35" stroke="#cbd5e1" stroke-width="1">
+    <circle cx="400" cy="225" r="190" stroke-dasharray="2 4"/>
+    <circle cx="400" cy="225" r="130" stroke-dasharray="4 6"/>
+  </g>
+
+  <!-- Left Structure: Deterministic Data Governance (Orthogonal Grids & Monolith) -->
+  <rect x="230" y="130" width="130" height="190" rx="12" fill="url(#blueSlatePillar)" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="230" y1="180" x2="360" y2="180" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="230" y1="230" x2="360" y2="230" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="230" y1="280" x2="360" y2="280" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="295" y1="130" x2="295" y2="320" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+
+  <!-- Right Structure: Probabilistic AI Governance (Curved Dynamic Topology) -->
+  <path d="M440 320 C440 210, 570 300, 570 140 L570 320 Z" fill="url(#peachPillar)" stroke="#f16a24" stroke-width="1.5"/>
+  <path d="M440 320 C470 200, 540 240, 570 140" stroke="#f16a24" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Central Intersecting Equilibrium Axis -->
+  <line x1="180" y1="225" x2="620" y2="225" stroke="#0f172a" stroke-width="1.5" stroke-opacity="0.3"/>
+  <circle cx="400" cy="225" r="28" fill="#ffffff" stroke="#f16a24" stroke-width="2"/>
+  <circle cx="400" cy="225" r="8" fill="#f16a24"/>
+
+  <!-- Data Flow Connection Arc -->
+  <path d="M295 130 C295 80, 505 80, 505 130" stroke="#f16a24" stroke-width="1.5" stroke-dasharray="4 4" stroke-opacity="0.7"/>
+
+  <!-- Minimalist Satellite Points -->
+  <circle cx="295" cy="130" r="4.5" fill="#334155"/>
+  <circle cx="505" cy="130" r="4.5" fill="#f16a24"/>
+</svg>

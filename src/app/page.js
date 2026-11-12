@@ -11,14 +11,14 @@ import { DomainsSection } from '@/components/organisms/DomainsSection';
 import ClientsMarqueeSection from '@/components/organisms/ClientsMarqueeSection';
 
 import InsightsCarouselSection from '@/components/organisms/InsightsCarouselSection';
+import { ResearchPreviewSection } from '@/components/organisms/ResearchPreviewSection';
 import ImageCard from '@/components/molecules/ImageCard';
-import { FAQSection } from '@/components/organisms/FAQSection';
 import { Footer } from '@/components/organisms/Footer';
 import { Preloader } from '@/components/molecules/Preloader';
 import { EventModal } from '@/components/organisms/EventModal';
 import { ScrollProgress } from '@/components/atoms/ScrollProgress';
 import { Reveal } from '@/components/atoms/Reveal';
-import { webPageSchema, faqSchema, insightsItemListSchema, stateServiceAreasSchema } from '@/config/seo';
+import { webPageSchema, insightsItemListSchema, stateServiceAreasSchema } from '@/config/seo';
 import { insightsData, slugify } from '@/config/insightsData';
 
 /* Module-level flag — persists across SPA navigations, resets on full reload */
@@ -56,7 +56,6 @@ export default function GovernAI() {
   // homepage, where the matching visible content (FAQ section, insights) lives.
   const homeJsonLd = [
     webPageSchema(),
-    faqSchema(),
     insightsItemListSchema(insightsData, slugify),
     stateServiceAreasSchema(),
   ];
@@ -97,8 +96,9 @@ export default function GovernAI() {
 
         <Divider />
 
-        {/* 4. Insights */}
-        <section id="insights" aria-label="Insights and Impact" ref={(el) => (sectionRefs.current['insights'] = el)}>
+        {/* 4. Insights & Research */}
+        <section id="insights" aria-label="Governance Intelligence, Research & Impact" ref={(el) => (sectionRefs.current['insights'] = el)}>
+          <ResearchPreviewSection />
           <InsightsCarouselSection />
         </section>
 

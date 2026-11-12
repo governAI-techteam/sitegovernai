@@ -33,6 +33,7 @@ const footerLinks = [
   {
     heading: 'Resources',
     links: [
+      { label: 'Workflow Clinic', href: '/office-hours' },
       { label: 'Contact Us', href: '/contact' },
       { label: 'Privacy Policy', href: '/assets/pdf/legal/GovernAI-Privacy-Policy.pdf', external: true },
       { label: 'Terms of Use', href: '/assets/pdf/legal/GovernAI-Terms-of-Use.pdf', external: true },

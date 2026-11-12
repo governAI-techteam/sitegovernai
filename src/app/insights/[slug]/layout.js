@@ -17,7 +17,9 @@ export async function generateMetadata({ params }) {
       url: `${SITE_URL}/insights/${slug}/`,
       title: `${insight.title} — GovernAI Insights`,
       description: insight.description,
-      images: [{ url: `${SITE_URL}${insight.image}`, width: 1200, height: 900, alt: insight.title }],
+      images: insight.image
+        ? [{ url: `${SITE_URL}${insight.image}`, width: 1200, height: 900, alt: insight.title }]
+        : [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630, alt: insight.title }],
       siteName: 'GovernAI',
       locale: 'en_IN',
       /* Article-specific OG tags — critical for social + search */
@@ -30,7 +32,7 @@ export async function generateMetadata({ params }) {
       card: 'summary_large_image',
       title: `${insight.title} — GovernAI Insights`,
       description: insight.description,
-      images: [`${SITE_URL}${insight.image}`],
+      images: [insight.image ? `${SITE_URL}${insight.image}` : `${SITE_URL}/twitter-image`],
       creator: '@governaiofc',
     },
     /* Per-article keywords for niche search targeting */

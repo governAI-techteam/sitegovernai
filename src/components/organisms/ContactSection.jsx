@@ -116,6 +116,8 @@ export function ContactSection() {
           interest: form.type,
           message: form.message,
           _subject: `New enquiry (${form.type}) - ${form.name}`,
+          _replyto: form.email,
+          _cc: 'parishrutjassal2780@gmail.com',
           _template: 'table',
           _captcha: 'false',
         }),

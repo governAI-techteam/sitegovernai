@@ -8,6 +8,7 @@ import { NAV_ITEMS } from '@/config/content';
 import { useScroll } from '@/context/ScrollContext';
 import { tokens } from '@/theme/tokens';
 import { useIsMobile } from '@/hooks/useIsMobile';
+import { AnnouncementBanner } from '@/components/organisms/AnnouncementBanner';
 
 export function NavBar({ activeSection }) {
   const { scrollTo } = useScroll();
@@ -54,6 +55,7 @@ export function NavBar({ activeSection }) {
           transition: 'all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)',
         }}
       >
+        <AnnouncementBanner />
         <div style={{
           maxWidth: 1280,
           margin: '0 auto',

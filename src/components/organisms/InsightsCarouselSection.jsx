@@ -27,7 +27,8 @@ export default function InsightsCarouselSection() {
   const router = useRouter();
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
-  const total = insightsData.length;
+  const momentsData = insightsData.filter((item) => !item.category || item.category === 'moment');
+  const total = momentsData.length;
   const trackRef = useRef(null);
   const isMobile = useIsMobile();
 
@@ -168,7 +169,7 @@ export default function InsightsCarouselSection() {
             alignItems: 'center',
           }}
         >
-          {insightsData.map((item, i) => {
+          {momentsData.map((item, i) => {
             const isActive = i === current;
             return (
               <article
@@ -208,7 +209,6 @@ export default function InsightsCarouselSection() {
                   src={item.image}
                   alt=""
                   aria-hidden="true"
-                  disableWebp={item.image?.startsWith('/assets/img/')}
                   loading={i < 3 ? 'eager' : 'lazy'}
                   style={{
                     position: 'absolute',
@@ -226,7 +226,6 @@ export default function InsightsCarouselSection() {
                 <SafeImage
                   src={item.image}
                   alt={item.title}
-                  disableWebp={item.image?.startsWith('/assets/img/')}
                   loading={i < 3 ? 'eager' : 'lazy'}
                   style={{
                     position: 'absolute',

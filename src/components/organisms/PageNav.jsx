@@ -5,11 +5,13 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { SafeImage } from '@/components/atoms/SafeImage';
 import { tokens } from '@/theme/tokens';
+import { AnnouncementBanner } from '@/components/organisms/AnnouncementBanner';
 
 const LINKS = [
   { label: 'Domains', href: '/#domains' },
-  { label: 'Clients', href: '/#platform' },
-  { label: 'Insights', href: '/#insights' },
+  { label: 'Footprints', href: '/#platform' },
+  { label: 'Research', href: '/insights/' },
+  { label: 'Moments', href: '/#insights' },
   { label: 'Team', href: '/#team' },
 ];
 
@@ -34,6 +36,7 @@ export function PageNav() {
       transition={{ type: 'spring', stiffness: 260, damping: 30 }}
       style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000 }}
     >
+      <AnnouncementBanner />
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '14px 24px' }}>
         <nav
           style={{

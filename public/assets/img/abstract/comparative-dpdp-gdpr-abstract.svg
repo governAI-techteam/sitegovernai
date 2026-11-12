@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none">
+  <defs>
+    <linearGradient id="bgComp" x1="0" y1="0" x2="800" y2="450" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fafbfc"/>
+      <stop offset="100%" stop-color="#f3f4f6"/>
+    </linearGradient>
+    <linearGradient id="gdprPlate" x1="220" y1="140" x2="340" y2="280" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#334155" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.03"/>
+    </linearGradient>
+    <linearGradient id="dpdpPlate" x1="460" y1="140" x2="580" y2="280" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#f16a24" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#ff9d5c" stop-opacity="0.04"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bgComp)"/>
+
+  <!-- Minimalist Radial Background Halo -->
+  <circle cx="400" cy="225" r="170" stroke="#e2e8f0" stroke-width="1.2" stroke-dasharray="4 6"/>
+
+  <!-- The Balance Beam (Statutory Comparison Axis) -->
+  <line x1="200" y1="180" x2="600" y2="180" stroke="#1e293b" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Central Fulcrum / Pivot -->
+  <polygon points="400,180 380,240 420,240" fill="#334155" opacity="0.15"/>
+  <polygon points="400,180 385,235 415,235" stroke="#334155" stroke-width="1.5" fill="none"/>
+  <circle cx="400" cy="180" r="7" fill="#f16a24"/>
+
+  <!-- Base Pedestal -->
+  <line x1="350" y1="240" x2="450" y2="240" stroke="#334155" stroke-width="2" stroke-linecap="round"/>
+  <line x1="330" y1="250" x2="470" y2="250" stroke="#cbd5e1" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Left Scale Pan: EU GDPR (Fundamental Rights Architecture) -->
+  <line x1="250" y1="180" x2="250" y2="240" stroke="#64748b" stroke-width="1.2" stroke-dasharray="2 3"/>
+  <path d="M190 240 Q250 280 310 240 Z" fill="url(#gdprPlate)" stroke="#334155" stroke-width="1.8"/>
+  <!-- GDPR Symbolism (Concentric Regulatory Rings) -->
+  <circle cx="250" cy="235" r="14" stroke="#64748b" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <circle cx="250" cy="235" r="5" fill="#334155"/>
+
+  <!-- Right Scale Pan: India DPDP Act (Digital Economy Balance) -->
+  <line x1="550" y1="180" x2="550" y2="240" stroke="#f16a24" stroke-width="1.2" stroke-dasharray="2 3"/>
+  <path d="M490 240 Q550 280 610 240 Z" fill="url(#dpdpPlate)" stroke="#f16a24" stroke-width="1.8"/>
+  <!-- DPDP Symbolism (Sovereign Digital Shield) -->
+  <circle cx="550" cy="235" r="14" stroke="#f16a24" stroke-width="1.5"/>
+  <circle cx="550" cy="235" r="5" fill="#f16a24"/>
+
+  <!-- Minimalist Geometric Arcs & Ticks -->
+  <path d="M250 140 C320 110, 480 110, 550 140" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <circle cx="250" cy="140" r="3.5" fill="#334155"/>
+  <circle cx="550" cy="140" r="3.5" fill="#f16a24"/>
+
+  <!-- Subtle Benchmark Base Line -->
+  <line x1="280" y1="360" x2="520" y2="360" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 6"/>
+</svg>

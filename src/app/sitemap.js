@@ -5,7 +5,7 @@ export const dynamic = 'force-static';
 
 export default function sitemap() {
   const insightEntries = insightsData.map((item) => ({
-    url: `${SITE_URL}/insights/${slugify(item.title)}/`,
+    url: `${SITE_URL}/insights/${item.slug || slugify(item.title)}/`,
     lastModified: item.datePublished
       ? new Date(item.datePublished)
       : new Date(),
@@ -25,10 +25,22 @@ export default function sitemap() {
       priority: 1.0,
     },
     {
+      url: `${SITE_URL}/insights/`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
       url: `${SITE_URL}/contact/`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/office-hours/`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
     },
     ...insightEntries,
   ];
