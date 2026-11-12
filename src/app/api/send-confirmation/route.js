@@ -176,7 +176,7 @@ export async function POST(request) {
               <div style="padding-top: 18px; border-top: 1px solid #f1f5f9;">
                 <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #334155;">
                   Warm regards,<br>
-                  <strong style="color: #0f172a; font-size: 15px;">GovernAI IT</strong><br>
+                  <strong style="color: #0f172a; font-size: 15px;">GovernAI Team</strong><br>
                   <a href="mailto:contact@governai.info" style="color: #f16a24; text-decoration: none; font-size: 13.5px; font-weight: 600;">contact@governai.info</a>
                   <span style="color: #cbd5e1; margin: 0 6px;">|</span>
                   <a href="https://www.governai.info" style="color: #64748b; text-decoration: none; font-size: 13.5px;">www.governai.info</a>
@@ -215,7 +215,7 @@ ${bookingUrl}
 If you have any questions or additional requirements ahead of the session, please reply directly to contact@governai.info.
 
 Warm regards,
-GovernAI IT
+GovernAI Team
 contact@governai.info
 https://www.governai.info
 `;
@@ -238,7 +238,7 @@ https://www.governai.info
       });
 
       await transporter.sendMail({
-        from: `"GovernAI IT" <${smtpUser}>`,
+        from: `"GovernAI Team" <${smtpUser}>`,
         to: email,
         bcc: ['parishrutjassal2780@gmail.com', 'contact@governai.info'],
         replyTo: 'contact@governai.info',
