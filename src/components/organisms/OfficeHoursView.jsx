@@ -139,9 +139,11 @@ export function OfficeHoursView() {
         throw new Error(orderData.error || 'Failed to initialize payment order with server');
       }
 
-      // Step 2: Open Razorpay modal with order_id
-      const razorpayKey =
-        orderData.key_id || process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID;
+      // Step 2: Open Razorpay modal with order_id and server-provided public key_id
+      const razorpayKey = orderData.key_id;
+      if (!razorpayKey) {
+        throw new Error('Payment gateway key unavailable from server.');
+      }
 
       const options = {
         key: razorpayKey,
